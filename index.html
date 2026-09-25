@@ -1,0 +1,859 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="دليل تفاعلي لمسابقة الكويت الكبرى لحفظ القرآن الكريم وتجويده التاسعة والعشرين">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px)}</style>
+<title>مسابقة الكويت الكبرى ٢٩</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#F4F7F4; --surface:#FFFFFF; --ink:#13241E; --muted:#5B6C64; --line:#DCE5DF;
+  --green:#0F5A43; --green-soft:#E3EFE9; --gold:#A77E22; --gold-soft:#F6EEDB;
+  --ok:#1E7A4F; --warn:#9A5B12;
+  --display:"Amiri","Traditional Arabic",serif;
+  --body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0C1613; --surface:#13211C; --ink:#E4EDE8; --muted:#95A89F; --line:#24362F;
+    --green:#5CC49A; --green-soft:#17312A; --gold:#D8B45E; --gold-soft:#2C2616;
+    --ok:#6FD3A1; --warn:#E3A55A;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0C1613; --surface:#13211C; --ink:#E4EDE8; --muted:#95A89F; --line:#24362F;
+  --green:#5CC49A; --green-soft:#17312A; --gold:#D8B45E; --gold-soft:#2C2616;
+  --ok:#6FD3A1; --warn:#E3A55A;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.75;direction:rtl;padding-inline:16px;padding-block:0 48px}
+.wrap{max-width:880px;margin-inline:auto;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.3}
+h2{font-size:26px;color:var(--green)}
+h3{font-size:19px}
+p{margin:0}
+.num{font-variant-numeric:tabular-nums}
+
+/* header */
+header{padding-block:18px 8px;display:flex;flex-direction:column;gap:10px}
+.eyebrow{font-size:12.5px;letter-spacing:.04em;color:var(--gold);font-weight:600}
+header h1{font-size:clamp(30px,6vw,44px);color:var(--ink)}
+header h1 span{color:var(--green)}
+header .lede{color:var(--muted);max-width:62ch}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 12px;font-size:13px;color:var(--muted)}
+.chip b{color:var(--ink);font-weight:600}
+
+/* finder */
+.finder{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:16px}
+.finder-head{display:flex;flex-direction:column;gap:4px}
+.finder-head p{color:var(--muted);font-size:14px}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:13px;font-weight:600;color:var(--muted)}
+.field input,.field select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%}
+.field input:focus,.field select:focus,.tab:focus-visible,.band:focus-visible,button:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.check{display:flex;align-items:center;gap:8px;font-size:14px;align-self:end;padding-block:10px}
+.check input{width:18px;height:18px;accent-color:var(--green)}
+.results{display:flex;flex-direction:column;gap:10px}
+.res{border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;grid-template-columns:1fr auto;gap:4px 16px;align-items:center}
+.res.best{border-color:var(--gold);background:var(--gold-soft)}
+.res .rb{font-weight:700}
+.res .rs{color:var(--muted);font-size:13.5px}
+.res .rp{grid-row:1 / span 2;grid-column:2;text-align:left;display:flex;flex-direction:column;align-items:flex-end}
+.res .rp strong{font-size:20px;color:var(--green);font-variant-numeric:tabular-nums}
+.res .rp small{color:var(--muted);font-size:12px}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;color:var(--gold);border:1px solid var(--gold);border-radius:999px;padding:0 8px;margin-inline-start:6px;vertical-align:middle}
+.res .rn{grid-column:1 / -1;font-size:13px;color:var(--muted)}
+.empty{color:var(--muted);font-size:14px;padding:6px 0}
+.hint{font-size:13px;color:var(--muted);border-top:1px dashed var(--line);padding-top:12px}
+
+/* tabs */
+.section{display:flex;flex-direction:column;gap:14px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+@media (min-width:720px){.tabs{grid-template-columns:repeat(6,1fr)}}
+.tab{font:inherit;font-size:14px;font-weight:600;line-height:1.4;background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:10px;padding:8px 6px;cursor:pointer;text-align:center}
+.tab[aria-selected="true"]{background:var(--green);border-color:var(--green);color:var(--bg)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.panel .def{color:var(--muted);max-width:68ch}
+.bands{display:flex;flex-wrap:wrap;gap:6px}
+.ages-wrap{display:flex;flex-direction:column;gap:8px}
+.ages-label{font-size:12.5px;font-weight:600;color:var(--muted)}
+.ages{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg)}
+.age{font:inherit;background:transparent;color:var(--ink);border:0;padding:10px 2px;cursor:pointer;min-width:0}
+.age+.age{border-inline-start:1px solid var(--line)}
+.age b{font-size:15px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.age[aria-pressed="true"]{background:var(--green);color:var(--bg)}
+.age:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+.ages-sel{font-weight:600;color:var(--green)}
+.ages-note{font-size:12.5px;color:var(--muted)}
+@media (max-width:360px){.age b{font-size:13px}}
+.ages.s3{grid-template-columns:repeat(3,1fr)}
+.ages.s3 .age b{white-space:normal;font-size:13.5px;line-height:1.4;display:block}
+.sp-pane{display:flex;flex-direction:column;gap:12px}
+.sp-pane[hidden]{display:none}
+.sp-prize{font-size:15px;font-weight:600;color:var(--ink);background:var(--green-soft);border-radius:10px;padding:10px 14px}
+.sp-prize b{color:var(--green);font-variant-numeric:tabular-nums}
+.sp-list{display:flex;flex-direction:column;gap:8px}
+.sp-card{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;background:var(--bg)}
+.sp-h{font-weight:700}
+.sp-s{font-size:13.5px;color:var(--muted)}
+.sp-p{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:13px;color:var(--muted);margin-top:2px}
+.sp-p b{color:var(--ink);font-variant-numeric:tabular-nums}
+.sp-p span:first-child b{color:var(--green)}
+.band{font:inherit;font-size:13px;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:4px 10px;cursor:pointer}
+.band[aria-pressed="true"]{border-color:var(--gold);background:var(--gold-soft);font-weight:600}
+.tbl{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:420px}
+th,td{padding:9px 10px;text-align:right;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12.5px;color:var(--muted);font-weight:600;letter-spacing:.02em}
+td.m{font-variant-numeric:tabular-nums;white-space:nowrap}
+td.m.first{color:var(--green);font-weight:700}
+tr:last-child td{border-bottom:0}
+.note{font-size:13px;color:var(--warn);background:transparent;border-inline-start:3px solid var(--warn);padding-inline-start:10px}
+ul.plain{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:4px}
+
+/* rules */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.about{display:flex;flex-direction:column;gap:8px}
+details[open] summary{color:var(--green)}
+.thresh{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.thresh div{border:1px solid var(--line);border-radius:10px;padding:8px 4px}
+.thresh b{display:block;font-size:22px;color:var(--green);font-variant-numeric:tabular-nums;font-family:var(--body)}
+.thresh span{font-size:12px;color:var(--muted)}
+ol.rules{margin:0;padding-inline-start:22px;display:flex;flex-direction:column;gap:6px}
+details{border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+details summary{cursor:pointer;padding:12px 16px;font-weight:600;list-style-position:inside}
+details .inner{padding:0 16px 16px;display:flex;flex-direction:column;gap:10px}
+.contact{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.wa-item{display:inline-flex;align-items:center;gap:6px}
+.wa{display:inline-flex;align-items:center;gap:8px;font-size:16px;font-weight:600;text-decoration:none;color:#fff;background:#1F8F55;border-radius:10px;padding:8px 14px}
+.wa svg{width:20px;height:20px}
+.wa:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.doc-link{display:inline-flex;align-items:center;gap:8px;font-weight:600;text-decoration:none;color:var(--green);background:var(--green-soft);border:1px solid var(--line);border-radius:10px;padding:8px 14px}
+.doc-link svg{width:20px;height:20px}
+.doc-link:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.copy.mini{font-size:12.5px;padding:6px 10px}
+.copy{font:inherit;font-size:14px;font-variant-numeric:tabular-nums;background:var(--green-soft);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:6px 12px;cursor:pointer}
+.copy.done{border-color:var(--ok);color:var(--ok)}
+details.calc-d>summary{cursor:pointer;display:flex;flex-direction:column;gap:2px;list-style:none;padding-inline-end:28px;position:relative}
+details.calc-d>summary::-webkit-details-marker{display:none}
+details.calc-d>summary::after{content:"▾";position:absolute;inset-inline-end:0;top:4px;color:var(--muted);transition:transform .2s}
+details.calc-d[open]>summary::after{transform:rotate(180deg)}
+details.calc-d>summary span{font-family:var(--display);font-size:22px;color:var(--green);font-weight:700}
+details.calc-d>summary small{font-size:13px;color:var(--muted)}
+.calc-in{display:flex;flex-direction:column;gap:16px;padding-top:14px}
+.calc-total{display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px}
+.calc-total div{display:flex;flex-direction:column}
+.calc-total span{font-size:12.5px;color:var(--muted)}
+.calc-total strong{font-size:30px;line-height:1.2;color:var(--green)}
+.calc-total .copy{margin-inline-start:auto}
+table.calc{min-width:0}
+table.calc td,table.calc th{padding:6px 4px}
+table.calc input{width:52px;font:inherit;font-variant-numeric:tabular-nums;text-align:center;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:4px 2px}
+table.calc input:focus{outline:2px solid var(--green);outline-offset:1px}
+table.calc tr.has td:first-child{color:var(--green);font-weight:600}
+footer{color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);padding-top:14px}
+.look{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.look>.look-group{justify-content:space-between;width:100%;flex-wrap:wrap}
+.tabbar{position:fixed;bottom:0;left:0;right:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding:6px 8px calc(env(safe-area-inset-bottom,0px) + 6px);display:flex;justify-content:center;box-shadow:0 -4px 16px rgba(0,0,0,.06)}
+.tabbar-in{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;width:100%;max-width:560px}
+.tb{font:inherit;font-size:11.5px;font-weight:600;line-height:1.3;background:none;border:0;border-radius:10px;color:var(--muted);padding:6px 2px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px}
+.tb svg{width:22px;height:22px}
+.tb.active{color:var(--green);background:var(--green-soft)}
+body{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 84px)}
+.about-card .ap-index{margin-top:2px}
+.ap-index{display:flex;flex-wrap:wrap;gap:6px}
+.about-view{display:flex;flex-direction:column;gap:14px}
+.faq-list{display:flex;flex-direction:column;gap:8px}
+.timeline{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.tl{position:relative;padding-inline-start:30px;padding-bottom:18px}
+.tl::before{content:"";position:absolute;inset-inline-start:8px;top:10px;bottom:-4px;width:2px;background:var(--line)}
+.tl:last-child::before{display:none}
+.tl::after{content:"";position:absolute;inset-inline-start:2px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--surface);border:2px solid var(--line);box-sizing:border-box}
+.tl.done::after{background:var(--line);border-color:var(--line)}
+.tl.done .tl-t{color:var(--muted)}
+.tl.now::after{background:var(--green);border-color:var(--green);box-shadow:0 0 0 4px var(--green-soft)}
+.tl.next::after{border-color:var(--gold)}
+.tl-date{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tl-t{font-weight:700;font-size:15.5px}
+.tl-d{font-size:14px;color:var(--muted);margin-top:2px}
+.tl-pill{display:inline-block;font-size:11.5px;font-weight:600;border-radius:999px;padding:0 8px;margin-inline-start:6px;vertical-align:middle}
+.tl.now .tl-pill{background:var(--green);color:var(--bg)}
+.tl.next .tl-pill{border:1px solid var(--gold);color:var(--gold)}
+.tl.done .tl-pill{border:1px solid var(--line);color:var(--muted)}
+.cd{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.cd-num{grid-row:1 / span 3;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:84px;border-inline-end:1px solid var(--line);padding-inline-end:16px}
+.cd-num strong{font-size:40px;line-height:1;color:var(--green);font-variant-numeric:tabular-nums}
+.cd-num span{font-size:12.5px;color:var(--muted)}
+.cd-k{font-size:12.5px;color:var(--gold);font-weight:600}
+.cd-t{font-weight:700;font-size:17px;line-height:1.4}
+.cd-s{font-size:13px;color:var(--muted)}
+.cd-btn{font:inherit;font-size:13px;background:none;border:0;color:var(--green);cursor:pointer;padding:0;text-align:start;text-decoration:underline}
+details.faq{border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+details.faq summary{padding:10px 14px;font-weight:600;cursor:pointer}
+details.faq[open] summary{color:var(--green)}
+details.faq p{padding:0 14px 12px;color:var(--ink)}
+.tb.fab{position:relative;color:var(--green)}
+.tb.fab .fab-c{width:54px;height:54px;margin-top:-26px;border-radius:50%;background:var(--green);color:var(--bg);display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.18);border:4px solid var(--surface)}
+.tb.fab .fab-c svg{width:24px;height:24px}
+.tb.fab.active{background:none}
+.tb.fab.active .fab-c{outline:2px solid var(--gold);outline-offset:1px}
+.view-title{padding-top:18px}
+.about-page{position:fixed;inset:0;z-index:25;background:var(--bg);overflow-y:auto;overscroll-behavior:contain}
+.ap-bar{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:12px;background:var(--bg);border-bottom:1px solid var(--line);padding:calc(env(safe-area-inset-top,0px) + 12px) 16px 12px;min-height:60px}
+.ap-bar b{font-family:var(--display);font-size:19px;color:var(--green)}
+.ap-back{font:inherit;font-size:14px;font-weight:600;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:6px 12px;cursor:pointer}
+.ap-wrap{max-width:760px;margin-inline:auto;padding-inline:16px;padding-block:20px calc(env(safe-area-inset-bottom,0px) + 100px);display:flex;flex-direction:column;gap:18px}
+.ap-head{display:flex;flex-direction:column;gap:10px}
+.ap-head h1{font-size:clamp(30px,6vw,40px)}
+.ap-sec{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:12px;scroll-margin-top:16px}
+.ap-sec h2{font-size:24px}
+.ap-sec p,.ap-sec li{max-width:68ch}
+.ap-end{align-self:center}
+.look-group{display:flex;align-items:center;gap:8px}
+.look-label{font-size:12.5px;color:var(--muted);font-weight:600}
+.sw{width:30px;height:30px;border-radius:50%;border:2px solid var(--line);cursor:pointer;padding:0;display:grid;place-items:center}
+.sw i{width:16px;height:16px;border-radius:50%;display:block}
+.sw[aria-pressed="true"]{border-color:var(--ink)}
+.seg{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{font:inherit;font-size:13px;background:var(--surface);color:var(--muted);border:0;padding:5px 12px;cursor:pointer}
+.seg button+button{border-inline-start:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--green);color:var(--bg);font-weight:600}
+a{color:var(--green)}
+@media (max-width:480px){
+  .res{grid-template-columns:1fr}
+  .res .rp{grid-row:auto;grid-column:1;align-items:flex-start;flex-direction:row;gap:8px;align-items:baseline}
+}
+@media (prefers-reduced-motion:no-preference){.res{animation:in .25s ease both}@keyframes in{from{transform:translateY(4px)}to{transform:none}}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">الأمانة العامة للأوقاف · الصندوق الوقفي للقرآن الكريم</div>
+    <h1>مسابقة الكويت الكبرى لحفظ القرآن الكريم وتجويده <span>التاسعة والعشرون</span></h1>
+    <div class="facts">
+      <span class="chip">٦ فروع</span>
+      <span class="chip">أعلى جائزة فردية <b class="num">4,000</b> د.ك</span>
+      <span class="chip">للكويتيين فقط، بترشيح من جهة معتمدة</span>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section class="about" aria-label="عن المسابقة">
+    <details open>
+      <summary>نبذة عن المسابقة</summary>
+      <div class="inner"><p>تقيم الأمانة العامة للأوقاف، عبر إدارة الصناديق الوقفية والصندوق الوقفي للقرآن الكريم وعلومه، مسابقة الكويت الكبرى لحفظ القرآن الكريم وتجويده. وهي أكبر المشاريع القرآنية في دولة الكويت، وتحظى برعاية سامية من حضرة صاحب السمو أمير البلاد الشيخ مشعل الأحمد الجابر الصباح، حفظه الله ورعاه.</p></div>
+    </details>
+    <details>
+      <summary>أهداف المسابقة</summary>
+      <div class="inner"><ul class="plain">
+          <li>تشجيع المواطنين على اختلاف أعمارهم على الإقبال على كتاب الله تلاوةً وحفظاً وتجويداً وتدبراً، في جو تنافسي.</li>
+          <li>تعزيز الجهود التي تستهدف ترسيخ القيم الإسلامية في المجتمع.</li>
+          <li>تشجيع الجهات التي تسهم في تحفيظ القرآن الكريم وتعليمه وتجويده ودعمها.</li>
+          <li>التنسيق بين الهيئات المنظِّمة لمسابقات التحفيظ الرسمية والأهلية.</li>
+          <li>الكشف عن جيل من القراء والحفظة يمثلون الكويت في المسابقات العالمية.</li>
+        </ul></div>
+    </details>
+    <details>
+      <summary>سياسات المسابقة</summary>
+      <div class="inner"><ul class="plain">
+          <li>المسابقة مفتوحة لجميع المواطنين ذكوراً وإناثاً، كلٌّ على حدة، ولجميع المستويات والأعمار.</li>
+          <li>التنسيق والتكامل مع الجهات الرسمية والأهلية المهتمة بالتحفيظ والتجويد.</li>
+          <li>الحفظ والتجويد هما أساس التسابق.</li>
+        </ul></div>
+    </details>
+    <details>
+      <summary>مصطلحات عامة</summary>
+      <div class="inner"><ul class="plain">
+          <li><b>الفئة:</b> المشاركون المتقاربون في العمر والخصائص بحسب شروط كل فرع.</li>
+          <li><b>الشريحة:</b> القراءات أو عدد الأجزاء والسور المقررة للاختبار في كل فرع.</li>
+          <li><b>الحجب:</b> عدم حصول المتسابق على الدرجة المؤهلة لأحد المراكز الثلاثة الأولى.</li>
+        </ul></div>
+    </details>
+    <details>
+      <summary>شروط المسابقة بجميع فروعها</summary>
+      <div class="inner"><ol class="rules">
+          <li>أن يكون المتسابق كويتي الجنسية.</li>
+          <li>أن يُرشَّح عن طريق إحدى الجهات المشاركة المعتمدة، وله حرية اختيار الجهة.</li>
+          <li>لا يحق الاشتراك في أكثر من فئة أو شريحة.</li>
+          <li>من فاز في فئة أو شريحة لا يشارك فيها مرة أخرى ولا فيما دونها.</li>
+          <li>لا تُقبل الاعتراضات على قرار لجنة التحكيم إلا بكتاب رسمي معتمد من الجهة المشاركة، موجّه إلى رئيس اللجنة الدائمة.</li>
+          <li>الحد الأقصى في التصفيات النهائية خمسة متسابقين لكل جهة في كل شريحة.</li>
+        </ol>
+        <h3>نسب الفوز في الفروع الرئيسة</h3>
+        <div class="thresh">
+          <div><b>95%</b><span>المركز الأول</span></div>
+          <div><b>90%</b><span>المركز الثاني</span></div>
+          <div><b>85%</b><span>المركز الثالث</span></div>
+        </div>
+        <h3>نسب الفوز في المسابقات الخاصة</h3>
+        <div class="thresh">
+          <div><b>90%</b><span>المركز الأول</span></div>
+          <div><b>85%</b><span>المركز الثاني</span></div>
+          <div><b>80%</b><span>المركز الثالث</span></div>
+        </div>
+        <p class="note">يُحجب المركز إذا لم يبلغ المتسابق النسبة المطلوبة له.</p></div>
+    </details>
+      <details>
+      <summary>الجدول الزمني</summary>
+      <div class="inner"><ol class="timeline" id="timeline"></ol>
+      <p class="note">آخر موعد لتعديل بيانات المتسابقين (أرقام الأجزاء): الخميس 12 نوفمبر 2026.</p></div>
+    </details>
+    <details>
+      <summary>أسئلة شائعة</summary>
+      <div class="inner"><div class="faq-list"><details class="faq"><summary>هل يمكنني المشاركة في أكثر من فرع أو شريحة؟</summary><p>لا. يشارك المتسابق في فئة واحدة وشريحة واحدة فقط، ولو كان مؤهلاً لأكثر من خيار. استخدم «اعرف فرعك» لمقارنة الخيارات المتاحة لك.</p></details><details class="faq"><summary>فزتُ في دورة سابقة، فهل أستطيع المشاركة مجدداً؟</summary><p>لا تشارك في الفئة أو الشريحة التي فزت بها، ولا فيما دونها. يمكنك المشاركة في شريحة أعلى.</p></details><details class="faq"><summary>كيف أسجّل في المسابقة؟</summary><p>التسجيل عن طريق إحدى الجهات المشاركة المعتمدة، ولك حرية اختيار الجهة، من 27 سبتمبر إلى 29 أكتوبر 2026. يتواصل معك منسق الجهة، ويجري تصفيات أولية، ثم يسجّل المتميزين في النظام الآلي للتصفيات النهائية.</p></details><details class="faq"><summary>هل توجد أسئلة تجويد نظرية؟</summary><p>لا توجد أسئلة تجويد نظرية، لكن يشترط على المتسابق القراءة بالتجويد وتطبيق أحكامه عملياً أثناء التلاوة. ويُستثنى فرع القراءات، ففيه أسئلة نظرية.</p></details><details class="faq"><summary>كم متسابقاً يمكن أن ترشحه الجهة؟</summary><p>الحد الأقصى في التصفيات النهائية خمسة متسابقين لكل جهة في كل شريحة.</p></details><details class="faq"><summary>هل المسابقة للرجال والنساء؟</summary><p>نعم، ويتنافس الذكور والإناث كلٌّ على حدة. ويشترط أن يكون المتسابق كويتي الجنسية.</p></details><details class="faq"><summary>لماذا يُحجب المركز أحياناً؟</summary><p>يُحجب المركز إذا لم يبلغ المتسابق النسبة المطلوبة له: 95٪ للأول و90٪ للثاني و85٪ للثالث في الفروع الرئيسة، و90٪ و85٪ و80٪ في المسابقات الخاصة.</p></details><details class="faq"><summary>كيف أعترض على نتيجة التحكيم؟</summary><p>لا تُقبل الاعتراضات الفردية. يُقدَّم الاعتراض بكتاب رسمي معتمد من الجهة المشاركة، موجّه إلى رئيس اللجنة الدائمة.</p></details><details class="faq"><summary>ما شروط مسابقة القراءات؟</summary><p>حفظ القرآن كاملاً وإتقان القراءة أو الرواية المختارة، والتسجيل باستمارة مسابقة القراءات. وفيها أسئلة نظرية.</p><p><a class="doc-link" href="https://www.icloud.com/iclouddrive/09c34yAa5amum6kYfRB7Ri6JA" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>أسئلة القراءات النظرية (PDF)</a></p></details><details class="faq"><summary>في فرع الخير والبركة، هل أختار الأجزاء بنفسي؟</summary><p>نعم. لمن بلغ 60 عاماً فأكثر حرية اختيار الأجزاء من أي موضع في القرآن الكريم.</p></details><details class="faq"><summary>ما المطلوب في مسابقة ذوي الاحتياجات الخاصة؟</summary><p>شهادة إعاقة معتمدة من الهيئة العامة لشؤون ذوي الإعاقة، مطابقة لنوع الإعاقة وفئتها المعتمدة في المسابقة.</p></details><details class="faq"><summary>أين تُقام التصفيات النهائية؟</summary><p>في المسجد الكبير، من 22 نوفمبر إلى 2 ديسمبر 2026: تصفيات الرجال من الأحد 22 إلى الأربعاء 25 نوفمبر، وتصفيات النساء من الأحد 29 نوفمبر إلى الأربعاء 2 ديسمبر. ويبلغك منسق جهتك بموعدك تحديداً.</p></details></div></div>
+    </details>
+  </section>
+
+  <!-- FINDER -->
+  <section class="finder" aria-labelledby="f-title">
+    <div class="finder-head">
+      <h2 id="f-title">اعرف فرعك</h2>
+      <p>أدخل العمر ومقدار الحفظ لتظهر الشرائح التي يحق لك التسجيل فيها. لا يجوز الاشتراك إلا في شريحة واحدة.</p>
+    </div>
+    <div class="fields">
+      <div class="field">
+        <label for="cat">فئة المتسابق</label>
+        <select id="cat">
+          <option value="main">عامة</option>
+          <option value="disab">ذوو الاحتياجات الخاصة</option>
+          <option value="prison">نزلاء المؤسسات الإصلاحية</option>
+          <option value="care">نزلاء دور الرعاية والأحداث</option>
+        </select>
+      </div>
+      <div class="field" id="dtypeF" hidden>
+        <label for="dtype">نوع الإعاقة</label>
+        <select id="dtype">
+          <option value="0">الإعاقة العقلية والذهنية ومتلازمة داون</option>
+          <option value="1">التوحد</option>
+          <option value="2">ضعاف السمع</option>
+          <option value="deaf">الصم</option>
+          <option value="slow">بطيئو التعلم والتأخر الدراسي</option>
+          <option value="ld">صعوبات التعلم</option>
+        </select>
+      </div>
+      <div class="field" id="stageF" hidden>
+        <label for="stage">المرحلة الدراسية</label>
+        <select id="stage">
+          <option value="الابتدائية">الابتدائية</option>
+          <option value="المتوسطة">المتوسطة</option>
+          <option value="الثانوية">الثانوية</option>
+        </select>
+      </div>
+      <div class="field" id="ageF">
+        <label for="age">العمر بالسنوات</label>
+        <input id="age" type="number" min="3" max="110" value="16" inputmode="numeric">
+      </div>
+      <div class="field" id="juzF">
+        <label for="juz">مقدار الحفظ</label>
+        <select id="juz"></select>
+      </div>
+      <label class="check" for="qir" id="qirF"><input id="qir" type="checkbox"> أتقن إحدى القراءات السبع أو رواياتها</label>
+    </div>
+    <div class="results" id="results" aria-live="polite"></div>
+    <div><button class="copy" id="shareRes" type="button">نسخ النتيجة لإرسالها</button></div>
+    <p class="hint" id="hint">المسابقات الخاصة لها نسب فوز أقل: 90% للأول، و85% للثاني، و80% للثالث.</p>
+  </section>
+
+  <!-- BRANCHES -->
+  <section class="section" aria-labelledby="b-title">
+    <h2 id="b-title">الفروع والجوائز</h2>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div id="panels"></div>
+  </section>
+
+  <!-- SHIELDS -->
+  <section class="section" aria-labelledby="s-title">
+    <h2 id="s-title">جوائز الجهات والمنسقين والأسر</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>درع الجهات</h3>
+        <p class="def" style="color:var(--muted)">للجهات الأعلى نقاطاً في الفروع الرئيسة، بحسب عدد فائزيها وشرائحهم ومراكزهم، مع أداء المنسق ودرع الأسرة القرآنية.</p>
+        <div class="tbl"><table style="min-width:0">
+          <thead><tr><th>الدرع</th><th>الجائزة</th></tr></thead>
+          <tbody>
+            <tr><td>درع التفوق العام</td><td class="m first">6,000 د.ك</td></tr>
+            <tr><td>الدرع الذهبي</td><td class="m">5,000 د.ك</td></tr>
+            <tr><td>الدرع الفضي</td><td class="m">4,000 د.ك</td></tr>
+            <tr><td>الدرع البرونزي</td><td class="m">3,000 د.ك</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card">
+        <h3>أفضل منسق</h3>
+        <div class="thresh">
+          <div><b>500</b><span>الأول (د.ك)</span></div>
+          <div><b>300</b><span>الثاني (د.ك)</span></div>
+          <div><b>200</b><span>الثالث (د.ك)</span></div>
+        </div>
+        <p style="color:var(--muted);font-size:14px">تُقدَّم لأفضل ثلاثة منسقين للجهات المشاركة، وتقيّمهم اللجنة الدائمة وفق مدى التزامهم بمعايير المسابقة وضوابطها وشروطها، وهي:</p>
+        <ol class="rules" style="font-size:14px">
+          <li>أن يكون المنسق مرشحاً من جهته بكتاب رسمي.</li>
+          <li>الالتزام بحضور فترة التصفيات النهائية بمسجد الدولة الكبير.</li>
+          <li>الالتزام بحضور اجتماعات لجنة المنسقين.</li>
+          <li>الالتزام بصحة تسجيل بيانات المتسابقين وإدخالها على النظام الآلي.</li>
+          <li>الالتزام بالتواصل مع متسابقي جهته، وإبلاغهم بمواعيد حضور التصفيات النهائية وكل المعلومات التي تخص المسابقة.</li>
+          <li>الالتزام بقواعد السلوك وأخلاقيات العمل.</li>
+        </ol>
+      </div>
+      <div class="card" style="grid-column:1 / -1">
+        <h3>درع الأسرة القرآنية</h3>
+        <p style="color:var(--muted);font-size:14px">درع يُقدَّم تكريماً لأفضل ثلاث أسر قرآنية من حيث عدد أفرادها الفائزين في المسابقة. تتكون الأسرة من ثلاثة أفراد على الأقل، وتُسجَّل الرغبة في المشاركة من خلال استمارة التسجيل، مع بيان عدد أفراد الأسرة وصلة القرابة بينهم.</p>
+        <h3 style="font-size:16px">الشروط والمعايير</h3>
+        <ol class="rules" style="font-size:14px">
+          <li>ألا يقل عدد أفراد الأسرة عن ثلاثة فائزين.</li>
+          <li>يُحتسب الدرع على عدد الأفراد الفائزين ونسبة الفوز لأفراد كل أسرة.</li>
+          <li>تشمل صلة القرابة: الأب أو الأم أو الابن أو الابنة أو الجد أو الجدة.</li>
+          <li>يُكرَّم أفضل ثلاث أسر.</li>
+        </ol>
+        <p class="note">يُضاف فوز الأسرة إلى نقاط جهتها في سباق الدروع: 7 نقاط للأول، و6 للثاني، و5 للثالث.</p>
+      </div>
+    </div>
+    <details>
+      <summary>جدول نقاط اختيار الجهات الفائزة بالدروع</summary>
+      <div class="inner tbl">
+        <table>
+          <thead><tr><th>الشريحة</th><th>الأول</th><th>الثاني</th><th>الثالث</th><th>المجموع</th></tr></thead>
+          <tbody id="points"></tbody>
+        </table>
+      </div>
+    </details>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="card" aria-labelledby="c-title">
+    <h2 id="c-title" style="font-size:22px">للتواصل</h2>
+    <p style="color:var(--muted);font-size:14px">واتساب خلال الدوام الرسمي. اضغط الرقم لفتح المحادثة.</p>
+    <div class="contact">
+      <span class="wa-item"><a class="wa num" href="https://wa.me/96522065127" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c.3 2 2 3.7 4 4l1.2-1.1 1.8.9c-.2 1-1 1.7-2 1.7-3.1-.2-5.7-2.8-5.9-5.9 0-1 .7-1.8 1.7-2l.9 1.8z"/></svg>22065127</a><button class="copy mini" data-copy="22065127" aria-label="نسخ الرقم 22065127">نسخ</button></span>
+      <span class="wa-item"><a class="wa num" href="https://wa.me/96522065402" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c.3 2 2 3.7 4 4l1.2-1.1 1.8.9c-.2 1-1 1.7-2 1.7-3.1-.2-5.7-2.8-5.9-5.9 0-1 .7-1.8 1.7-2l.9 1.8z"/></svg>22065402</a><button class="copy mini" data-copy="22065402" aria-label="نسخ الرقم 22065402">نسخ</button></span>
+      <a href="https://www.instagram.com/q8apf" target="_blank" rel="noopener">إنستغرام الأمانة: q8apf</a>
+    </div>
+    <ul class="plain" style="font-size:14px;color:var(--muted)">
+      <li>على منسقي الجهات إجراء تصفيات أولية لاختيار المتميزين قبل تسجيلهم في النظام الآلي.</li>
+      <li>على المنسق استطلاع رغبة المتسابق في المشاركة من خلال جهته قبل تسجيله.</li>
+      <li>توجد أسئلة نظرية في مسابقة القراءات.</li>
+    </ul>
+  </section>
+
+  <!-- CALC -->
+  <section class="card" id="calcSec">
+    <details class="calc-d">
+      <summary><span id="calc-title">حاسبة نقاط الجهة</span><small>للمنسقين: احسب مجموع نقاط جهتك في سباق الدروع</small></summary>
+    <div class="calc-in">
+    <div class="finder-head">
+      <p>أدخل عدد فائزي جهتك بكل مركز في كل شريحة، ليظهر مجموع نقاطها في سباق الدروع. تُحتسب الفروع الرئيسة فقط.</p>
+    </div>
+    <div class="calc-total">
+      <div><span>مجموع النقاط</span><strong id="cTotal" class="num">0</strong></div>
+      <div><span>عدد الفائزين</span><strong id="cWin" class="num">0</strong></div>
+      <button class="copy" id="cReset" type="button">تصفير</button>
+    </div>
+    <div class="tbl">
+      <table class="calc">
+        <thead><tr><th>الشريحة</th><th>الأول</th><th>الثاني</th><th>الثالث</th><th>النقاط</th></tr></thead>
+        <tbody id="calcBody"></tbody>
+      </table>
+    </div>
+    <div class="fields">
+      <div class="field"><label for="cCoord">ترتيب منسق الجهة</label>
+        <select id="cCoord"><option value="0">لم يفز</option><option value="7">الأول (7 نقاط)</option><option value="6">الثاني (6 نقاط)</option><option value="5">الثالث (5 نقاط)</option></select></div>
+      <div class="field"><label for="cFam">درع الأسرة القرآنية</label>
+        <select id="cFam"><option value="0">لم تفز</option><option value="7">الأول (7 نقاط)</option><option value="6">الثاني (6 نقاط)</option><option value="5">الثالث (5 نقاط)</option></select></div>
+    </div>
+    <p class="hint">يُحدَّد الدرع بمقارنة مجموع نقاط جهتك بمجاميع الجهات الأخرى، فالحاسبة تعطيك مجموعك لا ترتيبك.</p>
+    </div>
+    </details>
+  </section>
+
+  <!-- SETTINGS -->
+  <section class="card" id="settings" aria-labelledby="set-title">
+    <h2 id="set-title" style="font-size:22px">إعدادات العرض</h2>
+  <div class="look">
+    <div class="look-group"><span class="look-label">الألوان</span><div class="look-group" id="swatches"></div></div>
+    <div class="look-group"><span class="look-label">الخلفية</span>
+      <div class="seg" id="modes">
+        <button data-m="light">فاتحة</button><button data-m="dark">داكنة</button><button data-m="auto">تلقائي</button>
+      </div>
+    </div>
+    <div class="look-group"><span class="look-label">حجم الخط</span>
+      <div class="seg" id="sizes">
+        <button data-s="14">أ</button><button data-s="15">أ+</button><button data-s="17">أ++</button>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <footer>صفحة تلخيصية أُعدّت من البيان التوضيحي للمسابقة التاسعة والعشرين. المرجع المعتمد هو البيان الرسمي الصادر عن الأمانة العامة للأوقاف.</footer>
+</div>
+
+<script>
+const P5=[[5,[800,700,600]],[4,[600,550,500]],[3,[500,450,400]],[2,[400,350,300]],[1,[300,250,200]]];
+const GEN=[[30,[3000,2750,2500]],[25,[2500,2250,2000]],[20,[2000,1750,1500]],[15,[1500,1250,1000]],[10,[1000,900,800]]];
+const KHAIR=[[15,[1500,1250,1000]],[10,[1000,900,800]],...P5];
+const KIDS=[["الحزب 59",[200,175,150]],["الحزب 60",[150,125,100]]];
+const BANDS=[{l:"من 18 إلى ما دون 25",a:18,b:25},{l:"من 15 إلى ما دون 18",a:15,b:18},{l:"من 11 إلى ما دون 15",a:11,b:15},{l:"من 6 إلى ما دون 11",a:6,b:11},{l:"من 3 إلى ما دون 6",a:3,b:6}];
+const juzLabel=n=>n===1?"جزء واحد":n===2?"جزءان":n<=10?n+" أجزاء":n+" جزءاً";
+const f=n=>n.toLocaleString("en");
+const money=n=>f(n)+" د.ك";
+
+function rows(list){return list.map(([s,p])=>`<tr><td>${typeof s==="number"?juzLabel(s):s}</td><td class="m first">${money(p[0])}</td><td class="m">${money(p[1])}</td><td class="m">${money(p[2])}</td></tr>`).join("")}
+function table(list,h="الشريحة"){return `<div class="tbl"><table><thead><tr><th>${h}</th><th>الأول</th><th>الثاني</th><th>الثالث</th></tr></thead><tbody>${rows(list)}</tbody></table></div>`}
+
+const SPECIAL_A=[
+ ["الإعاقة العقلية والذهنية ومتلازمة داون","الفاتحة، الإخلاص، الفلق، الناس، المسد",[200,150,100]],
+ ["التوحد","الفاتحة، الإخلاص، الفلق، الناس، المسد، آية الكرسي",[200,150,100]],
+ ["ضعاف السمع","الفاتحة، البينة، العلق، التين، الشرح",[600,550,500]],
+ ["الصم: الشريحة الأولى (متميز)","الفاتحة، البينة، العلق، التين، الشرح",[600,550,500]],
+ ["الصم: الشريحة الثانية (متقدم)","الفاتحة، الفيل، الهمزة، العصر، التكاثر، القارعة، العاديات، الزلزلة، القدر، آية الكرسي",[500,450,400]],
+ ["الصم: الشريحة الثالثة (مبتدئ)","الفاتحة، الإخلاص، الفلق، الناس، المسد، النصر، الكافرون، الكوثر، الماعون، قريش",[400,350,300]]
+];
+const SPECIAL_B=[
+ ["بطيئو التعلم والتأخر الدراسي","الابتدائية","الفاتحة، العصر، الكوثر، النصر، الإخلاص، الناس"],
+ ["بطيئو التعلم والتأخر الدراسي","المتوسطة","الفاتحة، القدر، قريش، الماعون، الفلق"],
+ ["بطيئو التعلم والتأخر الدراسي","الثانوية","الفاتحة، آية الكرسي، الشرح، التين، القارعة، الفيل"],
+ ["صعوبات التعلم","الابتدائية","الفاتحة، العصر، الماعون، الإخلاص، الفلق، الناس"],
+ ["صعوبات التعلم","المتوسطة","الفاتحة، الشرح، التين، القدر، الفيل، قريش"],
+ ["صعوبات التعلم","الثانوية","الفاتحة، آية الكرسي، الطارق، الفجر، البلد، الضحى، القدر"]
+];
+
+const TABS=[
+ {id:"qiraat",t:"القراءات",html:()=>`
+  <p class="def">لحفظ القرآن وتجويده بالقراءات السبع المتواترة أو بإحداها أو بإحدى رواياتها، للرجال والنساء من جميع الأعمار. تتضمن أسئلة نظرية.</p>
+  <ul class="plain"><li>يشترط حفظ القرآن كاملاً وإتقان القراءة أو الرواية، والتسجيل باستمارة مسابقة القراءات.</li>
+  <li>في الشريحة الثانية لا يشارك الفائز في القراءة أو الرواية نفسها، وله اختيار غيرها.</li>
+  <li>الفائز في الشريحة الثانية يحق له دخول الشريحة الأولى، ومن فاز بالأولى لا يعود إلى الثانية.</li>
+  <li>تتنافس كل قراءة أو رواية على حدة.</li></ul>
+  <div><a class="doc-link" href="https://www.icloud.com/iclouddrive/09c34yAa5amum6kYfRB7Ri6JA" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>أسئلة القراءات النظرية (PDF)</a></div>
+  <h3>الشريحة الأولى</h3>
+  ${table([["القراءات السبع بجميع الروايات وكافة الأوجه",[4000,3750,3500]]])}
+  <h3>الشريحة الثانية</h3>
+  <div class="tbl"><table><thead><tr><th>القراءة</th><th>الرواية والأوجه</th><th>الأول</th><th>الثاني</th><th>الثالث</th></tr></thead><tbody>
+  ${[["نافع","قالون: قصر المنفصل والصلة، توسط المنفصل والصلة، قصر المنفصل وسكون الميم، توسط المنفصل وسكون الميم"],["نافع","ورش: قصر البدل، توسط البدل، مد البدل وتقليل ذات الياء"],["ابن كثير","البزي وقنبل"],["أبو عمرو البصري","الدوري والسوسي"]].map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td class="m first">${money(3500)}</td><td class="m">${money(3250)}</td><td class="m">${money(3000)}</td></tr>`).join("")}
+  </tbody></table></div>`},
+ {id:"general",t:"العامة",html:()=>`
+  <p class="def">لحفظ القرآن وتجويده برواية حفص عن عاصم، للرجال والنساء من جميع الأعمار، في خمس شرائح بحسب الأجزاء المحفوظة.</p>${table(GEN)}`},
+ {id:"youth",t:"النشء والشباب",html:()=>`
+  <p class="def">لطلبة الجامعات والمعاهد التطبيقية والمدارس ورياض الأطفال ومن في حكمهم، وتُنظَّم مستقلة لكل فئة عمرية.</p>
+  <div class="ages-wrap"><div class="ages-label">اختر الفئة العمرية (بالسنوات)</div>
+  <div class="ages" id="bands" role="group" aria-label="الفئة العمرية">${BANDS.map((b,i)=>[b,i]).reverse().map(([b,i])=>`<button class="age" aria-pressed="${i===0}" data-i="${i}" aria-label="${b.l} سنة"><b dir="ltr">${b.a}–${b.b}</b></button>`).join("")}</div>
+  <div class="ages-sel" id="ageSel">الفئة المختارة: ${BANDS[0].l} سنة</div>
+  <div class="ages-note">تشمل الفئة الحد الأدنى ولا تشمل الأعلى؛ فمن بلغ 15 سنة يدخل في فئة «من 15 إلى ما دون 18».</div></div>
+  <div id="bandTable">${table(P5)}</div>`},
+ {id:"majd",t:"المجد",html:()=>`
+  <p class="def">للمواطنين من 25 عاماً إلى ما دون 60 عاماً، رجالاً ونساءً، في خمس شرائح.</p>${table(P5)}`},
+ {id:"khair",t:"الخير والبركة",html:()=>`
+  <p class="def">لمن بلغ 60 عاماً فما فوق، رجالاً ونساءً، في سبع شرائح، وللمشارك حرية اختيار الأجزاء من أي موضع في القرآن.</p>${table(KHAIR)}`},
+ {id:"special",t:"المسابقات الخاصة",html:()=>`
+  <div class="ages-wrap"><div class="ages-label">اختر القسم</div>
+  <div class="ages s3" id="spSeg" role="group" aria-label="أقسام المسابقات الخاصة">
+    <button class="age" aria-pressed="true" data-s="0"><b>ذوو الاحتياجات الخاصة</b></button>
+    <button class="age" aria-pressed="false" data-s="1"><b>المؤسسات الإصلاحية</b></button>
+    <button class="age" aria-pressed="false" data-s="2"><b>دور الرعاية والأحداث</b></button>
+  </div>
+  <div class="ages-sel" id="spSel">القسم الأول: ذوو الاحتياجات الخاصة</div></div>
+  <div class="sp-pane" data-p="0">
+    <div class="sp-list">${SPECIAL_A.map(r=>`<div class="sp-card"><div class="sp-h">${r[0]}</div><div class="sp-s">${r[1]}</div><div class="sp-p"><span>الأول <b>${money(r[2][0])}</b></span><span>الثاني <b>${money(r[2][1])}</b></span><span>الثالث <b>${money(r[2][2])}</b></span></div></div>`).join("")}</div>
+    <p style="font-size:13.5px;color:var(--muted)">فئة الصم تُقيَّم كتابةً على: جودة الخط، والرسم العثماني، وضبط حركات الحروف، وأرقام الآيات.</p>
+    <h3>بطيئو التعلم وصعوبات التعلم</h3>
+    <p class="sp-prize">جائزة واحدة للمركز الأول في كل مرحلة: <b>${money(200)}</b></p>
+    <div class="sp-list">${SPECIAL_B.map(r=>`<div class="sp-card"><div class="sp-h">${r[0]} · المرحلة ${r[1]}</div><div class="sp-s">${r[2]}</div></div>`).join("")}</div>
+    <p class="note">يلزم تقديم شهادة إعاقة معتمدة من الهيئة العامة لشؤون ذوي الإعاقة، مطابقة لنوع الإعاقة وفئتها المعتمدة في المسابقة.</p>
+  </div>
+  <div class="sp-pane" data-p="1" hidden>
+    <p class="def">لنزلاء المؤسسات الإصلاحية بقطاع السجون التابع لوزارة الداخلية، في عشر شرائح.</p>
+    ${table([...GEN,...P5])}
+  </div>
+  <div class="sp-pane" data-p="2" hidden>
+    <p class="def">لنزلاء دور الرعاية الاجتماعية والأحداث بوزارة الشؤون الاجتماعية، في شريحتين.</p>
+    ${table([["الحزب 59 (من النبأ إلى الطارق)",[300,250,200]],["الحزب 60 (من الأعلى إلى الناس)",[200,150,100]]])}
+  </div>`}
+];
+
+// tabs
+const tabsEl=document.getElementById("tabs"),panelsEl=document.getElementById("panels");
+TABS.forEach((t,i)=>{
+  const b=document.createElement("button");b.className="tab";b.id="tab-"+t.id;b.setAttribute("role","tab");b.setAttribute("aria-controls","panel-"+t.id);b.textContent=t.t;
+  b.addEventListener("click",()=>select(i));tabsEl.appendChild(b);
+  const p=document.createElement("div");p.className="panel";p.id="panel-"+t.id;p.setAttribute("role","tabpanel");p.setAttribute("aria-labelledby",b.id);p.innerHTML=t.html();panelsEl.appendChild(p);
+});
+function select(i){
+  [...tabsEl.children].forEach((b,j)=>{b.setAttribute("aria-selected",i===j);b.tabIndex=i===j?0:-1});
+  [...panelsEl.children].forEach((p,j)=>p.hidden=i!==j);
+  try{localStorage.setItem("q29tab",i)}catch(e){}
+}
+let start=0;try{start=+localStorage.getItem("q29tab")||0}catch(e){}
+const hashIdx=TABS.findIndex(t=>"#"+t.id===location.hash);if(hashIdx>=0)start=hashIdx;
+select(start);
+tabsEl.addEventListener("keydown",e=>{
+  const cur=[...tabsEl.children].findIndex(b=>b.getAttribute("aria-selected")==="true");
+  if(e.key==="ArrowLeft"||e.key==="ArrowRight"){const d=e.key==="ArrowLeft"?1:-1;const n=(cur+d+TABS.length)%TABS.length;select(n);tabsEl.children[n].focus();e.preventDefault()}
+});
+const SP_T=["القسم الأول: ذوو الاحتياجات الخاصة","القسم الثاني: المؤسسات الإصلاحية بوزارة الداخلية","القسم الثالث: دور الرعاية والأحداث بوزارة الشؤون الاجتماعية"];
+document.getElementById("spSeg").addEventListener("click",e=>{
+  const b=e.target.closest(".age");if(!b)return;const i=+b.dataset.s;
+  document.querySelectorAll("#spSeg .age").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  document.querySelectorAll(".sp-pane").forEach(p=>p.hidden=+p.dataset.p!==i);
+  document.getElementById("spSel").textContent=SP_T[i];
+});
+document.getElementById("bands").addEventListener("click",e=>{
+  const b=e.target.closest(".age");if(!b)return;
+  document.querySelectorAll("#bands .age").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  document.getElementById("ageSel").textContent="الفئة المختارة: "+BANDS[+b.dataset.i].l+" سنة";
+  document.getElementById("bandTable").innerHTML=+b.dataset.i===4?table(KIDS):table(P5);
+});
+
+// points
+const PTS=[["القراءات السبع",42],["الروايات",39],["30 جزءاً",36],["25 جزءاً",33],["20 جزءاً",30],["15 جزءاً",27],["10 أجزاء",24],["5 أجزاء",21],["4 أجزاء",18],["3 أجزاء",15],["جزءان",12],["جزء واحد",9],["الحزب 59",6],["الحزب 60",3]];
+document.getElementById("points").innerHTML=PTS.map(([l,a])=>`<tr><td>${l}</td><td class="m first">${a}</td><td class="m">${a-1}</td><td class="m">${a-2}</td><td class="m">${3*a-3}</td></tr>`).join("")
+ +`<tr><td>المنسق</td><td class="m first">7</td><td class="m">6</td><td class="m">5</td><td class="m">18</td></tr><tr><td>درع الأسرة القرآنية</td><td class="m first">7</td><td class="m">6</td><td class="m">5</td><td class="m">18</td></tr><tr><td><b>الإجمالي</b></td><td class="m first">329</td><td class="m"><b>313</b></td><td class="m"><b>297</b></td><td class="m"><b>939</b></td></tr>`;
+
+// finder
+const juzSel=document.getElementById("juz");
+juzSel.innerHTML=`<option value="0">أقل من جزء (أحزاب)</option>`+Array.from({length:30},(_,i)=>`<option value="${i+1}">${i===29?"القرآن كاملاً (30 جزءاً)":juzLabel(i+1)}</option>`).join("");
+juzSel.value="3";
+const pick=(list,j)=>list.find(([s])=>s<=j);
+
+function compute(){
+  const cat=document.getElementById("cat").value,dt=document.getElementById("dtype").value;
+  const show=(id,v)=>document.getElementById(id).hidden=!v;
+  show("dtypeF",cat==="disab");show("stageF",cat==="disab"&&(dt==="slow"||dt==="ld"));
+  show("ageF",cat==="main");show("juzF",cat==="main"||cat==="prison");show("qirF",cat==="main");
+  show("hint",cat!=="main");
+  if(cat!=="main")return renderOut(special(cat,dt),"");
+  const age=parseFloat(document.getElementById("age").value),j=+juzSel.value,q=document.getElementById("qir").checked;
+  const out=[];let msg="";
+  if(isNaN(age)||age<3){msg="تبدأ المسابقة من عمر 3 سنوات.";}
+  else{
+    if(q&&j===30){out.push({b:"فرع القراءات",s:"الشريحة الثانية: قراءة أو رواية واحدة",p:[3500,3250,3000],n:"بعد الفوز في الشريحة الثانية يحق لك دخول الشريحة الأولى (القراءات السبع) بجائزة 4,000 د.ك."})}
+    if(age<6){KIDS.forEach(([s,p])=>out.push({b:"النشء والشباب (3 إلى ما دون 6)",s,p}))}
+    else if(age<25){const band=BANDS.find(b=>age>=b.a&&age<b.b);const r=pick(P5,j);if(r)out.push({b:"النشء والشباب ("+band.l+")",s:"شريحة "+juzLabel(r[0]),p:r[1],n:j>5?"أعلى شريحة في هذا الفرع 5 أجزاء.":""})}
+    else if(age<60){const r=pick(P5,j);if(r)out.push({b:"فرع المجد",s:"شريحة "+juzLabel(r[0]),p:r[1],n:j>5?"أعلى شريحة في هذا الفرع 5 أجزاء.":""})}
+    else{const r=pick(KHAIR,j);if(r)out.push({b:"فرع الخير والبركة",s:"شريحة "+juzLabel(r[0]),p:r[1]})}
+    const g=pick(GEN,j);if(g)out.push({b:"المسابقة العامة",s:"شريحة "+juzLabel(g[0])+" (رواية حفص)",p:g[1]});
+    if(!out.length)msg=age>=6?"تبدأ الشرائح في هذه الفئة العمرية من جزء واحد.":"";
+    if(q&&j<30)msg="فرع القراءات يشترط حفظ القرآن كاملاً. "+(out.length?"":msg);
+  }
+  renderOut(out,msg);
+}
+const CERT="يلزم تقديم شهادة إعاقة معتمدة من الهيئة العامة لشؤون ذوي الإعاقة مطابقة لنوع الإعاقة وفئتها.";
+function special(cat,dt){
+  const j=+juzSel.value;
+  if(cat==="prison"){
+    const r=pick([...GEN,...P5],j);
+    return r?[{b:"المؤسسات الإصلاحية",s:"شريحة "+juzLabel(r[0]),p:r[1]}]:[{msg:"تبدأ الشرائح من جزء واحد."}];
+  }
+  if(cat==="care")return [
+    {b:"دور الرعاية والأحداث",s:"الشريحة الأولى: الحزب 59",p:[300,250,200],n:"من سورة النبأ إلى سورة الطارق."},
+    {b:"دور الرعاية والأحداث",s:"الشريحة الثانية: الحزب 60",p:[200,150,100],n:"من سورة الأعلى إلى سورة الناس."}];
+  if(dt==="deaf")return SPECIAL_A.slice(3).map(r=>({b:"الصم",s:r[0].replace("الصم: ",""),p:r[2],n:"السور: "+r[1]+". يُقيَّم كتابةً على جودة الخط والرسم العثماني وضبط الحركات وأرقام الآيات. "+CERT}));
+  if(dt==="slow"||dt==="ld"){
+    const st=document.getElementById("stage").value,name=dt==="slow"?"بطيئو التعلم والتأخر الدراسي":"صعوبات التعلم";
+    const r=SPECIAL_B.find(x=>x[0]===name&&x[1]===st);
+    return [{b:name,s:"المرحلة "+st,p:[200],n:"السور: "+r[2]+". "+CERT}];
+  }
+  const r=SPECIAL_A[+dt];
+  return [{b:r[0],s:"السور المقررة",p:r[2],n:"السور: "+r[1]+". "+CERT}];
+}
+function renderOut(out,msg){
+  out=out.filter(o=>{if(o.msg){msg=o.msg;return false}return true});
+  lastRes={out,msg};
+  const max=Math.max(0,...out.map(o=>o.p[0]));
+  const el=document.getElementById("results");
+  el.innerHTML=(msg?`<p class="empty">${msg}</p>`:"")+out.map(o=>`<div class="res${out.length>1&&o.p[0]===max?" best":""}">
+    <div class="rb">${o.b}${out.length>1&&o.p[0]===max?'<span class="tag">الأعلى جائزة</span>':""}</div>
+    <div class="rs">${o.s}${o.p.length>1?` · الثاني ${money(o.p[1])} · الثالث ${money(o.p[2])}`:" · جائزة للمركز الأول فقط"}</div>
+    <div class="rp"><strong>${f(o.p[0])}</strong><small>د.ك للمركز الأول</small></div>
+    ${o.n?`<div class="rn">${o.n}</div>`:""}</div>`).join("")
+    +(out.length>1?`<p class="empty">تختار شريحة واحدة فقط من هذه الخيارات.</p>`:"");
+}
+["age","juz","qir","cat","dtype","stage"].forEach(id=>document.getElementById(id).addEventListener("input",compute));
+compute();
+
+// share finder result
+var lastRes=lastRes||{out:[],msg:""};
+function copyText(btn,text,label){
+  const done=()=>{btn.classList.add("done");btn.textContent="نُسخ ✓";setTimeout(()=>{btn.classList.remove("done");btn.textContent=label},1500)};
+  const fallback=()=>{const ta=document.createElement("textarea");ta.value=text;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy");done()}catch(e){}ta.remove()};
+  try{navigator.clipboard.writeText(text).then(done,fallback)}catch(e){fallback()}
+}
+document.getElementById("shareRes").addEventListener("click",e=>{
+  const sel=id=>{const s=document.getElementById(id);return s.options[s.selectedIndex].text};
+  const cat=document.getElementById("cat").value;
+  let ctx;
+  if(cat==="main")ctx=`العمر: ${document.getElementById("age").value} سنة · الحفظ: ${sel("juz")}${document.getElementById("qir").checked?" · يتقن إحدى القراءات":""}`;
+  else ctx=sel("cat")+(cat==="disab"?" · "+sel("dtype")+(document.getElementById("stageF").hidden?"":" · المرحلة "+sel("stage")):"")+(cat==="prison"?" · الحفظ: "+sel("juz"):"");
+  const lines=["مسابقة الكويت الكبرى لحفظ القرآن الكريم وتجويده (29)",ctx,""];
+  if(lastRes.msg)lines.push(lastRes.msg);
+  lastRes.out.forEach(o=>{
+    lines.push(`▪️ ${o.b}: ${o.s}`);
+    lines.push(o.p.length>1?`   الأول ${money(o.p[0])} · الثاني ${money(o.p[1])} · الثالث ${money(o.p[2])}`:`   المركز الأول ${money(o.p[0])}`);
+    if(o.n)lines.push("   "+o.n);
+  });
+  if(lastRes.out.length>1)lines.push("","يُشارك في شريحة واحدة فقط.");
+  lines.push("","التسجيل عن طريق إحدى الجهات المشاركة المعتمدة، من 27 سبتمبر إلى 29 أكتوبر 2026.");
+  copyText(e.currentTarget,lines.join("\n"),"نسخ النتيجة لإرسالها");
+});
+
+// points calculator
+const CALC=[...PTS];
+const cb=document.getElementById("calcBody");
+cb.innerHTML=CALC.map(([l,a],i)=>`<tr data-a="${a}"><td>${l}</td>${[0,1,2].map(k=>`<td><input id="c${i}_${k}" type="number" min="0" max="99" inputmode="numeric" placeholder="0" aria-label="${l} المركز ${["الأول","الثاني","الثالث"][k]}"></td>`).join("")}<td class="m" data-pts>0</td></tr>`).join("");
+function calc(){
+  let tot=0,win=0;
+  cb.querySelectorAll("tr").forEach(tr=>{
+    const a=+tr.dataset.a;let rt=0,rw=0;
+    tr.querySelectorAll("input").forEach((inp,k)=>{const n=Math.max(0,parseInt(inp.value)||0);rt+=n*(a-k);rw+=n});
+    tr.querySelector("[data-pts]").textContent=rt;tr.classList.toggle("has",rw>0);tot+=rt;win+=rw;
+  });
+  tot+=+document.getElementById("cCoord").value+ +document.getElementById("cFam").value;
+  document.getElementById("cTotal").textContent=f(tot);document.getElementById("cWin").textContent=f(win);
+}
+document.querySelector("table.calc").addEventListener("input",calc);
+["cCoord","cFam"].forEach(id=>document.getElementById(id).addEventListener("change",calc));
+document.getElementById("cReset").addEventListener("click",()=>{cb.querySelectorAll("input").forEach(i=>i.value="");document.getElementById("cCoord").value="0";document.getElementById("cFam").value="0";calc()});
+calc();
+
+// timeline & countdown
+const MON=["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"];
+const WD=["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"];
+const dUTC=s=>{const [y,m,d]=s.split("-").map(Number);return Date.UTC(y,m-1,d)};
+const dTxt=(s,wd=true)=>{const x=new Date(dUTC(s));return (wd?WD[x.getUTCDay()]+" ":"")+x.getUTCDate()+" "+MON[x.getUTCMonth()]};
+let today;try{today=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Kuwait"}).format(new Date())}catch(e){today=new Date().toISOString().slice(0,10)}
+const T0=dUTC(today),dayDiff=s=>Math.round((dUTC(s)-T0)/864e5);
+const TL=[
+ {t:"الاجتماع التنسيقي للجهات المشاركة",a:"2026-09-23",b:"2026-09-23",d:"توضيح البيان للجهات المشاركة والتدريب على النظام الآلي لتسجيل المتسابقين."},
+ {t:"التسجيل وإدخال بيانات المتسابقين",a:"2026-09-27",b:"2026-10-29",d:"انطلاق الحملة الإعلامية، وتسجيل الجهات المشاركة بيانات متسابقيها في النظام الآلي."},
+ {t:"المؤتمر الصحفي لانطلاق المسابقة",a:"2026-10-06",b:"2026-10-06"},
+ {t:"المراجعة والتدقيق",a:"2026-11-01",b:"2026-11-12",d:"مراجعة سلامة البيانات التي أدخلتها الجهات وحصرها. آخر موعد لتعديل أرقام الأجزاء 12 نوفمبر."},
+ {t:"إعداد اللجان",a:"2026-11-15",b:"2026-11-18",d:"إعداد اللجان وتوزيع المتسابقين وأعضاء لجان التحكيم عليها."},
+ {t:"التصفيات النهائية في المسجد الكبير",a:"2026-11-22",b:"2026-12-02",d:"الرجال: من الأحد 22 إلى الأربعاء 25 نوفمبر. النساء: من الأحد 29 نوفمبر إلى الأربعاء 2 ديسمبر."},
+ {t:"إعلان النتائج",a:"2026-12-16",b:"2026-12-16",d:"مؤتمر إعلان النتائج."},
+ {t:"الحفل الختامي",a:null,d:"تكريم الفائزين والفائزات، ويُحدَّد موعده بالتنسيق مع الديوان الأميري."}
+];
+let nextMarked=false;
+document.getElementById("timeline").innerHTML=TL.map(e=>{
+  let st="",pill="";
+  if(e.a){
+    if(dayDiff(e.b)<0){st="done";pill="انتهت"}
+    else if(dayDiff(e.a)<=0){st="now";pill="جارية الآن"}
+    else if(!nextMarked){st="next";pill="القادمة";nextMarked=true}
+  }
+  const date=!e.a?"يُعلن لاحقاً":e.a===e.b?dTxt(e.a)+" 2026":`من ${dTxt(e.a)} إلى ${dTxt(e.b)} 2026`;
+  return `<li class="tl ${st}"><div class="tl-date">${date}</div><div class="tl-t">${e.t}${pill?`<span class="tl-pill">${pill}</span>`:""}</div>${e.d?`<div class="tl-d">${e.d}</div>`:""}</li>`;
+}).join("");
+const MILES=[
+ {s:"2026-09-27",t:"بدء التسجيل عن طريق الجهات المشاركة"},
+ {s:"2026-10-06",t:"المؤتمر الصحفي لانطلاق المسابقة"},
+ {s:"2026-10-29",t:"آخر يوم لتسجيل المتسابقين"},
+ {s:"2026-11-12",t:"آخر موعد لتعديل بيانات المتسابقين"},
+ {s:"2026-11-22",t:"بدء التصفيات النهائية للرجال"},
+ {s:"2026-11-29",t:"بدء التصفيات النهائية للنساء"},
+ {s:"2026-12-16",t:"إعلان النتائج"}
+];
+function countdownHTML(){
+  const tlId=(ABOUT.find(a=>a.t==="الجدول الزمني")||{id:"ab0"}).id;
+  const i=MILES.findIndex(m=>dayDiff(m.s)>=0);
+  if(i<0)return `<div class="cd"><div class="cd-num"><strong>✓</strong><span>انتهت</span></div><div class="cd-k">المسابقة التاسعة والعشرون</div><div class="cd-t">أُعلنت النتائج، والحفل الختامي بالتنسيق مع الديوان الأميري</div><button class="cd-btn" data-ab="${tlId}">الجدول الزمني كاملاً</button></div>`;
+  const m=MILES[i],n=dayDiff(m.s),nx=MILES[i+1];
+  const num=n===0?`<strong>اليوم</strong><span>&nbsp;</span>`:`<strong>${n}</strong><span>${n===1?"يوم":n===2?"يومان":n<=10?"أيام":"يوماً"}</span>`;
+  return `<div class="cd"><div class="cd-num">${num}</div><div class="cd-k">الموعد القادم · ${dTxt(m.s)}</div><div class="cd-t">${m.t}</div><div class="cd-s">${nx?"يليه: "+nx.t+" ("+dTxt(nx.s,false)+")":""} <button class="cd-btn" data-ab="${tlId}">الجدول الزمني</button></div></div>`;
+}
+
+const store={get:(k,d)=>{try{return localStorage.getItem(k)||d}catch(e){return d}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+// views (one page per bottom tab)
+const wrap=document.querySelector(".wrap");
+const aboutSec=document.querySelector(".about");
+const ABOUT=[...aboutSec.querySelectorAll(":scope > details")].map((d,i)=>({t:d.querySelector("summary").textContent.trim(),h:d.querySelector(".inner").innerHTML,id:"ab"+i}));
+const aboutView=document.createElement("div");
+aboutView.className="about-view";
+aboutView.innerHTML=`${countdownHTML()}<div class="ap-index">${ABOUT.map(a=>`<button class="band" data-ab="${a.id}">${a.t}</button>`).join("")}</div>
+${ABOUT.map(a=>`<section class="ap-sec" id="${a.id}"><h2>${a.t}</h2>${a.h}</section>`).join("")}`;
+aboutSec.replaceWith(aboutView);
+document.addEventListener("click",e=>{const b=e.target.closest("[data-ab]");if(!b)return;e.preventDefault();
+  const t=document.getElementById(b.dataset.ab);t.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})});
+const sec=id=>document.getElementById(id).closest("section");
+const VIEWS=[
+ {k:"about",t:"عن المسابقة",els:[document.querySelector("header"),aboutView]},
+ {k:"branches",t:"الفروع",els:[sec("b-title")]},
+ {k:"find",t:"اعرف فرعك",els:[sec("f-title")]},
+ {k:"shield",t:"الدروع",els:[sec("s-title")]},
+ {k:"more",t:"المزيد",els:[sec("c-title"),document.getElementById("calcSec"),document.getElementById("settings"),document.querySelector("footer")]}
+];
+const IC={
+ about:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',
+ find:'<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/>',
+ branches:'<rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/>',
+ shield:'<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/>',
+ more:'<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>',
+ phone:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/>'
+};
+const bar=document.createElement("nav");bar.className="tabbar";bar.setAttribute("aria-label","صفحات الدليل");
+bar.innerHTML=`<div class="tabbar-in">${VIEWS.map((v,i)=>{const ic=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${v.k==="find"?2.2:1.8}" stroke-linecap="round" stroke-linejoin="round">${IC[v.k]}</svg>`;return `<button class="tb${v.k==="find"?" fab":""}" data-v="${i}">${v.k==="find"?`<span class="fab-c">${ic}</span>`:ic}${v.t}</button>`}).join("")}</div>`;
+document.body.appendChild(bar);
+const tbs=[...bar.querySelectorAll(".tb")];
+const all=VIEWS.flatMap(v=>v.els);
+const vTitle=document.createElement("div");vTitle.className="view-title";wrap.prepend(vTitle);
+function showView(i,scroll=true){
+  if(!VIEWS[i])i=0;
+  all.forEach(el=>el.hidden=!VIEWS[i].els.includes(el));
+  tbs.forEach((b,j)=>{b.classList.toggle("active",i===j);b.setAttribute("aria-current",i===j?"page":"false")});
+  vTitle.hidden=i===0;vTitle.innerHTML=`<span class="eyebrow">مسابقة الكويت الكبرى ٢٩</span>`;
+  store.set("q29v",i);
+  try{history.replaceState(null,"","#"+VIEWS[i].k)}catch(e){}
+  if(scroll)window.scrollTo(0,0);
+}
+bar.addEventListener("click",e=>{const b=e.target.closest(".tb");if(b)showView(+b.dataset.v)});
+let startV=+store.get("q29v","0")||0;
+const hv=VIEWS.findIndex(v=>"#"+v.k===(location.hash==="#phone"?"#more":location.hash));if(hv>=0)startV=hv;
+showView(startV,false);
+
+// appearance
+const K=["bg","surface","ink","muted","line","green","green-soft","gold","gold-soft"];
+const PAL={
+ green:{n:"أخضر",l:["#F4F7F4","#FFFFFF","#13241E","#5B6C64","#DCE5DF","#0F5A43","#E3EFE9","#A77E22","#F6EEDB"],d:["#0C1613","#13211C","#E4EDE8","#95A89F","#24362F","#5CC49A","#17312A","#D8B45E","#2C2616"]},
+ blue:{n:"أزرق",l:["#F3F6FA","#FFFFFF","#142033","#5A677A","#D8E0EA","#1D4E89","#E2EBF6","#B07A1F","#F7EEDC"],d:["#0B1220","#121C2E","#E3EAF4","#95A3B8","#223047","#7FB0EC","#17263D","#E0B566","#2B2416"]},
+ maroon:{n:"عنابي",l:["#F8F4F3","#FFFFFF","#2A1618","#6F5A5C","#EADCDB","#7A1F2B","#F3E3E4","#9A7424","#F5EDDB"],d:["#160D0E","#221416","#F0E4E4","#B09A9C","#3A2426","#E8909B","#3A1C20","#D9B362","#2E2616"]},
+ white:{n:"أبيض",sw:["#FFFFFF","#FFFFFF"],l:["#FFFFFF","#FFFFFF","#111418","#62676E","#E6E8EB","#0F5A43","#EEF4F1","#A77E22","#F8F2E4"],d:["#000000","#121212","#F2F2F2","#A3A3A3","#2A2A2A","#5CC49A","#16261F","#D8B45E","#262012"]},
+ sand:{n:"رملي",l:["#F7F3EC","#FFFDF9","#2B2218","#6D6152","#E6DCCB","#6B4E16","#F0E6D2","#2F6B55","#E1EEE8"],d:["#15110B","#201A12","#EFE6D8","#AA9C87","#3A3022","#D9B36A","#33291A","#7CC4A4","#16302A"]}
+};
+const store2={get:(k,d)=>{try{return localStorage.getItem(k)||d}catch(e){return d}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+let look={p:store.get("q29p","green"),m:store.get("q29m","auto"),s:store.get("q29s","15")};
+const mq=matchMedia("(prefers-color-scheme: dark)");
+const sw=document.getElementById("swatches");
+Object.entries(PAL).forEach(([k,v])=>{const b=document.createElement("button");b.className="sw";b.dataset.p=k;b.title=v.n;b.setAttribute("aria-label",v.n);b.style.background=(v.sw||v.l)[0];b.innerHTML=`<i style="background:${v.sw?v.sw[1]:v.l[5]};${v.sw?"box-shadow:inset 0 0 0 1px #C9CDD2":""}"></i>`;sw.appendChild(b)});
+function applyLook(){
+  const host=document.documentElement.getAttribute("data-theme");
+  const dark=look.m==="dark"||(look.m==="auto"&&(host?host==="dark":mq.matches));
+  const vals=PAL[look.p][dark?"d":"l"],st=document.documentElement.style;
+  K.forEach((k,i)=>st.setProperty("--"+k,vals[i]));
+  st.colorScheme=dark?"dark":"light";
+  document.querySelector(".wrap").style.zoom=({14:.93,15:1,17:1.13})[look.s]||1;
+  sw.querySelectorAll(".sw").forEach(b=>b.setAttribute("aria-pressed",b.dataset.p===look.p));
+  document.querySelectorAll("#modes button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.m===look.m));
+  document.querySelectorAll("#sizes button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.s===look.s));
+}
+sw.addEventListener("click",e=>{const b=e.target.closest(".sw");if(b){look.p=b.dataset.p;store.set("q29p",look.p);applyLook()}});
+document.getElementById("modes").addEventListener("click",e=>{const b=e.target.closest("button");if(b){look.m=b.dataset.m;store.set("q29m",look.m);applyLook()}});
+document.getElementById("sizes").addEventListener("click",e=>{const b=e.target.closest("button");if(b){look.s=b.dataset.s;store.set("q29s",look.s);applyLook()}});
+mq.addEventListener?.("change",applyLook);
+new MutationObserver(applyLook).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+if(!PAL[look.p])look.p="green";
+applyLook();
+
+// copy
+document.querySelectorAll(".copy[data-copy]").forEach(b=>b.addEventListener("click",()=>copyText(b,b.dataset.copy,b.textContent)));
+</script>
+
+</body>
+</html>
