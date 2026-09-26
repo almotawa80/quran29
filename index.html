@@ -16,8 +16,12 @@
 <link rel="canonical" href="https://almotawa80.github.io/quran29/">
 <meta property="og:locale" content="ar_KW">
 <meta property="og:title" content="مسابقة الكويت الكبرى لحفظ القرآن الكريم وتجويده (29)">
-<meta property="og:description" content="اعرف فرعك وجوائزه، مع الشروط والمواعيد. التسجيل من 27 سبتمبر إلى 29 أكتوبر 2026.">
-<meta property="og:image" content="https://almotawa80.github.io/quran29/og-image.png">
+<meta property="og:description" content="دليل تفاعلي: اعرف شريحتك وجوائزها، مع الشروط والمواعيد. التسجيل من 27 سبتمبر إلى 29 أكتوبر 2026 عن طريق الجهات المشاركة.">
+<meta property="og:site_name" content="مسابقة الكويت الكبرى 29">
+<meta property="og:image" content="https://almotawa80.github.io/quran29/og-image.png?v=3">
+<meta property="og:image:secure_url" content="https://almotawa80.github.io/quran29/og-image.png?v=3">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="مسابقة الكويت الكبرى لحفظ القرآن الكريم وتجويده 29">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -294,6 +298,83 @@ html.ai-open .ai-fab,html.ai-open .to-top{display:none}
 .ai-form input:focus{border-color:var(--green)}
 .ai-form button{width:44px;height:44px;border-radius:50%;border:0;background:var(--green);color:var(--bg);display:grid;place-items:center;cursor:pointer;flex:none}
 .ai-form button svg{width:20px;height:20px}
+.appbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:28;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-inline:-16px;padding:8px 16px;background:var(--bg);border-bottom:1px solid var(--line);box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.ab-brand{display:flex;align-items:center;gap:10px;min-width:0;cursor:pointer}
+.ab-logo .org-logo{width:40px}
+.ab-t{display:flex;flex-direction:column;line-height:1.35;min-width:0}
+.ab-t b{font-family:var(--display);font-size:15px;color:var(--green);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ab-t small{font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.theme-tg{flex:none;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--gold);display:grid;place-items:center;cursor:pointer;padding:0}
+.theme-tg svg{width:24px;height:24px;overflow:visible}
+.theme-tg:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.tg-core{transform-origin:12px 12px;transition:transform .45s cubic-bezier(.5,1.5,.5,1)}
+.tg-bite{transition:transform .45s ease}
+.tg-rays{transform-origin:12px 12px;transition:transform .45s ease,opacity .3s ease}
+html.is-dark .theme-tg{color:var(--green)}
+html.is-dark .tg-core{transform:scale(1.75)}
+html.is-dark .tg-bite{transform:translate(-8px,6px)}
+html.is-dark .tg-rays{transform:rotate(90deg) scale(.4);opacity:0}
+@media (prefers-reduced-motion:reduce){.tg-core,.tg-bite,.tg-rays{transition:none}}
+header{padding-top:10px}
+.nl-box{display:flex;flex-direction:column;gap:10px}
+.nl-in{display:flex;align-items:center;gap:10px;background:var(--bg);border:2px solid var(--green);border-radius:14px;padding:0 14px;height:54px}
+.nl-in:focus-within{box-shadow:0 0 0 4px var(--green-soft)}
+.nl-in svg{width:22px;height:22px;color:var(--green);flex:none}
+.nl-in input{flex:1;min-width:0;font:inherit;font-size:16px;color:var(--ink);background:transparent;border:0;outline:none;height:100%}
+.nl-ex{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.nl-ex::-webkit-scrollbar{display:none}
+.nl-got{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13px}
+.nl-lbl{color:var(--muted);font-weight:600}
+.nl-tag{background:var(--green-soft);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-weight:600}
+.nl-need{flex-basis:100%;color:var(--ink);background:var(--gold-soft);border-inline-start:3px solid var(--gold);padding:6px 10px;border-radius:0}
+.nl-manual{border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+.nl-manual>summary{cursor:pointer;padding:10px 14px;font-size:14px;font-weight:600;color:var(--muted)}
+.nl-manual[open]>summary{color:var(--green)}
+.nl-manual>.fields{padding:4px 14px 14px}
+.chat-log{display:flex;flex-direction:column;gap:12px;padding-bottom:8px}
+.ai-row{display:flex;flex-direction:column;gap:8px}
+.ai-row.me{align-items:flex-end}
+.ai-row.bot{align-items:flex-start}
+.ai-cards{width:100%;display:flex;flex-direction:column;gap:10px}
+.ai-opts{display:flex;flex-wrap:wrap;gap:8px;max-width:100%}
+.ai-opt{font:inherit;font-size:14px;font-weight:600;color:var(--green);background:var(--surface);border:1.5px solid var(--green);border-radius:12px;padding:8px 14px;cursor:pointer}
+.ai-opt:hover:not(:disabled){background:var(--green-soft)}
+.ai-opt:disabled{opacity:.45;cursor:default}
+.ai-opt.picked{opacity:1;background:var(--green);color:var(--bg)}
+.chat-bar{position:fixed;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 70px);z-index:27;background:var(--bg);border-top:1px solid var(--line);padding:6px 0 8px}
+.chat-bar>*{max-width:880px;margin-inline:auto}
+.chat-bar .ai-chips{border-top:0;padding:4px 16px 6px}
+.chat-bar .ai-form{padding:0 16px}
+section.finder{padding-bottom:140px}
+html.view-find .to-top{display:none}
+.chat-bar{box-shadow:0 -6px 18px rgba(0,0,0,.08);background:var(--surface)!important;padding:8px 0 4px!important}
+.chat-lbl{display:block;font-size:12.5px;font-weight:600;color:var(--green);padding:0 18px 6px}
+.chat-bar .ai-form{position:relative;align-items:center}
+.chat-bar .ai-form input{height:52px;font-size:16px;border:2px solid var(--green);background:var(--bg);padding-inline-start:44px;border-radius:14px}
+.chat-bar .ai-form input::placeholder{color:var(--muted)}
+.chat-bar .ai-form input:focus{box-shadow:0 0 0 4px var(--green-soft)}
+.chat-bar .ai-form button{width:52px;height:52px;border-radius:14px}
+.chat-pen{position:absolute;inset-inline-start:30px;width:20px;height:20px;color:var(--green);pointer-events:none}
+.chat-bar .ai-chips{padding:8px 16px 4px!important}
+.chat-bar .ai-chip{font-size:12.5px;padding:5px 11px}
+@keyframes inputPulse{0%,100%{box-shadow:0 0 0 0 var(--green-soft)}50%{box-shadow:0 0 0 7px var(--green-soft)}}
+html.view-find .chat-bar .ai-form input:not(:focus){animation:inputPulse 1.6s ease-in-out 2}
+@media (prefers-reduced-motion:reduce){html.view-find .chat-bar .ai-form input{animation:none}}
+section.finder{padding-bottom:190px}
+.chat-bar{position:static!important;box-shadow:none!important;background:transparent!important;border:0!important;padding:0!important;scroll-margin-top:74px}
+.chat-bar>*{max-width:none!important}
+.chat-lbl{padding:0 2px 6px!important}
+.chat-bar .ai-form{padding:0!important}
+.chat-pen{inset-inline-start:14px!important}
+.chat-bar .ai-chips{padding:8px 0 2px!important}
+section.finder{padding-bottom:20px!important}
+.chat-log{gap:14px;border-top:1px dashed var(--line);padding-top:14px;min-height:92vh;overflow-anchor:none}
+.ai-turn{display:flex;flex-direction:column;gap:10px}
+.ai-turn+.ai-turn{border-top:1px solid var(--line);padding-top:14px;opacity:.85}
+html.view-find .to-top{display:flex}
+.ai-row.me{align-items:flex-start}
+.ai-msg.me{background:transparent;color:var(--muted);border:0;padding:0 2px;font-size:13px;max-width:100%}
+.ai-msg.me::before{content:"سؤالك: ";font-weight:600;color:var(--green)}
 .sh-card{scroll-margin-top:16px}
 .grid2.sh-stack{grid-template-columns:1fr}
 details>.to-sections{margin:0 16px 14px}
@@ -475,16 +556,29 @@ body{line-height:1.9}
     </details>
     <details>
       <summary>أسئلة شائعة</summary>
-      <div class="inner"><div class="faq-list"><details class="faq"><summary>هل يمكنني المشاركة في أكثر من فرع أو شريحة؟</summary><p>لا. يشارك المتسابق في فئة واحدة وشريحة واحدة فقط، ولو كان مؤهلاً لأكثر من خيار. استخدم «اعرف فرعك» لمقارنة الخيارات المتاحة لك.</p></details><details class="faq"><summary>فزتُ في دورة سابقة، فهل أستطيع المشاركة مجدداً؟</summary><p>لا تشارك في الفئة أو الشريحة التي فزت بها، ولا فيما دونها. يمكنك المشاركة في شريحة أعلى.</p></details><details class="faq"><summary>كيف أسجّل في المسابقة؟</summary><p>التسجيل عن طريق إحدى الجهات المشاركة المعتمدة، ولك حرية اختيار الجهة، من 27 سبتمبر إلى 29 أكتوبر 2026. يتواصل معك منسق الجهة، ويجري تصفيات أولية، ثم يسجّل المتميزين في النظام الآلي للتصفيات النهائية.</p></details><details class="faq"><summary>هل توجد أسئلة تجويد نظرية؟</summary><p>لا توجد أسئلة تجويد نظرية، لكن يشترط على المتسابق القراءة بالتجويد وتطبيق أحكامه عملياً أثناء التلاوة. ويُستثنى فرع القراءات، ففيه أسئلة نظرية.</p></details><details class="faq"><summary>كم متسابقاً يمكن أن ترشحه الجهة؟</summary><p>الحد الأقصى في التصفيات النهائية خمسة متسابقين لكل جهة في كل شريحة.</p></details><details class="faq"><summary>هل المسابقة للرجال والنساء؟</summary><p>نعم، ويتنافس الذكور والإناث كلٌّ على حدة. ويشترط أن يكون المتسابق كويتي الجنسية.</p></details><details class="faq"><summary>لماذا يُحجب المركز أحياناً؟</summary><p>يُحجب المركز إذا لم يبلغ المتسابق النسبة المطلوبة له: 95٪ للأول و90٪ للثاني و85٪ للثالث في الفروع الرئيسة، و90٪ و85٪ و80٪ في المسابقات الخاصة.</p></details><details class="faq"><summary>كيف أعترض على نتيجة التحكيم؟</summary><p>لا تُقبل الاعتراضات الفردية. يُقدَّم الاعتراض بكتاب رسمي معتمد من الجهة المشاركة، موجّه إلى رئيس اللجنة الدائمة.</p></details><details class="faq"><summary>ما شروط مسابقة القراءات؟</summary><p>حفظ القرآن كاملاً وإتقان القراءة أو الرواية المختارة، والتسجيل باستمارة مسابقة القراءات. وفيها أسئلة نظرية.</p><p><a class="doc-link" href="https://www.icloud.com/iclouddrive/09c34yAa5amum6kYfRB7Ri6JA" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>أسئلة القراءات النظرية (PDF)</a></p></details><details class="faq"><summary>في فرع الخير والبركة، هل أختار الأجزاء بنفسي؟</summary><p>نعم. لمن بلغ 60 عاماً فأكثر حرية اختيار الأجزاء من أي موضع في القرآن الكريم.</p></details><details class="faq"><summary>ما المطلوب في مسابقة ذوي الاحتياجات الخاصة؟</summary><p>شهادة إعاقة معتمدة من الهيئة العامة لشؤون ذوي الإعاقة، مطابقة لنوع الإعاقة وفئتها المعتمدة في المسابقة.</p></details><details class="faq"><summary>أين تُقام التصفيات النهائية؟</summary><p>في المسجد الكبير، من 22 نوفمبر إلى 2 ديسمبر 2026: تصفيات الرجال من الأحد 22 إلى الأربعاء 25 نوفمبر، وتصفيات النساء من الأحد 29 نوفمبر إلى الأربعاء 2 ديسمبر. ويبلغك منسق جهتك بموعدك تحديداً.</p></details></div></div>
+      <div class="inner"><div class="faq-list"><details class="faq"><summary>هل يمكنني المشاركة في أكثر من فرع أو شريحة؟</summary><p>لا. يشارك المتسابق في فئة واحدة وشريحة واحدة فقط، ولو كان مؤهلاً لأكثر من خيار. اسأل «المساعد» لمقارنة الخيارات المتاحة لك.</p></details><details class="faq"><summary>فزتُ في دورة سابقة، فهل أستطيع المشاركة مجدداً؟</summary><p>لا تشارك في الفئة أو الشريحة التي فزت بها، ولا فيما دونها. يمكنك المشاركة في شريحة أعلى.</p></details><details class="faq"><summary>كيف أسجّل في المسابقة؟</summary><p>التسجيل عن طريق إحدى الجهات المشاركة المعتمدة، ولك حرية اختيار الجهة، من 27 سبتمبر إلى 29 أكتوبر 2026. يتواصل معك منسق الجهة، ويجري تصفيات أولية، ثم يسجّل المتميزين في النظام الآلي للتصفيات النهائية.</p></details><details class="faq"><summary>هل توجد أسئلة تجويد نظرية؟</summary><p>لا توجد أسئلة تجويد نظرية، لكن يشترط على المتسابق القراءة بالتجويد وتطبيق أحكامه عملياً أثناء التلاوة. ويُستثنى فرع القراءات، ففيه أسئلة نظرية.</p></details><details class="faq"><summary>كم متسابقاً يمكن أن ترشحه الجهة؟</summary><p>الحد الأقصى في التصفيات النهائية خمسة متسابقين لكل جهة في كل شريحة.</p></details><details class="faq"><summary>هل المسابقة للرجال والنساء؟</summary><p>نعم، ويتنافس الذكور والإناث كلٌّ على حدة. ويشترط أن يكون المتسابق كويتي الجنسية.</p></details><details class="faq"><summary>لماذا يُحجب المركز أحياناً؟</summary><p>يُحجب المركز إذا لم يبلغ المتسابق النسبة المطلوبة له: 95٪ للأول و90٪ للثاني و85٪ للثالث في الفروع الرئيسة، و90٪ و85٪ و80٪ في المسابقات الخاصة.</p></details><details class="faq"><summary>كيف أعترض على نتيجة التحكيم؟</summary><p>لا تُقبل الاعتراضات الفردية. يُقدَّم الاعتراض بكتاب رسمي معتمد من الجهة المشاركة، موجّه إلى رئيس اللجنة الدائمة.</p></details><details class="faq"><summary>ما شروط مسابقة القراءات؟</summary><p>حفظ القرآن كاملاً وإتقان القراءة أو الرواية المختارة، والتسجيل باستمارة مسابقة القراءات. وفيها أسئلة نظرية.</p><p><a class="doc-link" href="https://www.icloud.com/iclouddrive/09c34yAa5amum6kYfRB7Ri6JA" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>أسئلة القراءات النظرية (PDF)</a></p></details><details class="faq"><summary>في فرع الخير والبركة، هل أختار الأجزاء بنفسي؟</summary><p>نعم. لمن بلغ 60 عاماً فأكثر حرية اختيار الأجزاء من أي موضع في القرآن الكريم.</p></details><details class="faq"><summary>ما المطلوب في مسابقة ذوي الاحتياجات الخاصة؟</summary><p>شهادة إعاقة معتمدة من الهيئة العامة لشؤون ذوي الإعاقة، مطابقة لنوع الإعاقة وفئتها المعتمدة في المسابقة.</p></details><details class="faq"><summary>أين تُقام التصفيات النهائية؟</summary><p>في المسجد الكبير، من 22 نوفمبر إلى 2 ديسمبر 2026: تصفيات الرجال من الأحد 22 إلى الأربعاء 25 نوفمبر، وتصفيات النساء من الأحد 29 نوفمبر إلى الأربعاء 2 ديسمبر. ويبلغك منسق جهتك بموعدك تحديداً.</p></details></div></div>
     </details>
   </section>
 
   <!-- FINDER -->
   <section class="finder" aria-labelledby="f-title">
     <div class="finder-head">
-      <h2 id="f-title">اعرف فرعك</h2>
-      <p>أدخل العمر ومقدار الحفظ لتظهر الشرائح التي يحق لك التسجيل فيها. لا يجوز الاشتراك إلا في شريحة واحدة.</p>
+      <h2 id="f-title">المساعد</h2>
+      <p>أحدد لك الشريحة المناسبة وجوائزها خطوة بخطوة، وأجيب عن أسئلتك عن المسابقة من البيان التوضيحي.</p>
     </div>
+    <div class="chat-bar">
+      <label class="chat-lbl" for="aiIn">اكتب سؤالك هنا، أو اختر من الأسئلة الجاهزة</label>
+      <form class="ai-form" id="aiForm"><svg class="chat-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4l10.5-10.5a2.1 2.1 0 00-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg><input id="aiIn" type="text" autocomplete="off" placeholder="عمري 12 وأحفظ 7 أجزاء" aria-label="سؤالك"><button type="submit" aria-label="إرسال"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5M11 6l-6 6 6 6"/></svg></button></form>
+      <div class="ai-chips" id="aiChips"></div>
+    </div>
+    <div class="chat-log" id="aiLog" aria-live="polite"></div>
+    <div class="legacy" hidden>
+    <div class="nl-box">
+      <div class="nl-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 016.5 3h11A2.5 2.5 0 0120 5.5v8a2.5 2.5 0 01-2.5 2.5H10l-4.5 4v-4A1.5 1.5 0 014 14.5z"/></svg><input id="nlQ" type="text" autocomplete="off" placeholder="مثل: ابني عمره 10 ويحفظ 6 أجزاء" aria-label="اكتب العمر ومقدار الحفظ"></div>
+      <div class="nl-ex" id="nlEx"></div>
+      <div class="nl-got" id="nlGot" hidden></div>
+    </div>
+    <details class="nl-manual" id="nlManual"><summary>أو اختر يدوياً</summary>
     <div class="fields">
       <div class="field">
         <label for="cat">فئة المتسابق</label>
@@ -524,10 +618,12 @@ body{line-height:1.9}
       </div>
       <label class="check" for="qir" id="qirF"><input id="qir" type="checkbox"> أتقن إحدى القراءات السبع أو رواياتها</label>
     </div>
+    </details>
     <div class="results" id="results" aria-live="polite"></div>
     <div><button class="copy" id="shareRes" type="button">نسخ النتيجة لإرسالها</button></div>
     <div class="path-box"><div class="path-h">مسار المشاركة</div><div class="path" data-path></div></div>
     <p class="hint" id="hint">المسابقات الخاصة لها نسب فوز أقل: 90% للأول، و85% للثاني، و80% للثالث.</p>
+    </div>
   </section>
 
   <!-- BRANCHES -->
@@ -878,12 +974,13 @@ function copyText(btn,text,label){
   const fallback=()=>{const ta=document.createElement("textarea");ta.value=text;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy");done()}catch(e){}ta.remove()};
   try{navigator.clipboard.writeText(text).then(done,fallback)}catch(e){fallback()}
 }
-document.getElementById("shareRes").addEventListener("click",e=>{
+function shareText(ctxOverride){
   const sel=id=>{const s=document.getElementById(id);return s.options[s.selectedIndex].text};
   const cat=document.getElementById("cat").value;
   let ctx;
   if(cat==="main")ctx=`العمر: ${document.getElementById("age").value} سنة · الحفظ: ${sel("juz")}${document.getElementById("qir").checked?" · يتقن إحدى القراءات":""}`;
   else ctx=sel("cat")+(cat==="disab"?" · "+sel("dtype")+(document.getElementById("stageF").hidden?"":" · المرحلة "+sel("stage")):"")+(cat==="prison"?" · الحفظ: "+sel("juz"):"");
+  if(ctxOverride)ctx=ctxOverride;
   const lines=["مسابقة الكويت الكبرى لحفظ القرآن الكريم وتجويده (29)",ctx,""];
   if(lastRes.msg)lines.push(lastRes.msg);
   lastRes.out.forEach(o=>{if(o.soon){lines.push("• "+o.b+": "+o.n);return}
@@ -893,8 +990,9 @@ document.getElementById("shareRes").addEventListener("click",e=>{
   });
   if(lastRes.out.filter(o=>!o.soon).length>1)lines.push("","يُشارك في شريحة واحدة فقط.");
   lines.push("","التسجيل عن طريق إحدى الجهات المشاركة المعتمدة، من 27 سبتمبر إلى 29 أكتوبر 2026.");
-  copyText(e.currentTarget,lines.join("\n"),"نسخ النتيجة لإرسالها");
-});
+  return lines.join("\n");
+}
+document.getElementById("shareRes").addEventListener("click",e=>copyText(e.currentTarget,shareText(),"نسخ النتيجة لإرسالها"));
 
 // points calculator
 const CALC=[...PTS];
@@ -1047,15 +1145,15 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-ab]");if(!
   const t=document.getElementById(b.dataset.ab);t.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})});
 const sec=id=>document.getElementById(id).closest("section");
 const VIEWS=[
- {k:"about",t:"عن المسابقة",els:[document.querySelector("header"),aboutView]},
+ {k:"about",t:"الرئيسية",els:[document.querySelector("header"),aboutView]},
  {k:"branches",t:"الفروع",els:[sec("b-title")]},
- {k:"find",t:"اعرف فرعك",els:[sec("f-title")]},
+ {k:"find",t:"المساعد",els:[sec("f-title")]},
  {k:"shield",t:"الدروع",els:[sec("s-title")]},
  {k:"more",t:"المزيد",els:[document.getElementById("moreNav"),document.getElementById("moreBack"),sec("c-title"),document.getElementById("calcSec"),document.getElementById("shareSec"),document.getElementById("settings"),document.querySelector("footer")]}
 ];
 const IC={
- about:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',
- find:'<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/>',
+ about:'<path d="M4 10.5L12 4l8 6.5V19a1.5 1.5 0 01-1.5 1.5H15v-5.5H9v5.5H5.5A1.5 1.5 0 014 19z"/>',
+ find:'<path d="M4 5.5A2.5 2.5 0 016.5 3h11A2.5 2.5 0 0120 5.5v8a2.5 2.5 0 01-2.5 2.5H10l-4.5 4v-4A1.5 1.5 0 014 14.5z"/><path d="M8.5 9.5h.01M12 9.5h.01M15.5 9.5h.01"/>',
  branches:'<rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/>',
  shield:'<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/>',
  more:'<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>',
@@ -1071,8 +1169,8 @@ function showView(i,scroll=true){
   if(!VIEWS[i])i=0;
   all.forEach(el=>el.hidden=!VIEWS[i].els.includes(el));
   tbs.forEach((b,j)=>{b.classList.toggle("active",i===j);b.setAttribute("aria-current",i===j?"page":"false")});
-  vTitle.hidden=i===0;vTitle.innerHTML=`<span class="eyebrow">مسابقة الكويت الكبرى لحفظ القرآن الكريم وتجويده ٢٩</span>`;
-  const lw=document.querySelector("header .org-logo-w");if(lw){const c=lw.cloneNode(true);c.classList.add("sm");vTitle.prepend(c)}
+  vTitle.hidden=true;
+  document.documentElement.classList.toggle("view-find",VIEWS[i].k==="find");
   store.set("q29v",i);
   try{history.replaceState(null,"","#"+VIEWS[i].k)}catch(e){}
   if(scroll)window.scrollTo(0,0);
@@ -1141,13 +1239,32 @@ document.addEventListener("click",e=>{if(e.target.closest("[data-top]"))goTop()}
 document.addEventListener("click",e=>{const tg=e.target.closest("[data-to-grid]");if(!tg)return;const g=document.querySelector(tg.dataset.toGrid||".about-view .ap-grid");if(g)g.scrollIntoView({behavior:(matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"),block:"start"})});
 let tick=false;window.addEventListener("scroll",()=>{if(tick)return;tick=true;requestAnimationFrame(()=>{topBtn.hidden=window.scrollY<600;tick=false})},{passive:true});
 
+// shared text parser (age, juz, special categories)
+const NN=(()=>{const N=t=>normAr(String(t||"")).replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d)).replace(/[۰-۹]/g,d=>"۰۱۲۳۴۵۶۷۸۹".indexOf(d));
+const W=(t,w)=>new RegExp('(^|\\s|[،,.؟?])(ال|و|ب|ل)?('+w+')($|\\s|[،,.؟?])').test(t);
+return {N,W};})();
+function parseF(txt){
+  const {N,W}=NN;const t=N(txt);const r={cat:"main",dtype:null,stage:null,age:null,juz:null,qir:false};
+  if(/داون|ذهني|عقلي/.test(t))r.dtype="0";else if(/توحد/.test(t))r.dtype="1";else if(/ضعاف السمع|ضعيف السمع|ضعيفه السمع|ضعف السمع/.test(t))r.dtype="2";else if(W(t,"صم|اصم|صماء"))r.dtype="deaf";else if(/بطي|بطء|بطا|تاخر دراسي|متاخر دراسي/.test(t))r.dtype="slow";else if(/صعوبات|صعوبه تعلم/.test(t))r.dtype="ld";
+  if(r.dtype)r.cat="disab";else if(/سجن|اصلاحي|نزيل|نزلاء/.test(t))r.cat="prison";else if(/رعايه|احداث/.test(t))r.cat="care";
+  if(/ابتداي/.test(t))r.stage="الابتدائية";else if(/متوسط/.test(t))r.stage="المتوسطة";else if(/ثانوي/.test(t))r.stage="الثانوية";
+  let m=t.match(/(\d{1,3})\s*(سنه|سنوات|سنين|عام|عاما|سن)/)||t.match(/(عمر\S*|سن\S*|بعمر)\s*(\d{1,3})/);
+  if(m)r.age=+(/\d/.test(m[1])?m[1]:m[2]);
+  m=t.match(/(\d{1,2})\s*(جز|اجزا)/)||t.match(/(يحفظ|احفظ|تحفظ|حافظ\S*|حفظ\S*)\s*(\d{1,2})/);
+  if(m)r.juz=+(/\d/.test(m[1])?m[1]:m[2]);
+  if(r.juz==null){if(/(القران كامل|كامل القران|القران كله|ختم|خاتم|ثلاثين جز)/.test(t))r.juz=30;else if(/جزء واحد|جزءا واحدا|جزيا واحدا|جزء فقط/.test(t))r.juz=1;else if(/جزيين|جزءين|جزان|جزاين/.test(t))r.juz=2;else if(/اقل من جز|حزب|جزء عم|جزء عمه/.test(t))r.juz=0}
+  if(r.age==null){const nums=(t.match(/\d{1,3}/g)||[]).map(Number);const o=r.juz!=null?nums.filter(n=>n!==r.juz):nums;if(o.length===1&&r.juz!=null)r.age=o[0];else if(nums.length===2&&r.juz==null){r.age=Math.max(...nums);r.juz=Math.min(...nums)}}
+  if(r.juz!=null)r.juz=Math.max(0,Math.min(30,r.juz));
+  r.qir=/قراءات|روايه|قراءه|قالون|ورش|البزي|قنبل|الدوري|السوسي/.test(t);
+  return r;
+}
+
 // assistant (rule-based, answers from the statement)
 (function(){
 const N=t=>normAr(String(t||"")).replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d)).replace(/[۰-۹]/g,d=>"۰۱۲۳۴۵۶۷۸۹".indexOf(d));
 const abId=title=>(ABOUT.find(a=>a.t===title)||{}).id;
 const vIdx=k=>VIEWS.findIndex(v=>v.k===k);
 function go(k,id,tab){
-  closeAI();
   showView(vIdx(k));
   if(tab!=null&&typeof select==="function")select(tab);
   if(k==="more"&&id){moreOpen(id);return}
@@ -1155,7 +1272,8 @@ function go(k,id,tab){
   setTimeout(()=>{const el=document.getElementById(id);if(!el)return;if(el.tagName==="DETAILS")el.open=true;el.scrollIntoView({behavior:"smooth",block:"start"})},80);
 }
 const A={
- finder:{t:"افتح «اعرف فرعك»",f:()=>go("find")},
+ finder:{t:"حدّد شريحتي خطوة بخطوة",f:()=>startGuide()},
+ share:{t:"نسخ النتيجة لإرسالها"},
  timeline:{t:"الجدول الزمني",f:()=>go("about",abId("الجدول الزمني"))},
  path:{t:"مسار المشاركة",f:()=>go("about",abId("مسار المشاركة"))},
  rules:{t:"الشروط كاملة",f:()=>go("about",abId("شروط المسابقة بجميع فروعها"))},
@@ -1170,7 +1288,7 @@ const A={
 const QPDF='<a class="doc-link" href="https://www.icloud.com/iclouddrive/09c34yAa5amum6kYfRB7Ri6JA" target="_blank" rel="noopener">أسئلة القراءات النظرية (PDF)</a>';
 const I=[
  {id:"where",chip:"أين أشارك؟",k:["اشارك","اين اشارك","اي فرع","فرعي","اي شريحه","يناسبني","مناسب","ابني","بنتي","ولدي","عمري","عمره","عمرها"],
-  a:()=>"اكتب العمر ومقدار الحفظ في رسالة واحدة، مثل: <b>عمري 12 وأحفظ 7 أجزاء</b>، وسأحدد لك الشرائح المتاحة وجوائزها. أو استخدم أداة «اعرف فرعك» مباشرة.",act:["finder"]},
+  a:()=>"اكتب العمر ومقدار الحفظ في رسالة واحدة، مثل: <b>عمري 12 وأحفظ 7 أجزاء</b>، وسأحدد لك الشرائح المتاحة وجوائزها، أو دعني أسألك خطوة بخطوة.",act:["finder"]},
  {id:"reg",chip:"متى التسجيل؟",k:["تسجيل","اسجل","التسجيل","موعد","متى","اخر موعد","اخر يوم","تبدا","يبدا"],
   a:()=>{const n=dayDiff("2026-10-29"),s=dayDiff("2026-09-27");return `التسجيل عن طريق الجهات المشاركة المعتمدة <b>من الأحد 27 سبتمبر إلى الخميس 29 أكتوبر 2026</b>${s>0?` (يبدأ بعد ${s} ${s===1?"يوم":s===2?"يومين":"أيام"})`:n>=0?` (متبقٍ ${n} يوماً)`:" (انتهت فترة التسجيل)"}. وآخر موعد لتعديل بيانات المتسابقين (أرقام الأجزاء) <b>الخميس 12 نوفمبر</b>.`},act:["timeline","path"]},
  {id:"how",chip:"كيف أسجّل؟",k:["كيف اسجل","طريقه التسجيل","طريقة","اشترك","الاشتراك","جهه","جهة","الجهات","منسق","يرشحني","ترشيح","مركز","مسجد"],
@@ -1196,7 +1314,7 @@ const I=[
  {id:"qiraat",chip:"شروط القراءات",k:["قراءات","القراءات","روايه","رواية","روايات","قالون","ورش","نافع","ابن كثير","البزي","قنبل","ابو عمرو","الدوري","السوسي","السبع"],
   a:()=>"فرع القراءات يشترط <b>حفظ القرآن كاملاً</b> وإتقان القراءة أو الرواية، والتسجيل باستمارة مسابقة القراءات، وفيه أسئلة نظرية. الشريحة الأولى (القراءات السبع بجميع الروايات) جائزتها الأولى <b>4,000 د.ك</b>، والشريحة الثانية (قراءة أو رواية واحدة) <b>3,500 د.ك</b>. "+QPDF,act:["qiraat"]},
  {id:"special",w:2,chip:"ذوو الاحتياجات الخاصة",k:["اعاقه","إعاقة","احتياجات","توحد","داون","صم","اصم","سمع","بطء التعلم","بطيء","صعوبات","ذهنيه","شهاده","شهادة"],
-  a:()=>"مسابقة ذوي الاحتياجات الخاصة تشمل: الإعاقة الذهنية ومتلازمة داون، والتوحد، وضعاف السمع، والصم، وبطيئي التعلم، وصعوبات التعلم، ولكل فئة سور مقررة. ويلزم تقديم <b>شهادة إعاقة معتمدة من الهيئة العامة لشؤون ذوي الإعاقة</b> مطابقة لنوع الإعاقة. ويمكنك اختيار الفئة في «اعرف فرعك» لمعرفة السور والجوائز.",act:["special","finder"]},
+  a:()=>"مسابقة ذوي الاحتياجات الخاصة تشمل: الإعاقة الذهنية ومتلازمة داون، والتوحد، وضعاف السمع، والصم، وبطيئي التعلم، وصعوبات التعلم، ولكل فئة سور مقررة. ويلزم تقديم <b>شهادة إعاقة معتمدة من الهيئة العامة لشؤون ذوي الإعاقة</b> مطابقة لنوع الإعاقة. واكتب الفئة (مثل: عنده توحد) لأعرض لك سورها وجوائزها.",act:["special","finder"]},
  {id:"khair",w:2,k:["الخير والبركه","كبار السن","60","ستين","متقاعد","اختار الاجزاء"],
   a:()=>"فرع <b>الخير والبركة</b> لمن بلغ 60 عاماً فأكثر، في سبع شرائح (من جزء واحد إلى 15 جزءاً)، وللمشارك <b>حرية اختيار الأجزاء من أي موضع</b> في القرآن الكريم.",act:["branches"]},
  {id:"majd",w:2,k:["المجد","فرع المجد"],
@@ -1219,79 +1337,123 @@ const I=[
 I.forEach(x=>{x.kn=x.k.map(N);x.w=x.w||1});
 const hasK=(t,k)=>k.length<=3?new RegExp('(^|\\s|[،,.؟?])(ال|و|ب|ل)?'+k+'($|\\s|[،,.؟?])').test(t):t.includes(k);
 const yrs=n=>n>=3&&n<=10?n+' سنوات':n+' سنة';
-function parse(msg){
-  const t=N(msg);
-  let age=null,juz=null;
-  let m=t.match(/(\d{1,3})\s*(سنه|سنوات|سنين|عام|عاما|سن)/)||t.match(/(عمر\S*|سن\S*|بعمر)\s*(\d{1,3})/);
-  if(m)age=+(m[1].match(/\d/)?m[1]:m[2]);
-  m=t.match(/(\d{1,2})\s*(جز|اجزا)/)||t.match(/(يحفظ|احفظ|تحفظ|حافظ\S*|حفظ\S*)\s*(\d{1,2})/);
-  if(m)juz=+(m[1].match(/\d/)?m[1]:m[2]);
-  if(juz==null){if(/(القران كامل|كامل القران|ختم|خاتم|ثلاثين جز)/.test(t))juz=30;else if(/جزء واحد|جزءا واحدا|جزيا واحدا|جزء فقط/.test(t))juz=1;else if(/جزيين|جزءين|جزان|جزاين/.test(t))juz=2}
-  if(age==null){const nums=(t.match(/\d{1,3}/g)||[]).map(Number);if(juz!=null){const o=nums.filter(n=>n!==juz);if(o.length)age=o[0]}}
-  return {age,juz,qir:/قراءات|روايه|رواية|قراءه|قالون|ورش/.test(t)&&juz===30,t};
+
+// ---------- rendering ----------
+const log=document.getElementById("aiLog"),inp=document.getElementById("aiIn");
+const esc=t=>String(t).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const findActive=()=>tbs[vIdx("find")].classList.contains("active");
+function scrollEnd(){if(!findActive())return;const cb=document.querySelector(".chat-bar");const r=cb.getBoundingClientRect();if(r.top<60||r.top>window.innerHeight*0.5)cb.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})}
+function newTurn(){log.innerHTML="";const t=document.createElement("div");t.className="ai-turn";log.appendChild(t);return t}
+function add(role,html,opts={}){
+  const d=document.createElement("div");d.className="ai-msg "+role;d.innerHTML=html;
+  const row=document.createElement("div");row.className="ai-row "+role;row.appendChild(d);
+  if(opts.cards){const c=document.createElement("div");c.className="ai-cards";c.innerHTML=opts.cards;row.appendChild(c)}
+  if(opts.choices){const r=document.createElement("div");r.className="ai-opts";opts.choices.forEach(([label,fn])=>{const b=document.createElement("button");b.type="button";b.className="ai-opt";b.textContent=label;b.addEventListener("click",()=>{r.querySelectorAll("button").forEach(x=>x.disabled=true);b.classList.add("picked");add("me",esc(label));setTimeout(fn,120)});r.appendChild(b)});row.appendChild(r)}
+  if(opts.acts&&opts.acts.length){const r=document.createElement("div");r.className="ai-acts";opts.acts.forEach(k=>{const b=document.createElement("button");b.type="button";b.className="ai-act";
+      if(k==="share"){b.textContent="نسخ النتيجة لإرسالها";const txt=opts.shareTxt;b.addEventListener("click",()=>copyText(b,txt,"نسخ النتيجة لإرسالها"))}
+      else{b.textContent=A[k].t+" ←";b.addEventListener("click",A[k].f)}
+      r.appendChild(b)});row.appendChild(r)}
+  const turn=(role==="me"||!log.firstElementChild)?newTurn():log.firstElementChild;turn.appendChild(row);return row;
 }
-function eligibility(p){
-  const set=(id,v)=>{const el=document.getElementById(id);el.value=v};
-  set("cat","main");set("age",p.age);set("juz",String(Math.min(30,Math.max(0,p.juz))));document.getElementById("qir").checked=!!p.qir;
+const bot=(h,o)=>setTimeout(()=>add("bot",h,o),180);
+const setF=(id,v)=>{const el=document.getElementById(id);if(el.type==="checkbox")el.checked=!!v;else el.value=v};
+const juzTxt=j=>j===0?"أقل من جزء":j===1?"جزءاً واحداً":j===2?"جزأين":juzLabel(j);
+function result(intro,ctx){
   compute();
-  const out=(lastRes.out||[]).filter(o=>!o.soon),soon=(lastRes.out||[]).find(o=>o.soon);
-  let h=`لمن عمره <b>${yrs(p.age)}</b> ويحفظ <b>${p.juz===0?"أقل من جزء":p.juz===1?"جزءاً واحداً":p.juz===2?"جزأين":juzLabel(p.juz)}</b>:`;
-  if(!out.length)h+=`<br>${lastRes.msg||"لا توجد شريحة مناسبة."}`;
-  else h+="<ul class='ai-ul'>"+out.map(o=>`<li><b>${o.b}</b>: ${o.s}${o.m?" <span class='ai-ok'>مطابقة لحفظك</span>":""}<br><span class='ai-muted'>الأول ${money(o.p[0])}${o.p.length>1?` · الثاني ${money(o.p[1])} · الثالث ${money(o.p[2])}`:""}</span></li>`).join("")+"</ul>";
-  if(out.length>1)h+="يشارك في <b>شريحة واحدة فقط</b> يختارها.";
-  if(soon)h+=`<br><span class='ai-muted'>${soon.b}: ${soon.n}</span>`;
-  if(lastRes.msg&&out.length)h+=`<br><span class='ai-muted'>${lastRes.msg}</span>`;
-  h+="<br><span class='ai-muted'>عبّأتُ أداة «اعرف فرعك» بهذه البيانات.</span>";
-  return {h,act:["finder","path"]};
+  const out=(lastRes.out||[]).filter(o=>!o.soon);
+  let h=intro;
+  if(!out.length&&lastRes.msg)h+=`<br>${lastRes.msg}`;
+  else if(out.length>1)h+="<br><span class='ai-muted'>يشارك في <b>شريحة واحدة فقط</b> يختارها من هذه الخيارات.</span>";
+  const cards=out.length||(lastRes.out||[]).length?document.getElementById("results").innerHTML:"";
+  bot(h,{cards,acts:out.length?["share","path"]:["contact"],shareTxt:shareText(ctx)});
+  guide={};
+}
+// ---------- guided flow ----------
+let guide={};
+const AGES=[["أقل من 6 سنوات",4],["6 إلى 10 سنوات",8],["11 إلى 14 سنة",12],["15 إلى 17 سنة",16],["18 إلى 24 سنة",20],["25 إلى 59 سنة",40],["60 سنة فأكثر",65]];
+const JUZ=[["أقل من جزء",0],["جزء واحد",1],["جزءان",2],["3 أجزاء",3],["4 أجزاء",4],["5 أجزاء",5],["10 أجزاء",10],["15 جزءاً",15],["20 جزءاً",20],["25 جزءاً",25],["القرآن كاملاً",30]];
+function startGuide(){
+  guide={step:"cat"};
+  bot("لمن المشاركة؟",{choices:[
+    ["عامة (حسب العمر والحفظ)",askAge],
+    ["ذوو الاحتياجات الخاصة",askDisab],
+    ["نزلاء المؤسسات الإصلاحية",()=>{guide={step:"juz",cat:"prison"};askJuz("prison")}],
+    ["نزلاء دور الرعاية والأحداث",()=>{setF("cat","care");result("مسابقة <b>دور الرعاية والأحداث</b> في شريحتين:","نزلاء دور الرعاية والأحداث")}]]});
+}
+function askAge(){guide={step:"age",cat:"main"};bot("كم عمر المتسابق؟ اختر، أو اكتب العمر بالضبط.",{choices:AGES.map(([l,a])=>[l,()=>{guide.age=a;guide.ageL=l;a<6?finishMain(0):askJuz("main")}])})}
+function askJuz(cat){guide.step="juz";guide.cat=cat;bot("كم جزءاً يحفظ؟ اختر، أو اكتب العدد (مثل: 7).",{choices:JUZ.filter(([,j])=>cat==="main"||j>0).map(([l,j])=>[l,()=>cat==="prison"?finishPrison(j):finishMain(j)])})}
+function finishMain(j){
+  guide.juz=j;
+  if(j===30){guide.step="qir";bot("هل يتقن إحدى القراءات السبع أو رواياتها؟",{choices:[["نعم",()=>doMain(true)],["لا",()=>doMain(false)]]});return}
+  doMain(false);
+}
+function doMain(q){
+  const g=guide;setF("cat","main");setF("age",g.age);setF("juz",String(g.juz));setF("qir",q);
+  const ageL=g.ageL||(g.age+(g.age>=3&&g.age<=10?" سنوات":" سنة"));
+  result(`لمن عمره <b>${ageL}</b> ويحفظ <b>${juzTxt(g.juz)}</b>${q?" ويتقن قراءة أو رواية":""}:`,`العمر: ${ageL} · الحفظ: ${juzTxt(g.juz)}${q?" · يتقن إحدى القراءات":""}`);
+}
+function finishPrison(j){setF("cat","prison");setF("juz",String(j));result(`لنزلاء <b>المؤسسات الإصلاحية</b> ممن يحفظ <b>${juzTxt(j)}</b>:`,"نزلاء المؤسسات الإصلاحية · الحفظ: "+juzTxt(j))}
+const DIS=[["الإعاقة الذهنية ومتلازمة داون","0"],["التوحد","1"],["ضعاف السمع","2"],["الصم","deaf"],["بطيئو التعلم والتأخر الدراسي","slow"],["صعوبات التعلم","ld"]];
+function askDisab(){guide={step:"dtype",cat:"disab"};bot("ما نوع الإعاقة؟",{choices:DIS.map(([l,v])=>[l,()=>doDisab(v,null,l)])})}
+function doDisab(v,stage,l){
+  setF("cat","disab");setF("dtype",v);
+  if((v==="slow"||v==="ld")&&!stage){guide={step:"stage",cat:"disab",dtype:v,l};bot("ما المرحلة الدراسية؟",{choices:[["الابتدائية","الابتدائية"],["المتوسطة","المتوسطة"],["الثانوية","الثانوية"]].map(([x,y])=>[x,()=>doDisab(v,y,l)])});return}
+  if(stage)setF("stage",stage);
+  const name=l||DIS.find(d=>d[1]===v)[0];
+  result(`لفئة <b>${name}</b>${stage?` · المرحلة ${stage}`:""}:<br><span class='ai-muted'>يلزم تقديم شهادة إعاقة معتمدة من الهيئة العامة لشؤون ذوي الإعاقة.</span>`,"ذوو الاحتياجات الخاصة · "+name+(stage?" · المرحلة "+stage:""));
+}
+// ---------- free text ----------
+function handle(msg){
+  const t=N(msg),num=(t.match(/\d{1,3}/)||[])[0];
+  const r=parseF(msg);
+  // answers to a pending guided question
+  if(guide.step==="age"&&num&&r.juz==null){guide.age=+num;guide.ageL=null;+num<6?finishMain(0):askJuz("main");return}
+  if(guide.step==="juz"&&(num||r.juz!=null)){const j=r.juz!=null?r.juz:Math.min(30,+num);guide.cat==="prison"?finishPrison(j):finishMain(j);return}
+  if(guide.step==="stage"){const st=/ابتداي/.test(t)?"الابتدائية":/متوسط/.test(t)?"المتوسطة":/ثانوي/.test(t)?"الثانوية":null;if(st){doDisab(guide.dtype,st,guide.l);return}}
+  if(guide.step==="qir"){if(/نعم|اي|ايوه|اتقن/.test(t)){doMain(true);return}if(/لا|ما/.test(t)){doMain(false);return}}
+  // special categories described in text
+  if(r.cat==="disab"){doDisab(r.dtype,r.stage,null);return}
+  if(r.cat==="prison"){if(r.juz!=null)finishPrison(r.juz);else{guide={step:"juz",cat:"prison"};askJuz("prison")}return}
+  if(r.cat==="care"){setF("cat","care");result("مسابقة <b>دور الرعاية والأحداث</b> في شريحتين:","نزلاء دور الرعاية والأحداث");return}
+  // age + memorized amount in one message
+  if(r.age!=null&&r.age<6&&r.juz==null)r.juz=0;
+  if(r.age!=null&&r.juz!=null){
+    if(r.age<3||r.age>110){bot("تحقق من العمر من فضلك؛ المسابقة تبدأ من عمر 3 سنوات.");return}
+    guide={age:r.age,juz:r.juz};
+    if(r.juz===30&&!r.qir){finishMain(30);return}
+    doMain(r.qir&&r.juz===30);return;
+  }
+  if(r.age!=null){guide={step:"juz",cat:"main",age:r.age};bot(`العمر ${r.age} ${r.age>=3&&r.age<=10?"سنوات":"سنة"}. وكم جزءاً يحفظ؟`,{choices:JUZ.map(([l,j])=>[l,()=>finishMain(j)])});return}
+  if(r.juz!=null&&/احفظ|يحفظ|تحفظ|حافظ|جز/.test(t)){guide={step:"age",cat:"main",juz:r.juz};bot(`الحفظ ${juzTxt(r.juz)}. وكم العمر؟`,{choices:AGES.map(([l,a])=>[l,()=>{guide.age=a;guide.ageL=l;finishMain(r.juz)}])});return}
+  const x=answer(msg);bot(x.h,{acts:x.act});
 }
 function answer(msg){
-  const p=parse(msg);
-  if(p.age!=null&&p.juz!=null){
-    if(p.age<3||p.age>110)return {h:"تحقق من العمر من فضلك؛ المسابقة تبدأ من عمر 3 سنوات."};
-    if(/اعاقه|توحد|داون|صم|سجن|اصلاحي|رعايه|احداث/.test(p.t))return {h:"للمسابقات الخاصة اختر الفئة في أداة «اعرف فرعك» لتظهر السور والجوائز الخاصة بها.",act:["finder","special"]};
-    return eligibility(p);
-  }
+  const p={t:N(msg)};
   let best=null,score=0;
-  I.forEach(x=>{let s=0;x.kn.forEach(k=>{if(k&&hasK(p.t,k))s=Math.max(s,k.length>4?2:1)+ (s?0.5:0)});s*=x.w;if(s>score){score=s;best=x}});
-  if(best&&best.id==="where"&&(p.age!=null||p.juz!=null)){
-    return {h:p.age!=null?`حسناً، العمر ${yrs(p.age)}. وكم جزءاً يحفظ؟ اكتب مثلاً: <b>عمري ${p.age} وأحفظ 5 أجزاء</b>.`:`حسناً، الحفظ ${juzLabel(p.juz)}. وكم العمر؟ اكتب مثلاً: <b>عمري 14 وأحفظ ${p.juz} أجزاء</b>.`,act:["finder"]};
-  }
-  if(best&&score>=1)return {h:best.a(),act:best.act};
-  // fallback: search the "about" content
+  I.forEach(x=>{let s=0;x.kn.forEach(k=>{if(k&&hasK(p.t,k))s=Math.max(s,k.length>4?2:1)+(s?0.5:0)});s*=x.w;if(s>score){score=s;best=x}});
+  if(best&&best.id==="where")return {h:"حسناً، لنحدد شريحتك خطوة بخطوة.",act:["finder"]};
+  if(best&&score>=1)return {h:best.a(),act:(best.act||[]).filter(k=>k!=="finder")};
   const q=p.t.split(/\s+/).filter(w=>w.length>2&&!["هل","ما","ماذا","كيف","متى","اين","لماذا","في","من","على","عن","الى","هو","هي","ان"].includes(w));
-  const units=[...document.querySelectorAll(".about-view .ap-sec li, .about-view details.faq, .about-view .ap-sec p")].map(el=>({el,tx:el.textContent.replace(/\s+/g," ").trim()})).filter(u=>u.tx.length>8);
+  const units=[...document.querySelectorAll(".about-view .ap-sec li, .about-view details.faq, .about-view .ap-sec p")].map(el=>({tx:el.textContent.replace(/\s+/g," ").trim()})).filter(u=>u.tx.length>8);
   const hits=units.map(u=>({u,s:q.filter(w=>N(u.tx).includes(w)).length})).filter(h=>h.s>0).sort((a,b)=>b.s-a.s).slice(0,2);
   if(hits.length)return {h:"هذا أقرب ما وجدته في البيان:<ul class='ai-ul'>"+hits.map(h=>`<li>${h.u.tx.length>220?h.u.tx.slice(0,220)+"…":h.u.tx}</li>`).join("")+"</ul>",act:["faq"]};
-  return {h:"لم أجد إجابة لهذا السؤال في البيان. جرّب صياغة أخرى، أو اختر من الأسئلة المقترحة، أو تواصل مع الأمانة عبر الواتساب.",act:["contact","faq"]};
+  return {h:"لم أجد إجابة لهذا السؤال في البيان. جرّب صياغة أخرى، أو اختر من الأسئلة المقترحة، أو تواصل عبر الواتساب.",act:["contact","faq"]};
 }
-// UI
-const fab=document.createElement("button");fab.className="ai-fab";fab.type="button";fab.setAttribute("aria-label","المساعد");fab.setAttribute("aria-expanded","false");
-fab.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 016.5 3h11A2.5 2.5 0 0120 5.5v8a2.5 2.5 0 01-2.5 2.5H10l-4.5 4v-4h0A1.5 1.5 0 014 14.5z"/><path d="M8.5 9.5h.01M12 9.5h.01M15.5 9.5h.01"/></svg><span>المساعد</span>';
-const sheet=document.createElement("div");sheet.className="ai-sheet";sheet.hidden=true;sheet.setAttribute("role","dialog");sheet.setAttribute("aria-label","المساعد");
-sheet.innerHTML=`<div class="ai-head"><div class="ai-av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 016.5 3h11A2.5 2.5 0 0120 5.5v8a2.5 2.5 0 01-2.5 2.5H10l-4.5 4v-4h0A1.5 1.5 0 014 14.5z"/></svg></div><div class="ai-ht"><b>المساعد</b><small>إجابات من البيان التوضيحي للمسابقة</small></div><button class="ai-x" type="button" aria-label="إغلاق">×</button></div>
-<div class="ai-log" id="aiLog" aria-live="polite"></div>
-<div class="ai-chips" id="aiChips"></div>
-<form class="ai-form" id="aiForm"><input id="aiIn" type="text" autocomplete="off" placeholder="اكتب سؤالك… مثل: عمري 12 وأحفظ 7 أجزاء" aria-label="سؤالك"><button type="submit" aria-label="إرسال"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5M11 6l-6 6 6 6"/></svg></button></form>`;
-const scrim=document.createElement("div");scrim.className="ai-scrim";scrim.hidden=true;
-document.body.append(scrim,sheet,fab);
-const log=sheet.querySelector("#aiLog"),inp=sheet.querySelector("#aiIn");
-function add(role,html,acts){
-  const d=document.createElement("div");d.className="ai-msg "+role;d.innerHTML=html;
-  if(acts&&acts.length){const r=document.createElement("div");r.className="ai-acts";acts.forEach(k=>{const b=document.createElement("button");b.type="button";b.className="ai-act";b.textContent=A[k].t+" ←";b.addEventListener("click",A[k].f);r.appendChild(b)});d.appendChild(r)}
-  log.appendChild(d);log.scrollTop=log.scrollHeight;
-}
-const CH=I.filter(x=>x.chip);
-sheet.querySelector("#aiChips").innerHTML=CH.map(x=>`<button type="button" class="ai-chip" data-q="${x.id}">${x.chip}</button>`).join("");
-sheet.querySelector("#aiChips").addEventListener("click",e=>{const c=e.target.closest(".ai-chip");if(!c)return;const x=I.find(i=>i.id===c.dataset.q);add("me",c.textContent);const r={h:x.a(),act:x.act};setTimeout(()=>add("bot",r.h,r.act),150)});
-sheet.querySelector("#aiForm").addEventListener("submit",e=>{e.preventDefault();const v=inp.value.trim();if(!v)return;add("me",v.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])));inp.value="";const r=answer(v);setTimeout(()=>add("bot",r.h,r.act),200)});
-let greeted=false;
-function openAI(){sheet.hidden=false;scrim.hidden=false;fab.setAttribute("aria-expanded","true");document.documentElement.classList.add("ai-open");
-  if(!greeted){greeted=true;add("bot","مرحباً! اسألني عن مسابقة الكويت الكبرى (29): الفروع، والجوائز، والمواعيد، والشروط. ولمعرفة شريحتك اكتب مثلاً: <b>عمري 12 وأحفظ 7 أجزاء</b>.")}
-  setTimeout(()=>inp.focus({preventScroll:true}),60)}
-function closeAI(){if(sheet.hidden)return;sheet.hidden=true;scrim.hidden=true;fab.setAttribute("aria-expanded","false");document.documentElement.classList.remove("ai-open");fab.focus({preventScroll:true})}
-fab.addEventListener("click",()=>sheet.hidden?openAI():closeAI());
-scrim.addEventListener("click",closeAI);sheet.querySelector(".ai-x").addEventListener("click",closeAI);
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeAI()});
+// ---------- chips & input ----------
+const CH=[{chip:"حدّد شريحتي",go:startGuide},...I.filter(x=>x.chip&&x.id!=="where")];
+const chipsEl=document.getElementById("aiChips");
+chipsEl.innerHTML=CH.map((x,i)=>`<button type="button" class="ai-chip" data-i="${i}">${x.chip}</button>`).join("");
+chipsEl.addEventListener("click",e=>{const c=e.target.closest(".ai-chip");if(!c)return;const x=CH[+c.dataset.i];add("me",esc(c.textContent));if(x.go){x.go();return}bot(x.a(),{acts:(x.act||[]).filter(k=>k!=="finder")})});
+document.getElementById("aiForm").addEventListener("submit",e=>{e.preventDefault();const v=inp.value.trim();if(!v)return;add("me",esc(v));inp.value="";handle(v)});
+// greeting + first guided question (page opens in a working state)
+add("bot","مرحباً! أنا مساعد مسابقة الكويت الكبرى (29). أحدد لك الشريحة المناسبة وجوائزها، وأجيب عن أسئلتك عن الشروط والمواعيد. اكتب مثلاً: <b>عمري 12 وأحفظ 7 أجزاء</b>، أو اختر:");
+guide={step:"cat"};
+add("bot","لمن المشاركة؟",{choices:[
+    ["عامة (حسب العمر والحفظ)",askAge],
+    ["ذوو الاحتياجات الخاصة",askDisab],
+    ["نزلاء المؤسسات الإصلاحية",()=>{guide={step:"juz",cat:"prison"};askJuz("prison")}],
+    ["نزلاء دور الرعاية والأحداث",()=>{setF("cat","care");result("مسابقة <b>دور الرعاية والأحداث</b> في شريحتين:","نزلاء دور الرعاية والأحداث")}]]});
+window.scrollTo(0,0);
 })();
 
 // appearance
@@ -1316,6 +1478,7 @@ function applyLook(){
   K.forEach((k,i)=>st.setProperty("--"+k,vals[i]));
   st.colorScheme=dark?"dark":"light";
   document.documentElement.classList.toggle("is-dark",dark);
+  const tg=document.getElementById("themeTg");if(tg){tg.setAttribute("aria-pressed",dark);tg.title=dark?"الوضع الفاتح":"الوضع الداكن"}
   document.querySelector(".wrap").style.zoom=({14:.93,15:1,17:1.13})[look.s]||1;
   sw.querySelectorAll(".sw").forEach(b=>b.setAttribute("aria-pressed",b.dataset.p===look.p));
   document.querySelectorAll("#modes button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.m===look.m));
@@ -1329,6 +1492,18 @@ new MutationObserver(applyLook).observe(document.documentElement,{attributes:tru
 if(!PAL[look.p])look.p="awqaf";
 applyLook();
 
+// top app bar with theme toggle
+const appbar=document.createElement("div");appbar.className="appbar";
+appbar.innerHTML=`<div class="ab-brand"><span class="ab-logo"></span><span class="ab-t"><b>مسابقة الكويت الكبرى</b><small>لحفظ القرآن الكريم وتجويده · ٢٩</small></span></div>
+<button class="theme-tg" id="themeTg" type="button" aria-label="تبديل الوضع الداكن والفاتح"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><mask id="tgMask"><rect width="24" height="24" fill="#fff"/><circle class="tg-bite" cx="24" cy="2" r="7" fill="#000"/></mask></defs><circle class="tg-core" cx="12" cy="12" r="5" fill="currentColor" mask="url(#tgMask)"/><g class="tg-rays" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1.8v2.4M12 19.8v2.4M4.8 4.8l1.7 1.7M17.5 17.5l1.7 1.7M1.8 12h2.4M19.8 12h2.4M4.8 19.2l1.7-1.7M17.5 6.5l1.7-1.7"/></g></svg></button>`;
+document.body.prepend(appbar);
+{const lw=document.querySelector("header .org-logo-w");if(lw){const c=lw.cloneNode(true);c.classList.add("sm");appbar.querySelector(".ab-logo").appendChild(c)}else appbar.querySelector(".ab-logo").remove()}
+appbar.querySelector(".ab-brand").addEventListener("click",()=>{showView(0)});
+applyLook();
+document.getElementById("themeTg").addEventListener("click",()=>{
+  const dark=document.documentElement.classList.contains("is-dark");
+  look.m=dark?"light":"dark";store.set("q29m",look.m);applyLook();
+});
 // copy
 document.querySelectorAll(".copy[data-copy]").forEach(b=>b.addEventListener("click",()=>copyText(b,b.dataset.copy,b.textContent)));
 </script>
