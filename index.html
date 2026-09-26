@@ -100,7 +100,7 @@ header .lede{color:var(--muted);max-width:62ch}
 
 /* tabs */
 .section{display:flex;flex-direction:column;gap:14px}
-.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tabs{scroll-margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 @media (min-width:720px){.tabs{grid-template-columns:repeat(6,1fr)}}
 .tab{font:inherit;font-size:13px;font-weight:600;line-height:1.35;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:12px 4px 10px;cursor:pointer;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;min-height:78px}
 .tab svg{width:24px;height:24px;color:var(--green)}
@@ -137,10 +137,18 @@ header .lede{color:var(--muted);max-width:62ch}
 .band{font:inherit;font-size:13px;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:4px 10px;cursor:pointer}
 .band[aria-pressed="true"]{border-color:var(--gold);background:var(--gold-soft);font-weight:600}
 .tbl{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:14px;min-width:420px}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:0}
 th,td{padding:9px 10px;text-align:right;border-bottom:1px solid var(--line);vertical-align:top}
 th{font-size:12.5px;color:var(--muted);font-weight:600;letter-spacing:.02em}
 td.m{font-variant-numeric:tabular-nums;white-space:nowrap}
+@media (max-width:520px){
+  th,td{padding:8px 5px;font-size:13px}
+  th{font-size:11.5px}
+  .panel,.card{padding-inline:14px}
+  details .inner.tbl{padding-inline:8px}
+  #panel-qiraat td.m{white-space:normal}
+}
+#sh-points table td.m,#sh-points table th:not(:first-child){text-align:center}
 td.m.first{color:var(--green);font-weight:700}
 tr:last-child td{border-bottom:0}
 .note{font-size:13px;color:var(--warn);background:transparent;border-inline-start:3px solid var(--warn);padding-inline-start:10px}
@@ -225,11 +233,33 @@ mark{background:var(--gold-soft);color:var(--ink);border-radius:3px;padding:0 2p
 .share-msg{overflow:hidden}
 .share-btns{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .share-btns .copy{padding:8px 14px}
+.to-top{position:fixed;left:14px;bottom:calc(env(safe-area-inset-bottom,0px) + 86px);z-index:29;display:flex;flex-direction:column;align-items:center;gap:0;width:50px;height:50px;justify-content:center;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--green);box-shadow:0 4px 14px rgba(0,0,0,.16);cursor:pointer;font:inherit;font-size:10.5px;font-weight:600;line-height:1}
+.to-top svg{width:20px;height:20px}
+.to-top:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.to-sections{align-self:flex-start;display:block;margin-top:4px;font:inherit;font-size:13px;font-weight:600;color:var(--green);background:none;border:0;padding:4px 0;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+.set-list{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:6px}
+.set-row{font:inherit;display:flex;align-items:center;gap:14px;width:100%;text-align:right;background:transparent;border:0;color:var(--ink);padding:14px 16px;cursor:pointer;position:relative}
+.set-row+.set-row::before{content:"";position:absolute;top:0;inset-inline-start:66px;inset-inline-end:0;height:1px;background:var(--line)}
+.set-row:hover,.set-row:active{background:var(--green-soft)}
+.set-row:focus-visible{outline:2px solid var(--green);outline-offset:-2px}
+.set-ic{width:36px;height:36px;border-radius:10px;background:var(--green);color:var(--bg);display:grid;place-items:center;flex:none}
+.set-ic svg{width:20px;height:20px}
+.set-tx{flex:1;display:flex;flex-direction:column;gap:1px;min-width:0}
+.set-tx b{font-size:15.5px;font-weight:600}
+.set-tx small{font-size:12.5px;color:var(--muted)}
+.set-chev{width:18px;height:18px;color:var(--muted);flex:none}
+.more-back{padding-top:6px}
+.more-back button{font:inherit;font-size:15px;font-weight:600;display:inline-flex;align-items:center;gap:4px;background:none;border:0;color:var(--green);cursor:pointer;padding:6px 0}
+.more-back svg{width:20px;height:20px}
+@keyframes slideIn{from{transform:translateX(-24px);opacity:.4}to{transform:none;opacity:1}}
+.slide-in{animation:slideIn .22s ease-out}
+@media (prefers-reduced-motion:reduce){.slide-in{animation:none}}
 .sh-card{scroll-margin-top:16px}
+details>.to-sections{margin:0 16px 14px}
 .ap-grid.g3{grid-template-columns:repeat(3,1fr)}
 .sh-h{display:inline-flex;align-items:center;gap:10px}
 .sh-h svg{width:26px;height:26px;color:var(--green);flex:none;padding:4px;box-sizing:content-box;background:var(--green-soft);border-radius:8px}
-.ap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.ap-grid{scroll-margin-top:16px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .ap-tile{font:inherit;font-size:13px;font-weight:600;line-height:1.35;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 4px 10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:6px;text-align:center;min-height:78px}
 .ap-tile svg{width:24px;height:24px;color:var(--green)}
 .ap-tile:hover{border-color:var(--green);background:var(--green-soft)}
@@ -469,7 +499,7 @@ body{line-height:1.9}
   <!-- SHIELDS -->
   <section class="section" aria-labelledby="s-title">
     <h2 id="s-title">جوائز الجهات والمنسقين والأسر</h2>
-    <nav class="ap-grid" aria-label="أقسام الدروع"><button class="ap-tile" data-go-card="sh-org"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span>درع الجهات</span></button><button class="ap-tile" data-go-card="sh-coord"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="3"/><path d="M6 20c.5-3.5 3-5.5 6-5.5s5.5 2 6 5.5"/><path d="M16.5 3.5l1 1 2-2"/></svg><span>أفضل منسق</span></button><button class="ap-tile" data-go-card="sh-family"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="7" r="2.3"/><circle cx="17" cy="7" r="2.3"/><circle cx="12" cy="12" r="1.9"/><path d="M3 19c.3-3 2-4.8 4-4.8s3.2 1 3.8 2.3M21 19c-.3-3-2-4.8-4-4.8s-3.2 1-3.8 2.3M9.2 20c.4-2 1.5-3.2 2.8-3.2s2.4 1.2 2.8 3.2"/></svg><span>الأسرة القرآنية</span></button><button class="ap-tile" data-go-card="sh-points"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9.5h16M4 15h16M9.5 4v16"/></svg><span>جدول النقاط</span></button></nav>
+    <nav class="ap-grid" id="shNav" aria-label="أقسام الدروع"><button class="ap-tile" data-go-card="sh-org"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span>درع الجهات</span></button><button class="ap-tile" data-go-card="sh-coord"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="3"/><path d="M6 20c.5-3.5 3-5.5 6-5.5s5.5 2 6 5.5"/><path d="M16.5 3.5l1 1 2-2"/></svg><span>أفضل منسق</span></button><button class="ap-tile" data-go-card="sh-family"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="7" r="2.3"/><circle cx="17" cy="7" r="2.3"/><circle cx="12" cy="12" r="1.9"/><path d="M3 19c.3-3 2-4.8 4-4.8s3.2 1 3.8 2.3M21 19c-.3-3-2-4.8-4-4.8s-3.2 1-3.8 2.3M9.2 20c.4-2 1.5-3.2 2.8-3.2s2.4 1.2 2.8 3.2"/></svg><span>الأسرة القرآنية</span></button><button class="ap-tile" data-go-card="sh-points"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9.5h16M4 15h16M9.5 4v16"/></svg><span>جدول النقاط</span></button></nav>
     <div class="grid2">
       <div class="card sh-card" id="sh-org">
         <h3 class="sh-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>درع الجهات</h3>
@@ -525,7 +555,8 @@ body{line-height:1.9}
     </details>
   </section>
 
-  <nav class="ap-grid" id="moreNav" aria-label="أقسام المزيد"><button class="ap-tile" data-go-card="c-sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/></svg><span>للتواصل</span></button><button class="ap-tile" data-go-card="calcSec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M11 11h2M14 11h2M8 14h2M11 14h2M14 14h2M8 17h2M11 17h5"/></svg><span>حاسبة النقاط</span></button><button class="ap-tile" data-go-card="shareSec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg><span>مشاركة الصفحة</span></button><button class="ap-tile" data-go-card="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg><span>إعدادات العرض</span></button></nav>
+  <nav class="set-list" id="moreNav" aria-label="المزيد"><button class="set-row" data-more="c-sec"><span class="set-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/></svg></span><span class="set-tx"><b>للتواصل</b><small>واتساب · إنستغرام</small></span><svg class="set-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg></button><button class="set-row" data-more="calcSec"><span class="set-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M11 11h2M14 11h2M8 14h2M11 14h2M14 14h2M8 17h2M11 17h5"/></svg></span><span class="set-tx"><b>حاسبة نقاط الجهة</b><small>للمنسقين: مجموع نقاط الدروع</small></span><svg class="set-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg></button><button class="set-row" data-more="shareSec"><span class="set-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg></span><span class="set-tx"><b>مشاركة الصفحة</b><small>واتساب · نسخ الرابط</small></span><svg class="set-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg></button><button class="set-row" data-more="settings"><span class="set-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></span><span class="set-tx"><b>إعدادات العرض</b><small>الخلفية · حجم الخط</small></span><svg class="set-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg></button></nav>
+  <div class="more-back" id="moreBack" hidden><button type="button" id="moreBackBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 6l6 6-6 6"/></svg>المزيد</button></div>
 
   <!-- CONTACT -->
   <section class="card sh-card" id="c-sec" aria-labelledby="c-title">
@@ -969,7 +1000,7 @@ const AB_SHORT={"نبذة عن المسابقة":"نبذة","أهداف المس
 const aboutView=document.createElement("div");
 aboutView.className="about-view";
 aboutView.innerHTML=`${countdownHTML()}<div class="srch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><input id="abSearch" type="search" placeholder="ابحث في الشروط والأسئلة… مثل: اعتراض، شهادة، الجنسية" aria-label="بحث في عن المسابقة" autocomplete="off"><button id="abClear" type="button" aria-label="مسح البحث" hidden>×</button></div><div class="srch-res" id="abRes" hidden></div><nav class="ap-grid" aria-label="أقسام عن المسابقة">${ABOUT.map(a=>`<button class="ap-tile" data-ab="${a.id}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${AB_IC[a.t]||AB_IC._}</svg><span>${AB_SHORT[a.t]||a.t}</span></button>`).join("")}</nav>
-${ABOUT.map(a=>`<section class="ap-sec" id="${a.id}"><h2>${a.t}</h2>${a.h}</section>`).join("")}`;
+${ABOUT.map(a=>`<section class="ap-sec" id="${a.id}"><h2>${a.t}</h2>${a.h}<button class="to-sections" type="button" data-to-grid>↑ العودة إلى الأقسام</button></section>`).join("")}`;
 aboutSec.replaceWith(aboutView);
 initSearch();
 document.addEventListener("click",e=>{const b=e.target.closest("[data-ab]");if(!b)return;e.preventDefault();
@@ -980,7 +1011,7 @@ const VIEWS=[
  {k:"branches",t:"الفروع",els:[sec("b-title")]},
  {k:"find",t:"اعرف فرعك",els:[sec("f-title")]},
  {k:"shield",t:"الدروع",els:[sec("s-title")]},
- {k:"more",t:"المزيد",els:[document.getElementById("moreNav"),sec("c-title"),document.getElementById("calcSec"),document.getElementById("shareSec"),document.getElementById("settings"),document.querySelector("footer")]}
+ {k:"more",t:"المزيد",els:[document.getElementById("moreNav"),document.getElementById("moreBack"),sec("c-title"),document.getElementById("calcSec"),document.getElementById("shareSec"),document.getElementById("settings"),document.querySelector("footer")]}
 ];
 const IC={
  about:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',
@@ -1006,7 +1037,7 @@ function showView(i,scroll=true){
   try{history.replaceState(null,"","#"+VIEWS[i].k)}catch(e){}
   if(scroll)window.scrollTo(0,0);
 }
-bar.addEventListener("click",e=>{const b=e.target.closest(".tb");if(b)showView(+b.dataset.v)});
+bar.addEventListener("click",e=>{const b=e.target.closest(".tb");if(!b)return;if(b.classList.contains("active")){window.scrollTo({top:0,behavior:(matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth")});return}showView(+b.dataset.v)});
 let startV=+store.get("q29v","0")||0;
 const hv=VIEWS.findIndex(v=>"#"+v.k===(location.hash==="#phone"?"#more":location.hash));if(hv>=0)startV=hv;
 showView(startV,false);
@@ -1024,6 +1055,51 @@ document.getElementById("shareWa").href="https://wa.me/?text="+encodeURIComponen
 document.getElementById("shareCopy").addEventListener("click",e=>copyText(e.currentTarget,SHARE_TXT,"نسخ الرسالة مع الرابط"));
 document.getElementById("shareLink").addEventListener("click",e=>copyText(e.currentTarget,PAGE_URL,"نسخ الرابط فقط"));
 if(!IS_ART&&navigator.share){const nb=document.getElementById("shareNative");nb.hidden=false;nb.addEventListener("click",()=>{navigator.share({title:"مسابقة الكويت الكبرى 29",text:SHARE_TXT.replace(PAGE_URL+"\n",""),url:PAGE_URL}).catch(()=>{})})}
+
+// section-end "back to menu" links on every page
+const addBack=(el,target,label)=>{if(!el)return;const b=document.createElement("button");b.type="button";b.className="to-sections";b.dataset.toGrid=target;b.textContent="↑ "+label;el.appendChild(b)};
+document.querySelectorAll("#panels .panel").forEach(p=>addBack(p,"#tabs","العودة إلى الفروع"));
+["sh-org","sh-coord","sh-family","sh-points"].forEach(id=>addBack(document.getElementById(id),"#shNav","العودة إلى أقسام الدروع"));
+
+// More page: WhatsApp-settings style list with sub-pages
+const MORE_SECS=["c-sec","calcSec","shareSec","settings"];
+let moreCur=null;
+function moreOpen(id,fromPop){
+  const v=VIEWS.findIndex(x=>x.k==="more");
+  if(!tbs[v].classList.contains("active"))return;
+  if(id&&!fromPop){try{history.pushState({more:id},"",location.hash||"#more")}catch(e){}}
+  if(!id&&moreCur&&!fromPop&&history.state&&history.state.more){moreCur=null;try{history.back();return}catch(e){}}
+  moreCur=id;
+  if(id){const el=document.getElementById(id);el.classList.remove("slide-in");void el.offsetWidth;el.classList.add("slide-in")}
+  document.getElementById("moreNav").hidden=!!id;
+  document.getElementById("moreBack").hidden=!id;
+  MORE_SECS.forEach(k=>document.getElementById(k).hidden=id?k!==id:true);
+  if(id==="calcSec"){const cd=document.querySelector("#calcSec details.calc-d");if(cd)cd.open=true}
+  window.scrollTo(0,0);
+}
+document.addEventListener("click",e=>{
+  const r=e.target.closest("[data-more]");if(r){moreOpen(r.dataset.more);return}
+  if(e.target.closest("[data-more-back]")||e.target.closest("#moreBackBtn"))moreOpen(null);
+});
+window.addEventListener("popstate",e=>{const st=e.state&&e.state.more;moreOpen(st||null,true)});
+// re-tapping "المزيد" in the bottom bar goes back to the list
+bar.addEventListener("click",e=>{const b=e.target.closest(".tb");if(b&&VIEWS[+b.dataset.v].k==="more"&&moreCur&&b.classList.contains("active")){e.stopImmediatePropagation();moreOpen(null)}},true);
+// swipe from either screen edge to go back
+let sw0=null;
+document.addEventListener("touchstart",e=>{if(!moreCur||e.touches.length>1){sw0=null;return}const t=e.touches[0],W=window.innerWidth;sw0=(t.clientX<40||t.clientX>W-40)?{x:t.clientX,y:t.clientY,edge:t.clientX<40?"l":"r"}:null},{passive:true});
+document.addEventListener("touchend",e=>{if(!sw0||!moreCur)return;const t=e.changedTouches[0],dx=t.clientX-sw0.x,dy=Math.abs(t.clientY-sw0.y);if(dy<60&&((sw0.edge==="r"&&dx<-70)||(sw0.edge==="l"&&dx>70)))moreOpen(null);sw0=null},{passive:true});
+const _showView=showView;
+showView=function(i,scroll){_showView(i,scroll);if(VIEWS[i]&&VIEWS[i].k==="more"){moreCur=null;moreOpen(null,true)}};
+if(VIEWS[startV]&&VIEWS[startV].k==="more")moreOpen(null);
+// back to top
+const topBtn=document.createElement("button");topBtn.className="to-top";topBtn.type="button";topBtn.setAttribute("aria-label","العودة إلى أعلى الصفحة");topBtn.hidden=true;
+topBtn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5.5 11.5L12 5l6.5 6.5"/></svg><span>أعلى</span>';
+document.body.appendChild(topBtn);
+const goTop=()=>window.scrollTo({top:0,behavior:(matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth")});
+topBtn.addEventListener("click",goTop);
+document.addEventListener("click",e=>{if(e.target.closest("[data-top]"))goTop()});
+document.addEventListener("click",e=>{const tg=e.target.closest("[data-to-grid]");if(!tg)return;const g=document.querySelector(tg.dataset.toGrid||".about-view .ap-grid");if(g)g.scrollIntoView({behavior:(matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"),block:"start"})});
+let tick=false;window.addEventListener("scroll",()=>{if(tick)return;tick=true;requestAnimationFrame(()=>{topBtn.hidden=window.scrollY<600;tick=false})},{passive:true});
 
 // appearance
 const K=["bg","surface","ink","muted","line","green","green-soft","gold","gold-soft"];
