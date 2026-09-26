@@ -26,10 +26,10 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#B8940F">
-<meta name="build" content="20260926095104">
+<meta name="build" content="20260926100017">
 <script>
 (function(){
-  var B="20260926095104";
+  var B="20260926100017";
   function check(){
     if(!/^https?:/.test(location.protocol))return;
     fetch(location.pathname+"?check="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){
@@ -394,6 +394,11 @@ html.view-find .to-top{display:flex}
 .ai-row.me{align-items:flex-start}
 .ai-msg.me{background:transparent;color:var(--muted);border:0;padding:0 2px;font-size:13px;max-width:100%}
 .ai-msg.me::before{content:"سؤالك: ";font-weight:600;color:var(--green)}
+.q-name{font-weight:700;color:var(--green)}
+.q-riw{display:inline-block;font-weight:700;color:var(--gold);background:var(--gold-soft);border-radius:6px;padding:0 8px;margin-inline-end:6px}
+.q-awj{display:block;font-size:13px;color:var(--muted);margin-top:4px;line-height:1.7}
+td.sl{color:var(--gold);font-weight:700}
+.sp-s{color:var(--gold)!important;font-weight:600}
 .sh-card{scroll-margin-top:16px}
 .grid2.sh-stack{grid-template-columns:1fr}
 details>.to-sections{margin:0 16px 14px}
@@ -804,7 +809,7 @@ const juzLabel=n=>n===1?"جزء واحد":n===2?"جزءان":n<=10?n+" أجزا�
 const f=n=>n.toLocaleString("en");
 const money=n=>f(n)+" د.ك";
 
-function rows(list){return list.map(([s,p])=>`<tr><td>${typeof s==="number"?juzLabel(s):s}</td><td class="m first">${money(p[0])}</td><td class="m">${money(p[1])}</td><td class="m">${money(p[2])}</td></tr>`).join("")}
+function rows(list){return list.map(([s,p])=>`<tr><td class="sl">${typeof s==="number"?juzLabel(s):s}</td><td class="m first">${money(p[0])}</td><td class="m">${money(p[1])}</td><td class="m">${money(p[2])}</td></tr>`).join("")}
 function table(list,h="الشريحة"){return `<div class="tbl"><table><thead><tr><th>${h}</th><th>الأول</th><th>الثاني</th><th>الثالث</th></tr></thead><tbody>${rows(list)}</tbody></table></div>`}
 
 const SPECIAL_A=[
@@ -836,7 +841,7 @@ const TABS=[
   ${table([["القراءات السبع بجميع الروايات وكافة الأوجه",[4000,3750,3500]]])}
   <h3>الشريحة الثانية</h3>
   <div class="tbl"><table><thead><tr><th>القراءة</th><th>الرواية والأوجه</th><th>الأول</th><th>الثاني</th><th>الثالث</th></tr></thead><tbody>
-  ${[["نافع","قالون: قصر المنفصل والصلة، توسط المنفصل والصلة، قصر المنفصل وسكون الميم، توسط المنفصل وسكون الميم"],["نافع","ورش: قصر البدل، توسط البدل، مد البدل وتقليل ذات الياء"],["ابن كثير","البزي وقنبل"],["أبو عمرو البصري","الدوري والسوسي"]].map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td class="m first">${money(3500)}</td><td class="m">${money(3250)}</td><td class="m">${money(3000)}</td></tr>`).join("")}
+  ${[["نافع","قالون: قصر المنفصل والصلة، توسط المنفصل والصلة، قصر المنفصل وسكون الميم، توسط المنفصل وسكون الميم"],["نافع","ورش: قصر البدل، توسط البدل، مد البدل وتقليل ذات الياء"],["ابن كثير","البزي وقنبل"],["أبو عمرو البصري","الدوري والسوسي"]].map(r=>`<tr><td class="q-name">${r[0]}</td><td>${r[1].includes(":")?`<span class="q-riw">${r[1].split(":")[0]}</span><span class="q-awj">${r[1].split(":").slice(1).join(":")}</span>`:`<span class="q-riw">${r[1]}</span>`}</td><td class="m first">${money(3500)}</td><td class="m">${money(3250)}</td><td class="m">${money(3000)}</td></tr>`).join("")}
   </tbody></table></div>`},
  {id:"general",t:"العامة",html:()=>`
   <p class="def">لحفظ القرآن وتجويده برواية حفص عن عاصم، للرجال والنساء من جميع الأعمار، في خمس شرائح بحسب الأجزاء المحفوظة.</p>${table(GEN)}`},
