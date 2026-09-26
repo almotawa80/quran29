@@ -1494,7 +1494,7 @@ applyLook();
 
 // top app bar with theme toggle
 const appbar=document.createElement("div");appbar.className="appbar";
-appbar.innerHTML=`<div class="ab-brand"><span class="ab-logo"></span><span class="ab-t"><b>مسابقة الكويت الكبرى</b><small>لحفظ القرآن الكريم وتجويده · ٢٩</small></span></div>
+appbar.innerHTML=`<div class="ab-brand"><span class="ab-logo"></span><span class="ab-t"><b>مسابقة الكويت الكبرى</b><small>لحفظ القرآن الكريم وتجويده (29)</small></span></div>
 <button class="theme-tg" id="themeTg" type="button" aria-label="تبديل الوضع الداكن والفاتح"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><mask id="tgMask"><rect width="24" height="24" fill="#fff"/><circle class="tg-bite" cx="24" cy="2" r="7" fill="#000"/></mask></defs><circle class="tg-core" cx="12" cy="12" r="5" fill="currentColor" mask="url(#tgMask)"/><g class="tg-rays" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1.8v2.4M12 19.8v2.4M4.8 4.8l1.7 1.7M17.5 17.5l1.7 1.7M1.8 12h2.4M19.8 12h2.4M4.8 19.2l1.7-1.7M17.5 6.5l1.7-1.7"/></g></svg></button>`;
 document.body.prepend(appbar);
 {const lw=document.querySelector("header .org-logo-w");if(lw){const c=lw.cloneNode(true);c.classList.add("sm");appbar.querySelector(".ab-logo").appendChild(c)}else appbar.querySelector(".ab-logo").remove()}
