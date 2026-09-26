@@ -26,6 +26,25 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#B8940F">
+<meta name="build" content="20260926094352">
+<script>
+(function(){
+  var B="20260926094352";
+  function check(){
+    if(!/^https?:/.test(location.protocol))return;
+    fetch(location.pathname+"?check="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){
+      var m=t.match(/<meta name="build" content="(\d+)">/);
+      if(m&&m[1]!==B&&m[1]>B){
+        var u=new URL(location.href);if(u.searchParams.get("v")===m[1])return;
+        u.searchParams.set("v",m[1]);location.replace(u.toString());
+      }
+    }).catch(function(){});
+  }
+  window.addEventListener("load",function(){setTimeout(check,400)});
+  document.addEventListener("visibilitychange",function(){if(document.visibilityState==="visible")check()});
+})();
+</script>
+<meta http-equiv="Cache-Control" content="no-cache">
 <style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px)}</style>
 <title>مسابقة الكويت الكبرى ٢٩</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
