@@ -26,7 +26,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#B8940F">
-<meta name="build" content="20260927201110">
+<meta name="build" content="20260929160105">
 <script>
 (function(){
   var B="20260926215315";
@@ -192,6 +192,9 @@ details[open] summary{color:var(--green)}
 .thresh div{border:1px solid var(--line);border-radius:10px;padding:8px 4px}
 .thresh b{display:block;font-size:22px;color:var(--green);font-variant-numeric:tabular-nums;font-family:var(--body)}
 .thresh span{font-size:12px;color:var(--muted)}
+.thresh b small{font-size:12px;font-weight:600}
+ol.rules .thresh{margin-top:8px}
+@media (max-width:520px){table.stbl th,table.stbl td{padding:8px 3px}table.stbl td.m{white-space:normal}table.stbl td:nth-child(2){white-space:nowrap}}
 ol.rules{margin:0;padding-inline-start:22px;display:flex;flex-direction:column;gap:6px}
 details{border:1px solid var(--line);border-radius:12px;background:var(--surface)}
 details summary{cursor:pointer;padding:12px 16px;font-weight:600;list-style-position:inside}
@@ -277,6 +280,25 @@ mark{background:var(--gold-soft);color:var(--ink);border-radius:3px;padding:0 2p
 .set-tx b{font-size:15.5px;font-weight:600}
 .set-tx small{font-size:12.5px;color:var(--muted)}
 .set-chev{width:18px;height:18px;color:var(--muted);flex:none}
+#moreNav.set-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;background:transparent;border:0;border-radius:0;overflow:visible}
+@media (min-width:720px){#moreNav.set-list{grid-template-columns:repeat(4,1fr)}}
+#moreNav .set-row{flex-direction:column;justify-content:flex-start;gap:8px;text-align:center;padding:16px 8px 14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;min-height:128px;transition:border-color .15s,background .15s,transform .12s}
+#moreNav .set-row+.set-row::before{display:none}
+#moreNav .set-row:hover{border-color:var(--green);background:var(--green-soft)}
+#moreNav .set-row:active{transform:scale(.97)}
+#moreNav .set-row:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+#moreNav .set-ic{width:46px;height:46px;border-radius:50%;background:var(--green-soft);color:var(--green)}
+#moreNav .set-ic svg{width:24px;height:24px}
+#moreNav .set-tx{flex:none;align-items:center;gap:3px}
+#moreNav .set-tx b{font-size:14.5px;line-height:1.35}
+#moreNav .set-tx small{font-size:12px;line-height:1.45}
+#moreNav .set-chev{display:none}
+#moreNav .set-row{min-height:104px;padding:12px 6px 10px;gap:6px}
+#moreNav .set-ic{width:40px;height:40px}
+#moreNav .set-row[aria-selected="true"]{background:var(--green);border-color:var(--green);color:var(--bg)}
+#moreNav .set-row[aria-selected="true"] .set-ic{background:rgba(255,255,255,.22);color:var(--bg)}
+#moreNav .set-row[aria-selected="true"] .set-tx small{color:var(--bg);opacity:.85}
+#moreNav{margin-bottom:6px}
 .more-back{padding-top:6px}
 .more-back button{font:inherit;font-size:15px;font-weight:600;display:inline-flex;align-items:center;gap:4px;background:none;border:0;color:var(--green);cursor:pointer;padding:6px 0}
 .more-back svg{width:20px;height:20px}
@@ -440,6 +462,13 @@ details>.to-sections{margin:0 16px 14px}
 .ap-tile{font:inherit;font-size:13px;font-weight:600;line-height:1.35;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 4px 10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:6px;text-align:center;min-height:78px}
 .ap-tile svg{width:24px;height:24px;color:var(--green)}
 .ap-tile:hover{border-color:var(--green);background:var(--green-soft)}
+.ap-tile[aria-selected="true"]{background:var(--green);border-color:var(--green);color:var(--bg)}
+.ap-tile[aria-selected="true"] svg{color:var(--bg)}
+.thresh b small{display:block;margin-top:2px}
+.ap-sec[hidden],.sh-card[hidden]{display:none!important}
+.ap-sec:not([hidden]),.sh-card:not([hidden]){animation:tsIn .22s ease}
+@keyframes tsIn{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.ap-sec,.sh-card{animation:none!important}}
 .ap-tile:focus-visible{outline:2px solid var(--green);outline-offset:2px}
 @media (max-width:340px){.ap-grid{grid-template-columns:repeat(2,1fr)}}
 .path{display:flex;flex-direction:column}
@@ -490,6 +519,32 @@ details.faq{border:1px solid var(--line);border-radius:10px;background:var(--bg)
 details.faq summary{padding:10px 14px;font-weight:600;cursor:pointer}
 details.faq[open] summary{color:var(--green)}
 details.faq p{padding:0 14px 12px;color:var(--ink)}
+.faq-cats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.faq-cat{font:inherit;font-size:13px;font-weight:600;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.faq-cat i{font-style:normal;font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.faq-cat:hover{border-color:var(--green)}
+.faq-cat[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:var(--bg)}
+.faq-cat[aria-pressed="true"] i{color:var(--bg);opacity:.85}
+details.faq[hidden]{display:none}
+.about-view>.ap-grid{grid-template-columns:repeat(3,1fr)}
+@media (min-width:720px){.about-view>.ap-grid{grid-template-columns:repeat(9,1fr)}}
+.ents-tools{display:flex;flex-direction:column;gap:8px}
+.ents-q{font:inherit;font-size:14.5px;width:100%;height:44px;padding:0 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink)}
+.ents-q:focus{outline:2px solid var(--green);outline-offset:1px}
+.ents-n{font-size:12.5px;color:var(--muted)}
+.ents{display:flex;flex-direction:column;gap:8px}
+.ent{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;border:1px solid var(--line);border-radius:12px;background:var(--bg);padding:10px 12px}
+.ent[hidden]{display:none}
+.ent-i{width:30px;height:30px;border-radius:50%;background:var(--green-soft);color:var(--green);display:grid;place-items:center;font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums}
+.ent-b{min-width:0;display:flex;flex-direction:column;gap:3px}
+.ent-b b{font-size:14.5px;line-height:1.45}
+.ent-ph{display:flex;flex-wrap:wrap;gap:4px 10px}
+.ent-ph a{direction:ltr;font-size:13px;color:var(--muted);text-decoration:none;font-variant-numeric:tabular-nums}
+.ent-ph a:hover{color:var(--green);text-decoration:underline}
+.ent-wa{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#1F8F55;color:#fff;flex:none}
+.ent-wa svg{width:21px;height:21px}
+.ent-wa.off{visibility:hidden}
+.faq-days{padding:0;padding-inline:34px 14px;padding-bottom:12px;margin:0;display:flex;flex-direction:column;gap:6px}
 .tb.fab{position:relative;color:var(--green)}
 .tb.fab .fab-c{width:54px;height:54px;margin-top:-26px;border-radius:50%;background:var(--green);color:var(--bg);display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.18);border:4px solid var(--surface)}
 .tb.fab .fab-c svg{width:24px;height:24px}
@@ -548,61 +603,66 @@ body{line-height:1.9}
   <section class="about" aria-label="عن المسابقة">
     <details open>
       <summary>نبذة عن المسابقة</summary>
-      <div class="inner"><p>تقيم الأمانة العامة للأوقاف، عبر إدارة الصناديق الوقفية والصندوق الوقفي للقرآن الكريم وعلومه، مسابقة الكويت الكبرى لحفظ القرآن الكريم وتجويده. وهي أكبر المشاريع القرآنية في دولة الكويت، وتحظى برعاية سامية من حضرة صاحب السمو أمير البلاد الشيخ مشعل الأحمد الجابر الصباح، حفظه الله ورعاه.</p></div>
+      <div class="inner"><p>تتشرف الأمانة العامة للأوقاف (إدارة الصناديق الوقفية - الصندوق الوقفي للقرآن الكريم وعلومه) بإقامة مسابقة الكويت الكبرى لحفظ القرآن الكريم وتجويده، وهي أكبر المشاريع القرآنية في دولة الكويت، وتحظى برعاية سامية من لدن حضرة صاحب السمو أمير البلاد المفدى، حفظه الله ورعاه.</p></div>
     </details>
     <details>
       <summary>أهداف المسابقة</summary>
-      <div class="inner"><ul class="plain">
-          <li>تشجيع المواطنين على اختلاف أعمارهم على الإقبال على كتاب الله تلاوةً وحفظاً وتجويداً وتدبراً، في جو تنافسي.</li>
+      <div class="inner"><p>وقد جاءت المسابقة المباركة لتحقق مجموعة من الأهداف النبيلة:</p><ul class="plain">
+          <li>تشجيع المواطنين، على اختلاف أعمارهم، على الإقبال على كتاب الله تعالى، تلاوةً وحفظاً وتجويداً وتدبراً، وإيجاد جو تنافسي مشجع على حفظه وتلاوته وتجويده، كنماذج طيبة للاقتداء والتأسي.</li>
           <li>تعزيز الجهود التي تستهدف ترسيخ القيم الإسلامية في المجتمع.</li>
-          <li>تشجيع الجهات التي تسهم في تحفيظ القرآن الكريم وتعليمه وتجويده ودعمها.</li>
-          <li>التنسيق بين الهيئات المنظِّمة لمسابقات التحفيظ الرسمية والأهلية.</li>
-          <li>الكشف عن جيل من القراء والحفظة يمثلون الكويت في المسابقات العالمية.</li>
+          <li>تشجيع ودعم الجهات التي تسهم في الجهود الرامية إلى تحفيظ القرآن الكريم وتعليمه وتجويده.</li>
+          <li>إيجاد تنسيق مشترك بين الهيئات القائمة على تنظيم مسابقات تحفيظ القرآن الكريم، سواء كانت رسمية أم أهلية.</li>
+          <li>الكشف عن جيل من القراء والحفظة الذين يمثلون الكويت في المسابقات العالمية.</li>
         </ul></div>
     </details>
     <details>
       <summary>سياسات المسابقة</summary>
       <div class="inner"><ul class="plain">
-          <li>المسابقة مفتوحة لجميع المواطنين ذكوراً وإناثاً، كلٌّ على حدة، ولجميع المستويات والأعمار.</li>
-          <li>التنسيق والتكامل مع الجهات الرسمية والأهلية المهتمة بالتحفيظ والتجويد.</li>
-          <li>الحفظ والتجويد هما أساس التسابق.</li>
+          <li>فتح مجال التسابق لكافة المواطنين، ذكوراً وإناثاً كلاً على حدةٍ، ولجميع مستويات وأعمار وشرائح المجتمع.</li>
+          <li>العمل بالتنسيق والتكامل مع الجهات الرسمية والأهلية المهتمة بتحفيظ وتجويد القرآن الكريم.</li>
+          <li>فتح مجال المشاركة في المسابقة للأفراد من كافة الجهات الرسمية والأهلية.</li>
+          <li>الاعتماد على معيار الحفظ والتجويد كأساس للتسابق.</li>
         </ul></div>
     </details>
     <details>
       <summary>مصطلحات عامة</summary>
       <div class="inner"><ul class="plain">
-          <li><b>الفئة:</b> المشاركون المتقاربون في العمر والخصائص بحسب شروط كل فرع.</li>
-          <li><b>الشريحة:</b> القراءات أو عدد الأجزاء والسور المقررة للاختبار في كل فرع.</li>
-          <li><b>الحجب:</b> عدم حصول المتسابق على الدرجة المؤهلة لأحد المراكز الثلاثة الأولى.</li>
+          <li><b>الفئة:</b> مجموع المشاركين الذين تتقارب أعمارهم وتتشابه خصائصهم وصفاتهم حسب الشروط المحددة لكل فرع من أفرع المسابقة.</li>
+          <li><b>الشريحة:</b> القراءات وعدد الأجزاء والسور المقررة للاختبار في كل فرع من أفرع المسابقة.</li>
+          <li><b>الحجب:</b> عدم حصول المتسابق على الدرجة التي تؤهله للفوز في أحد المراكز الثلاثة الأولى.</li>
         </ul></div>
     </details>
     <details>
       <summary>شروط المسابقة بجميع فروعها</summary>
       <div class="inner"><ol class="rules">
           <li>أن يكون المتسابق كويتي الجنسية.</li>
-          <li>أن يُرشَّح عن طريق إحدى الجهات المشاركة المعتمدة، وله حرية اختيار الجهة.</li>
-          <li>لا يحق الاشتراك في أكثر من فئة أو شريحة.</li>
-          <li>من فاز في فئة أو شريحة لا يشارك فيها مرة أخرى ولا فيما دونها.</li>
-          <li>لا تُقبل الاعتراضات على قرار لجنة التحكيم إلا بكتاب رسمي معتمد من الجهة المشاركة، موجّه إلى رئيس اللجنة الدائمة.</li>
-          <li>الحد الأقصى في التصفيات النهائية خمسة متسابقين لكل جهة في كل شريحة.</li>
-        </ol>
-        <h3>نسب الفوز في الفروع الرئيسة</h3>
+          <li>أن يُرشَّح المتسابق عن طريق إحدى الجهات المشاركة المعتمدة لدى إدارة المسابقة.</li>
+          <li>لا يحق للمتسابق الاشتراك في أكثر من فئة أو شريحة.</li>
+          <li>لا يحق لمن فاز في فئة أو شريحة أن يشارك فيها مرة أخرى أو في الأدنى منها.</li>
+          <li>لا تُقبل الاعتراضات على قرار لجنة التحكيم إلا بكتاب رسمي معتمد من الجهة المشاركة، وموجه للسيد رئيس اللجنة الدائمة.</li>
+          <li>للمتسابق الحرية التامة في اختيار الجهة التي يريد الاشتراك من خلالها.</li>
+          <li>يتم اختيار الفائزين الثلاثة أصحاب المراكز الأولى حسب الجدول الآتي:
         <div class="thresh">
-          <div><b>95%</b><span>المركز الأول</span></div>
-          <div><b>90%</b><span>المركز الثاني</span></div>
-          <div><b>85%</b><span>المركز الثالث</span></div>
-        </div>
-        <h3>نسب الفوز في المسابقات الخاصة</h3>
+          <div><b>95% <small>فما فوق</small></b><span>المركز الأول</span></div>
+          <div><b>90% <small>فما فوق</small></b><span>المركز الثاني</span></div>
+          <div><b>85% <small>فما فوق</small></b><span>المركز الثالث</span></div>
+        </div></li>
+          <li>يتم اختيار الفائزين الثلاثة أصحاب المراكز الأولى في المسابقات الخاصة حسب الجدول الآتي:
         <div class="thresh">
-          <div><b>90%</b><span>المركز الأول</span></div>
-          <div><b>85%</b><span>المركز الثاني</span></div>
-          <div><b>80%</b><span>المركز الثالث</span></div>
-        </div>
-        <p class="note">يُحجب المركز إذا لم يبلغ المتسابق النسبة المطلوبة له.</p></div>
+          <div><b>90% <small>فما فوق</small></b><span>المركز الأول</span></div>
+          <div><b>85% <small>فما فوق</small></b><span>المركز الثاني</span></div>
+          <div><b>80% <small>فما فوق</small></b><span>المركز الثالث</span></div>
+        </div></li>
+          <li>يحجب المركز إذا لم يحصل المتسابق على النسبة المئوية لمركزه.</li>
+        </ol></div>
     </details>
       <details>
       <summary>مسار المشاركة</summary>
       <div class="inner"><div class="path" data-path></div></div>
+    </details>
+    <details>
+      <summary>الجهات المشاركة المعتمدة</summary>
+      <div class="inner"><p>الجهات المشاركة المعتمدة لدى الأمانة العامة للأوقاف. اختر الجهة التي تريد الاشتراك من خلالها وتواصل مع منسقها.</p><div data-ents></div></div>
     </details>
     <details>
       <summary>الجدول الزمني</summary>
@@ -611,7 +671,7 @@ body{line-height:1.9}
     </details>
     <details>
       <summary>أسئلة شائعة</summary>
-      <div class="inner"><div class="faq-list"><details class="faq"><summary>هل يمكنني المشاركة في أكثر من فرع أو شريحة؟</summary><p>لا. يشارك المتسابق في فئة واحدة وشريحة واحدة فقط، ولو كان مؤهلاً لأكثر من خيار. اسأل «المساعد» لمقارنة الخيارات المتاحة لك.</p></details><details class="faq"><summary>فزتُ في دورة سابقة، فهل أستطيع المشاركة مجدداً؟</summary><p>لا تشارك في الفئة أو الشريحة التي فزت بها، ولا فيما دونها. يمكنك المشاركة في شريحة أعلى.</p></details><details class="faq"><summary>كيف أسجّل في المسابقة؟</summary><p>التسجيل عن طريق إحدى الجهات المشاركة المعتمدة، ولك حرية اختيار الجهة، من 27 سبتمبر إلى 29 أكتوبر 2026. يتواصل معك منسق الجهة، ويجري تصفيات أولية، ثم يسجّل المتميزين في النظام الآلي للتصفيات النهائية.</p></details><details class="faq"><summary>هل توجد أسئلة تجويد نظرية؟</summary><p>لا توجد أسئلة تجويد نظرية، لكن يشترط على المتسابق القراءة بالتجويد وتطبيق أحكامه عملياً أثناء التلاوة. ويُستثنى فرع القراءات، ففيه أسئلة نظرية.</p></details><details class="faq"><summary>كم متسابقاً يمكن أن ترشحه الجهة؟</summary><p>الحد الأقصى في التصفيات النهائية خمسة متسابقين لكل جهة في كل شريحة.</p></details><details class="faq"><summary>هل المسابقة للرجال والنساء؟</summary><p>نعم، ويتنافس الذكور والإناث كلٌّ على حدة. ويشترط أن يكون المتسابق كويتي الجنسية.</p></details><details class="faq"><summary>لماذا يُحجب المركز أحياناً؟</summary><p>يُحجب المركز إذا لم يبلغ المتسابق النسبة المطلوبة له: 95٪ للأول و90٪ للثاني و85٪ للثالث في الفروع الرئيسة، و90٪ و85٪ و80٪ في المسابقات الخاصة.</p></details><details class="faq"><summary>كيف أعترض على نتيجة التحكيم؟</summary><p>لا تُقبل الاعتراضات الفردية. يُقدَّم الاعتراض بكتاب رسمي معتمد من الجهة المشاركة، موجّه إلى رئيس اللجنة الدائمة.</p></details><details class="faq"><summary>ما شروط مسابقة القراءات؟</summary><p>حفظ القرآن كاملاً وإتقان القراءة أو الرواية المختارة، والتسجيل باستمارة مسابقة القراءات. وفيها أسئلة نظرية.</p><p><a class="doc-link" href="https://www.icloud.com/iclouddrive/09c34yAa5amum6kYfRB7Ri6JA" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>أسئلة القراءات النظرية (PDF)</a></p></details><details class="faq"><summary>في فرع الخير والبركة، هل أختار الأجزاء بنفسي؟</summary><p>نعم. لمن بلغ 60 عاماً فأكثر حرية اختيار الأجزاء من أي موضع في القرآن الكريم.</p></details><details class="faq"><summary>ما المطلوب في مسابقة ذوي الاحتياجات الخاصة؟</summary><p>شهادة إعاقة معتمدة من الهيئة العامة لشؤون ذوي الإعاقة، مطابقة لنوع الإعاقة وفئتها المعتمدة في المسابقة.</p></details><details class="faq"><summary>أين تُقام التصفيات النهائية؟</summary><p>في المسجد الكبير، من 22 نوفمبر إلى 2 ديسمبر 2026: تصفيات الرجال من الأحد 22 إلى الأربعاء 25 نوفمبر، وتصفيات النساء من الأحد 29 نوفمبر إلى الأربعاء 2 ديسمبر. ويبلغك منسق جهتك بموعدك تحديداً.</p></details></div></div>
+      <div class="inner"><div class="faq-list"><details class="faq"><summary>هل يمكنني المشاركة في أكثر من فرع أو شريحة؟</summary><p>لا يحق للمتسابق الاشتراك في أكثر من فئة أو شريحة. اسأل «المساعد» لمقارنة الخيارات المتاحة لك.</p></details><details class="faq"><summary>فزتُ في دورة سابقة، فهل أستطيع المشاركة مجدداً؟</summary><p>لا يحق لمن فاز في فئة أو شريحة أن يشارك فيها مرة أخرى أو في الأدنى منها.</p></details><details class="faq"><summary>كيف أسجّل في المسابقة؟</summary><p>التسجيل عن طريق إحدى الجهات المشاركة المعتمدة، ولك حرية اختيار الجهة، من 27 سبتمبر إلى 29 أكتوبر 2026. يتواصل معك منسق الجهة، ويجري تصفيات أولية، ثم يسجّل المتميزين في النظام الآلي للتصفيات النهائية.</p></details><details class="faq"><summary>هل توجد أسئلة تجويد نظرية؟</summary><p>لا توجد أسئلة تجويد نظرية، لكن يشترط على المتسابق القراءة بالتجويد وتطبيق أحكامه عملياً أثناء التلاوة. ويُستثنى فرع القراءات، ففيه أسئلة نظرية.</p></details><details class="faq"><summary>كم متسابقاً يمكن أن ترشحه الجهة؟</summary><p>الحد الأقصى لتسجيل المتسابقين في التصفيات النهائية لكل شريحة على حدة هو ( 5 ) خمسة متسابقين لكل جهةٍ مشاركة: 5 من الذكور و5 من الإناث.</p></details><details class="faq"><summary>هل المسابقة للرجال والنساء؟</summary><p>نعم، فتح مجال التسابق لكافة المواطنين، ذكوراً وإناثاً كلاً على حدةٍ. ويشترط أن يكون المتسابق كويتي الجنسية.</p></details><details class="faq"><summary>لماذا يُحجب المركز أحياناً؟</summary><p>يحجب المركز إذا لم يحصل المتسابق على النسبة المئوية لمركزه: 95% فما فوق للأول، و90% فما فوق للثاني، و85% فما فوق للثالث، وفي المسابقات الخاصة: 90% و85% و80% فما فوق.</p></details><details class="faq"><summary>كيف أعترض على نتيجة التحكيم؟</summary><p>لا تُقبل الاعتراضات على قرار لجنة التحكيم إلا بكتاب رسمي معتمد من الجهة المشاركة، وموجه للسيد رئيس اللجنة الدائمة.</p></details><details class="faq"><summary>ما شروط مسابقة القراءات؟</summary><p>أن يكون المتسابق حافظاً القرآن الكريم كاملاً، وأن يكون متقناً للقراءة والرواية، ويختار القراءة التي يريد المشاركة فيها، والتسجيل باستمارة مسابقة القراءات. وتوجد أسئلة نظرية لمسابقة القراءات.</p><p><a class="doc-link" href="https://www.icloud.com/iclouddrive/09c34yAa5amum6kYfRB7Ri6JA" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>أسئلة القراءات النظرية (PDF)</a></p></details><details class="faq"><summary>في فرع الخير والبركة، هل أختار الأجزاء بنفسي؟</summary><p>نعم. تتيح المسابقة للمشارك اختيار ( جزء أو جزأين أو ثلاثة أجزاء أو أربعة أجزاء أو خمسة أجزاء أو عشرة أجزاء أو خمسة عشر جزءاً)، للاشتراك بها بحرية مطلقة من أجزاء القرآن الكريم.</p></details><details class="faq"><summary>ما المطلوب في مسابقة ذوي الاحتياجات الخاصة؟</summary><p>لا بد من توافر شهادة إعاقة معتمدة من الهيئة العامة لشؤون ذوي الإعاقة، وتكون مطابقة لنوع وفئة الإعاقات المعتمدة بمسابقة الفئات ذوي الاحتياجات الخاصة.</p></details><details class="faq"><summary>أين تُقام التصفيات النهائية؟</summary><p>في المسجد الكبير، من 22 نوفمبر إلى 2 ديسمبر 2026: تصفيات الرجال من الأحد 22 إلى الأربعاء 25 نوفمبر، وتصفيات النساء من الأحد 29 نوفمبر إلى الأربعاء 2 ديسمبر. ويبلغك منسق جهتك بموعدك تحديداً.</p></details><details class="faq"><summary>ما مواعيد اللجان الصباحية؟</summary><p>مواعيد اللجان الصباحية لبعض الفروع:</p><ul class="plain faq-days"><li><b>الاثنين 23 نوفمبر 2026:</b> الاحتياجات الخاصة، خير وبركة (رجال).</li><li><b>الأربعاء 25 نوفمبر 2026:</b> رياض أطفال، خير وبركة (رجال).</li><li><b>الاثنين 30 نوفمبر 2026:</b> خير وبركة (نساء).</li><li><b>الأربعاء 2 ديسمبر 2026:</b> خير وبركة (نساء).</li></ul></details></div></div>
     </details>
   </section>
 
@@ -690,14 +750,14 @@ body{line-height:1.9}
 
   <!-- SHIELDS -->
   <section class="section" aria-labelledby="s-title">
-    <h2 id="s-title">جوائز الجهات والمنسقين والأسر</h2>
+    <h2 id="s-title">جوائز الجهات الفائزة بالمراكز الأولى في المسابقة</h2>
     <nav class="ap-grid" id="shNav" aria-label="أقسام الدروع"><button class="ap-tile" data-go-card="sh-org"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span>درع الجهات</span></button><button class="ap-tile" data-go-card="sh-coord"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="3"/><path d="M6 20c.5-3.5 3-5.5 6-5.5s5.5 2 6 5.5"/><path d="M16.5 3.5l1 1 2-2"/></svg><span>أفضل منسق</span></button><button class="ap-tile" data-go-card="sh-family"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="7" r="2.3"/><circle cx="17" cy="7" r="2.3"/><circle cx="12" cy="12" r="1.9"/><path d="M3 19c.3-3 2-4.8 4-4.8s3.2 1 3.8 2.3M21 19c-.3-3-2-4.8-4-4.8s-3.2 1-3.8 2.3M9.2 20c.4-2 1.5-3.2 2.8-3.2s2.4 1.2 2.8 3.2"/></svg><span>الأسرة القرآنية</span></button><button class="ap-tile" data-go-card="sh-points"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9.5h16M4 15h16M9.5 4v16"/></svg><span>جدول النقاط</span></button></nav>
     <div class="grid2 sh-stack">
       <div class="card sh-card" id="sh-org">
         <h3 class="sh-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>درع الجهات</h3>
-        <p class="def" style="color:var(--muted)">للجهات الأعلى نقاطاً في الفروع الرئيسة، بحسب عدد فائزيها وشرائحهم ومراكزهم، مع أداء المنسق ودرع الأسرة القرآنية.</p>
+        <p class="def" style="color:var(--muted)"><b>تعريفها:</b> هي جائزة تقدم للجهات الحاصلة على أكبر عدد من النقاط من حيث عدد الفائزين والشريحة والمركز للأفرع الرئيسة للمسابقة (فرع القراءات والروايات، وفرع المسابقة العامة، وفرع مسابقة النشء والشباب، وفرع مسابقة المُجِدّ، وفرع مسابقة الخير والبركة) بالإضافة إلى أداء منسقها خلال مراحل المسابقة، وحصول الجهة على درع الأسرة القرآنية وفق معايير وأوزان اختيار الجهات. تقسم لأربعة مراكز وفق الجدول الآتي:</p>
         <div class="tbl"><table style="min-width:0">
-          <thead><tr><th>الدرع</th><th>الجائزة</th></tr></thead>
+          <thead><tr><th>الدرع</th><th>قيمة الجائزة</th></tr></thead>
           <tbody>
             <tr><td>درع التفوق العام</td><td class="m first">6,000 د.ك</td></tr>
             <tr><td>الدرع الذهبي</td><td class="m">5,000 د.ك</td></tr>
@@ -708,39 +768,42 @@ body{line-height:1.9}
       </div>
       <div class="card sh-card" id="sh-coord">
         <h3 class="sh-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="3"/><path d="M6 20c.5-3.5 3-5.5 6-5.5s5.5 2 6 5.5"/><path d="M16.5 3.5l1 1 2-2"/></svg>أفضل منسق</h3>
-        <div class="thresh">
-          <div><b>500</b><span>الأول (د.ك)</span></div>
-          <div><b>300</b><span>الثاني (د.ك)</span></div>
-          <div><b>200</b><span>الثالث (د.ك)</span></div>
-        </div>
-        <p style="color:var(--muted);font-size:14px">تُقدَّم لأفضل ثلاثة منسقين للجهات المشاركة، وتقيّمهم اللجنة الدائمة وفق مدى التزامهم بمعايير المسابقة وضوابطها وشروطها، وهي:</p>
+        <p style="color:var(--muted);font-size:14px"><b>تعريفها:</b> هي جائزة تقدم إلى أفضل ثلاثة منسقين للجهات المشاركة، ويتم تقييمهم من قبل اللجنة الدائمة وفق مدى التزام المنسق بالمعايير والضوابط والشروط الخاصة بالمسابقة.</p>
+        <p style="font-size:14px;font-weight:700;margin:0">الضوابط والمعايير التي يتم اختيار أفضل منسق على أساسها:</p>
         <ol class="rules" style="font-size:14px">
-          <li>أن يكون المنسق مرشحاً من جهته بكتاب رسمي.</li>
-          <li>الالتزام بحضور فترة التصفيات النهائية بمسجد الدولة الكبير.</li>
-          <li>الالتزام بحضور اجتماعات لجنة المنسقين.</li>
-          <li>الالتزام بصحة تسجيل بيانات المتسابقين وإدخالها على النظام الآلي.</li>
-          <li>الالتزام بالتواصل مع متسابقي جهته، وإبلاغهم بمواعيد حضور التصفيات النهائية وكل المعلومات التي تخص المسابقة.</li>
-          <li>الالتزام بقواعد السلوك وأخلاقيات العمل.</li>
+          <li>أن يكون المنسق قد تم ترشيحه من قبل الجهة بكتاب رسمي.</li>
+          <li>مدى التزام المنسق بحضور فترة التصفيات النهائية بمسجد الدولة الكبير.</li>
+          <li>مدى التزام المنسق بحضور اجتماعات لجنة المنسقين.</li>
+          <li>مدى التزام المنسق بصحة تسجيل وإدخال بيانات المتسابقين على النظام الآلي.</li>
+          <li>مدى التزام المنسق بالتواصل مع المتسابقين التابعين لجهته وإبلاغهم بمواعيد حضور التصفيات النهائية وكافة المعلومات التي تخص المسابقة.</li>
+          <li>مدى التزام المنسق بقواعد السلوك وأخلاقيات العمل.</li>
         </ol>
+        <div class="tbl"><table style="min-width:0">
+          <thead><tr><th>المركز</th><th>قيمة الجائزة</th></tr></thead>
+          <tbody>
+            <tr><td>الأول</td><td class="m first">500 د.ك</td></tr>
+            <tr><td>الثاني</td><td class="m">300 د.ك</td></tr>
+            <tr><td>الثالث</td><td class="m">200 د.ك</td></tr>
+          </tbody>
+        </table></div>
       </div>
       <div class="card sh-card" id="sh-family" style="grid-column:1 / -1">
         <h3 class="sh-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="7" r="2.3"/><circle cx="17" cy="7" r="2.3"/><circle cx="12" cy="12" r="1.9"/><path d="M3 19c.3-3 2-4.8 4-4.8s3.2 1 3.8 2.3M21 19c-.3-3-2-4.8-4-4.8s-3.2 1-3.8 2.3M9.2 20c.4-2 1.5-3.2 2.8-3.2s2.4 1.2 2.8 3.2"/></svg>درع الأسرة القرآنية</h3>
-        <p style="color:var(--muted);font-size:14px">درع يُقدَّم تكريماً لأفضل ثلاث أسر قرآنية من حيث عدد أفرادها الفائزين في المسابقة. تتكون الأسرة من ثلاثة أفراد على الأقل، وتُسجَّل الرغبة في المشاركة من خلال استمارة التسجيل، مع بيان عدد أفراد الأسرة وصلة القرابة بينهم.</p>
-        <h3 style="font-size:16px">الشروط والمعايير</h3>
+        <p style="color:var(--muted);font-size:14px"><b>تعريفه:</b> هو درع يقدم تكريماً لأفضل ثلاث أسر قرآنية من حيث عدد المشاركين الفائزين بالمسابقة، حيث تتكون الأسرة بحد أدنى (3 أفراد) ويتم تسجيل الرغبة في المشاركة من خلال استمارة التسجيل، يبين فيها عدد أفراد الأسرة الواحدة وصلة القرابة تشمل (الأب أو الأم أو الابن أو الابنة أو الجد أو الجدة).</p>
+        <h3 style="font-size:16px">شروطها ومعاييرها:</h3>
         <ol class="rules" style="font-size:14px">
-          <li>ألا يقل عدد أفراد الأسرة عن ثلاثة فائزين.</li>
-          <li>يُحتسب الدرع على عدد الأفراد الفائزين ونسبة الفوز لأفراد كل أسرة.</li>
-          <li>تشمل صلة القرابة: الأب أو الأم أو الابن أو الابنة أو الجد أو الجدة.</li>
-          <li>يُكرَّم أفضل ثلاث أسر.</li>
+          <li>أن لا يقل عدد أفراد الأسرة عن ثلاثة فائزين.</li>
+          <li>يتم احتساب درع الأسرة القرآنية على عدد الأفراد الفائزين ونسبة الفوز لأفراد كل أسرة.</li>
+          <li>صلة القرابة لأفراد الأسرة الواحدة تشمل (الأب أو الأم أو الابن أو الابنة أو الجد أو الجدة).</li>
+          <li>يتم تكريم أفضل ثلاث أسر.</li>
         </ol>
-        <p class="note">يُضاف فوز الأسرة إلى نقاط جهتها في سباق الدروع: 7 نقاط للأول، و6 للثاني، و5 للثالث.</p>
       </div>
     </div>
     <details id="sh-points" class="sh-card">
-      <summary><span class="sh-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9.5h16M4 15h16M9.5 4v16"/></svg>جدول نقاط اختيار الجهات الفائزة بالدروع</span></summary>
+      <summary><span class="sh-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9.5h16M4 15h16M9.5 4v16"/></svg>معايير وأوزان اختيار الجهات الفائزة بدروع المسابقة</span></summary>
       <div class="inner tbl">
         <table>
-          <thead><tr><th>الشريحة</th><th>الأول</th><th>الثاني</th><th>الثالث</th><th>المجموع</th></tr></thead>
+          <thead><tr><th>الشرائح</th><th>المركز الأول</th><th>المركز الثاني</th><th>المركز الثالث</th><th>مجموع النقاط لكل شريحة</th></tr></thead>
           <tbody id="points"></tbody>
         </table>
       </div>
@@ -753,16 +816,16 @@ body{line-height:1.9}
   <!-- CONTACT -->
   <section class="card sh-card" id="c-sec" aria-labelledby="c-title">
     <h2 id="c-title" style="font-size:22px">للتواصل</h2>
-    <p style="color:var(--muted);font-size:14px">واتساب خلال الدوام الرسمي. اضغط الرقم لفتح المحادثة.</p>
+    <p style="color:var(--muted);font-size:14px">للتواصل خلال فترة الدوام الرسمي عبر خدمة الواتساب على الأرقام:</p>
     <div class="contact">
       <span class="wa-item"><a class="wa num" href="https://wa.me/96522065127" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c.3 2 2 3.7 4 4l1.2-1.1 1.8.9c-.2 1-1 1.7-2 1.7-3.1-.2-5.7-2.8-5.9-5.9 0-1 .7-1.8 1.7-2l.9 1.8z"/></svg>22065127</a><button class="copy mini" data-copy="22065127" aria-label="نسخ الرقم 22065127">نسخ</button></span>
       <span class="wa-item"><a class="wa num" href="https://wa.me/96522065402" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c.3 2 2 3.7 4 4l1.2-1.1 1.8.9c-.2 1-1 1.7-2 1.7-3.1-.2-5.7-2.8-5.9-5.9 0-1 .7-1.8 1.7-2l.9 1.8z"/></svg>22065402</a><button class="copy mini" data-copy="22065402" aria-label="نسخ الرقم 22065402">نسخ</button></span>
       <a class="ig-link" href="https://www.instagram.com/q8apf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8.5A2.5 2.5 0 016.5 6h1.8l1.4-2h4.6l1.4 2h1.8A2.5 2.5 0 0120 8.5v9a2.5 2.5 0 01-2.5 2.5h-11A2.5 2.5 0 014 17.5z"/><circle cx="12" cy="13" r="3.6"/></svg><span>إنستغرام الأمانة<small dir="ltr">@q8apf</small></span></a>
     </div>
     <ul class="plain" style="font-size:14px;color:var(--muted)">
-      <li>على منسقي الجهات إجراء تصفيات أولية لاختيار المتميزين قبل تسجيلهم في النظام الآلي.</li>
-      <li>على المنسق استطلاع رغبة المتسابق في المشاركة من خلال جهته قبل تسجيله.</li>
-      <li>توجد أسئلة نظرية في مسابقة القراءات.</li>
+      <li>على منسقي الجهات المشاركة الاهتمام بعمل تصفيات أولية لاختيار المشاركين المتميزين لتسجيلهم في التصفيات النهائية على النظام الآلي للمسابقة.</li>
+      <li>على منسق الجهة التواصل مع المتسابقين قبل تسجيلهم على النظام الآلي واستطلاع رغبتهم بالمشاركة من خلال جهته.</li>
+      <li>توجد أسئلة نظرية لمسابقة القراءات.</li>
     </ul>
   </section>
 
@@ -827,7 +890,6 @@ body{line-height:1.9}
   </div>
   </section>
 
-  <footer hidden></footer>
 </div>
 
 <script>
@@ -835,12 +897,18 @@ const P5=[[5,[800,700,600]],[4,[600,550,500]],[3,[500,450,400]],[2,[400,350,300]
 const GEN=[[30,[3000,2750,2500]],[25,[2500,2250,2000]],[20,[2000,1750,1500]],[15,[1500,1250,1000]],[10,[1000,900,800]]];
 const KHAIR=[[15,[1500,1250,1000]],[10,[1000,900,800]],...P5];
 const KIDS=[["الحزب 59",[200,175,150]],["الحزب 60",[150,125,100]]];
-const BANDS=[{l:"من 18 إلى ما دون 25",a:18,b:25},{l:"من 15 إلى ما دون 18",a:15,b:18},{l:"من 11 إلى ما دون 15",a:11,b:15},{l:"من 6 إلى ما دون 11",a:6,b:11},{l:"من 3 إلى ما دون 6",a:3,b:6}];
+const BANDS=[{l:"من 18 إلى ما دون 25",s:"ابتداء من (18 سنة إلى ما دون 25 سنة)",a:18,b:25},{l:"من 15 إلى ما دون 18",s:"ابتداء من (15 سنة إلى ما دون 18 سنة)",a:15,b:18},{l:"من 11 إلى ما دون 15",s:"ابتداء من (11 سنة إلى ما دون 15 سنة)",a:11,b:15},{l:"من 6 إلى ما دون 11",s:"ابتداء من (6 سنوات إلى ما دون 11 سنة)",a:6,b:11},{l:"من 3 إلى ما دون 6",s:"ابتداء من (3 سنوات إلى ما دون 6 سنوات)",a:3,b:6}];
 const juzLabel=n=>n===1?"جزء واحد":n===2?"جزءان":n<=10?n+" أجزاء":n+" جزءاً";
 const f=n=>n.toLocaleString("en");
 const money=n=>f(n)+" د.ك";
 
 function rows(list){return list.map(([s,p])=>`<tr><td class="sl">${typeof s==="number"?juzLabel(s):s}</td><td class="m first">${money(p[0])}</td><td class="m">${money(p[1])}</td><td class="m">${money(p[2])}</td></tr>`).join("")}
+const ORD=["الأولى","الثانية","الثالثة","الرابعة","الخامسة","السادسة","السابعة","الثامنة","التاسعة","العاشرة"];
+const jzS=n=>n===1?"(1) جزءٌ واحدٌ":n===2?"(2) جزءان":n<=10?"("+n+") أجزاء":"("+n+") جزءًا";
+const LIM=`<p class="note">الحد الأقصى لتسجيل المتسابقين في التصفيات النهائية لكل شريحة على حدة هو ( 5 ) خمسة متسابقين لكل جهةٍ مشاركة: 5 من الذكور و5 من الإناث.</p>`;
+function stbl(list,pre=""){return `<div class="tbl"><table class="stbl"><thead><tr><th>الشريحة</th><th>عدد الأجزاء المحفوظة</th><th>الأول</th><th>الثاني</th><th>الثالث</th></tr></thead><tbody>${list.map(([s,p],i)=>`<tr><td class="sl">${pre}${ORD[i]}</td><td>${typeof s==="number"?jzS(s):s}</td><td class="m first">${money(p[0])}</td><td class="m">${money(p[1])}</td><td class="m">${money(p[2])}</td></tr>`).join("")}</tbody></table></div>`}
+const KIDS_S=[["حزب (59)",KIDS[0][1]],["حزب (60)",KIDS[1][1]]];
+const KHAIR_S=KHAIR;
 function table(list,h="الشريحة"){return `<div class="tbl"><table><thead><tr><th>${h}</th><th>الأول</th><th>الثاني</th><th>الثالث</th></tr></thead><tbody>${rows(list)}</tbody></table></div>`}
 
 const SPECIAL_A=[
@@ -860,33 +928,44 @@ const SPECIAL_B=[
  ["صعوبات التعلم","الثانوية","الفاتحة، آية الكرسي، الطارق، الفجر، البلد، الضحى، القدر"]
 ];
 
+const SP_T=["القسم الأول: مسابقة الفئات ذوي الاحتياجات الخاصة","القسم الثاني: المؤسسات الإصلاحية","القسم الثالث: نزلاء دور الرعاية الاجتماعية والأحداث بوزارة الشؤون الاجتماعية"];
 const TABS=[
  {id:"qiraat",t:"القراءات",html:()=>`
-  <p class="def">لحفظ القرآن وتجويده بالقراءات السبع المتواترة أو بإحداها أو بإحدى رواياتها، للرجال والنساء من جميع الأعمار. تتضمن أسئلة نظرية.</p>
-  <ul class="plain"><li>يشترط حفظ القرآن كاملاً وإتقان القراءة أو الرواية، والتسجيل باستمارة مسابقة القراءات.</li>
-  <li>في الشريحة الثانية لا يشارك الفائز في القراءة أو الرواية نفسها، وله اختيار غيرها.</li>
-  <li>الفائز في الشريحة الثانية يحق له دخول الشريحة الأولى، ومن فاز بالأولى لا يعود إلى الثانية.</li>
-  <li>تتنافس كل قراءة أو رواية على حدة.</li></ul>
+  <p class="def"><b>تعريفها:</b> مسابقة لحفظ وتجويد القرآن الكريم بالقراءات السبع المتواترة أو بإحداها أو بإحدى رواياتها، متاحة للمواطنين من كافة الأعمار (لكلٍّ من الرجال والنساء) ( توجد أسئلة نظرية ).</p>
+  <h3>الشروط والضوابط:</h3>
+  <ol class="rules"><li>أن يكون المتسابق حافظاً القرآن الكريم كاملاً.</li>
+  <li>أن يكون المتسابق متقناً للقراءة والرواية.</li>
+  <li>يختار المتسابق القراءة التي يريد المشاركة فيها، والتسجيل باستمارة مسابقة القراءات.</li>
+  <li>فيما يخص الشريحة الثانية، لا يحق لمن سبق له الفوز في إحدى القراءات أو إحدى رواياتها الاشتراك في نفس القراءة أو الرواية، وله أحقية اختيار إحدى القراءات أو الروايات الأخرى التي لم يُسبق له الفوز فيها.</li>
+  <li>للفائزين في الشريحة الثانية الحق في المشاركة في الشريحة الأولى بجميع القراءات السبع بكافة الروايات والأوجه المتواترة، ولا يحق لمن سبق له الفوز بالشريحة الأولى المشاركة بالشريحة الثانية.</li>
+  <li>يتنافس المشاركون في كل قراءة أو رواية على حدة، ويتم اختيار المراكز الثلاثة الأولى من كل قراءة أو رواية حسب الجدول الآتي:</li></ol>
   <div><a class="doc-link" href="https://www.icloud.com/iclouddrive/09c34yAa5amum6kYfRB7Ri6JA" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>أسئلة القراءات النظرية (PDF)</a></div>
+  <p class="def">القراءات والروايات المعتمدة للمسابقة والتي يحق للمتسابقين الاشتراك فيها وفق الضوابط السابقة:</p>
   <h3>الشريحة الأولى</h3>
-  ${table([["القراءات السبع بجميع الروايات وكافة الأوجه",[4000,3750,3500]]])}
+  <div class="tbl"><table><thead><tr><th>القراءة</th><th>الرواية والأوجه</th><th>الأول</th><th>الثاني</th><th>الثالث</th></tr></thead><tbody>
+  <tr><td class="q-name">القراءات السبع</td><td><span class="q-riw">جميع الروايات</span><span class="q-awj">كافة الأوجه</span></td><td class="m first">${money(4000)}</td><td class="m">${money(3750)}</td><td class="m">${money(3500)}</td></tr>
+  </tbody></table></div>
   <h3>الشريحة الثانية</h3>
   <div class="tbl"><table><thead><tr><th>القراءة</th><th>الرواية والأوجه</th><th>الأول</th><th>الثاني</th><th>الثالث</th></tr></thead><tbody>
-  ${[["نافع","قالون: قصر المنفصل والصلة، توسط المنفصل والصلة، قصر المنفصل وسكون الميم، توسط المنفصل وسكون الميم"],["نافع","ورش: قصر البدل، توسط البدل، مد البدل وتقليل ذات الياء"],["ابن كثير","البزي وقنبل"],["أبو عمرو البصري","الدوري والسوسي"]].map(r=>`<tr><td class="q-name">${r[0]}</td><td>${r[1].includes(":")?`<span class="q-riw">${r[1].split(":")[0]}</span><span class="q-awj">${r[1].split(":").slice(1).join(":")}</span>`:`<span class="q-riw">${r[1]}</span>`}</td><td class="m first">${money(3500)}</td><td class="m">${money(3250)}</td><td class="m">${money(3000)}</td></tr>`).join("")}
+  ${[["نافع","رواية قالون","قصر المنفصل والصلة، توسط المنفصل والصلة، قصر المنفصل وسكون الميم، توسط المنفصل وسكون الميم"],["نافع","رواية ورش","قصر البدل – توسط البدل، مد البدل وتقليل ذات الياء"],["ابن كثير","البزي وقنبل",""],["أبو عمرو البصري","الدوري والسوسي",""]].map(r=>`<tr><td class="q-name">${r[0]}</td><td><span class="q-riw">${r[1]}</span>${r[2]?`<span class="q-awj">${r[2]}</span>`:""}</td><td class="m first">${money(3500)}</td><td class="m">${money(3250)}</td><td class="m">${money(3000)}</td></tr>`).join("")}
   </tbody></table></div>`},
  {id:"general",t:"العامة",html:()=>`
-  <p class="def">لحفظ القرآن وتجويده برواية حفص عن عاصم، للرجال والنساء من جميع الأعمار، في خمس شرائح بحسب الأجزاء المحفوظة.</p>${table(GEN)}`},
+  <p class="def"><b>تعريفها:</b> مسابقة لحفظ وتجويد القرآن الكريم برواية حفص عن عاصم، متاحة للمواطنين من كافة الأعمار، وتنقسم إلى خمس شرائح حسب الأجزاء المحفوظة (لكلٍّ من الرجال والنساء) يطبق فيها المتسابق أحكام التجويد والتلاوة.</p>
+  <h3>شرائحها:</h3>${stbl(GEN)}${LIM}`},
  {id:"youth",t:"النشء والشباب",html:()=>`
-  <p class="def">لطلبة الجامعات والمعاهد التطبيقية والمدارس ورياض الأطفال ومن في حكمهم، وتُنظَّم مستقلة لكل فئة عمرية.</p>
+  <p class="def"><b>تعريفها:</b> مسابقة لحفظ وتجويد القرآن الكريم، متاحة للنشء والشباب من طلبة وطالبات الجامعات والمعاهد التطبيقية والمدارس ورياض الأطفال ومن في حكمهم، يطبق فيها المتسابق أحكام التجويد والتلاوة. وتنظم المسابقة مستقلة حسب الفئات العمرية التالية:</p>
   <div class="ages-wrap"><div class="ages-label">اختر الفئة العمرية (بالسنوات)</div>
   <div class="ages" id="bands" role="group" aria-label="الفئة العمرية">${BANDS.map((b,i)=>[b,i]).reverse().map(([b,i])=>`<button class="age" aria-pressed="${i===0}" data-i="${i}" aria-label="${b.l} سنة"><b dir="rtl">${b.a}–${b.b}</b></button>`).join("")}</div>
-  <div class="ages-sel" id="ageSel">الفئة المختارة: ${BANDS[0].l} سنة</div>
+  <div class="ages-sel" id="ageSel">الفئة العمرية: ${BANDS[0].s}</div>
   <div class="ages-note">تشمل الفئة الحد الأدنى ولا تشمل الأعلى؛ فمن بلغ 15 سنة يدخل في فئة «من 15 إلى ما دون 18».</div></div>
-  <div id="bandTable">${table(P5)}</div>`},
- {id:"majd",t:"المجد",html:()=>`
-  <p class="def">للمواطنين من 25 عاماً إلى ما دون 60 عاماً، رجالاً ونساءً، في خمس شرائح.</p>${table(P5)}`},
+  <div id="bandTable">${stbl(P5)}</div>${LIM}`},
+ {id:"majd",t:"المُجِدّ",html:()=>`
+  <p class="def"><b>تعريفها:</b> مسابقة لحفظ وتجويد القرآن الكريم للمواطنين من عمر (25 عاماً إلى ما دون 60 عاماً)، وتنقسم إلى خمس شرائح حسب الأجزاء المحفوظة (لكل من الرجال والنساء) يطبق فيها المتسابق أحكام التجويد والتلاوة.</p>
+  <h3>شرائحها:</h3>${stbl(P5)}${LIM}`},
  {id:"khair",t:"الخير والبركة",html:()=>`
-  <p class="def">لمن بلغ 60 عاماً فما فوق، رجالاً ونساءً، في سبع شرائح، وللمشارك حرية اختيار الأجزاء من أي موضع في القرآن.</p>${table(KHAIR)}`},
+  <p class="def"><b>تعريفها:</b> مسابقة لحفظ القرآن الكريم وتجويده، متاحة للفئة العمرية (60 عاماً وما فوق) للرجال والنساء.</p>
+  <p class="def">مسابقة خاصة تنقسم إلى سبع شرائح وتتيح للمشارك اختيار ( جزء أو جزأين أو ثلاثة أجزاء أو أربعة أجزاء أو خمسة أجزاء أو عشرة أجزاء أو خمسة عشر جزءاً)، للاشتراك بها بحرية مطلقة من أجزاء القرآن الكريم، يطبق فيها المتسابق أحكام التجويد والتلاوة. وتنظم كمسابقة مستقلة لهذه الفئة تتناسب مع ظروفهم الخاصة.</p>
+  <h3>شرائحها:</h3>${stbl(KHAIR_S)}${LIM}`},
  {id:"special",t:"المسابقات الخاصة",html:()=>`
   <div class="ages-wrap"><div class="ages-label">اختر القسم</div>
   <div class="ages s3" id="spSeg" role="group" aria-label="أقسام المسابقات الخاصة">
@@ -894,25 +973,26 @@ const TABS=[
     <button class="age" aria-pressed="false" data-s="1"><b>المؤسسات الإصلاحية</b></button>
     <button class="age" aria-pressed="false" data-s="2"><b>دور الرعاية والأحداث</b></button>
   </div>
-  <div class="ages-sel" id="spSel">القسم الأول: ذوو الاحتياجات الخاصة</div></div>
+  <div class="ages-sel" id="spSel">${SP_T[0]}</div></div>
   <div class="sp-pane" data-p="0">
+    <p class="def"><b>تعريفها:</b> هي مسابقة لحفظ وتجويد القرآن الكريم متاحة للمواطنين من فئة ذوي الاحتياجات الخاصة ممن لديهم إعاقة عقلية أو ذهنية أو متلازمة داون، أو مرضى التوحد، أو ضعاف السمع، والصم، أو بطيئي التعلم، أو التأخر الدراسي، أو صعوبات التعلم.</p>
+    <h3>شرائحها وفئاتها:</h3>
     <div class="sp-list">${SPECIAL_A.map(r=>`<div class="sp-card"><div class="sp-h">${r[0]}</div><div class="sp-s">${r[1]}</div><div class="sp-p"><span>الأول <b>${money(r[2][0])}</b></span><span>الثاني <b>${money(r[2][1])}</b></span><span>الثالث <b>${money(r[2][2])}</b></span></div></div>`).join("")}</div>
-    <p style="font-size:13.5px;color:var(--muted)">فئة الصم تُقيَّم كتابةً على: جودة الخط، والرسم العثماني، وضبط حركات الحروف، وأرقام الآيات.</p>
-    <h3>بطيئو التعلم وصعوبات التعلم</h3>
-    <p class="sp-prize">جائزة واحدة للمركز الأول في كل مرحلة: <b>${money(200)}</b></p>
+    <p style="font-size:13.5px;color:var(--muted)"><b>ملاحظة (الصم):</b> يتم التقييم على: حسن جودة الخط. الكتابة بالرسم العثماني. ضبط حركة الحروف. أرقام الآيات.</p>
+    <h3>تابع القسم الأول: بطيئو التعلم والتأخر الدراسي، وصعوبات التعلم</h3>
+    <p class="sp-prize">قيمة المكافأة عن المركز الأول: <b>${money(200)}</b></p>
     <div class="sp-list">${SPECIAL_B.map(r=>`<div class="sp-card"><div class="sp-h">${r[0]} · المرحلة ${r[1]}</div><div class="sp-s">${r[2]}</div></div>`).join("")}</div>
-    <p class="note">يلزم تقديم شهادة إعاقة معتمدة من الهيئة العامة لشؤون ذوي الإعاقة، مطابقة لنوع الإعاقة وفئتها المعتمدة في المسابقة.</p>
+    <p class="note">ملاحظة هامة: لا بد من توافر شهادة إعاقة معتمدة من الهيئة العامة لشؤون ذوي الإعاقة، وتكون مطابقة لنوع وفئة الإعاقات المعتمدة بمسابقة الفئات ذوي الاحتياجات الخاصة.</p>
   </div>
   <div class="sp-pane" data-p="1" hidden>
-    <p class="def">لنزلاء المؤسسات الإصلاحية بقطاع السجون التابع لوزارة الداخلية، في عشر شرائح.</p>
-    ${table([...GEN,...P5])}
+    <p class="def"><b>تعريفها:</b> هي مسابقة لحفظ وتجويد القرآن الكريم، متاحة للمواطنين نزلاء المؤسسات الإصلاحية بقطاع السجون التابع لوزارة الداخلية يطبق فيها المتسابق أحكام التجويد والتلاوة.</p>
+    <h3>شرائحها:</h3>${stbl([...GEN,...P5],"الشريحة ")}
   </div>
   <div class="sp-pane" data-p="2" hidden>
-    <p class="def">لنزلاء دور الرعاية الاجتماعية والأحداث بوزارة الشؤون الاجتماعية، في شريحتين.</p>
-    ${table([["الحزب 59 (من النبأ إلى الطارق)",[300,250,200]],["الحزب 60 (من الأعلى إلى الناس)",[200,150,100]]])}
+    <p class="def"><b>تعريفها:</b> هي مسابقة لحفظ وتجويد القرآن الكريم، متاحة للمواطنين نزلاء دور الرعاية والأحداث بوزارة الشؤون الاجتماعية يطبق فيها المتسابق أحكام التجويد والتلاوة.</p>
+    <h3>شرائحها:</h3>${stbl([["الحزب (59) من (النبأ) إلى (الطارق)",[300,250,200]],["الحزب (60) من (الأعلى) إلى (الناس)",[200,150,100]]],"الشريحة ")}
   </div>`}
 ];
-
 // tabs
 const BR_IC={
  qiraat:'<path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z"/><path d="M12 6v13"/>',
@@ -922,10 +1002,21 @@ const BR_IC={
  khair:'<circle cx="10" cy="4.8" r="2.3"/><path d="M10 7.8c-.6 2-.4 4 .2 6M10.2 13.8L8 21M10.2 13.8l2.3 3.2V21M9.8 9.5l4.2 2.2M16.5 11.5V21M16.5 11.5c0-1.4 1.8-1.4 1.8 0"/>',
  special:'<circle cx="12" cy="12" r="9"/><path d="M12 7v10M7 12h10"/>'
 };
+// keep the page still when switching sections: the tile grid stays exactly where it was on screen
+function keepStill(after,fn){
+  const y=window.scrollY;
+  let sp=after.nextElementSibling;
+  if(!sp||!sp.classList.contains("still-sp")){sp=document.createElement("div");sp.className="still-sp";sp.setAttribute("aria-hidden","true");after.after(sp)}
+  fn();
+  sp.style.height="0px";
+  const need=y+window.innerHeight-document.documentElement.scrollHeight;
+  sp.style.height=Math.max(0,need)+"px";
+  window.scrollTo(0,y);
+}
 const tabsEl=document.getElementById("tabs"),panelsEl=document.getElementById("panels");
 TABS.forEach((t,i)=>{
   const b=document.createElement("button");b.className="tab";b.id="tab-"+t.id;b.setAttribute("role","tab");b.setAttribute("aria-controls","panel-"+t.id);b.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${BR_IC[t.id]}</svg><span>${t.t}</span>`;
-  b.addEventListener("click",()=>select(i));tabsEl.appendChild(b);
+  b.addEventListener("click",()=>keepStill(panelsEl,()=>select(i)));tabsEl.appendChild(b);
   const p=document.createElement("div");p.className="panel";p.id="panel-"+t.id;p.setAttribute("role","tabpanel");p.setAttribute("aria-labelledby",b.id);p.innerHTML=t.html();panelsEl.appendChild(p);
 });
 function select(i){
@@ -940,7 +1031,6 @@ tabsEl.addEventListener("keydown",e=>{
   const cur=[...tabsEl.children].findIndex(b=>b.getAttribute("aria-selected")==="true");
   if(e.key==="ArrowLeft"||e.key==="ArrowRight"){const d=e.key==="ArrowLeft"?1:-1;const n=(cur+d+TABS.length)%TABS.length;select(n);tabsEl.children[n].focus();e.preventDefault()}
 });
-const SP_T=["القسم الأول: ذوو الاحتياجات الخاصة","القسم الثاني: المؤسسات الإصلاحية بوزارة الداخلية","القسم الثالث: دور الرعاية والأحداث بوزارة الشؤون الاجتماعية"];
 document.getElementById("spSeg").addEventListener("click",e=>{
   const b=e.target.closest(".age");if(!b)return;const i=+b.dataset.s;
   document.querySelectorAll("#spSeg .age").forEach(x=>x.setAttribute("aria-pressed",x===b));
@@ -950,14 +1040,14 @@ document.getElementById("spSeg").addEventListener("click",e=>{
 document.getElementById("bands").addEventListener("click",e=>{
   const b=e.target.closest(".age");if(!b)return;
   document.querySelectorAll("#bands .age").forEach(x=>x.setAttribute("aria-pressed",x===b));
-  document.getElementById("ageSel").textContent="الفئة المختارة: "+BANDS[+b.dataset.i].l+" سنة";
-  document.getElementById("bandTable").innerHTML=+b.dataset.i===4?table(KIDS):table(P5);
+  document.getElementById("ageSel").textContent="الفئة العمرية: "+BANDS[+b.dataset.i].s;
+  document.getElementById("bandTable").innerHTML=+b.dataset.i===4?stbl(KIDS_S):stbl(P5);
 });
 
 // points
-const PTS=[["القراءات السبع",42],["الروايات",39],["30 جزءاً",36],["25 جزءاً",33],["20 جزءاً",30],["15 جزءاً",27],["10 أجزاء",24],["5 أجزاء",21],["4 أجزاء",18],["3 أجزاء",15],["جزءان",12],["جزء واحد",9],["الحزب 59",6],["الحزب 60",3]];
+const PTS=[["القراءات السبع",42],["الروايات",39],["30 جزءًا",36],["25 جزءًا",33],["20 جزءًا",30],["15 جزءًا",27],["10 أجزاء",24],["5 أجزاء",21],["4 أجزاء",18],["3 أجزاء",15],["2 جزءان",12],["1 جزءٌ واحدٌ",9],["الحزب 59",6],["الحزب 60",3]];
 document.getElementById("points").innerHTML=PTS.map(([l,a])=>`<tr><td>${l}</td><td class="m first">${a}</td><td class="m">${a-1}</td><td class="m">${a-2}</td><td class="m">${3*a-3}</td></tr>`).join("")
- +`<tr><td>المنسق</td><td class="m first">7</td><td class="m">6</td><td class="m">5</td><td class="m">18</td></tr><tr><td>درع الأسرة القرآنية</td><td class="m first">7</td><td class="m">6</td><td class="m">5</td><td class="m">18</td></tr><tr><td><b>الإجمالي</b></td><td class="m first">329</td><td class="m"><b>313</b></td><td class="m"><b>297</b></td><td class="m"><b>939</b></td></tr>`;
+ +`<tr><td>المنسق</td><td class="m first">7</td><td class="m">6</td><td class="m">5</td><td class="m">18</td></tr><tr><td>درع الأسرة القرآنية</td><td class="m first">7</td><td class="m">6</td><td class="m">5</td><td class="m">18</td></tr><tr><td><b>إجمالي عدد النقاط</b></td><td class="m first">329</td><td class="m"><b>313</b></td><td class="m"><b>297</b></td><td class="m"><b>939</b></td></tr>`;
 
 // finder
 const juzSel=document.getElementById("juz");
@@ -979,7 +1069,7 @@ function compute(){
     if(q&&j===30){out.push({m:1,b:"فرع القراءات",s:"الشريحة الثانية: قراءة أو رواية واحدة",p:[3500,3250,3000],n:"بعد الفوز في الشريحة الثانية يحق لك دخول الشريحة الأولى (القراءات السبع) بجائزة 4,000 د.ك."})}
     if(age<6){KIDS.forEach(([s,p])=>out.push({b:"النشء والشباب (3 إلى ما دون 6)",s,p}))}
     else if(age<25){const band=BANDS.find(b=>age>=b.a&&age<b.b);const r=pick(P5,j);if(r)out.push({m:r[0]===j,b:"النشء والشباب ("+band.l+")",s:"شريحة "+juzLabel(r[0]),p:r[1],x:j>5,n:j>5?`حفظك ${juzLabel(j)}، وأعلى شريحة في هذا الفرع 5 أجزاء، فتشارك فيها وتُختبر في خمسة أجزاء تختارها مما تحفظ.`:""})}
-    else if(age<60){const r=pick(P5,j);if(r)out.push({m:r[0]===j,b:"فرع المجد",s:"شريحة "+juzLabel(r[0]),p:r[1],x:j>5,n:j>5?`حفظك ${juzLabel(j)}، وأعلى شريحة في هذا الفرع 5 أجزاء، فتشارك فيها وتُختبر في خمسة أجزاء تختارها مما تحفظ.`:""})}
+    else if(age<60){const r=pick(P5,j);if(r)out.push({m:r[0]===j,b:"فرع المُجِدّ",s:"شريحة "+juzLabel(r[0]),p:r[1],x:j>5,n:j>5?`حفظك ${juzLabel(j)}، وأعلى شريحة في هذا الفرع 5 أجزاء، فتشارك فيها وتُختبر في خمسة أجزاء تختارها مما تحفظ.`:""})}
     else{const r=pick(KHAIR,j);if(r)out.push({m:r[0]===j,b:"فرع الخير والبركة",s:"شريحة "+juzLabel(r[0]),p:r[1]})}
     const g=pick(GEN,j);if(g)out.push({m:g[0]===j,b:"المسابقة العامة",s:"شريحة "+juzLabel(g[0])+" (رواية حفص)",p:g[1]});
     if(!g&&j>5&&age>=6){const need=10-j;out.push({b:"المسابقة العامة",s:"غير متاحة لك بعد",p:[1000,900,800],soon:1,n:`تبدأ شرائحها من 10 أجزاء، ويلزمك ${need===1?"جزء واحد":need===2?"جزءان":need+" أجزاء"} إضافية لتدخل شريحة 10 أجزاء.`})}
@@ -1131,7 +1221,7 @@ function pathHTML(){
 }
 document.querySelectorAll("[data-path]").forEach(el=>el.innerHTML=pathHTML());
 
-document.addEventListener("click",e=>{const b=e.target.closest("[data-go-card]");if(!b)return;const t=document.getElementById(b.dataset.goCard);if(t.tagName==="DETAILS")t.open=true;const cd=t.querySelector(":scope > details.calc-d");if(cd)cd.open=true;t.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})});
+document.addEventListener("click",e=>{const b=e.target.closest("[data-go-card]");if(!b)return;if(b.closest("#shNav")){keepStill(document.getElementById("sh-points"),()=>tsSelect(b.dataset.goCard,false));return}if(tsSelect(b.dataset.goCard,true))return;const t=document.getElementById(b.dataset.goCard);if(t.tagName==="DETAILS")t.open=true;const cd=t.querySelector(":scope > details.calc-d");if(cd)cd.open=true;t.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})});
 // search in about
 const normAr=t=>(t||"").replace(/[ً-ْٰـ]/g,"").replace(/[إأآٱ]/g,"ا").replace(/ى/g,"ي").replace(/ة/g,"ه").replace(/ؤ/g,"و").replace(/ئ/g,"ي").toLowerCase();
 const esc=t=>t.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
@@ -1185,26 +1275,84 @@ const AB_IC={
  "سياسات المسابقة":'<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7M9 16h5"/>',
  "مصطلحات عامة":'<path d="M5 4h11a3 3 0 013 3v13H8a3 3 0 01-3-3z"/><path d="M5 17a3 3 0 013-3h11"/>',
  "شروط المسابقة بجميع فروعها":'<path d="M9 5h10M9 12h10M9 19h10"/><path d="M4 5l1 1 2-2M4 12l1 1 2-2M4 19l1 1 2-2"/>',
+ "الجهات المشاركة المعتمدة":'<rect x="5" y="3.5" width="14" height="17" rx="1.2"/><path d="M9 8h2M13 8h2M9 12h2M13 12h2M9 16h2M13 16h2"/>',
  "مسار المشاركة":'<circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 18h5a3 3 0 000-6h-2a3 3 0 010-6h5"/>',
  "الجدول الزمني":'<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>',
  "أسئلة شائعة":'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 114 2c-.9.6-1.5 1.1-1.5 2.2M12 17v.5"/>',
  _:'<circle cx="12" cy="12" r="9"/>'
 };
-const AB_SHORT={"نبذة عن المسابقة":"نبذة","أهداف المسابقة":"الأهداف","سياسات المسابقة":"السياسات","مصطلحات عامة":"المصطلحات","شروط المسابقة بجميع فروعها":"الشروط","مسار المشاركة":"مسار المشاركة","الجدول الزمني":"الجدول الزمني","أسئلة شائعة":"أسئلة شائعة"};
+const AB_SHORT={"نبذة عن المسابقة":"نبذة","أهداف المسابقة":"الأهداف","سياسات المسابقة":"السياسات","مصطلحات عامة":"المصطلحات","شروط المسابقة بجميع فروعها":"الشروط","مسار المشاركة":"مسار المشاركة","الجهات المشاركة المعتمدة":"الجهات المشاركة","الجدول الزمني":"الجدول الزمني","أسئلة شائعة":"أسئلة شائعة"};
 const aboutView=document.createElement("div");
 aboutView.className="about-view";
 aboutView.innerHTML=`${countdownHTML()}<nav class="ap-grid" aria-label="أقسام عن المسابقة">${ABOUT.map(a=>`<button class="ap-tile" data-ab="${a.id}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${AB_IC[a.t]||AB_IC._}</svg><span>${AB_SHORT[a.t]||a.t}</span></button>`).join("")}</nav>
 ${ABOUT.map(a=>`<section class="ap-sec" id="${a.id}"><h2>${a.t}</h2>${a.h}<button class="to-sections" type="button" data-to-grid>↑ العودة إلى الأقسام</button></section>`).join("")}`;
 aboutSec.replaceWith(aboutView);
+// participating entities (home section)
+(function(){
+  const box=document.querySelector(".about-view [data-ents]");if(!box)return;
+  const ENTS=[["وزارة الشئون الإسلامية", ["99229582"]], ["وزارة الداخلية", ["51005444"]], ["وزارة التربية", ["99150858"]], ["الهيئة العامة لشؤون القصر", ["67793083"]], ["الهيئة العامة لشؤون ذوي الإعاقة", ["50115008"]], ["الهيئة العامة للتعليم التطبيقي والتدريب", ["99280022"]], ["وزارة الدفاع - رئاسة الأركان العامة للجيش", ["51599515"]], ["الرئاسة العامة للحرس الوطني", ["97732763"]], ["وزارة الشؤون الاجتماعية", ["66602250"]], ["جامعة الكويت", ["99006848"]], ["اتحاد الجمعيات التعاونية الاستهلاكية", ["97777246"]], ["مكتب الشهيد", ["94050158"]], ["جمعية الرعاية الإسلامية", ["96656008", "66181863"]], ["جمعية الشيخ عبد الله النوري الخيرية", ["55825550"]], ["جمعية احياء التراث الاسلامي", ["62228333", "94138845"]], ["جمعية الاستقامة الخيرية", ["94057576", "94057571"]], ["الجمعية الإنسانية الخيرية", ["66350250", "50554606"]], ["جمعية الإصلاح الاجتماعي", ["97935052", "22514180"]], ["جمعية الصفا الخيرية الانسانية", ["50907680"]], ["جمعية الكشافة الكويتية", ["66661237"]], ["الجمعية الكويتية للأسر المتعففة", ["55537771", "1888821"]], ["جمعية الماهر بالقرآن وعلومه", ["66588520"]], ["جمعية المعلمين الكويتية", ["98000465", "1820000"]], ["جمعية المكفوفين الكويتية", ["97749999"]], ["جمعية المنابر القرآنية", ["50843633", "94124388"]], ["جمعية النجاة الخيرية", ["66195333"]], ["جمعية الهداية الخيرية", ["65887310"]], ["جمعية الوحيين للقرآن والسنة", ["94432882"]], ["جمعية بيادر السلام النسائية", ["99651500", "99033747"]], ["جمعية ترتيل للقرآن الكريم وعلومه", ["96712390", "66681119"]], ["شركة حفاظ البيان", ["60081622"]], ["مبرة السيدة نفيسة الخيرية", ["60600050"]], ["مبرة دشتي الخيرية", ["55580731", "94916844"]], ["مبرة علي أحمد باقر القرآنية الخيرية", ["97233444"]], ["مبرة معرفي الخيرية", ["67783777"]], ["مبرة المتميزين لخدمة القرآن الكريم والعلوم الشرعية", ["90076600"]], ["مبرة صنائع المعروف الخيرية", ["99171612", "99551693"]], ["مدرسة الكويت الانجليزية", ["98837985"]], ["مدرسة روض الصالحين ثنائية اللغة", ["22660657", "22660647"]], ["مدارس النبراس", ["66542450"]], ["شركة الهمم السامية التعليمية - مدرسة الأوائل ثنائية اللغة", ["50222479", "22021196"]], ["مركز الكويت للتوحد", ["99783329"]], ["النادي العلمي الكويتي", ["50222058"]], ["النادي الكويتي الرياضي للصم", ["97301211"]], ["جمعية صندوق إعانة المرضى", ["99853459"]], ["جمعية بصائر الخيرية", ["94427799", "90900055"]], ["الجمعية الكويتية لرعاية المعوقين", ["1805005 (داخلي: 1202)", "94919589"]], ["شركة الفرقان للاستشارات الشرعية", ["66801065", "55255875"]], ["جمعية الراسخون في العلم الخيرية", ["50357875", "60022994"]], ["مبرة البحارنة الخيرية", ["97909808"]], ["جمعية المودة الخيرية الاجتماعية", ["90006920"]], ["مبرة مطير الخيرية", ["60620510", "97272521"]], ["الجمعية الخيرية الكويتية لخدمة القرآن الكريم وعلومه (حفاظ)", ["60007382"]], ["جمعية المحامين الكويتية", ["99540485"]], ["مبرة أسر الفوادرة", ["99599886"]]];
+  const cat=n=>/^(ال)?(جمعية|مبرة)/.test(n)?"ch":/^(مدرسة|مدارس|شركة|مركز|النادي)/.test(n)?"ed":"gov";
+  const CATS=[["all","الكل"],["gov","الجهات الحكومية"],["ch","الجمعيات والمبرات"],["ed","المدارس والمراكز والشركات"]];
+  const mob=x=>/^[569]\d{7}$/.test(x);
+  const WA='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c.3 2 2 3.7 4 4l1.2-1.1 1.8.9c-.2 1-1 1.7-2 1.7-3.1-.2-5.7-2.8-5.9-5.9 0-1 .7-1.8 1.7-2l.9 1.8z"/></svg>';
+  const items=ENTS.map(([n,ph],i)=>({n,ph,c:cat(n),k:normAr(n)+" "+ph.join(" ")}));
+  box.innerHTML=`<div class="ents-tools"><input class="ents-q" type="search" placeholder="ابحث باسم الجهة أو رقمها" aria-label="البحث في الجهات المشاركة">
+  <div class="faq-cats" role="group" aria-label="نوع الجهة">${CATS.map(([k,t])=>`<button type="button" class="faq-cat" data-ec="${k}" aria-pressed="${k==="all"}">${t}<i>${k==="all"?items.length:items.filter(x=>x.c===k).length}</i></button>`).join("")}</div>
+  <div class="ents-n" aria-live="polite"></div></div>
+  <div class="ents">${items.map((x,i)=>{const m=x.ph.map(p=>p.match(/^\d+/)[0]).find(mob);
+    return `<div class="ent" data-i="${i}"><span class="ent-i">${i+1}</span><div class="ent-b"><b>${x.n}</b><span class="ent-ph">${x.ph.map(p=>`<a href="tel:${p.match(/^\d+/)[0]}">${p}</a>`).join("")}</span></div>${m?`<a class="ent-wa" href="https://wa.me/965${m}" target="_blank" rel="noopener" aria-label="واتساب ${x.n}">${WA}</a>`:`<span class="ent-wa off"></span>`}</div>`}).join("")}</div>`;
+  const q=box.querySelector(".ents-q"),n=box.querySelector(".ents-n"),rows=[...box.querySelectorAll(".ent")];let cur="all";
+  const run=()=>{const t=normAr(q.value.trim());let c=0;rows.forEach((r,i)=>{const x=items[i];const show=(cur==="all"||x.c===cur)&&(!t||x.k.includes(t));r.hidden=!show;if(show)c++});
+    n.textContent=c===items.length?"":(c?`${c} من ${items.length}`:"لا توجد جهة بهذا الاسم.")};
+  q.addEventListener("input",run);
+  box.querySelector(".faq-cats").addEventListener("click",e=>{const b=e.target.closest("[data-ec]");if(!b)return;cur=b.dataset.ec;
+    const go=()=>{box.querySelectorAll("[data-ec]").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));run()};
+    const sec=box.closest(".ap-sec");typeof keepStill==="function"&&sec?keepStill(document.querySelector(".about-view .ap-sec:last-of-type"),go):go()});
+})();
+// FAQ: categories + one question open at a time
+(function(){
+  const list=document.querySelector(".about-view .faq-list");if(!list)return;
+  const CATS=[["reg","التسجيل والمواعيد"],["rules","الشروط"],["br","الفروع"],["judge","التحكيم والنتائج"]];
+  const MAP={"هل يمكنني المشاركة في أكثر من فرع أو شريحة؟":"rules","فزتُ في دورة سابقة، فهل أستطيع المشاركة مجدداً؟":"rules","كيف أسجّل في المسابقة؟":"reg","هل توجد أسئلة تجويد نظرية؟":"judge","كم متسابقاً يمكن أن ترشحه الجهة؟":"reg","هل المسابقة للرجال والنساء؟":"rules","لماذا يُحجب المركز أحياناً؟":"judge","كيف أعترض على نتيجة التحكيم؟":"judge","ما شروط مسابقة القراءات؟":"br","في فرع الخير والبركة، هل أختار الأجزاء بنفسي؟":"br","ما المطلوب في مسابقة ذوي الاحتياجات الخاصة؟":"br","أين تُقام التصفيات النهائية؟":"reg","ما مواعيد اللجان الصباحية؟":"reg"};
+  const qs=[...list.querySelectorAll("details.faq")];
+  qs.forEach(d=>d.dataset.c=MAP[d.querySelector("summary").textContent.trim()]||"reg");
+  const bar=document.createElement("div");bar.className="faq-cats";bar.setAttribute("role","group");bar.setAttribute("aria-label","تصنيف الأسئلة");
+  bar.innerHTML=[["all","الكل"],...CATS].map(([k,t])=>`<button type="button" class="faq-cat" data-fc="${k}" aria-pressed="${k==="all"}">${t}<i>${k==="all"?qs.length:qs.filter(d=>d.dataset.c===k).length}</i></button>`).join("");
+  list.before(bar);
+  const sec=list.closest(".ap-sec");
+  bar.addEventListener("click",e=>{const b=e.target.closest("[data-fc]");if(!b)return;const k=b.dataset.fc;
+    const run=()=>{bar.querySelectorAll("[data-fc]").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));qs.forEach(d=>{d.hidden=k!=="all"&&d.dataset.c!==k;if(d.hidden)d.open=false})};
+    typeof keepStill==="function"&&sec?keepStill(sec,run):run()});
+  list.addEventListener("click",e=>{const sm=e.target.closest("details.faq > summary");if(!sm)return;e.preventDefault();
+    const d=sm.parentElement,y0=sm.getBoundingClientRect().top,willOpen=!d.open;
+    qs.forEach(x=>{if(x!==d)x.open=false});d.open=willOpen;
+    const y1=sm.getBoundingClientRect().top;if(Math.abs(y1-y0)>1)window.scrollBy(0,y1-y0)});
+})();
+// one section at a time (like the branches tabs): home sections and shields cards
+const TABSETS=[
+ {grid:".about-view .ap-grid",btn:"[data-ab]",key:"ab",ids:ABOUT.map(a=>a.id),ls:"q29ab"},
+ {grid:"#shNav",btn:"[data-go-card]",key:"goCard",ids:["sh-org","sh-coord","sh-family","sh-points"],ls:"q29sh"}
+];
+function tsSelect(id,scroll){
+  const ts=TABSETS.find(t=>t.ids.includes(id));if(!ts)return false;
+  ts.ids.forEach(k=>{const el=document.getElementById(k);if(el)el.hidden=k!==id});
+  document.querySelectorAll(ts.grid+" "+ts.btn).forEach(b=>b.setAttribute("aria-selected",b.dataset[ts.key]===id?"true":"false"));
+  const el=document.getElementById(id);if(el.tagName==="DETAILS")el.open=true;
+  try{localStorage.setItem(ts.ls,id)}catch(e){}
+  if(scroll){const r=el.getBoundingClientRect(),g=document.querySelector(ts.grid);if(r.top>window.innerHeight*.55||r.top<0)(g||el).scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})}
+  return true;
+}
+TABSETS.forEach(ts=>{let v=null;try{v=localStorage.getItem(ts.ls)}catch(e){}tsSelect(ts.ids.includes(v)?v:ts.ids[0])});
 document.addEventListener("click",e=>{const b=e.target.closest("[data-ab]");if(!b)return;e.preventDefault();
-  const t=document.getElementById(b.dataset.ab);t.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})});
+  if(b.closest(".ap-grid")){const secs=ABOUT.map(a=>document.getElementById(a.id));keepStill(secs[secs.length-1],()=>tsSelect(b.dataset.ab,false))}
+  else tsSelect(b.dataset.ab,true)});
 const sec=id=>document.getElementById(id).closest("section");
 const VIEWS=[
  {k:"about",t:"الرئيسية",els:[document.querySelector("header"),aboutView]},
  {k:"branches",t:"الفروع",els:[sec("b-title")]},
  {k:"find",t:"المساعد",els:[sec("f-title")]},
  {k:"shield",t:"الدروع",els:[sec("s-title")]},
- {k:"more",t:"المزيد",els:[document.getElementById("moreNav"),document.getElementById("moreBack"),sec("c-title"),document.getElementById("calcSec"),document.getElementById("shareSec"),document.getElementById("settings"),document.querySelector("footer")]}
+ {k:"more",t:"المزيد",els:[document.getElementById("moreNav"),document.getElementById("moreBack"),sec("c-title"),document.getElementById("calcSec"),document.getElementById("shareSec"),document.getElementById("settings")]}
 ];
 const IC={
  about:'<path d="M4 10.5L12 4l8 6.5V19a1.5 1.5 0 01-1.5 1.5H15v-5.5H9v5.5H5.5A1.5 1.5 0 014 19z"/>',
@@ -1257,21 +1405,21 @@ document.querySelectorAll("#panels .panel").forEach(p=>addBack(p,"#tabs","الع
 // More page: WhatsApp-settings style list with sub-pages
 const MORE_SECS=["c-sec","calcSec","shareSec","settings"];
 let moreCur=null;
-function moreOpen(id,fromPop){
+// same as the other pages: tiles stay on top, the chosen section shows below them
+function moreOpen(id){
   const v=VIEWS.findIndex(x=>x.k==="more");
   if(!tbs[v].classList.contains("active"))return;
-  if(id&&!fromPop){try{history.pushState({more:id},"",location.hash||"#more")}catch(e){}}
-  if(!id&&moreCur&&!fromPop&&history.state&&history.state.more){moreCur=null;try{history.back();return}catch(e){}}
-  moreCur=id;
-  if(id){const el=document.getElementById(id);el.classList.remove("slide-in");void el.offsetWidth;el.classList.add("slide-in")}
-  document.getElementById("moreNav").hidden=!!id;
-  document.getElementById("moreBack").hidden=!id;
-  MORE_SECS.forEach(k=>document.getElementById(k).hidden=id?k!==id:true);
+  if(!id||!MORE_SECS.includes(id)){let r=null;try{r=localStorage.getItem("q29more")}catch(e){}id=MORE_SECS.includes(r)?r:MORE_SECS[0]}
+  moreCur=null;
+  document.getElementById("moreNav").hidden=false;
+  document.getElementById("moreBack").hidden=true;
+  MORE_SECS.forEach(k=>document.getElementById(k).hidden=k!==id);
+  document.querySelectorAll("#moreNav [data-more]").forEach(b=>b.setAttribute("aria-selected",b.dataset.more===id?"true":"false"));
   if(id==="calcSec"){const cd=document.querySelector("#calcSec details.calc-d");if(cd)cd.open=true}
-  window.scrollTo(0,0);
+  try{localStorage.setItem("q29more",id)}catch(e){}
 }
 document.addEventListener("click",e=>{
-  const r=e.target.closest("[data-more]");if(r){moreOpen(r.dataset.more);return}
+  const r=e.target.closest("[data-more]");if(r){if(r.closest("#moreNav"))keepStill(document.getElementById("settings"),()=>moreOpen(r.dataset.more));else moreOpen(r.dataset.more);return}
   if(e.target.closest("[data-more-back]")||e.target.closest("#moreBackBtn"))moreOpen(null);
 });
 window.addEventListener("popstate",e=>{const st=e.state&&e.state.more;moreOpen(st||null,true)});
@@ -1324,6 +1472,7 @@ function go(k,id,tab){
   if(tab!=null&&typeof select==="function")select(tab);
   if(k==="more"&&id){moreOpen(id);return}
   if(!id)return;
+  if(typeof tsSelect==="function")tsSelect(id);
   setTimeout(()=>{const el=document.getElementById(id);if(!el)return;if(el.tagName==="DETAILS")el.open=true;el.scrollIntoView({behavior:"smooth",block:"start"})},80);
 }
 const A={
@@ -1347,23 +1496,23 @@ const I=[
  {id:"reg",chip:"متى التسجيل؟",k:["تسجيل","اسجل","التسجيل","موعد","متى","اخر موعد","اخر يوم","تبدا","يبدا"],
   a:()=>{const n=dayDiff("2026-10-29"),s=dayDiff("2026-09-27");return `التسجيل عن طريق الجهات المشاركة المعتمدة <b>من الأحد 27 سبتمبر إلى الخميس 29 أكتوبر 2026</b>${s>0?` (يبدأ بعد ${s} ${s===1?"يوم":s===2?"يومين":"أيام"})`:n>=0?` (متبقٍ ${n} يوماً)`:" (انتهت فترة التسجيل)"}. وآخر موعد لتعديل بيانات المتسابقين (أرقام الأجزاء) <b>الخميس 12 نوفمبر</b>.`},act:["timeline","path"]},
  {id:"how",chip:"كيف أسجّل؟",k:["كيف اسجل","طريقه التسجيل","طريقة","اشترك","الاشتراك","جهه","جهة","الجهات","منسق","يرشحني","ترشيح","مركز","مسجد"],
-  a:()=>"لا يكون التسجيل فردياً. تختار إحدى <b>الجهات المشاركة المعتمدة</b> (لك حرية الاختيار)، فيجري منسقها تصفيات أولية ثم يسجّل المتميزين في النظام الآلي. والحد الأقصى في التصفيات النهائية <b>5 متسابقين لكل جهة في كل شريحة</b>.",act:["path"]},
+  a:()=>"لا يكون التسجيل فردياً. تختار إحدى <b>الجهات المشاركة المعتمدة</b> (لك حرية الاختيار)، فيجري منسقها تصفيات أولية ثم يسجّل المتميزين في النظام الآلي. والحد الأقصى في التصفيات النهائية <b>5 ذكور و5 إناث لكل جهة في كل شريحة</b>.",act:["path"]},
  {id:"finals",chip:"متى التصفيات النهائية؟",k:["تصفيات","النهائيه","الاختبار","اختبار","المسجد الكبير","مكان","اين تقام","رجال","نساء"],
   a:()=>"التصفيات النهائية في <b>المسجد الكبير</b>: الرجال <b>من الأحد 22 إلى الأربعاء 25 نوفمبر</b>، والنساء <b>من الأحد 29 نوفمبر إلى الأربعاء 2 ديسمبر 2026</b>. ويبلغك منسق جهتك بموعدك تحديداً.",act:["timeline"]},
  {id:"results",chip:"متى النتائج؟",k:["النتائج","نتيجه","نتيجة","اعلان","الحفل","تكريم","الختامي"],
   a:()=>"إعلان النتائج <b>الأربعاء 16 ديسمبر 2026</b>. والحفل الختامي لتكريم الفائزين والفائزات يُحدَّد موعده بالتنسيق مع الديوان الأميري.",act:["timeline"]},
  {id:"objection",w:3,chip:"كيف أعترض؟",k:["اعتراض","اعترض","تظلم","شكوى","طعن"],
-  a:()=>"لا تُقبل الاعتراضات الفردية. يُقدَّم الاعتراض على قرار لجنة التحكيم <b>بكتاب رسمي معتمد من الجهة المشاركة</b>، موجّه إلى رئيس اللجنة الدائمة.",act:["rules"]},
+  a:()=>"لا تُقبل الاعتراضات على قرار لجنة التحكيم إلا <b>بكتاب رسمي معتمد من الجهة المشاركة</b>، وموجه للسيد رئيس اللجنة الدائمة.",act:["rules"]},
  {id:"nationality",k:["جنسيه","جنسية","كويتي","غير كويتي","مقيم","وافد","بدون","خليجي"],
-  a:()=>"يُشترط أن يكون المتسابق <b>كويتي الجنسية</b>، وأن يُرشَّح عن طريق إحدى الجهات المشاركة المعتمدة.",act:["rules"]},
+  a:()=>"أن يكون المتسابق <b>كويتي الجنسية</b>، وأن يُرشَّح المتسابق عن طريق إحدى الجهات المشاركة المعتمدة لدى إدارة المسابقة.",act:["rules"]},
  {id:"gender",k:["نساء","رجال","ذكور","اناث","بنات","للنساء","المراه","المرأة"],
-  a:()=>"المسابقة مفتوحة للذكور والإناث، ويتنافس كلٌّ منهم على حدة. وتصفيات النساء النهائية من 29 نوفمبر إلى 2 ديسمبر.",act:["timeline"]},
+  a:()=>"فتح مجال التسابق لكافة المواطنين، ذكوراً وإناثاً كلاً على حدةٍ. وتصفيات النساء النهائية من 29 نوفمبر إلى 2 ديسمبر.",act:["timeline"]},
  {id:"one",k:["اكثر من فرع","فرعين","شريحتين","اكثر من شريحه","فئتين","العامه والمجد","اشارك في"],
-  a:()=>"لا. يشارك المتسابق في <b>فئة واحدة وشريحة واحدة فقط</b>، حتى لو كان مؤهلاً لأكثر من خيار.",act:["finder"]},
+  a:()=>"<b>لا يحق للمتسابق الاشتراك في أكثر من فئة أو شريحة.</b>",act:["finder"]},
  {id:"winner",chip:"فزت سابقاً",k:["فزت","فاز","فائز","سابقا","العام الماضي","الدوره السابقه","مره ثانيه","مجددا"],
-  a:()=>"من فاز في فئة أو شريحة <b>لا يشارك فيها مرة أخرى ولا فيما دونها</b>، ويمكنه المشاركة في شريحة أعلى.",act:["rules"]},
+  a:()=>"لا يحق لمن فاز في فئة أو شريحة <b>أن يشارك فيها مرة أخرى أو في الأدنى منها</b>.",act:["rules"]},
  {id:"thresh",chip:"نسب الفوز",k:["نسبه","نسبة","درجه","درجة","حجب","يحجب","محجوب","كم لازم","النجاح"],
-  a:()=>"نسب الفوز في الفروع الرئيسة: <b>95٪ للأول، و90٪ للثاني، و85٪ للثالث</b>. وفي المسابقات الخاصة: <b>90٪ و85٪ و80٪</b>. ويُحجب المركز إذا لم يبلغ المتسابق النسبة المطلوبة.",act:["rules"]},
+  a:()=>"يتم اختيار الفائزين الثلاثة أصحاب المراكز الأولى: <b>95% فما فوق للأول، و90% فما فوق للثاني، و85% فما فوق للثالث</b>. وفي المسابقات الخاصة: <b>90% و85% و80% فما فوق</b>. ويحجب المركز إذا لم يحصل المتسابق على النسبة المئوية لمركزه.",act:["rules"]},
  {id:"tajweed",k:["تجويد","احكام","نظري","نظريه","اسئله نظريه","اسئلة"],
   a:()=>"لا توجد أسئلة تجويد نظرية، لكن يُشترط القراءة بالتجويد وتطبيق أحكامه عملياً أثناء التلاوة. ويُستثنى فرع القراءات ففيه أسئلة نظرية: "+QPDF,act:["faq"]},
  {id:"qiraat",chip:"شروط القراءات",k:["قراءات","القراءات","روايه","رواية","روايات","قالون","ورش","نافع","ابن كثير","البزي","قنبل","ابو عمرو","الدوري","السوسي","السبع"],
@@ -1373,7 +1522,7 @@ const I=[
  {id:"khair",w:2,k:["الخير والبركه","كبار السن","60","ستين","متقاعد","اختار الاجزاء"],
   a:()=>"فرع <b>الخير والبركة</b> لمن بلغ 60 عاماً فأكثر، في سبع شرائح (من جزء واحد إلى 15 جزءاً)، وللمشارك <b>حرية اختيار الأجزاء من أي موضع</b> في القرآن الكريم.",act:["branches"]},
  {id:"majd",w:2,k:["المجد","فرع المجد"],
-  a:()=>"فرع <b>المجد</b> للمواطنين من 25 عاماً إلى ما دون 60، رجالاً ونساءً، في خمس شرائح: 5 أجزاء (الأول <b>800 د.ك</b>)، و4 أجزاء (600)، و3 أجزاء (500)، وجزءان (400)، وجزء واحد (300).",act:["branches","finder"]},
+  a:()=>"فرع <b>المُجِدّ</b> للمواطنين من 25 عاماً إلى ما دون 60، رجالاً ونساءً، في خمس شرائح: 5 أجزاء (الأول <b>800 د.ك</b>)، و4 أجزاء (600)، و3 أجزاء (500)، وجزءان (400)، وجزء واحد (300).",act:["branches","finder"]},
  {id:"youth",w:2,k:["النشء","الشباب","اطفال","الروضه","رياض","مدارس","طلاب","جامعه","طالب"],
   a:()=>"فرع <b>النشء والشباب</b> لطلبة الجامعات والمعاهد والمدارس ورياض الأطفال، من 3 إلى ما دون 25 سنة، ويُنظَّم مستقلاً لكل فئة عمرية. شرائحه من جزء واحد إلى 5 أجزاء (الأول 800 د.ك لشريحة 5 أجزاء)، ولفئة 3 إلى 6 سنوات الحزبان 59 و60.",act:["branches","finder"]},
  {id:"general",w:2,k:["العامه","المسابقه العامه","حفص"],
@@ -1387,7 +1536,7 @@ const I=[
  {id:"family",k:["اسره","أسرة","عائله","عائلة","الاسره القرانيه","اخوان","الاب والام","ابي وامي"],
   a:()=>"<b>درع الأسرة القرآنية</b> لأفضل ثلاث أسر بثلاثة فائزين على الأقل (الأب أو الأم أو الابن أو الابنة أو الجد أو الجدة)، ويُحتسب بعدد الفائزين ونسبة فوزهم. تُسجَّل الرغبة في استمارة التسجيل.",act:["shields"]},
  {id:"contact",chip:"التواصل",k:["تواصل","رقم","واتساب","اتصل","هاتف","انستغرام","استفسار"],
-  a:()=>"للتواصل عبر الواتساب خلال الدوام الرسمي: <b dir='ltr'>22065127</b> و<b dir='ltr'>22065402</b>.",act:["contact"]},
+  a:()=>"للتواصل خلال فترة الدوام الرسمي عبر خدمة الواتساب على الأرقام <b dir='ltr'>(22065127)</b> <b dir='ltr'>(22065402)</b>.",act:["contact"]},
 ];
 I.forEach(x=>{x.kn=x.k.map(N);x.w=x.w||1});
 const hasK=(t,k)=>k.length<=3?new RegExp('(^|\\s|[،,.؟?])(ال|و|ب|ل)?'+k+'($|\\s|[،,.؟?])').test(t):t.includes(k);
@@ -1560,7 +1709,7 @@ document.getElementById("themeTg").addEventListener("click",()=>{
   look.m=dark?"light":"dark";store.set("q29m",look.m);applyLook();
 });
 // PORTAL-EMBED-START
-const PORTAL_CSS="\n:host{\n  --bg:#FFFFFF;--surface:#F9F9F9;--ink:#3F3F3F;--muted:#767676;--line:#E9E3CC;\n  --acc:#B08A0B;--acc-soft:#F7F1DC;--ok:#1E7A4F;--ok-soft:#E4F1EA;--warn:#A1560B;--warn-soft:#FBEBD8;--bad:#B3261E;--bad-soft:#FBE4E2;\n  --blue:#2A5DA8;--blue-soft:#E7EEF8;--pink:#A83D6B;--pink-soft:#F8E7EF;--purple:#6E4CA3;--purple-soft:#EFE7F8;\n  --font:\"Noto Kufi Arabic\",\"Segoe UI\",Tahoma,sans-serif;\n}\n:host(.dk){color-scheme:dark;--bg:#121212;--surface:#1C1C1C;--ink:#E6E6E6;--muted:#A6A6A6;--line:#343026;--acc:#D9B44A;--acc-soft:#2A2412;--ok:#6FD3A1;--ok-soft:#16302A;--warn:#F0A95A;--warn-soft:#33240F;--bad:#F2877F;--bad-soft:#3A1917;--blue:#7EB2E8;--blue-soft:#182636;--pink:#EC9DC2;--pink-soft:#331C29;--purple:#C7A9EA;--purple-soft:#241C33}\n*{box-sizing:border-box}\n.pt-body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:14.5px;line-height:1.8;direction:rtl;padding-inline:16px;padding-block:0 40px}\nbutton,input,select{font:inherit;color:inherit}\n.appbar{position:sticky;top:0;z-index:21;margin-inline:-16px;padding:8px 16px;background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 2px 10px rgba(0,0,0,.04)}\n.ab-t{display:flex;flex-direction:column;line-height:1.35}\n.ab-t b{color:var(--acc);font-size:15px}\n.ab-t small{color:var(--muted);font-size:11.5px}\n.ab-user{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600}\n#abIn{display:inline-flex;align-items:center;gap:6px}\n.demo{position:static}\n.acc-list{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;margin-top:4px}\n.acc-list code{direction:ltr;text-align:left;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}\n.tools{margin:24px auto 0;max-width:920px;display:flex;justify-content:flex-start;font-size:12.5px;color:var(--muted)}\n.tools select{margin-inline-start:8px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:2px 8px;font-size:12.5px}\n.beta{display:inline-block;vertical-align:middle;font-size:10.5px;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:0 7px;margin-inline-start:4px}\ndetails.note summary{cursor:pointer}\n.atabs{display:flex;gap:6px;border-bottom:1px solid var(--line)}\n.atab{border:0;background:none;padding:8px 12px;font-weight:700;color:var(--muted);border-bottom:3px solid transparent;cursor:pointer}\n.atab[aria-selected=\"true\"]{color:var(--acc);border-bottom-color:var(--acc)}\ncode{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px}\n.ab-right{display:flex;align-items:center;gap:10px}\n.ab-nav{display:flex;align-items:center;gap:8px}\n.doorbtn{display:grid;place-items:center;width:40px;height:40px;flex:none;padding:0;border:1.5px solid var(--acc);border-radius:999px;background:var(--surface);color:var(--acc);cursor:pointer}\n.doorbtn svg{width:19px;height:19px}\n.doorbtn:hover,.homebtn:hover{background:var(--acc);color:#fff}\n.tg{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--acc);display:grid;place-items:center;cursor:pointer;padding:0;flex:none}\n.tg svg{width:22px;height:22px}\n.tg:focus-visible{outline:2px solid var(--acc);outline-offset:2px}\n.homebtn{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 12px;border-radius:999px;border:1.5px solid var(--acc);background:var(--surface);color:var(--acc);font-weight:700;font-size:13px;cursor:pointer}\n.homebtn svg{width:18px;height:18px}\n@media (max-width:600px){.ab-user>span{display:none}}\n@media (max-width:380px){.homebtn span{display:none}.homebtn{width:40px;padding:0;justify-content:center}}\n.ab-t b,.ab-t small{white-space:nowrap}\n.miss{border-color:var(--warn)}\n.miss-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px}\n.mrow{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px}\n.acts2{display:flex;gap:6px;flex:none}\n.ok-note{border-color:var(--ok);background:var(--ok-soft)}\n.btn.wa{background:#1F8F55;border-color:#1F8F55;color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:6px}\n.board summary{cursor:pointer;list-style-position:inside}\n.brow{display:flex;flex-direction:column;gap:6px;padding-top:6px;border-top:1px dashed var(--line)}\n.bt{font-weight:700;font-size:13.5px}\n.slots-row{display:flex;flex-wrap:wrap;gap:6px}\n.slot{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:2px 10px;font-size:12.5px}\n.slot b{font-weight:600}\n.slot i{font-style:normal;font-variant-numeric:tabular-nums;color:var(--muted)}\n.slot.some{border-color:var(--ok)}.slot.some i{color:var(--ok);font-weight:700}\n.slot.near{border-color:var(--warn);background:var(--warn-soft)}.slot.near i{color:var(--warn);font-weight:700}\n.slot.full{border-color:var(--bad);background:var(--bad-soft)}.slot.full i{color:var(--bad);font-weight:700}\n.legend{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:12px;color:var(--muted)}\n.legend .slot{padding:0 6px}\n.wrap{max-width:920px;margin-inline:auto;display:flex;flex-direction:column;gap:16px}\n.demo{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;margin-inline:-16px;padding:8px 16px;background:var(--acc-soft);border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;font-size:12.5px}\n.demo b{color:var(--acc)}\n.demo label{display:flex;align-items:center;gap:6px}\n.demo select{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:2px 8px;font-size:12.5px}\n.top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:10px}\n.top h1{margin:0;font-size:20px;color:var(--acc);line-height:1.4}\n.top small{display:block;color:var(--muted);font-size:12.5px}\n.btn{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:7px 14px;cursor:pointer;font-weight:600;font-size:13.5px}\n.btn.pri{background:var(--acc);border-color:var(--acc);color:var(--bg)}\n.btn.ghost{background:transparent}\n.btn.xl{display:inline-flex;align-items:center;gap:6px;background:#1E7A4F;border-color:#1E7A4F;color:#fff}\n.btn.xl:hover{background:#17653F}\n.row .acts{flex-wrap:wrap}\n.row .acts .pill{white-space:nowrap}\ntd .pill{border-radius:8px;white-space:normal;line-height:1.5;padding:3px 8px}\n.btn.danger{color:var(--bad)}\n.btn:disabled{opacity:.45;cursor:not-allowed}\n.btn:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--acc);outline-offset:2px}\n.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px}\nh2{margin:0;font-size:17px;color:var(--acc)}\n.muted{color:var(--muted);font-size:13px}\n.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}\n@media (max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}}\n.stat{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px}\n.stat b{display:block;font-size:24px;line-height:1.3;color:var(--acc);font-variant-numeric:tabular-nums}\n.stat span{font-size:12px;color:var(--muted)}\n.dl{display:flex;flex-wrap:wrap;gap:8px}\n.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;border:1px solid transparent}\n.pill.ok{background:var(--ok-soft);color:var(--ok)}\n.pill.warn{background:var(--warn-soft);color:var(--warn)}\n.pill.bad{background:var(--bad-soft);color:var(--bad)}\n.pill.acc{background:var(--acc-soft);color:var(--acc)}\n.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}\n.toolbar input,.toolbar select{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:6px 10px;min-width:0}\n.toolbar input{flex:1 1 180px}\n.list{display:flex;flex-direction:column;gap:8px}\n.row{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center}\n.row .nm{font-weight:700}\n.row .meta{color:var(--muted);font-size:12.5px}\n.row .acts{grid-row:1 / span 2;grid-column:2;display:flex;gap:6px;align-items:center}\n@media (max-width:520px){.row{grid-template-columns:1fr}.row .acts{grid-row:auto;grid-column:1}}\n.empty{color:var(--muted);text-align:center;padding:18px}\n.form{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}\n@media (max-width:600px){.form{grid-template-columns:1fr}}\n.f{display:flex;flex-direction:column;gap:4px}\n.f.full{grid-column:1 / -1}\n.f label{font-size:12.5px;font-weight:600;color:var(--muted)}\n.f input,.f select{background:var(--bg);border:1px solid var(--line);border-radius:10px;height:42px;padding:0 12px;width:100%}\n.f .hint{font-size:12px;color:var(--muted)}\n.f .err{font-size:12px;color:var(--bad);font-weight:600}\n.f input.bad,.f select.bad{border-color:var(--bad)}\n.jcount{float:left;font-weight:700;color:var(--acc)}\n.jgrid{display:grid;grid-template-columns:repeat(10,1fr);gap:6px}\n@media (max-width:600px){.jgrid{grid-template-columns:repeat(6,1fr)}}\n.jb{height:40px;border:1px solid var(--line);border-radius:10px;background:var(--bg);font-weight:600;font-variant-numeric:tabular-nums;cursor:pointer}\n.jb[aria-pressed=\"true\"]{background:var(--acc);border-color:var(--acc);color:var(--bg)}\n.jb:disabled{cursor:default}\n.jq{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}\n.jq .btn{padding:4px 10px;font-size:12.5px}\n.ro-val{min-height:42px;display:flex;align-items:center;padding:0 12px;border:1px dashed var(--line);border-radius:10px;background:var(--surface);font-weight:600}\n.opt{font-weight:400;color:var(--muted)}\n.form.addr{grid-template-columns:repeat(3,1fr)}\n@media (max-width:600px){.form.addr{grid-template-columns:repeat(2,1fr)}}\n.notes{margin:0;padding-inline-start:20px;font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:2px}\n.decl{display:flex;flex-direction:column;gap:8px}\n.chk{display:flex;gap:10px;align-items:flex-start;font-size:14px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer}\n.chk input{width:18px;height:18px;margin-top:4px;accent-color:var(--acc);flex:none}\n.pf th{width:28%;background:var(--surface);color:var(--muted);font-weight:600}\n.pf td{font-weight:600}\n.content-box{display:flex;flex-direction:column;gap:2px;border:1px solid var(--line);border-inline-start:4px solid var(--ok);border-radius:10px;padding:10px 12px;background:var(--bg)}\n.content-box b{color:var(--ok)}\n.jb:disabled:not([aria-pressed=\"true\"]){opacity:.35}\n.docs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}\n.doc{border:1.5px dashed var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px;background:var(--bg)}\n.doc.need{border-color:var(--warn)}\n.doc.done{border-style:solid;border-color:var(--ok)}\n.doc b{font-size:13.5px}\n.doc img{width:100%;height:110px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}\n.doc .fn{font-size:12px;color:var(--muted);overflow-wrap:anywhere}\n.doc input[type=file]{font-size:12px}\n.note{border-inline-start:3px solid var(--acc);background:var(--acc-soft);padding:8px 12px;font-size:13px}\n.note.bad{border-color:var(--bad);background:var(--bad-soft)}\n.note.warn{border-color:var(--warn);background:var(--warn-soft)}\n.login{max-width:420px;margin:24px auto 0;width:100%}\n.tbl{overflow-x:auto}\ntable{width:100%;border-collapse:collapse;font-size:13.5px}\nth,td{padding:8px 6px;text-align:right;border-bottom:1px solid var(--line)}\nth{font-size:12px;color:var(--muted)}\ntd.n{font-variant-numeric:tabular-nums}\n.bar{height:6px;border-radius:99px;background:var(--line);overflow:hidden;min-width:60px}\n.bar i{display:block;height:100%;background:var(--ok)}\n.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 20px);transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:10px;font-size:13.5px;z-index:40}\n.slots{font-size:12px}\n\n.pt-body{height:100%;display:flex;flex-direction:column;padding:0!important;overflow:hidden}\n.pt-body>.appbar{position:relative;top:auto;flex:none;margin:0;padding-top:calc(8px + env(safe-area-inset-top,0px))}\n.pt-scroll{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:0 16px calc(40px + env(safe-area-inset-bottom,0px))}\n[hidden]{display:none!important}\n.linkbtn{font:inherit;font-size:11.5px;background:none;border:0;padding:0;color:var(--muted);cursor:pointer;text-decoration:underline}\n.doc-view{display:flex;flex-direction:column;gap:6px;align-items:flex-start}\n.doc-view img.doc-th{width:96px;height:66px;object-fit:cover;border-radius:8px;border:1px solid var(--line);cursor:zoom-in;display:block}\n.doc-view .btn{padding:4px 10px;font-size:12.5px}\n.doc-zoom{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:16px}\n.doc-zoom[hidden]{display:none}\n.doc-zoom-scrim{position:absolute;inset:0;background:rgba(0,0,0,.6)}\n.doc-zoom-box{position:relative;width:100%;max-width:720px;max-height:90vh;background:var(--bg);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 12px 40px rgba(0,0,0,.35)}\n.doc-zoom-h{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line)}\n.doc-zoom-h b{font-size:15px;color:var(--acc)}\n.doc-zoom-x{font:inherit;font-size:24px;line-height:1;background:none;border:0;color:var(--muted);cursor:pointer}\n.doc-zoom-body{overflow:auto;padding:10px;display:grid;place-items:center;min-height:200px}\n.doc-zoom-body img{max-width:100%;max-height:80vh;border-radius:8px}\n.doc-zoom-body iframe{width:100%;height:78vh;border:0;border-radius:8px}\n.stats.kpi{grid-template-columns:repeat(3,1fr)}\n@media (max-width:700px){.stats.kpi{grid-template-columns:repeat(2,1fr)}}\n.stat.kpi-ok{border-color:var(--ok);background:var(--ok-soft)}\n.stat.kpi-bad{border-color:var(--bad);background:var(--bad-soft)}\n.stat.kpi-warn{border-color:var(--warn);background:var(--warn-soft)}\n.stat.kpi-c{border-color:var(--acc);background:var(--acc-soft)}\n.stat.kpi-ok span,.stat.kpi-bad span,.stat.kpi-warn span,.stat.kpi-c span{color:var(--ink);opacity:.75}\n.stat{transition:transform .15s,box-shadow .15s}\n.stat:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.08)}\n.tbl-int tbody tr{cursor:pointer;transition:background .15s}\n.tbl-int tbody tr:hover{background:var(--acc-soft)}\n.bar i{transition:width .3s}\n.ikpis{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}\n@media (max-width:820px){.ikpis{grid-template-columns:repeat(3,1fr)}}\n@media (max-width:480px){.ikpis{grid-template-columns:repeat(2,1fr)}}\n.ikpi{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;align-items:center;justify-content:space-between;gap:8px;transition:transform .15s,box-shadow .15s}\n.ikpi:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.08)}\n.ikpi-n{display:flex;flex-direction:column;gap:2px;min-width:0}\n.ikpi-n b{font-size:22px;line-height:1.2;font-variant-numeric:tabular-nums}\n.ikpi-n span{font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}\n.ikpi-ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;flex:none}\n.ikpi-ic svg{width:22px;height:22px}\n.ikpi.c-blue .ikpi-ic{background:var(--blue-soft);color:var(--blue)}\n.ikpi.c-pink .ikpi-ic{background:var(--pink-soft);color:var(--pink)}\n.ikpi.c-purple .ikpi-ic{background:var(--purple-soft);color:var(--purple)}\n.ikpi.c-ok .ikpi-ic{background:var(--ok-soft);color:var(--ok)}\n.ikpi.c-acc .ikpi-ic{background:var(--acc-soft);color:var(--acc)}\n.donut-card{display:flex;align-items:center;gap:14px;justify-content:center}\n.donut{width:76px;height:76px;border-radius:50%;flex:none;display:grid;place-items:center;background:conic-gradient(var(--blue) 0 calc(var(--p)*1%), var(--pink) calc(var(--p)*1%) 100%)}\n.donut-hole{width:48px;height:48px;border-radius:50%;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center}\n.donut-hole b{font-size:15px;line-height:1.1;font-variant-numeric:tabular-nums}\n.donut-hole span{font-size:9px;color:var(--muted)}\n.donut-leg{display:flex;flex-direction:column;gap:4px;font-size:12px}\n.donut-leg span{display:flex;align-items:center;gap:6px}\n.donut-leg i{width:9px;height:9px;border-radius:50%;display:inline-block}\n.bl-card h2{display:flex;align-items:center;gap:8px}\n.bl-card h2 .bl-ic{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:none}\n.bl-card h2 .bl-ic svg{width:15px;height:15px}\n.bl-row{display:flex;align-items:center;gap:10px}\n.bl-l{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13.5px}\n.bl-bar{flex:1 1 90px;height:8px;border-radius:99px;background:var(--line);overflow:hidden}\n.bl-bar i{display:block;height:100%;border-radius:99px}\n.bl-n{flex:none;min-width:22px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums;font-size:13px}\n.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}\n@media (max-width:600px){.quick{grid-template-columns:1fr}}\n.qtile{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;cursor:pointer;text-align:right;transition:transform .15s,box-shadow .15s}\n.qtile:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.08);border-color:var(--acc)}\n.qtile-ic{width:38px;height:38px;border-radius:10px;background:var(--acc-soft);color:var(--acc);display:grid;place-items:center}\n.qtile-ic svg{width:20px;height:20px}\n.qtile b{font-size:15px}\n.qtile span{font-size:12px;color:var(--muted)}\n.card{box-shadow:0 1px 2px rgba(0,0,0,.03),0 3px 10px rgba(0,0,0,.035)}\n.row,.mrow{transition:border-color .15s,box-shadow .15s}\n.row:hover,.mrow:hover{border-color:var(--acc);box-shadow:0 3px 10px rgba(0,0,0,.06)}\n.atab{border-radius:10px 10px 0 0;transition:color .15s,background .15s}\n.atab:hover{color:var(--ink);background:var(--acc-soft)}\n.atab[aria-selected=\"true\"]{background:var(--acc-soft)}\n.ikpi{border-top-width:4px;padding-top:12px}\n.ikpi.c-ok{border-top-color:var(--ok);background:linear-gradient(160deg,var(--ok-soft) 0%,var(--surface) 75%)}\n.ikpi.c-blue{border-top-color:var(--blue);background:linear-gradient(160deg,var(--blue-soft) 0%,var(--surface) 75%)}\n.ikpi.c-pink{border-top-color:var(--pink);background:linear-gradient(160deg,var(--pink-soft) 0%,var(--surface) 75%)}\n.ikpi.c-purple{border-top-color:var(--purple);background:linear-gradient(160deg,var(--purple-soft) 0%,var(--surface) 75%)}\n.ikpi.c-ok .ikpi-n b{color:var(--ok)}\n.ikpi.c-blue .ikpi-n b{color:var(--blue)}\n.ikpi.c-pink .ikpi-n b{color:var(--pink)}\n.ikpi.c-purple .ikpi-n b{color:var(--purple)}\n.ikpi-n b{font-size:26px}\n.ikpi-ic{width:46px;height:46px;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,.06)}\n.ikpi.donut-card{position:relative;overflow:hidden;border-top-width:1px;padding-top:16px;background:linear-gradient(160deg,var(--blue-soft) 0%,var(--surface) 55%,var(--pink-soft) 100%)}\n.ikpi.donut-card::before{content:\"\";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--pink))}\n.donut{width:92px;height:92px;box-shadow:0 3px 10px rgba(0,0,0,.10)}\n.donut-hole{width:60px;height:60px}\n.donut-hole b{font-size:18px}\n.donut-leg{font-size:12.5px;font-weight:700}\n.bl-card{border-top:4px solid var(--c,var(--acc));background:linear-gradient(180deg,var(--cs,var(--acc-soft)) 0,var(--surface) 110px)}\n.bl-card h2 .bl-ic{width:32px;height:32px;border-radius:50%}\n.bl-card h2 .bl-ic svg{width:17px;height:17px}\n.bl-bar{height:10px}\n.grid2{display:flex;flex-direction:column;gap:12px}\n.ikpis.c3{grid-template-columns:repeat(3,1fr)}\n.ikpis.c4{grid-template-columns:repeat(4,1fr)}\n@media (max-width:640px){.ikpis.c3,.ikpis.c4{grid-template-columns:repeat(2,1fr)}}\n.ikpi.c-acc{border-top-color:var(--acc);background:linear-gradient(160deg,var(--acc-soft) 0%,var(--surface) 75%)}\n.ikpi.c-bad{border-top-color:var(--bad);background:linear-gradient(160deg,var(--bad-soft) 0%,var(--surface) 75%)}\n.ikpi.c-warn{border-top-color:var(--warn);background:linear-gradient(160deg,var(--warn-soft) 0%,var(--surface) 75%)}\n.ikpi.c-bad .ikpi-ic{background:var(--bad-soft);color:var(--bad)}\n.ikpi.c-warn .ikpi-ic{background:var(--warn-soft);color:var(--warn)}\n.ikpi.c-acc .ikpi-n b{color:var(--acc)}\n.ikpi.c-bad .ikpi-n b{color:var(--bad)}\n.ikpi.c-warn .ikpi-n b{color:var(--warn)}\n.qtile{border-top:4px solid var(--c,var(--acc));background:linear-gradient(160deg,var(--cs,var(--acc-soft)) 0%,var(--surface) 75%)}\n.qtile:hover{border-color:var(--c,var(--acc))}\n.qtile .qtile-ic{width:44px;height:44px;border-radius:50%;background:var(--cs,var(--acc-soft));color:var(--c,var(--acc))}\n.qtile b{color:var(--c,var(--acc))}\nform.bl-card>h2:not(:first-of-type){margin-top:6px;padding-top:14px;border-top:1px solid var(--line)}\n.board.bl-card summary h2{display:inline-flex!important;vertical-align:middle}\n.slot.some{background:var(--ok-soft);border-color:var(--ok)}\n.slot.near{background:var(--warn-soft);border-color:var(--warn)}\n.slot.full{background:var(--bad-soft);border-color:var(--bad)}\n.bl-card.pf th{background:transparent}\n.ikpis>*,.ikpi-n{min-width:0}\n.ikpi-n span{white-space:normal;line-height:1.35}\n@media (max-width:480px){.ikpi.donut-card{grid-column:1/-1}}\n.btn>svg{width:18px;height:18px;flex:none}\n.btn.wareq{background:var(--ok-soft);border-color:var(--ok);color:var(--ok);text-decoration:none;display:inline-flex;align-items:center;gap:6px}\n.btn.wareq:hover{background:var(--ok);color:#fff}\n.atabs{overflow-x:auto;scrollbar-width:none}\n.atabs::-webkit-scrollbar{display:none}\n.atab{white-space:nowrap;flex:none}\n@media (max-width:640px){.atabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;border-bottom:0;overflow:visible}.atab{padding:9px 8px;font-size:13.5px;text-align:center;border:1px solid var(--line);border-radius:10px;background:var(--surface)}.atab[aria-selected=\"true\"]{border-color:var(--acc);background:var(--acc-soft)}.tbl-int{min-width:600px}.top{flex-wrap:wrap}.top>div:first-child{flex:1 1 100%}.bl-row{flex-wrap:wrap;row-gap:4px}.bl-l{flex:1 1 100%;order:-1;white-space:normal}.tbl-int td:first-child{min-width:150px}}\n.ab-role-m{display:none}\n@media (max-width:640px){.ikpi{padding:12px 10px;gap:6px}.ikpi-ic{width:36px;height:36px}.ikpi-ic svg{width:18px;height:18px}.ikpi-n b{font-size:22px}.ikpi-n span{white-space:normal;line-height:1.35;font-size:11.5px}.mrow{flex-wrap:wrap}.mrow .acts2{flex-wrap:wrap;flex:1 1 100%}.ab-right{gap:6px}.ab-right>.pill{display:none}.ab-role-m{display:inline}.ab-t{min-width:0}.ab-t b,.ab-t small{overflow:hidden;text-overflow:ellipsis}.tg,.doorbtn{width:38px;height:38px}}\n.bl-card h2{color:var(--c,var(--acc))}\n.bl-n{min-width:28px;padding:2px 6px;border-radius:99px;background:var(--cs,var(--acc-soft));color:var(--c,var(--acc))}\n.atabs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;border-bottom:0;overflow:visible;padding:4px 2px 10px}\n@media (max-width:640px){.atabs{grid-template-columns:1fr 1fr}}\n.atabs .atab{position:relative;padding:12px 8px;font-size:14px;text-align:center;color:var(--muted);border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--surface) 0%,var(--bg) 100%);box-shadow:0 4px 0 var(--line),0 6px 14px rgba(0,0,0,.07);transform:translateY(0);transition:transform .12s ease,box-shadow .12s ease,background .2s,color .2s;-webkit-tap-highlight-color:transparent}\n.atabs .atab:hover{color:var(--ink);transform:translateY(-2px);box-shadow:0 6px 0 var(--line),0 10px 18px rgba(0,0,0,.09)}\n.atabs .atab:active{transform:translateY(4px);box-shadow:0 0 0 var(--line),0 1px 3px rgba(0,0,0,.08)}\n.atabs .atab[aria-selected=\"true\"]{color:#fff;border-color:#8A6A00;background:linear-gradient(180deg,#C29A12 0%,#A07E08 100%);box-shadow:0 5px 0 #6F5500,0 12px 22px rgba(176,138,11,.38),inset 0 1px 0 rgba(255,255,255,.25);transform:translateY(-3px);text-shadow:0 1px 1px rgba(0,0,0,.25)}\n.atabs .atab[aria-selected=\"true\"]:active{transform:translateY(2px);box-shadow:0 0 0 #6F5500,0 2px 6px rgba(176,138,11,.3)}\n.atabs .atab.pop{animation:tabpop .32s cubic-bezier(.3,1.5,.5,1)}\n@keyframes tabpop{0%{transform:translateY(3px) scale(.96)}60%{transform:translateY(-5px) scale(1.04)}100%{transform:translateY(-3px) scale(1)}}\n@media (prefers-reduced-motion:reduce){.atabs .atab{transition:none}.atabs .atab.pop{animation:none}}\n";
+const PORTAL_CSS="\n:host{\n  --bg:#FFFFFF;--surface:#F9F9F9;--ink:#3F3F3F;--muted:#767676;--line:#E9E3CC;\n  --acc:#B08A0B;--acc-soft:#F7F1DC;--ok:#1E7A4F;--ok-soft:#E4F1EA;--warn:#A1560B;--warn-soft:#FBEBD8;--bad:#B3261E;--bad-soft:#FBE4E2;\n  --blue:#2A5DA8;--blue-soft:#E7EEF8;--pink:#A83D6B;--pink-soft:#F8E7EF;--purple:#6E4CA3;--purple-soft:#EFE7F8;\n  --font:\"Noto Kufi Arabic\",\"Segoe UI\",Tahoma,sans-serif;\n}\n:host(.dk){color-scheme:dark;--bg:#121212;--surface:#1C1C1C;--ink:#E6E6E6;--muted:#A6A6A6;--line:#343026;--acc:#D9B44A;--acc-soft:#2A2412;--ok:#6FD3A1;--ok-soft:#16302A;--warn:#F0A95A;--warn-soft:#33240F;--bad:#F2877F;--bad-soft:#3A1917;--blue:#7EB2E8;--blue-soft:#182636;--pink:#EC9DC2;--pink-soft:#331C29;--purple:#C7A9EA;--purple-soft:#241C33}\n*{box-sizing:border-box}\n.pt-body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:14.5px;line-height:1.8;direction:rtl;padding-inline:16px;padding-block:0 40px}\nbutton,input,select{font:inherit;color:inherit}\n.appbar{position:sticky;top:0;z-index:21;margin-inline:-16px;padding:8px 16px;background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 2px 10px rgba(0,0,0,.04)}\n.ab-t{display:flex;flex-direction:column;line-height:1.35}\n.ab-t b{color:var(--acc);font-size:15px}\n.ab-t small{color:var(--muted);font-size:11.5px}\n.ab-user{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600}\n#abIn{display:inline-flex;align-items:center;gap:6px}\n.demo{position:static}\n.acc-list{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;margin-top:4px}\n.acc-list code{direction:ltr;text-align:left;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}\n.tools{margin:24px auto 0;max-width:920px;display:flex;justify-content:flex-start;font-size:12.5px;color:var(--muted)}\n.tools select{margin-inline-start:8px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:2px 8px;font-size:12.5px}\n.beta{display:inline-block;vertical-align:middle;font-size:10.5px;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:0 7px;margin-inline-start:4px}\ndetails.note summary{cursor:pointer}\n.atabs{display:flex;gap:6px;border-bottom:1px solid var(--line)}\n.atab{border:0;background:none;padding:8px 12px;font-weight:700;color:var(--muted);border-bottom:3px solid transparent;cursor:pointer}\n.atab[aria-selected=\"true\"]{color:var(--acc);border-bottom-color:var(--acc)}\ncode{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px}\n.ab-right{display:flex;align-items:center;gap:10px}\n.ab-nav{display:flex;align-items:center;gap:8px}\n.doorbtn{display:grid;place-items:center;width:40px;height:40px;flex:none;padding:0;border:1.5px solid var(--acc);border-radius:999px;background:var(--surface);color:var(--acc);cursor:pointer}\n.doorbtn svg{width:19px;height:19px}\n.doorbtn:hover,.homebtn:hover{background:var(--acc);color:#fff}\n.tg{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--acc);display:grid;place-items:center;cursor:pointer;padding:0;flex:none}\n.tg svg{width:22px;height:22px}\n.tg:focus-visible{outline:2px solid var(--acc);outline-offset:2px}\n.homebtn{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 12px;border-radius:999px;border:1.5px solid var(--acc);background:var(--surface);color:var(--acc);font-weight:700;font-size:13px;cursor:pointer}\n.homebtn svg{width:18px;height:18px}\n@media (max-width:600px){.ab-user>span{display:none}}\n@media (max-width:380px){.homebtn span{display:none}.homebtn{width:40px;padding:0;justify-content:center}}\n.ab-t b,.ab-t small{white-space:nowrap}\n.miss{border-color:var(--warn)}\n.miss-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px}\n.mrow{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px}\n.acts2{display:flex;gap:6px;flex:none}\n.ok-note{border-color:var(--ok);background:var(--ok-soft)}\n.btn.wa{background:#1F8F55;border-color:#1F8F55;color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:6px}\n.board summary{cursor:pointer;list-style-position:inside}\n.brow{display:flex;flex-direction:column;gap:6px;padding-top:6px;border-top:1px dashed var(--line)}\n.bt{font-weight:700;font-size:13.5px}\n.slots-row{display:flex;flex-wrap:wrap;gap:6px}\n.slot{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:2px 10px;font-size:12.5px}\n.slot b{font-weight:600}\n.slot i{font-style:normal;font-variant-numeric:tabular-nums;color:var(--muted)}\n.slot.some{border-color:var(--ok)}.slot.some i{color:var(--ok);font-weight:700}\n.slot.near{border-color:var(--warn);background:var(--warn-soft)}.slot.near i{color:var(--warn);font-weight:700}\n.slot.full{border-color:var(--bad);background:var(--bad-soft)}.slot.full i{color:var(--bad);font-weight:700}\n.legend{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:12px;color:var(--muted)}\n.legend .slot{padding:0 6px}\n.wrap{max-width:920px;margin-inline:auto;display:flex;flex-direction:column;gap:16px}\n.demo{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;margin-inline:-16px;padding:8px 16px;background:var(--acc-soft);border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;font-size:12.5px}\n.demo b{color:var(--acc)}\n.demo label{display:flex;align-items:center;gap:6px}\n.demo select{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:2px 8px;font-size:12.5px}\n.top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:10px}\n.top h1{margin:0;font-size:20px;color:var(--acc);line-height:1.4}\n.top small{display:block;color:var(--muted);font-size:12.5px}\n.btn{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:7px 14px;cursor:pointer;font-weight:600;font-size:13.5px}\n.btn.pri{background:var(--acc);border-color:var(--acc);color:var(--bg)}\n.btn.ghost{background:transparent}\n.btn.xl{display:inline-flex;align-items:center;gap:6px;background:#1E7A4F;border-color:#1E7A4F;color:#fff}\n.btn.xl:hover{background:#17653F}\n.row .acts{flex-wrap:wrap}\n.row .acts .pill{white-space:nowrap}\ntd .pill{border-radius:8px;white-space:normal;line-height:1.5;padding:3px 8px}\n.btn.danger{color:var(--bad)}\n.btn:disabled{opacity:.45;cursor:not-allowed}\n.btn:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--acc);outline-offset:2px}\n.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px}\nh2{margin:0;font-size:17px;color:var(--acc)}\n.muted{color:var(--muted);font-size:13px}\n.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}\n@media (max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}}\n.stat{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px}\n.stat b{display:block;font-size:24px;line-height:1.3;color:var(--acc);font-variant-numeric:tabular-nums}\n.stat span{font-size:12px;color:var(--muted)}\n.dl{display:flex;flex-wrap:wrap;gap:8px}\n.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;border:1px solid transparent}\n.pill.ok{background:var(--ok-soft);color:var(--ok)}\n.pill.warn{background:var(--warn-soft);color:var(--warn)}\n.pill.bad{background:var(--bad-soft);color:var(--bad)}\n.pill.acc{background:var(--acc-soft);color:var(--acc)}\n.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}\n.toolbar input,.toolbar select{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:6px 10px;min-width:0}\n.toolbar input{flex:1 1 180px}\n.list{display:flex;flex-direction:column;gap:8px}\n.row{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center}\n.row .nm{font-weight:700}\n.row .meta{color:var(--muted);font-size:12.5px}\n.row .acts{grid-row:1 / span 2;grid-column:2;display:flex;gap:6px;align-items:center}\n@media (max-width:520px){.row{grid-template-columns:1fr}.row .acts{grid-row:auto;grid-column:1}}\n.empty{color:var(--muted);text-align:center;padding:18px}\n.form{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}\n@media (max-width:600px){.form{grid-template-columns:1fr}}\n.f{display:flex;flex-direction:column;gap:4px}\n.f.full{grid-column:1 / -1}\n.f label{font-size:12.5px;font-weight:600;color:var(--muted)}\n.f input,.f select{background:var(--bg);border:1px solid var(--line);border-radius:10px;height:42px;padding:0 12px;width:100%}\n.f .hint{font-size:12px;color:var(--muted)}\n.f .err{font-size:12px;color:var(--bad);font-weight:600}\n.f input.bad,.f select.bad{border-color:var(--bad)}\n.jcount{float:left;font-weight:700;color:var(--acc)}\n.jgrid{display:grid;grid-template-columns:repeat(10,1fr);gap:6px}\n@media (max-width:600px){.jgrid{grid-template-columns:repeat(6,1fr)}}\n.jb{height:40px;border:1px solid var(--line);border-radius:10px;background:var(--bg);font-weight:600;font-variant-numeric:tabular-nums;cursor:pointer}\n.jb[aria-pressed=\"true\"]{background:var(--acc);border-color:var(--acc);color:var(--bg)}\n.jb:disabled{cursor:default}\n.jq{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}\n.jq .btn{padding:4px 10px;font-size:12.5px}\n.ro-val{min-height:42px;display:flex;align-items:center;padding:0 12px;border:1px dashed var(--line);border-radius:10px;background:var(--surface);font-weight:600}\n.opt{font-weight:400;color:var(--muted)}\n.form.addr{grid-template-columns:repeat(3,1fr)}\n@media (max-width:600px){.form.addr{grid-template-columns:repeat(2,1fr)}}\n.notes{margin:0;padding-inline-start:20px;font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:2px}\n.decl{display:flex;flex-direction:column;gap:8px}\n.chk{display:flex;gap:10px;align-items:flex-start;font-size:14px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer}\n.chk input{width:18px;height:18px;margin-top:4px;accent-color:var(--acc);flex:none}\n.pf th{width:28%;background:var(--surface);color:var(--muted);font-weight:600}\n.pf td{font-weight:600}\n.content-box{display:flex;flex-direction:column;gap:2px;border:1px solid var(--line);border-inline-start:4px solid var(--ok);border-radius:10px;padding:10px 12px;background:var(--bg)}\n.content-box b{color:var(--ok)}\n.jb:disabled:not([aria-pressed=\"true\"]){opacity:.35}\n.docs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}\n.doc{border:1.5px dashed var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px;background:var(--bg)}\n.doc.need{border-color:var(--warn)}\n.doc.done{border-style:solid;border-color:var(--ok)}\n.doc b{font-size:13.5px}\n.doc img{width:100%;height:110px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}\n.doc .fn{font-size:12px;color:var(--muted);overflow-wrap:anywhere}\n.doc input[type=file]{font-size:12px}\n.note{border-inline-start:3px solid var(--acc);background:var(--acc-soft);padding:8px 12px;font-size:13px}\n.note.bad{border-color:var(--bad);background:var(--bad-soft)}\n.note.warn{border-color:var(--warn);background:var(--warn-soft)}\n.login{max-width:420px;margin:24px auto 0;width:100%}\n.tbl{overflow-x:auto}\ntable{width:100%;border-collapse:collapse;font-size:13.5px}\nth,td{padding:8px 6px;text-align:right;border-bottom:1px solid var(--line)}\nth{font-size:12px;color:var(--muted)}\ntd.n{font-variant-numeric:tabular-nums}\n.bar{height:6px;border-radius:99px;background:var(--line);overflow:hidden;min-width:60px}\n.bar i{display:block;height:100%;background:var(--ok)}\n.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 20px);transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:10px;font-size:13.5px;z-index:40}\n.slots{font-size:12px}\n\n.pt-body{height:100%;display:flex;flex-direction:column;padding:0!important;overflow:hidden}\n.pt-body>.appbar{position:relative;top:auto;flex:none;margin:0;padding-top:calc(8px + env(safe-area-inset-top,0px))}\n.pt-scroll{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:0 16px calc(40px + env(safe-area-inset-bottom,0px))}\n[hidden]{display:none!important}\n.linkbtn{font:inherit;font-size:11.5px;background:none;border:0;padding:0;color:var(--muted);cursor:pointer;text-decoration:underline}\n.doc-view{display:flex;flex-direction:column;gap:6px;align-items:flex-start}\n.doc-view img.doc-th{width:96px;height:66px;object-fit:cover;border-radius:8px;border:1px solid var(--line);cursor:zoom-in;display:block}\n.doc-view .btn{padding:4px 10px;font-size:12.5px}\n.doc-zoom{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:16px}\n.doc-zoom[hidden]{display:none}\n.doc-zoom-scrim{position:absolute;inset:0;background:rgba(0,0,0,.6)}\n.doc-zoom-box{position:relative;width:100%;max-width:720px;max-height:90vh;background:var(--bg);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 12px 40px rgba(0,0,0,.35)}\n.doc-zoom-h{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line)}\n.doc-zoom-h b{font-size:15px;color:var(--acc)}\n.doc-zoom-x{font:inherit;font-size:24px;line-height:1;background:none;border:0;color:var(--muted);cursor:pointer}\n.doc-zoom-body{overflow:auto;padding:10px;display:grid;place-items:center;min-height:200px}\n.doc-zoom-body img{max-width:100%;max-height:80vh;border-radius:8px}\n.doc-zoom-body iframe{width:100%;height:78vh;border:0;border-radius:8px}\n.stats.kpi{grid-template-columns:repeat(3,1fr)}\n@media (max-width:700px){.stats.kpi{grid-template-columns:repeat(2,1fr)}}\n.stat.kpi-ok{border-color:var(--ok);background:var(--ok-soft)}\n.stat.kpi-bad{border-color:var(--bad);background:var(--bad-soft)}\n.stat.kpi-warn{border-color:var(--warn);background:var(--warn-soft)}\n.stat.kpi-c{border-color:var(--acc);background:var(--acc-soft)}\n.stat.kpi-ok span,.stat.kpi-bad span,.stat.kpi-warn span,.stat.kpi-c span{color:var(--ink);opacity:.75}\n.stat{transition:transform .15s,box-shadow .15s}\n.stat:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.08)}\n.tbl-int tbody tr{cursor:pointer;transition:background .15s}\n.tbl-int tbody tr:hover{background:var(--acc-soft)}\n.bar i{transition:width .3s}\n.ikpis{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}\n@media (max-width:820px){.ikpis{grid-template-columns:repeat(3,1fr)}}\n@media (max-width:480px){.ikpis{grid-template-columns:repeat(2,1fr)}}\n.ikpi{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;align-items:center;justify-content:space-between;gap:8px;transition:transform .15s,box-shadow .15s}\n.ikpi:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.08)}\n.ikpi-n{display:flex;flex-direction:column;gap:2px;min-width:0}\n.ikpi-n b{font-size:22px;line-height:1.2;font-variant-numeric:tabular-nums}\n.ikpi-n span{font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}\n.ikpi-ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;flex:none}\n.ikpi-ic svg{width:22px;height:22px}\n.ikpi.c-blue .ikpi-ic{background:var(--blue-soft);color:var(--blue)}\n.ikpi.c-pink .ikpi-ic{background:var(--pink-soft);color:var(--pink)}\n.ikpi.c-purple .ikpi-ic{background:var(--purple-soft);color:var(--purple)}\n.ikpi.c-ok .ikpi-ic{background:var(--ok-soft);color:var(--ok)}\n.ikpi.c-acc .ikpi-ic{background:var(--acc-soft);color:var(--acc)}\n.donut-card{display:flex;align-items:center;gap:14px;justify-content:center}\n.donut{width:76px;height:76px;border-radius:50%;flex:none;display:grid;place-items:center;background:conic-gradient(var(--blue) 0 calc(var(--p)*1%), var(--pink) calc(var(--p)*1%) 100%)}\n.donut-hole{width:48px;height:48px;border-radius:50%;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center}\n.donut-hole b{font-size:15px;line-height:1.1;font-variant-numeric:tabular-nums}\n.donut-hole span{font-size:9px;color:var(--muted)}\n.donut-leg{display:flex;flex-direction:column;gap:4px;font-size:12px}\n.donut-leg span{display:flex;align-items:center;gap:6px}\n.donut-leg i{width:9px;height:9px;border-radius:50%;display:inline-block}\n.bl-card h2{display:flex;align-items:center;gap:8px}\n.bl-card h2 .bl-ic{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:none}\n.bl-card h2 .bl-ic svg{width:15px;height:15px}\n.bl-row{display:flex;align-items:center;gap:10px}\n.bl-l{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13.5px}\n.bl-bar{flex:1 1 90px;height:8px;border-radius:99px;background:var(--line);overflow:hidden}\n.bl-bar i{display:block;height:100%;border-radius:99px}\n.bl-n{flex:none;min-width:22px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums;font-size:13px}\n.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}\n@media (max-width:600px){.quick{grid-template-columns:1fr}}\n.qtile{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;cursor:pointer;text-align:right;transition:transform .15s,box-shadow .15s}\n.qtile:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.08);border-color:var(--acc)}\n.qtile-ic{width:38px;height:38px;border-radius:10px;background:var(--acc-soft);color:var(--acc);display:grid;place-items:center}\n.qtile-ic svg{width:20px;height:20px}\n.qtile b{font-size:15px}\n.qtile span{font-size:12px;color:var(--muted)}\n.card{box-shadow:0 1px 2px rgba(0,0,0,.03),0 3px 10px rgba(0,0,0,.035)}\n.row,.mrow{transition:border-color .15s,box-shadow .15s}\n.row:hover,.mrow:hover{border-color:var(--acc);box-shadow:0 3px 10px rgba(0,0,0,.06)}\n.atab{border-radius:10px 10px 0 0;transition:color .15s,background .15s}\n.atab:hover{color:var(--ink);background:var(--acc-soft)}\n.atab[aria-selected=\"true\"]{background:var(--acc-soft)}\n.ikpi{border-top-width:4px;padding-top:12px}\n.ikpi.c-ok{border-top-color:var(--ok);background:linear-gradient(160deg,var(--ok-soft) 0%,var(--surface) 75%)}\n.ikpi.c-blue{border-top-color:var(--blue);background:linear-gradient(160deg,var(--blue-soft) 0%,var(--surface) 75%)}\n.ikpi.c-pink{border-top-color:var(--pink);background:linear-gradient(160deg,var(--pink-soft) 0%,var(--surface) 75%)}\n.ikpi.c-purple{border-top-color:var(--purple);background:linear-gradient(160deg,var(--purple-soft) 0%,var(--surface) 75%)}\n.ikpi.c-ok .ikpi-n b{color:var(--ok)}\n.ikpi.c-blue .ikpi-n b{color:var(--blue)}\n.ikpi.c-pink .ikpi-n b{color:var(--pink)}\n.ikpi.c-purple .ikpi-n b{color:var(--purple)}\n.ikpi-n b{font-size:26px}\n.ikpi-ic{width:46px;height:46px;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,.06)}\n.ikpi.donut-card{position:relative;overflow:hidden;border-top-width:1px;padding-top:16px;background:linear-gradient(160deg,var(--blue-soft) 0%,var(--surface) 55%,var(--pink-soft) 100%)}\n.ikpi.donut-card::before{content:\"\";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--pink))}\n.donut{width:92px;height:92px;box-shadow:0 3px 10px rgba(0,0,0,.10)}\n.donut-hole{width:60px;height:60px}\n.donut-hole b{font-size:18px}\n.donut-leg{font-size:12.5px;font-weight:700}\n.bl-card{border-top:4px solid var(--c,var(--acc));background:linear-gradient(180deg,var(--cs,var(--acc-soft)) 0,var(--surface) 110px)}\n.bl-card h2 .bl-ic{width:32px;height:32px;border-radius:50%}\n.bl-card h2 .bl-ic svg{width:17px;height:17px}\n.bl-bar{height:10px}\n.grid2{display:flex;flex-direction:column;gap:12px}\n.ikpis.c3{grid-template-columns:repeat(3,1fr)}\n.ikpis.c4{grid-template-columns:repeat(4,1fr)}\n@media (max-width:640px){.ikpis.c3,.ikpis.c4{grid-template-columns:repeat(2,1fr)}}\n.ikpi.c-acc{border-top-color:var(--acc);background:linear-gradient(160deg,var(--acc-soft) 0%,var(--surface) 75%)}\n.ikpi.c-bad{border-top-color:var(--bad);background:linear-gradient(160deg,var(--bad-soft) 0%,var(--surface) 75%)}\n.ikpi.c-warn{border-top-color:var(--warn);background:linear-gradient(160deg,var(--warn-soft) 0%,var(--surface) 75%)}\n.ikpi.c-bad .ikpi-ic{background:var(--bad-soft);color:var(--bad)}\n.ikpi.c-warn .ikpi-ic{background:var(--warn-soft);color:var(--warn)}\n.ikpi.c-acc .ikpi-n b{color:var(--acc)}\n.ikpi.c-bad .ikpi-n b{color:var(--bad)}\n.ikpi.c-warn .ikpi-n b{color:var(--warn)}\n.qtile{border-top:4px solid var(--c,var(--acc));background:linear-gradient(160deg,var(--cs,var(--acc-soft)) 0%,var(--surface) 75%)}\n.qtile:hover{border-color:var(--c,var(--acc))}\n.qtile .qtile-ic{width:44px;height:44px;border-radius:50%;background:var(--cs,var(--acc-soft));color:var(--c,var(--acc))}\n.qtile b{color:var(--c,var(--acc))}\nform.bl-card>h2:not(:first-of-type){margin-top:6px;padding-top:14px;border-top:1px solid var(--line)}\n.board.bl-card summary h2{display:inline-flex!important;vertical-align:middle}\n.slot.some{background:var(--ok-soft);border-color:var(--ok)}\n.slot.near{background:var(--warn-soft);border-color:var(--warn)}\n.slot.full{background:var(--bad-soft);border-color:var(--bad)}\n.slot i.sg{padding:0 7px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}\n.slot i.sg.some{color:var(--ok);background:var(--ok-soft);border-color:var(--ok);font-weight:700}\n.slot i.sg.near{color:var(--warn);background:var(--warn-soft);border-color:var(--warn);font-weight:700}\n.slot i.sg.full{color:var(--bad);background:var(--bad-soft);border-color:var(--bad);font-weight:700}\n.bl-card.pf th{background:transparent}\n.ikpis>*,.ikpi-n{min-width:0}\n.ikpi-n span{white-space:normal;line-height:1.35}\n@media (max-width:480px){.ikpi.donut-card{grid-column:1/-1}}\n.btn>svg{width:18px;height:18px;flex:none}\n.btn.wareq{background:var(--ok-soft);border-color:var(--ok);color:var(--ok);text-decoration:none;display:inline-flex;align-items:center;gap:6px}\n.btn.wareq:hover{background:var(--ok);color:#fff}\n.atabs{overflow-x:auto;scrollbar-width:none}\n.atabs::-webkit-scrollbar{display:none}\n.atab{white-space:nowrap;flex:none}\n@media (max-width:640px){.atabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;border-bottom:0;overflow:visible}.atab{padding:9px 8px;font-size:13.5px;text-align:center;border:1px solid var(--line);border-radius:10px;background:var(--surface)}.atab[aria-selected=\"true\"]{border-color:var(--acc);background:var(--acc-soft)}.tbl-int{min-width:600px}.top{flex-wrap:wrap}.top>div:first-child{flex:1 1 100%}.bl-row{flex-wrap:wrap;row-gap:4px}.bl-l{flex:1 1 100%;order:-1;white-space:normal}.tbl-int td:first-child{min-width:150px}}\n.ab-role-m{display:none}\n@media (max-width:640px){.ikpi{padding:12px 10px;gap:6px}.ikpi-ic{width:36px;height:36px}.ikpi-ic svg{width:18px;height:18px}.ikpi-n b{font-size:22px}.ikpi-n span{white-space:normal;line-height:1.35;font-size:11.5px}.mrow{flex-wrap:wrap}.mrow .acts2{flex-wrap:wrap;flex:1 1 100%}.ab-right{gap:6px}.ab-right>.pill{display:none}.ab-role-m{display:inline}.ab-t{min-width:0}.ab-t b,.ab-t small{overflow:hidden;text-overflow:ellipsis}.tg,.doorbtn{width:38px;height:38px}}\n.bl-card h2{color:var(--c,var(--acc))}\n.bl-n{min-width:28px;padding:2px 6px;border-radius:99px;background:var(--cs,var(--acc-soft));color:var(--c,var(--acc))}\n.atabs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;border-bottom:0;overflow:visible;padding:4px 2px 10px}\n@media (max-width:640px){.atabs{grid-template-columns:1fr 1fr}}\n.atabs .atab{position:relative;padding:12px 8px;font-size:14px;text-align:center;color:var(--muted);border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--surface) 0%,var(--bg) 100%);box-shadow:0 4px 0 var(--line),0 6px 14px rgba(0,0,0,.07);transform:translateY(0);transition:transform .12s ease,box-shadow .12s ease,background .2s,color .2s;-webkit-tap-highlight-color:transparent}\n.atabs .atab:hover{color:var(--ink);transform:translateY(-2px);box-shadow:0 6px 0 var(--line),0 10px 18px rgba(0,0,0,.09)}\n.atabs .atab:active{transform:translateY(4px);box-shadow:0 0 0 var(--line),0 1px 3px rgba(0,0,0,.08)}\n.atabs .atab[aria-selected=\"true\"]{color:#fff;border-color:#8A6A00;background:linear-gradient(180deg,#C29A12 0%,#A07E08 100%);box-shadow:0 5px 0 #6F5500,0 12px 22px rgba(176,138,11,.38),inset 0 1px 0 rgba(255,255,255,.25);transform:translateY(-3px);text-shadow:0 1px 1px rgba(0,0,0,.25)}\n.atabs .atab[aria-selected=\"true\"]:active{transform:translateY(2px);box-shadow:0 0 0 #6F5500,0 2px 6px rgba(176,138,11,.3)}\n.atabs .atab.pop{animation:tabpop .32s cubic-bezier(.3,1.5,.5,1)}\n@keyframes tabpop{0%{transform:translateY(3px) scale(.96)}60%{transform:translateY(-5px) scale(1.04)}100%{transform:translateY(-3px) scale(1)}}\n@media (prefers-reduced-motion:reduce){.atabs .atab{transition:none}.atabs .atab.pop{animation:none}}\n";
 const PORTAL_HTML="<div class=\"pt-body\">\n\n\n\n<div class=\"appbar\" id=\"appbar\"></div>\n<div class=\"pt-scroll\"><div class=\"wrap\" id=\"app\"></div>\n<div class=\"tools\" id=\"tools\" hidden><label>محاكاة التاريخ للعرض\n    <select id=\"simDate\">\n      <option value=\"2026-10-10\">10 أكتوبر (التسجيل مفتوح)</option>\n      <option value=\"2026-11-05\">5 نوفمبر (التعديل فقط)</option>\n      <option value=\"2026-11-14\">14 نوفمبر (مغلق)</option>\n    </select></label></div></div>\n<div class=\"doc-zoom\" id=\"docZoom\" hidden><div class=\"doc-zoom-scrim\" data-zx></div><div class=\"doc-zoom-box\"><div class=\"doc-zoom-h\"><b id=\"docZoomT\"></b><button class=\"doc-zoom-x\" type=\"button\" data-zx aria-label=\"إغلاق\">×</button></div><div class=\"doc-zoom-body\"><img id=\"docZoomImg\" alt=\"مستند مكبّر\" hidden><iframe id=\"docZoomFrame\" title=\"مستند\" hidden></iframe></div></div></div>\n\n</div>";
 // ---------- database connection (active only on the published GitHub site) ----------
 const Q29_DB=(function(){try{if(window.Q29_DB!==undefined)return window.Q29_DB;if(/(^|\.)github\.io$/i.test(location.hostname))return {url:"https://drpoqlmtslgmvxwytpga.supabase.co",key:"sb_publishable_INJMxWrnYwY2KOEccmko6g_OUdmMKN0"}}catch(e){}return null})();
@@ -1586,7 +1735,7 @@ const BR={
   qiraat:{t:"القراءات",slices:[{k:"q7",t:"القراءات السبع",juz:30},{k:"qalun",t:"نافع: قالون",juz:30},{k:"warsh",t:"نافع: ورش",juz:30},{k:"ibnkathir",t:"ابن كثير",juz:30},{k:"abuamr",t:"أبو عمرو البصري",juz:30}],ok:a=>true,docs:["cid"]},
   general:{t:"العامة",slices:J([30,25,20,15,10]),ok:a=>true,docs:["cid"]},
   youth:{t:"النشء والشباب",slices:null,ok:a=>a>=3&&a<25,docs:["cid"]},
-  majd:{t:"المجد",slices:J([5,4,3,2,1]),ok:a=>a>=25&&a<60,docs:["cid"]},
+  majd:{t:"المُجِدّ",slices:J([5,4,3,2,1]),ok:a=>a>=25&&a<60,docs:["cid"]},
   khair:{t:"الخير والبركة",slices:J([15,10,5,4,3,2,1]),ok:a=>a>=60,docs:["cid"]},
   disab:{t:"ذوو الاحتياجات الخاصة",surah:true,slices:[{k:"d0",t:"الإعاقة الذهنية ومتلازمة داون"},{k:"d1",t:"التوحد"},{k:"d2",t:"ضعاف السمع"},{k:"deaf1",t:"الصم: متميز"},{k:"deaf2",t:"الصم: متقدم"},{k:"deaf3",t:"الصم: مبتدئ"},{k:"slow1",t:"بطيئو التعلم: ابتدائي"},{k:"slow2",t:"بطيئو التعلم: متوسط"},{k:"slow3",t:"بطيئو التعلم: ثانوي"},{k:"ld1",t:"صعوبات التعلم: ابتدائي"},{k:"ld2",t:"صعوبات التعلم: متوسط"},{k:"ld3",t:"صعوبات التعلم: ثانوي"}],ok:a=>true,docs:["cid","disab"]},
   prison:{t:"المؤسسات الإصلاحية",slices:J([30,25,20,15,10,5,4,3,2,1]),ok:a=>a>=15,docs:["cid"]},
@@ -1737,7 +1886,8 @@ function seedLog(){CANDS.forEach(c=>{if(c.log)return;const e=ENT.find(x=>x.id===
 function enforceComplete(){CANDS.forEach(c=>{if((c.status==="approved"||c.status==="pending")&&missing(c).length)c.status="draft"})}
 function missing(c){const a=ageOn(c.dob);const m=reqDocs(c).filter(k=>!c.docs[k]).map(k=>DOCS[k]);if(!c.agree)m.push("الإقرار");if(a!=null&&a<18&&!c.guardian)m.push("موافقة ولي الأمر");return m}
 function catLabel(br,age,band){if(br==="youth"){const b=band!=null&&band!==""?+band:bandOf(age);return b!=null&&b>=0?bandTxt(b):"—"}if(br==="prison")return "نزلاء المؤسسات الإصلاحية";if(br==="care")return "نزلاء دور الرعاية والأحداث";return {qiraat:"جميع الأعمار (حافظ للقرآن كاملاً)",general:"جميع الأعمار",majd:"المواطنون من 25 إلى ما دون 60 سنة",khair:"من 60 سنة فأكثر",disab:"ذوو الاحتياجات الخاصة"}[br]||"—"}
-function sliceCount(ent,br,sl,exceptId){return CANDS.filter(c=>c.ent===ent&&c.br===br&&c.sl===sl&&c.id!==exceptId&&c.status==="approved").length}
+function sliceCount(ent,br,sl,exceptId,g){return CANDS.filter(c=>c.ent===ent&&c.br===br&&c.sl===sl&&c.id!==exceptId&&c.status==="approved"&&(!g||c.gender===g)).length}
+const gFor=g=>g==="أنثى"?"للإناث":"للذكور";
 function toast(t){const d=document.createElement("div");d.className="toast";d.textContent=t;root.appendChild(d);setTimeout(()=>d.remove(),2200)}
 function brLabel(c){const s=sliceObj(c.br,c.sl,ageOn(c.dob));return BR[c.br].t+" · "+(s?s.t:"—")}
 function phasePill(){const p=phase();return p==="open"?`<span class="pill ok">التسجيل مفتوح · يتبقى ${days(today(),REG_END)} يوماً</span>`:p==="edit"?`<span class="pill warn">انتهى التسجيل · التعديل متاح ${days(today(),EDIT_END)} يوماً</span>`:`<span class="pill bad">مغلق · انتهت مدة التعديل (12 نوفمبر)</span>`}
@@ -1815,20 +1965,20 @@ function missBox(mine){
 function slotBoard(mine){
   const brs=Object.entries(BR).filter(([k])=>S.allSlots||mine.some(c=>c.br===k));
   if(!brs.length)return "";
-  const chip=(k,sl)=>{const n=mine.filter(c=>c.br===k&&c.sl===sl.k&&c.status==="approved").length;const cls=n>=MAX_PER_SLICE?"full":n>=MAX_PER_SLICE-1?"near":n?"some":"";return `<span class="slot ${cls}" title="${n} من ${MAX_PER_SLICE}"><b>${sl.t}</b><i>${n}/${MAX_PER_SLICE}</i></span>`};
+  const chip=(k,sl)=>{const cnt=g=>mine.filter(c=>c.br===k&&c.sl===sl.k&&c.status==="approved"&&c.gender===g).length;const cl=n=>n>=MAX_PER_SLICE?"full":n>=MAX_PER_SLICE-1?"near":n?"some":"";const m=cnt("ذكر"),f=cnt("أنثى");return `<span class="slot" title="ذكور ${m} من ${MAX_PER_SLICE} · إناث ${f} من ${MAX_PER_SLICE}"><b>${sl.t}</b><i class="sg ${cl(m)}">ذكور ${m}/${MAX_PER_SLICE}</i><i class="sg ${cl(f)}">إناث ${f}/${MAX_PER_SLICE}</i></span>`};
   const slicesAll=k=>k==="youth"?[...HIZB,...J([5,4,3,2,1])]:BR[k].slices;
   return `<details ${tcard("acc","board")} ${S.boardOpen?"open":""} id="board"><summary><h2 style="display:inline">${hIc("acc","layers")}لوحة الشرائح</h2> <span class="muted">عدد المعتمدين من مرشحي جهتك في كل شريحة من الحد الأقصى (يُحجز المقعد عند الاعتماد فقط)</span></summary>
   ${brs.map(([k,b])=>`<div class="brow"><div class="bt">${b.t}</div><div class="slots-row">${slicesAll(k).map(sl=>chip(k,sl)).join("")}</div></div>`).join("")}
   <div class="toolbar"><span class="legend"><span class="slot some"><i>1–3</i></span> متاح <span class="slot near"><i>4</i></span> مقعد أخير <span class="slot full"><i>5</i></span> مكتملة</span><button class="btn ghost" id="allSlots">${S.allSlots?"إخفاء الفروع الفارغة":"عرض كل الفروع"}</button></div></details>`;
 }
-function approveCand(c){const m=missing(c);if(m.length){toast("لا يمكن اعتماد استمارة غير مكتملة — ينقصها: "+m.join("، "));return}if(sliceCount(c.ent,c.br,c.sl,c.id)>=MAX_PER_SLICE){toast("لا يمكن الاعتماد: اكتمل عدد المعتمدين في هذه الشريحة ("+MAX_PER_SLICE+")");return}c.status="approved";c.reviewNote="";logA(c,"اعتماد");dbSync(c);render();toast("اعتُمد المرشح")}
+function approveCand(c){const m=missing(c);if(m.length){toast("لا يمكن اعتماد استمارة غير مكتملة — ينقصها: "+m.join("، "));return}if(sliceCount(c.ent,c.br,c.sl,c.id,c.gender)>=MAX_PER_SLICE){toast("لا يمكن الاعتماد: اكتمل عدد المعتمدين "+gFor(c.gender)+" في هذه الشريحة ("+MAX_PER_SLICE+")");return}c.status="approved";c.reviewNote="";logA(c,"اعتماد");dbSync(c);render();toast("اعتُمد المرشح")}
 function unapproveCand(c){c.status="pending";logA(c,"تراجع عن الاعتماد");dbSync(c);render();toast("تم التراجع عن الاعتماد، وأصبح المرشح بانتظار المراجعة")}
 function returnCand(c,note){c.status="corrected";c.reviewNote=note;logA(c,"إعادة للتصحيح",note);dbSync(c);render();toast("أُعيدت الاستمارة مع ملاحظة")}
 function reviewBox(mine){
   const pend=mine.filter(c=>c.status==="pending");
   if(!pend.length)return `<div class="note ok-note">لا يوجد مرشحون بانتظار مراجعتك حالياً.</div>`;
   return `<div ${tcard("warn")}><div class="miss-h"><h2>${hIc("warn","clock")}بانتظار مراجعتك <span class="pill warn">${pend.length}</span></h2></div>
-  <div class="list">${pend.map(c=>`<div class="mrow"><div><b>${esc(c.name)}</b><div class="muted">${brLabel(c)}</div></div><div class="acts2"><button class="btn ghost" data-prev="${c.id}">مراجعة المستندات والاستمارة</button>${sliceCount(c.ent,c.br,c.sl,c.id)>=MAX_PER_SLICE?`<span class="pill bad">الشريحة مكتملة (${MAX_PER_SLICE}/${MAX_PER_SLICE})</span><button class="btn pri" disabled title="اكتمل عدد المعتمدين في هذه الشريحة">اعتماد</button>`:`<button class="btn pri" data-appr="${c.id}">اعتماد</button>`}<button class="btn danger" data-ret="${c.id}">إعادة مع ملاحظة</button></div></div>${S.retOpen===c.id?retBox(c):""}`).join("")}</div></div>`;
+  <div class="list">${pend.map(c=>`<div class="mrow"><div><b>${esc(c.name)}</b><div class="muted">${brLabel(c)}</div></div><div class="acts2"><button class="btn ghost" data-prev="${c.id}">مراجعة المستندات والاستمارة</button>${sliceCount(c.ent,c.br,c.sl,c.id,c.gender)>=MAX_PER_SLICE?`<span class="pill bad">الشريحة مكتملة ${gFor(c.gender)} (${MAX_PER_SLICE}/${MAX_PER_SLICE})</span><button class="btn pri" disabled title="اكتمل عدد المعتمدين ${gFor(c.gender)} في هذه الشريحة">اعتماد</button>`:`<button class="btn pri" data-appr="${c.id}">اعتماد</button>`}<button class="btn danger" data-ret="${c.id}">إعادة مع ملاحظة</button></div></div>${S.retOpen===c.id?retBox(c):""}`).join("")}</div></div>`;
 }
 function retBox(c){return `<div class="mrow" style="flex-direction:column;align-items:stretch;gap:8px"><div class="f full"><label for="rn_${c.id}">سبب الإعادة (إلزامي)</label><textarea id="rn_${c.id}" rows="2" style="width:100%;font:inherit;border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--bg);color:var(--ink)"></textarea></div><div class="toolbar"><button class="btn danger" data-retok="${c.id}">تأكيد الإعادة</button><button class="btn ghost" data-retx="${c.id}">إلغاء</button></div></div>`}
 function adminReturnCand(c,note){c.status="corrected";c.reviewNote=note;logA(c,"إرجاع من المشرف إلى الجهة",note);dbSync(c);render();toast("أُعيد المرشح إلى الجهة والمراجع مع ملاحظة")}
@@ -1850,12 +2000,12 @@ function vList(){
   const isReviewer=S.role==="reviewer"&&!S.admin;
   const mine=CANDS.filter(c=>c.ent===S.ent&&(!S.admin||c.status==="approved"));
   const incomplete=mine.filter(c=>missing(c).length).length;
-  const slices={};mine.filter(c=>c.status==="approved").forEach(c=>{const k=c.br+"|"+c.sl;slices[k]=(slices[k]||0)+1});
+  const slices={};mine.filter(c=>c.status==="approved").forEach(c=>{const k=c.br+"|"+c.sl+"|"+c.gender;slices[k]=(slices[k]||0)+1});
   const full=Object.values(slices).filter(n=>n>=MAX_PER_SLICE).length;
   const q=S.q.trim();
   let rows=mine.filter(c=>(!q||c.name.includes(q)||c.cid.includes(q))&&(!S.fbr||c.br===S.fbr)&&(!S.fst||(S.fst==="ok"?!missing(c).length:missing(c).length))&&(!S.fss||c.status===S.fss));
   app.innerHTML=`${header(esc(ent.name),"المنسق: "+esc(ent.coord),`${S.admin?`<button class="btn ghost" id="back">← عرض المشرف</button>`:""}`)}
-  <div class="dl">${phasePill()}<span class="pill acc">الحد: ${MAX_PER_SLICE} متسابقين لكل شريحة</span></div>
+  <div class="dl">${phasePill()}<span class="pill acc">الحد: ${MAX_PER_SLICE} ذكور و${MAX_PER_SLICE} إناث لكل شريحة</span></div>
   <div class="ikpis c3">
     ${iTile(mine.length,S.admin?"مرشحاً معتمداً":"مرشحاً مسجلاً","blue","group")}
     ${S.admin?iTile(mine.filter(c=>c.gender==="ذكر").length,"ذكور","blue","male"):iTile(mine.filter(c=>c.status==="approved").length,"معتمد (استمارة مكتملة)","ok","seal")}
@@ -1941,7 +2091,7 @@ function vForm(){
     <div class="form">
       <div class="f"><label for="fb">المسابقة</label><select id="fb" ${ro?"disabled":""}>${brs.map(([k,b])=>`<option value="${k}" ${c.br===k?"selected":""}>${b.t}</option>`).join("")}</select><span class="hint">تظهر المسابقات المتاحة لعمر المتسابق فقط.</span></div>
       ${c.br==="youth"?`<div class="f"><label for="fbn">الفئة العمرية</label><select id="fbn" ${ro?"disabled":""}><option value="">اختر الفئة</option>${BANDS.map((b,i)=>`<option value="${i}" ${String(c.band)===String(i)?"selected":""}>${bandTxt(i)}</option>`).join("")}</select>${errs.band?`<span class="err">${errs.band}</span>`:`<span class="hint">تُحدَّد تلقائياً من تاريخ الميلاد، ويمكن تغييرها.</span>`}</div>`:`<div class="f"><label>الفئة</label><div class="ro-val">${catLabel(c.br,age)}</div></div>`}
-      <div class="f full"><label for="fs">الشريحة</label><select id="fs" ${ro?"disabled":""}><option value="">اختر الشريحة</option>${sls.map(s=>{const others=sliceCount(c.ent,c.br,s.k,c.id);const mine=c.sl===s.k;const rem=MAX_PER_SLICE-others-(mine?1:0);const lock=others>=MAX_PER_SLICE&&!mine;return `<option value="${s.k}" ${mine?"selected":""} ${lock?"disabled":""}>${s.t} · ${rem<=0?"مكتملة":"متبقٍ "+(rem===1?"مقعد واحد":rem===2?"مقعدان":rem+" مقاعد")}</option>`}).join("")}</select>${errs.sl?`<span class="err">${errs.sl}</span>`:`<span class="hint slots">يظهر بجانب كل شريحة عدد المقاعد المتبقية لجهتك، بعد احتساب هذا المتسابق (الحد ${MAX_PER_SLICE} متسابقين معتمدين لكل شريحة، ولا تحجز المسودات والاستمارات غير المعتمدة مقعداً).</span>`}</div>
+      <div class="f full"><label for="fs">الشريحة</label><select id="fs" ${ro?"disabled":""}><option value="">اختر الشريحة</option>${sls.map(s=>{const others=sliceCount(c.ent,c.br,s.k,c.id,c.gender);const mine=c.sl===s.k;const rem=MAX_PER_SLICE-others-(mine?1:0);const lock=others>=MAX_PER_SLICE&&!mine;return `<option value="${s.k}" ${mine?"selected":""} ${lock?"disabled":""}>${s.t} · ${rem<=0?"مكتملة "+gFor(c.gender):"متبقٍ "+(rem===1?"مقعد واحد":rem===2?"مقعدان":rem+" مقاعد")+" "+gFor(c.gender)}</option>`}).join("")}</select>${errs.sl?`<span class="err">${errs.sl}</span>`:`<span class="hint slots">يظهر بجانب كل شريحة عدد المقاعد المتبقية لجهتك، بعد احتساب هذا المتسابق (الحد ${MAX_PER_SLICE} ذكور و${MAX_PER_SLICE} إناث معتمدين لكل شريحة، ولا تحجز المسودات والاستمارات غير المعتمدة مقعداً).</span>`}</div>
       ${!so?`<div class="f full"><label>الأجزاء أو السور المقررة</label><div class="ro-val muted">اختر الشريحة أولاً ليظهر ما يُختبر فيه المتسابق.</div></div>`
        :so.unit!=="juz"?`<div class="f full"><label>${so.unit==="hizb"?"الحزب المقرر":"السور المقررة"}</label><div class="content-box"><b>${so.t}</b><span>${so.txt}</span></div></div>`
        :`<div class="f full"><label>الأجزاء التي تم اختيارها <span class="jcount">${(c.parts||[]).length} من ${so.juz}</span></label>
@@ -1986,7 +2136,7 @@ function vForm(){
   $("#fs").addEventListener("change",()=>{sync();render()});
   if($("#fbn"))$("#fbn").addEventListener("change",()=>{sync();c.sl="";render()});
   ["#fph","#fph2","#far","#fbl","#fst2","#fav","#fbd","#ffl","#ffa"].forEach(x=>$(x).addEventListener("input",sync));["#ffm","#fag"].forEach(x=>$(x).addEventListener("change",sync));if($("#fgu"))$("#fgu").addEventListener("change",sync);
-  ["#fn","#fc","#fg"].forEach(s=>$(s).addEventListener("input",sync));
+  ["#fn","#fc","#fg"].forEach(s=>$(s).addEventListener("input",sync));$("#fg").addEventListener("change",()=>{sync();render()});
   $("#fc").addEventListener("input",()=>{const v=$("#fc").value.replace(/\D/g,""),d=cidDob(v);if(v.length===12&&d&&!c.dob){sync();c.dob=d;c.band="";render();const i=$("#fc");i.focus();i.setSelectionRange(12,12);toast("استُخرج تاريخ الميلاد من الرقم المدني")}});
   app.querySelectorAll("[data-doc]").forEach(inp=>inp.addEventListener("change",()=>{const f=inp.files[0];if(!f)return;if(f.size>8e6){toast("حجم الملف أكبر من 8 ميجابايت");return}sync();const k=inp.dataset.doc;
     const old=c.docs[k]&&c.docs[k].path?c.docs[k].path:(c.docs[k]&&c.docs[k]._old)||null;
@@ -2023,7 +2173,7 @@ function validate(c,strict){
   if(c.br==="youth"){if(c.band===""||c.band==null)e.band="اختر الفئة العمرية.";else if(a!=null&&bandOf(a)!==+c.band)e.band="الفئة لا تطابق عمر المتسابق ("+a+" سنة).";}
   if(!c.sl)e.sl="اختر الشريحة.";
   else{const s=sliceObj(c.br,c.sl,a);if(s&&s.unit==="juz"&&j!==s.juz)e.juz="اختر "+juzL(s.juz)+" بالضبط (المختار "+j+").";
-    if(sliceCount(c.ent,c.br,c.sl,c.id)>=MAX_PER_SLICE)e.sl="بلغت جهتك الحد الأقصى في هذه الشريحة.";}
+    if(sliceCount(c.ent,c.br,c.sl,c.id,c.gender)>=MAX_PER_SLICE)e.sl="بلغت جهتك الحد الأقصى "+gFor(c.gender)+" في هذه الشريحة ("+MAX_PER_SLICE+").";}
   return e;
 }
 
