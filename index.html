@@ -26,7 +26,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#B8940F">
-<meta name="build" content="20260929160105">
+<meta name="build" content="20260929163352">
 <script>
 (function(){
   var B="20260926215315";
@@ -527,7 +527,10 @@ details.faq p{padding:0 14px 12px;color:var(--ink)}
 .faq-cat[aria-pressed="true"] i{color:var(--bg);opacity:.85}
 details.faq[hidden]{display:none}
 .about-view>.ap-grid{grid-template-columns:repeat(3,1fr)}
-@media (min-width:720px){.about-view>.ap-grid{grid-template-columns:repeat(9,1fr)}}
+@media (min-width:720px){.about-view>.ap-grid{grid-template-columns:repeat(6,1fr)}}
+.sub-pane[hidden]{display:none}
+.sub-pane{animation:tsIn .22s ease}
+.sub-pane>p:first-child{margin-top:0}
 .ents-tools{display:flex;flex-direction:column;gap:8px}
 .ents-q{font:inherit;font-size:14.5px;width:100%;height:44px;padding:0 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink)}
 .ents-q:focus{outline:2px solid var(--green);outline-offset:1px}
@@ -602,35 +605,27 @@ body{line-height:1.9}
   <!-- ABOUT -->
   <section class="about" aria-label="عن المسابقة">
     <details open>
-      <summary>نبذة عن المسابقة</summary>
-      <div class="inner"><p>تتشرف الأمانة العامة للأوقاف (إدارة الصناديق الوقفية - الصندوق الوقفي للقرآن الكريم وعلومه) بإقامة مسابقة الكويت الكبرى لحفظ القرآن الكريم وتجويده، وهي أكبر المشاريع القرآنية في دولة الكويت، وتحظى برعاية سامية من لدن حضرة صاحب السمو أمير البلاد المفدى، حفظه الله ورعاه.</p></div>
-    </details>
-    <details>
-      <summary>أهداف المسابقة</summary>
-      <div class="inner"><p>وقد جاءت المسابقة المباركة لتحقق مجموعة من الأهداف النبيلة:</p><ul class="plain">
+      <summary>عن المسابقة</summary>
+      <div class="inner"><div class="sub-tabs faq-cats" role="group" aria-label="أقسام عن المسابقة"></div>
+      <div class="sub-pane" data-st="نبذة" data-full="نبذة عن المسابقة"><p>تتشرف الأمانة العامة للأوقاف (إدارة الصناديق الوقفية - الصندوق الوقفي للقرآن الكريم وعلومه) بإقامة مسابقة الكويت الكبرى لحفظ القرآن الكريم وتجويده، وهي أكبر المشاريع القرآنية في دولة الكويت، وتحظى برعاية سامية من لدن حضرة صاحب السمو أمير البلاد المفدى، حفظه الله ورعاه.</p></div>
+      <div class="sub-pane" data-st="الأهداف" data-full="أهداف المسابقة"><p>وقد جاءت المسابقة المباركة لتحقق مجموعة من الأهداف النبيلة:</p><ul class="plain">
           <li>تشجيع المواطنين، على اختلاف أعمارهم، على الإقبال على كتاب الله تعالى، تلاوةً وحفظاً وتجويداً وتدبراً، وإيجاد جو تنافسي مشجع على حفظه وتلاوته وتجويده، كنماذج طيبة للاقتداء والتأسي.</li>
           <li>تعزيز الجهود التي تستهدف ترسيخ القيم الإسلامية في المجتمع.</li>
           <li>تشجيع ودعم الجهات التي تسهم في الجهود الرامية إلى تحفيظ القرآن الكريم وتعليمه وتجويده.</li>
           <li>إيجاد تنسيق مشترك بين الهيئات القائمة على تنظيم مسابقات تحفيظ القرآن الكريم، سواء كانت رسمية أم أهلية.</li>
           <li>الكشف عن جيل من القراء والحفظة الذين يمثلون الكويت في المسابقات العالمية.</li>
         </ul></div>
-    </details>
-    <details>
-      <summary>سياسات المسابقة</summary>
-      <div class="inner"><ul class="plain">
+      <div class="sub-pane" data-st="السياسات" data-full="سياسات المسابقة"><ul class="plain">
           <li>فتح مجال التسابق لكافة المواطنين، ذكوراً وإناثاً كلاً على حدةٍ، ولجميع مستويات وأعمار وشرائح المجتمع.</li>
           <li>العمل بالتنسيق والتكامل مع الجهات الرسمية والأهلية المهتمة بتحفيظ وتجويد القرآن الكريم.</li>
           <li>فتح مجال المشاركة في المسابقة للأفراد من كافة الجهات الرسمية والأهلية.</li>
           <li>الاعتماد على معيار الحفظ والتجويد كأساس للتسابق.</li>
         </ul></div>
-    </details>
-    <details>
-      <summary>مصطلحات عامة</summary>
-      <div class="inner"><ul class="plain">
+      <div class="sub-pane" data-st="المصطلحات" data-full="مصطلحات عامة"><ul class="plain">
           <li><b>الفئة:</b> مجموع المشاركين الذين تتقارب أعمارهم وتتشابه خصائصهم وصفاتهم حسب الشروط المحددة لكل فرع من أفرع المسابقة.</li>
           <li><b>الشريحة:</b> القراءات وعدد الأجزاء والسور المقررة للاختبار في كل فرع من أفرع المسابقة.</li>
           <li><b>الحجب:</b> عدم حصول المتسابق على الدرجة التي تؤهله للفوز في أحد المراكز الثلاثة الأولى.</li>
-        </ul></div>
+        </ul></div></div>
     </details>
     <details>
       <summary>شروط المسابقة بجميع فروعها</summary>
@@ -657,12 +652,12 @@ body{line-height:1.9}
         </ol></div>
     </details>
       <details>
-      <summary>مسار المشاركة</summary>
-      <div class="inner"><div class="path" data-path></div></div>
-    </details>
-    <details>
       <summary>الجهات المشاركة المعتمدة</summary>
       <div class="inner"><p>الجهات المشاركة المعتمدة لدى الأمانة العامة للأوقاف. اختر الجهة التي تريد الاشتراك من خلالها وتواصل مع منسقها.</p><div data-ents></div></div>
+    </details>
+    <details>
+      <summary>مسار المشاركة</summary>
+      <div class="inner"><div class="path" data-path></div></div>
     </details>
     <details>
       <summary>الجدول الزمني</summary>
@@ -1270,6 +1265,7 @@ const wrap=document.querySelector(".wrap");
 const aboutSec=document.querySelector(".about");
 const ABOUT=[...aboutSec.querySelectorAll(":scope > details")].map((d,i)=>({t:d.querySelector("summary").textContent.trim(),h:d.querySelector(".inner").innerHTML,id:"ab"+i}));
 const AB_IC={
+ "عن المسابقة":'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',
  "نبذة عن المسابقة":'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',
  "أهداف المسابقة":'<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/>',
  "سياسات المسابقة":'<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7M9 16h5"/>',
@@ -1281,12 +1277,24 @@ const AB_IC={
  "أسئلة شائعة":'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 114 2c-.9.6-1.5 1.1-1.5 2.2M12 17v.5"/>',
  _:'<circle cx="12" cy="12" r="9"/>'
 };
-const AB_SHORT={"نبذة عن المسابقة":"نبذة","أهداف المسابقة":"الأهداف","سياسات المسابقة":"السياسات","مصطلحات عامة":"المصطلحات","شروط المسابقة بجميع فروعها":"الشروط","مسار المشاركة":"مسار المشاركة","الجهات المشاركة المعتمدة":"الجهات المشاركة","الجدول الزمني":"الجدول الزمني","أسئلة شائعة":"أسئلة شائعة"};
+const AB_SHORT={"عن المسابقة":"عن المسابقة","نبذة عن المسابقة":"نبذة","أهداف المسابقة":"الأهداف","سياسات المسابقة":"السياسات","مصطلحات عامة":"المصطلحات","شروط المسابقة بجميع فروعها":"الشروط","مسار المشاركة":"مسار المشاركة","الجهات المشاركة المعتمدة":"الجهات المشاركة","الجدول الزمني":"الجدول الزمني","أسئلة شائعة":"أسئلة شائعة"};
 const aboutView=document.createElement("div");
 aboutView.className="about-view";
 aboutView.innerHTML=`${countdownHTML()}<nav class="ap-grid" aria-label="أقسام عن المسابقة">${ABOUT.map(a=>`<button class="ap-tile" data-ab="${a.id}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${AB_IC[a.t]||AB_IC._}</svg><span>${AB_SHORT[a.t]||a.t}</span></button>`).join("")}</nav>
 ${ABOUT.map(a=>`<section class="ap-sec" id="${a.id}"><h2>${a.t}</h2>${a.h}<button class="to-sections" type="button" data-to-grid>↑ العودة إلى الأقسام</button></section>`).join("")}`;
 aboutSec.replaceWith(aboutView);
+// "عن المسابقة": small buttons, one part shown at a time
+(function(){
+  document.querySelectorAll(".about-view .sub-tabs").forEach(bar=>{
+    const panes=[...bar.parentElement.querySelectorAll(":scope > .sub-pane")];
+    bar.innerHTML=panes.map((p,i)=>`<button type="button" class="faq-cat" data-sti="${i}" aria-pressed="${i===0}">${p.dataset.st}</button>`).join("");
+    panes.forEach((p,i)=>p.hidden=i!==0);
+    const sec=bar.closest(".ap-sec");
+    bar.addEventListener("click",e=>{const b=e.target.closest("[data-sti]");if(!b)return;const k=+b.dataset.sti;
+      const run=()=>{bar.querySelectorAll("[data-sti]").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));panes.forEach((p,i)=>p.hidden=i!==k)};
+      typeof keepStill==="function"?keepStill(document.querySelector(".about-view .ap-sec:last-of-type"),run):run()});
+  });
+})();
 // participating entities (home section)
 (function(){
   const box=document.querySelector(".about-view [data-ents]");if(!box)return;
