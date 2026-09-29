@@ -26,7 +26,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#B8940F">
-<meta name="build" content="20260929224842">
+<meta name="build" content="20260929225741">
 <script>
 (function(){
   var B="20260926215315";
@@ -141,6 +141,19 @@
 .qz-gcard{display:flex;align-items:center;gap:12px;width:100%;text-align:start;font:inherit;background:var(--green);color:var(--surface);border:0;border-radius:16px;padding:14px 16px;margin:0 0 12px;cursor:pointer;min-height:64px}
 .qz-gcard b{font-size:17px;display:block}.qz-gcard small{opacity:.9;font-size:13px}
 .qz-gcard svg{flex:none}
+.qz-gcard{position:relative;overflow:hidden;background:linear-gradient(135deg,#0A5440 0%,#0D654C 55%,#0F6E54 100%);color:#fff;border:2px solid #E3B955;box-shadow:0 8px 22px rgba(11,90,67,.35);min-height:84px;padding:16px 18px;border-radius:18px}
+.qz-gcard b{font-size:20px;color:#fff}
+.qz-gcard small{opacity:1;color:#E8F5EF;font-size:14px}
+.qz-gcard>svg:first-child{width:44px;height:44px;padding:8px;border-radius:50%;background:#E3B955;color:#0B5A43;box-sizing:border-box}
+.qz-gcard .qz-new{position:absolute;top:10px;inset-inline-end:12px;background:#E3B955;color:#0B3B2C;font-size:12px;font-weight:800;border-radius:999px;padding:2px 10px}
+.qz-gcard .qz-go-ar{margin-inline-start:auto;flex:none;font-size:22px;font-weight:800;color:#E3B955}
+.qz-gcard::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.18) 50%,transparent 70%);transform:translateX(100%);animation:qzShine 3.2s ease-in-out 1s infinite;pointer-events:none}
+@keyframes qzShine{0%{transform:translateX(100%)}45%,100%{transform:translateX(-100%)}}
+.qz-gcard:hover{filter:brightness(1.06)}
+.qz-gcard:focus-visible{outline:3px solid #E3B955;outline-offset:3px}
+.chip.game-chip{background:linear-gradient(135deg,#0A5440,#0F6E54);color:#fff;border:1.5px solid #E3B955;font-weight:800;box-shadow:0 3px 10px rgba(11,90,67,.3)}
+@media (prefers-reduced-motion:reduce){.qz-gcard::after{animation:none;display:none}}
+
 @media (prefers-reduced-motion:reduce){.qz-prog u,.qz-ring .fg,.qz-time u{transition:none}}
 .game-chip{background:var(--gold-soft);color:var(--gold);border-color:var(--gold);font:inherit;font-size:13px;font-weight:700;cursor:pointer;min-height:32px}
 @media (pointer:coarse),(max-width:640px){.game-chip{min-height:44px;padding-inline:16px}}
@@ -1332,6 +1345,8 @@ document.addEventListener("click",ev=>{if(!ev.target.closest("#icsBtn"))return;
     function top(c,dy){
       c.direction="rtl";c.textAlign="center";c.textBaseline="middle";
       const sp=S?96:64,ns=S?110:74,ps=S?96:62;let y=(S?150:100)+dy;
+      const LG=document.querySelector("img.org-logo."+(o.th==="cream"?"lt":"dk"));
+      if(LG&&LG.complete&&LG.naturalWidth){const k=LG.naturalHeight/LG.naturalWidth;if(!S&&o.quiz){try{c.drawImage(LG,W-80-104,78,104,104*k)}catch(e){}}else{const ls=S?190:118,y0=(S?96:74)+dy;try{c.drawImage(LG,cx-ls/2,y0,ls,ls*k)}catch(e){}y=y0+ls+(S?44:30)}}
       c.fillStyle=T.sub;c.font="600 "+(S?30:26)+"px "+FONT;c.fillText("الأمانة العامة للأوقاف · الصندوق الوقفي للقرآن الكريم",cx,y);
       y+=S?150:96;const R=S?92:56;c.fillStyle=T.acc;star(c,cx,y,R+18);c.fill();c.fillStyle=T.a;star(c,cx,y,R-4);c.fill();
       c.fillStyle=T.acc;c.font="800 "+(S?84:54)+"px "+FONT;c.fillText("29",cx,y+4);
@@ -1773,7 +1788,7 @@ const AB_IC={
 const AB_SHORT={"عن المسابقة":"عن المسابقة","نبذة عن المسابقة":"نبذة","أهداف المسابقة":"الأهداف","سياسات المسابقة":"السياسات","مصطلحات عامة":"المصطلحات","شروط المسابقة بجميع فروعها":"الشروط","مسار المشاركة":"مسار المشاركة","الجهات المشاركة المعتمدة":"الجهات المشاركة","الجدول الزمني":"الجدول الزمني","أسئلة شائعة":"أسئلة شائعة"};
 const aboutView=document.createElement("div");
 aboutView.className="about-view";
-aboutView.innerHTML=`${countdownHTML()}<button type="button" class="qz-gcard" data-qz-open aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.4 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg><span><b>اختبر حفظي</b><small>لعبة أسئلة بنقاط تشجيعية: اختر المستوى والأجزاء وعدد الأسئلة</small></span></button><nav class="ap-grid" aria-label="أقسام عن المسابقة">${ABOUT.map(a=>`<button class="ap-tile" data-ab="${a.id}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${AB_IC[a.t]||AB_IC._}</svg><span>${AB_SHORT[a.t]||a.t}</span></button>`).join("")}</nav>
+aboutView.innerHTML=`<button type="button" class="qz-gcard" data-qz-open aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.4 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg><span><b>اختبر حفظي</b><small>لعبة أسئلة بنقاط تشجيعية: اختر المستوى والأجزاء وعدد الأسئلة</small></span><span class="qz-new">جديد</span><span class="qz-go-ar" aria-hidden="true">‹</span></button>${countdownHTML()}<nav class="ap-grid" aria-label="أقسام عن المسابقة">${ABOUT.map(a=>`<button class="ap-tile" data-ab="${a.id}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${AB_IC[a.t]||AB_IC._}</svg><span>${AB_SHORT[a.t]||a.t}</span></button>`).join("")}</nav>
 ${ABOUT.map(a=>`<section class="ap-sec" id="${a.id}"><h2>${a.t}</h2>${a.h}<button class="to-sections" type="button" data-to-grid>↑ العودة إلى الأقسام</button></section>`).join("")}`;
 aboutSec.replaceWith(aboutView);
 // "عن المسابقة": small buttons, one part shown at a time
