@@ -26,7 +26,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#B8940F">
-<meta name="build" content="20260930105054">
+<meta name="build" content="20260930105553">
 <script>
 (function(){
   var B="20260926215315";
@@ -148,6 +148,12 @@
 .qz-gcard>svg:first-child{width:44px;height:44px;padding:8px;border-radius:50%;background:#E3B955;color:#0B5A43;box-sizing:border-box}
 .qz-gcard .qz-new{position:absolute;top:10px;inset-inline-end:12px;background:#E3B955;color:#0B3B2C;font-size:12px;font-weight:800;border-radius:999px;padding:2px 10px}
 .qz-gcard .qz-go-ar{margin-inline-start:auto;flex:none;font-size:22px;font-weight:800;color:#E3B955}
+.qz-promo{position:relative;margin:0 0 12px}
+.qz-promo .qz-gcard{margin:0;padding-inline-end:58px}
+.qz-promo .qz-new{position:static;margin-inline-start:8px;vertical-align:middle;background:#E3B955;color:#0B3B2C;font-size:12px;font-weight:800;border-radius:999px;padding:2px 10px}
+.qz-pclose{position:absolute;top:4px;inset-inline-end:4px;z-index:2;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.18);color:#fff;font:inherit;font-size:26px;line-height:1;cursor:pointer}
+.qz-pclose:hover{background:rgba(255,255,255,.3)}
+.qz-pclose:focus-visible{outline:3px solid #E3B955;outline-offset:1px}
 .qz-gcard::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.18) 50%,transparent 70%);transform:translateX(100%);animation:qzShine 3.2s ease-in-out 1s infinite;pointer-events:none}
 @keyframes qzShine{0%{transform:translateX(100%)}45%,100%{transform:translateX(-100%)}}
 .qz-gcard:hover{filter:brightness(1.06)}
@@ -1803,8 +1809,18 @@ const AB_IC={
 const AB_SHORT={"عن المسابقة":"عن المسابقة","نبذة عن المسابقة":"نبذة","أهداف المسابقة":"الأهداف","سياسات المسابقة":"السياسات","مصطلحات عامة":"المصطلحات","شروط المسابقة بجميع فروعها":"الشروط","مسار المشاركة":"مسار المشاركة","الجهات المشاركة المعتمدة":"الجهات المشاركة","الجدول الزمني":"الجدول الزمني","أسئلة شائعة":"أسئلة شائعة"};
 const aboutView=document.createElement("div");
 aboutView.className="about-view";
-aboutView.innerHTML=`<button type="button" class="qz-gcard" data-qz-open aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.4 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg><span><b>اختبر حفظي</b><small>لعبة أسئلة بنقاط تشجيعية: اختر المستوى والأجزاء وعدد الأسئلة</small></span><span class="qz-new">جديد</span><span class="qz-go-ar" aria-hidden="true">‹</span></button>${countdownHTML()}<nav class="ap-grid" aria-label="أقسام عن المسابقة">${ABOUT.map(a=>`<button class="ap-tile" data-ab="${a.id}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${AB_IC[a.t]||AB_IC._}</svg><span>${AB_SHORT[a.t]||a.t}</span></button>`).join("")}</nav>
+aboutView.innerHTML=`<div class="qz-promo"><button type="button" class="qz-gcard" data-qz-open aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.4 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg><span><b>اختبر حفظي<span class="qz-new">جديد</span></b><small>لعبة أسئلة بنقاط تشجيعية: اختر المستوى والأجزاء وعدد الأسئلة</small></span></button><button type="button" class="qz-pclose" aria-label="إخفاء هذا الإعلان">×</button></div>${countdownHTML()}<nav class="ap-grid" aria-label="أقسام عن المسابقة">${ABOUT.map(a=>`<button class="ap-tile" data-ab="${a.id}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${AB_IC[a.t]||AB_IC._}</svg><span>${AB_SHORT[a.t]||a.t}</span></button>`).join("")}</nav>
 ${ABOUT.map(a=>`<section class="ap-sec" id="${a.id}"><h2>${a.t}</h2>${a.h}<button class="to-sections" type="button" data-to-grid>↑ العودة إلى الأقسام</button></section>`).join("")}`;
+(function(){const K="q29pr";let o={n:0,off:false};try{o=Object.assign(o,JSON.parse(localStorage.getItem(K)||"{}"))}catch(e){}
+  const w=aboutView.querySelector(".qz-promo");if(!w)return;
+  let cnt=true;try{if(sessionStorage.getItem(K))cnt=false;else sessionStorage.setItem(K,"1")}catch(e){}
+  if(cnt)o.n=(+o.n||0)+1;
+  const save=()=>{try{localStorage.setItem(K,JSON.stringify(o))}catch(e){}};
+  if(o.off||o.n>3){w.remove();save();return}
+  save();
+  w.querySelector(".qz-pclose").addEventListener("click",()=>{o.off=true;save();w.remove()});
+  w.querySelector(".qz-gcard").addEventListener("click",()=>{o.off=true;save()});
+})();
 aboutSec.replaceWith(aboutView);
 // "عن المسابقة": small buttons, one part shown at a time
 (function(){
