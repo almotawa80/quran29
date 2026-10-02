@@ -26,7 +26,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#B8940F">
-<meta name="build" content="20261002165703">
+<meta name="build" content="20261002171007">
 <script>
 (function(){
   var B="20260926215315";
@@ -830,9 +830,22 @@ html.view-find .ai-form{padding:0!important}
 .ai-wa{display:inline-flex;align-items:center;gap:6px;min-height:40px;margin-top:8px;padding:0 14px;border-radius:999px;background:#1A7F4B;color:#fff;font-weight:700;font-size:13px;text-decoration:none}
 .ai-wa:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 .ai-note{font-size:12px;color:var(--muted)}
+.ai-chip.ai-new{color:var(--muted);border-style:dashed}
+/* composer like common chat apps: pill field + round send button */
+html.view-find .finder .chat-pen{display:none!important}
+html.view-find .finder .ai-form{display:flex!important;align-items:center;gap:8px}
+html.view-find .finder .chat-bar .ai-form input{flex:1;min-width:0;height:48px;border-radius:24px;border:1.5px solid var(--muted);background:var(--surface);color:var(--ink);padding:0 18px!important;font-size:15.5px;animation:none!important;box-shadow:inset 0 1px 2px rgba(0,0,0,.06)}
+html.view-find .finder .chat-bar .ai-form input::placeholder{color:var(--muted);opacity:1}
+html.view-find .finder .chat-bar .ai-form input:focus{border-color:var(--green);box-shadow:0 0 0 3px var(--green-soft);outline:none}
+html.view-find .finder .chat-bar .ai-form button{width:48px;height:48px;flex:none;border-radius:50%!important;border:0;background:var(--green);color:var(--bg);display:grid;place-items:center;padding:0;cursor:pointer;transition:opacity .15s,transform .12s}
+html.view-find .finder .chat-bar .ai-form button svg{width:22px;height:22px;transform:scaleX(-1)}
+html.view-find .finder .chat-bar .ai-form button:disabled{opacity:.35;cursor:default}
+html.view-find .finder .chat-bar .ai-form button:not(:disabled):active{transform:scale(.92)}
+html.view-find .finder .chat-bar .ai-form button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 html.view-find .ai-msg.me{background:var(--green);color:var(--bg);border:0;padding:8px 12px;font-size:14px;max-width:80%;border-radius:16px;border-start-end-radius:4px}
 html.view-find .ai-msg.me::before{content:none}
 html.view-find .ai-turn+.ai-turn{border-top:0;padding-top:4px;opacity:1}
+html.view-find .ai-turn:last-child{min-height:calc(100dvh - var(--tbh,71px) - var(--cbh,110px) - 76px)}
 html.view-find .to-top{display:none!important}
 html.view-find .finder .ai-form{max-width:none!important;width:100%!important;margin:0!important}
 html.view-find .finder .ai-chips{margin-inline:0!important;max-width:100%}
@@ -927,11 +940,10 @@ html.view-find .finder .ai-chips{margin-inline:0!important;max-width:100%}
       <h2 id="f-title">المساعد</h2>
       <p>أحدد لك الشريحة المناسبة وجوائزها خطوة بخطوة، وأجيب عن أسئلتك عن المسابقة من البيان التوضيحي.</p>
     </div>
-<div class="fc-top"><span class="fc-av" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 016.5 3h11A2.5 2.5 0 0120 5.5v8a2.5 2.5 0 01-2.5 2.5H10l-4.5 4v-4A1.5 1.5 0 014 14.5z"/><path d="M8.5 9.5h.01M12 9.5h.01M15.5 9.5h.01"/></svg></span><span class="fc-tt"><b>مساعد المسابقة</b><small>يجيب من البيان التوضيحي للمسابقة</small></span><button type="button" class="fc-new" id="aiNew">محادثة جديدة</button></div>
-    <div class="chat-log" id="aiLog" aria-live="polite"></div>
+<div class="chat-log" id="aiLog" aria-live="polite"></div>
     <div class="chat-bar">
       <label class="chat-lbl" for="aiIn">اكتب سؤالك هنا، أو اختر من الأسئلة الجاهزة</label>
-      <form class="ai-form" id="aiForm"><svg class="chat-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4l10.5-10.5a2.1 2.1 0 00-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg><input id="aiIn" type="text" autocomplete="off" placeholder="عمري 12 وأحفظ 7 أجزاء" aria-label="سؤالك"><button type="submit" aria-label="إرسال"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5M11 6l-6 6 6 6"/></svg></button></form>
+      <form class="ai-form" id="aiForm"><svg class="chat-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4l10.5-10.5a2.1 2.1 0 00-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg><input id="aiIn" type="text" autocomplete="off" enterkeyhint="send" placeholder="اكتب سؤالك هنا…" aria-label="اكتب سؤالك"><button type="submit" id="aiSend" aria-label="إرسال" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3L10 14"/><path d="M21 3l-6.5 18-4-7.5L3 9.5z"/></svg></button></form>
       <div class="ai-chips" id="aiChips"></div>
     </div>
     <div class="legacy" hidden>
@@ -2227,7 +2239,9 @@ const yrs=n=>n>=3&&n<=10?n+' سنوات':n+' سنة';
 const log=document.getElementById("aiLog"),inp=document.getElementById("aiIn");
 const esc=t=>String(t).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 const findActive=()=>tbs[vIdx("find")].classList.contains("active");
-function scrollEnd(smooth){if(!findActive())return;const go=()=>window.scrollTo({top:document.documentElement.scrollHeight,behavior:smooth&&!matchMedia("(prefers-reduced-motion: reduce)").matches?"smooth":"auto"});requestAnimationFrame(go)}
+function scrollToTurn(t,smooth){if(!findActive()||!t)return;requestAnimationFrame(()=>{const ab=document.querySelector(".appbar"),ft=document.querySelector(".fc-top");const off=(ab?ab.offsetHeight:68)+(ft?ft.offsetHeight:0)+12;
+  window.scrollTo({top:Math.max(0,t.getBoundingClientRect().top+window.scrollY-off),behavior:smooth&&!matchMedia("(prefers-reduced-motion: reduce)").matches?"smooth":"auto"})})}
+function scrollEnd(smooth){scrollToTurn(log.lastElementChild,smooth)}
 function newTurn(){const t=document.createElement("div");t.className="ai-turn";log.appendChild(t);while(log.children.length>25)log.firstElementChild.remove();return t}
 const tNow=()=>{try{return new Date().toLocaleTimeString("ar-KW-u-nu-latn",{hour:"numeric",minute:"2-digit"})}catch(e){return ""}};
 const CHAT_K="q29chat";let mem={};
@@ -2244,11 +2258,11 @@ function add(role,html,opts={}){
       else b.textContent=A[k].t+" ←";
       r.appendChild(b)});row.appendChild(r)}
   const turn=(role==="me"||!log.lastElementChild)?newTurn():log.lastElementChild;turn.appendChild(row);
-  if(!opts.typing){scrollEnd(true);chatSave()}return row;
+  if(!opts.typing){if(role==="me")scrollToTurn(turn,true);chatSave()}return row;
 }
 log.addEventListener("click",e=>{const b=e.target.closest(".ai-act[data-act]");if(!b)return;const k=b.dataset.act;if(k==="share"){copyText(b,b.dataset.share||"","نسخ النتيجة لإرسالها");return}if(A[k]&&A[k].f)A[k].f()});
 let botQ=Promise.resolve();
-const bot=(h,o)=>{botQ=botQ.then(()=>new Promise(res=>{const ty=add("bot",'<i></i><i></i><i></i>',{typing:true});scrollEnd(true);setTimeout(()=>{ty.remove();add("bot",h,o);res()},matchMedia("(prefers-reduced-motion: reduce)").matches?150:520)}))};
+const bot=(h,o)=>{botQ=botQ.then(()=>new Promise(res=>{const ty=add("bot",'<i></i><i></i><i></i>',{typing:true});setTimeout(()=>{ty.remove();add("bot",h,o);res()},matchMedia("(prefers-reduced-motion: reduce)").matches?150:520)}))};
 const setF=(id,v)=>{const el=document.getElementById(id);if(el.type==="checkbox")el.checked=!!v;else el.value=v};
 const juzTxt=j=>j===0?"أقل من جزء":j===1?"جزءاً واحداً":j===2?"جزأين":juzLabel(j);
 function result(intro,ctx){
@@ -2367,8 +2381,9 @@ function runChip(q){const x=CH.find(c=>c.chip===q);if(!x)return;if(x.go){x.go();
 const CH=[{chip:"حدّد شريحتي",go:startGuide},...I.filter(x=>x.chip&&x.id!=="where")];
 const chipsEl=document.getElementById("aiChips");
 chipsEl.innerHTML=CH.map((x,i)=>`<button type="button" class="ai-chip" data-i="${i}">${x.chip}</button>`).join("");
-chipsEl.addEventListener("click",e=>{const c=e.target.closest(".ai-chip");if(!c)return;const x=CH[+c.dataset.i];add("me",esc(c.textContent));if(x.go){x.go();return}bot(x.a(),{acts:(x.act||[]).filter(k=>k!=="finder"),choices:followCh(x.id)})});
-document.getElementById("aiForm").addEventListener("submit",e=>{e.preventDefault();const v=inp.value.trim();if(!v)return;add("me",esc(v));inp.value="";handle(v)});
+chipsEl.addEventListener("click",e=>{const c=e.target.closest(".ai-chip");if(!c||c.id==="aiNew")return;const x=CH[+c.dataset.i];add("me",esc(c.textContent));if(x.go){x.go();return}bot(x.a(),{acts:(x.act||[]).filter(k=>k!=="finder"),choices:followCh(x.id)})});
+const sendB=document.getElementById("aiSend");const syncSend=()=>{if(sendB)sendB.disabled=!inp.value.trim()};inp.addEventListener("input",syncSend);
+document.getElementById("aiForm").addEventListener("submit",e=>{e.preventDefault();const v=inp.value.trim();if(!v)return;add("me",esc(v));inp.value="";syncSend();handle(v)});
 // greeting + first guided question (page opens in a working state); the chat of this visit is kept while the page is open
 function greet(){
   add("bot","مرحباً! أنا مساعد مسابقة الكويت الكبرى (29). أحدد لك الشريحة المناسبة وجوائزها، وأجيب عن أسئلتك عن الشروط والمواعيد. اكتب مثلاً: <b>عمري 12 وأحفظ 7 أجزاء</b>، أو اختر:");
@@ -2380,6 +2395,7 @@ function greet(){
     ["نزلاء دور الرعاية والأحداث",()=>{setF("cat","care");result("مسابقة <b>دور الرعاية والأحداث</b> في شريحتين:","نزلاء دور الرعاية والأحداث")}]]})}
 const setBars=()=>{try{const t=document.querySelector(".tabbar"),c=document.querySelector(".chat-bar"),r=document.documentElement.style;if(t)r.setProperty("--tbh",t.offsetHeight+"px");if(c&&c.offsetHeight)r.setProperty("--cbh",c.offsetHeight+"px")}catch(e){}};
 addEventListener("resize",setBars);if(window.ResizeObserver){const ro=new ResizeObserver(setBars);[".tabbar",".chat-bar"].forEach(q=>{const e=document.querySelector(q);if(e)ro.observe(e)})}setBars();
+chipsEl.insertAdjacentHTML("afterbegin",'<button type="button" class="ai-chip ai-new" id="aiNew" aria-label="بدء محادثة جديدة">↺ محادثة جديدة</button>');
 if(!chatLoad())greet();
 document.getElementById("aiNew").addEventListener("click",()=>{try{sessionStorage.removeItem(CHAT_K)}catch(e){}log.innerHTML="";guide={};mem={};botQ=Promise.resolve();greet();inp.focus({preventScroll:true})});
 let wasFind=findActive();new MutationObserver(()=>{const f=document.documentElement.classList.contains("view-find");if(f&&!wasFind)setTimeout(()=>scrollEnd(false),30);wasFind=f}).observe(document.documentElement,{attributes:true,attributeFilter:["class"]});
