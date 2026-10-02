@@ -26,7 +26,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#B8940F">
-<meta name="build" content="20261002171007">
+<meta name="build" content="20261002172143">
 <script>
 (function(){
   var B="20260926215315";
@@ -2247,7 +2247,20 @@ const tNow=()=>{try{return new Date().toLocaleTimeString("ar-KW-u-nu-latn",{hour
 const CHAT_K="q29chat";let mem={};
 function chatSave(){try{sessionStorage.setItem(CHAT_K,JSON.stringify({h:log.innerHTML,g:guide,m:mem}))}catch(e){}}
 function chatLoad(){try{const o=JSON.parse(sessionStorage.getItem(CHAT_K)||"null");if(!o||!o.h)return false;log.innerHTML=o.h;guide=o.g||{};mem=o.m||{};
-  log.querySelectorAll(".ai-opts button").forEach(b=>{b.disabled=true});log.querySelectorAll(".ai-typing").forEach(x=>{const r=x.closest(".ai-row");if(r)r.remove()});return true}catch(e){return false}}
+  log.querySelectorAll(".ai-opts button").forEach(b=>{b.disabled=true});log.querySelectorAll(".ai-typing").forEach(x=>{const r=x.closest(".ai-row");if(r)r.remove()});revive();return true}catch(e){return false}}
+// unanswered choices of the last message come back to life after a reload
+function choicesFor(st){const m={};
+  if(st==="cat"){m["عامة (حسب العمر والحفظ)"]=askAge;m["ذوو الاحتياجات الخاصة"]=askDisab;m["نزلاء المؤسسات الإصلاحية"]=()=>{guide={step:"juz",cat:"prison"};askJuz("prison")};m["نزلاء دور الرعاية والأحداث"]=()=>{setF("cat","care");result("مسابقة <b>دور الرعاية والأحداث</b> في شريحتين:","نزلاء دور الرعاية والأحداث")}}
+  else if(st==="age")AGES.forEach(([l,a])=>m[l]=()=>{const j=guide.juz;guide.age=a;guide.ageL=l;if(j!=null)finishMain(j);else a<6?finishMain(0):askJuz("main")});
+  else if(st==="juz")JUZ.forEach(([l,j])=>m[l]=()=>guide.cat==="prison"?finishPrison(j):finishMain(j));
+  else if(st==="dtype")DIS.forEach(([l,v])=>m[l]=()=>doDisab(v,null,l));
+  else if(st==="stage")["الابتدائية","المتوسطة","الثانوية"].forEach(y=>m[y]=()=>doDisab(guide.dtype,y,guide.l));
+  else if(st==="qir"){m["نعم"]=()=>doMain(true);m["لا"]=()=>doMain(false)}
+  return m}
+function revive(){const t=log.lastElementChild;if(!t)return;const o=[...t.querySelectorAll(".ai-opts")].pop();if(!o||o.querySelector(".picked"))return;
+  const fns=choicesFor(guide.step);
+  o.querySelectorAll("button").forEach(b=>{const lbl=b.textContent;b.disabled=false;b.addEventListener("click",()=>{o.querySelectorAll("button").forEach(x=>x.disabled=true);b.classList.add("picked");add("me",esc(lbl));
+    setTimeout(()=>{const fn=fns[lbl];if(fn)fn();else if(CH.some(c=>c.chip===lbl))runChip(lbl);else handle(lbl)},120)})})}
 function add(role,html,opts={}){
   const d=document.createElement("div");d.className="ai-msg "+role;d.innerHTML=html+(opts.typing?"":`<span class="ai-time">${tNow()}</span>`);if(opts.typing){d.classList.add("ai-typing");d.setAttribute("aria-label","يكتب…")}
   const row=document.createElement("div");row.className="ai-row "+role;row.appendChild(d);
@@ -2395,9 +2408,7 @@ function greet(){
     ["نزلاء دور الرعاية والأحداث",()=>{setF("cat","care");result("مسابقة <b>دور الرعاية والأحداث</b> في شريحتين:","نزلاء دور الرعاية والأحداث")}]]})}
 const setBars=()=>{try{const t=document.querySelector(".tabbar"),c=document.querySelector(".chat-bar"),r=document.documentElement.style;if(t)r.setProperty("--tbh",t.offsetHeight+"px");if(c&&c.offsetHeight)r.setProperty("--cbh",c.offsetHeight+"px")}catch(e){}};
 addEventListener("resize",setBars);if(window.ResizeObserver){const ro=new ResizeObserver(setBars);[".tabbar",".chat-bar"].forEach(q=>{const e=document.querySelector(q);if(e)ro.observe(e)})}setBars();
-chipsEl.insertAdjacentHTML("afterbegin",'<button type="button" class="ai-chip ai-new" id="aiNew" aria-label="بدء محادثة جديدة">↺ محادثة جديدة</button>');
 if(!chatLoad())greet();
-document.getElementById("aiNew").addEventListener("click",()=>{try{sessionStorage.removeItem(CHAT_K)}catch(e){}log.innerHTML="";guide={};mem={};botQ=Promise.resolve();greet();inp.focus({preventScroll:true})});
 let wasFind=findActive();new MutationObserver(()=>{const f=document.documentElement.classList.contains("view-find");if(f&&!wasFind)setTimeout(()=>scrollEnd(false),30);wasFind=f}).observe(document.documentElement,{attributes:true,attributeFilter:["class"]});
 if(!findActive())window.scrollTo(0,0);else setTimeout(()=>scrollEnd(false),60);
 })();
