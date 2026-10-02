@@ -26,7 +26,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#B8940F">
-<meta name="build" content="20261002101324">
+<meta name="build" content="20261002104836">
 <script>
 (function(){
   var B="20260926215315";
@@ -151,6 +151,7 @@
 .gann-wrap{display:grid;gap:10px;margin:0 0 12px}
 .gann-wrap:empty{display:none}
 .gann{position:relative;display:flex;gap:12px;align-items:flex-start;background:var(--gold-soft);color:var(--ink);border:1px solid var(--line);border-inline-start:5px solid var(--gold);border-radius:14px;padding:12px 14px;padding-inline-end:52px}
+.gann:not(:has(>button)){padding-inline-end:14px}
 .gann.warn{background:var(--surface);border-color:var(--warn);border-inline-start-color:var(--warn)}
 .gann>svg{flex:none;width:26px;height:26px;color:var(--gold);margin-top:2px}
 .gann.warn>svg{color:var(--warn)}
@@ -1837,18 +1838,17 @@ ${ABOUT.map(a=>`<section class="ap-sec" id="${a.id}"><h2>${a.t}</h2>${a.h}<butto
 // announcements for visitors (published by the competition admin in the portal)
 (function(){
   const box=document.createElement("div");box.className="gann-wrap";box.setAttribute("aria-live","polite");aboutView.prepend(box);
-  const K="q29ax";let X=[];try{X=JSON.parse(localStorage.getItem(K)||"[]");if(!Array.isArray(X))X=[]}catch(e){X=[]}
   const e=t=>String(t==null?"":t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   const ok=u=>/^https:\/\/[^\s<>"']+$/i.test(u||"");
   const ic='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10v4a1 1 0 001 1h3l6 4V5L7 9H4a1 1 0 00-1 1z"/><path d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12"/></svg>';
   let L=[];
   function draw(){
-    const l=L.filter(a=>!X.includes(a.id)).sort((a,b)=>(b.level==="warn")-(a.level==="warn")||String(b.at).localeCompare(String(a.at))).slice(0,3);
-    box.innerHTML=l.map(a=>`<div class="gann${a.level==="warn"?" warn":""}" role="status" data-gann="${e(a.id)}">${ic}<div><b>${a.level==="warn"?"تنبيه هام من إدارة المسابقة":"إعلان من إدارة المسابقة"}</b><p>${e(a.text)}</p>${a.url&&ok(a.url)?`<a href="${e(a.url)}" target="_blank" rel="noopener noreferrer" data-gannc="${e(a.id)}">${e(a.lbl||"التفاصيل")}</a>`:""}</div><button type="button" data-gannx="${e(a.id)}" aria-label="إخفاء الإعلان" title="إخفاء">×</button></div>`).join("");
+    const A=window.Q29ANN;const l=L.filter(a=>!(A&&A.isHidden(a))).sort((a,b)=>(b.level==="warn")-(a.level==="warn")||String(b.at).localeCompare(String(a.at))).slice(0,3);
+    box.innerHTML=l.map(a=>`<div class="gann${a.level==="warn"?" warn":""}" role="status" data-gann="${e(a.id)}">${ic}<div><b>${a.level==="warn"?"تنبيه هام من إدارة المسابقة":"إعلان من إدارة المسابقة"}</b><p>${e(a.text)}</p>${a.url&&ok(a.url)?`<a href="${e(a.url)}" target="_blank" rel="noopener noreferrer" data-gannc="${e(a.id)}">${e(a.lbl||"التفاصيل")}</a>`:""}</div>${a.hm==="pin"?"":`<button type="button" data-gannx="${e(a.id)}" aria-label="إخفاء الإعلان" title="إخفاء">×</button>`}</div>`).join("");
     const sn=el=>{if(document.querySelector(".pt-host"))return false;try{window.Q29ANN&&window.Q29ANN.seen(el.dataset.gann)}catch(x){}return true};
     if(window.IntersectionObserver){if(!box._io)box._io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting&&sn(en.target))box._io.unobserve(en.target)}),{threshold:.6});box._io.disconnect();box.querySelectorAll(".gann").forEach(g=>box._io.observe(g))}
     else box.querySelectorAll(".gann").forEach(sn);
-    box.querySelectorAll("[data-gannx]").forEach(b=>b.addEventListener("click",()=>{X.push(b.dataset.gannx);X=X.slice(-60);try{localStorage.setItem(K,JSON.stringify(X))}catch(x){}draw()}));
+    box.querySelectorAll("[data-gannx]").forEach(b=>b.addEventListener("click",()=>{const a=L.find(x=>x.id===b.dataset.gannx);if(a&&A)A.hide(a);draw()}));
     box.querySelectorAll("[data-gannc]").forEach(b=>b.addEventListener("click",()=>{try{window.Q29ANN&&window.Q29ANN.click(b.dataset.gannc)}catch(x){}}))}
   function load(){if(!window.Q29ANN)return;window.Q29ANN.pub().then(a=>{const n=JSON.stringify(a);if(n!==JSON.stringify(L)){L=a;draw()}}).catch(()=>{})}
   setTimeout(load,0);addEventListener("load",load);addEventListener("q29ann",load);
@@ -2375,7 +2375,7 @@ const VIS_CSS=`
 .pill.purple{background:var(--purple-soft);color:var(--purple)}
 .ann-st{font-size:12px;color:var(--muted)}
 .ann-g3 .lbl,.ann-g2 .lbl{display:block;margin-bottom:4px}
-.ann-g3 select,.ann-g3 input,.ann-g2 input{width:100%;box-sizing:border-box;min-height:46px;font:inherit;font-size:15px;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:0 10px}
+.ann-g3 select,.ann-g3 input,.ann-g2 input,.ann-g2 select{width:100%;box-sizing:border-box;min-height:46px;font:inherit;font-size:15px;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:0 10px}
 .ann-g3 input:focus-visible,.ann-g3 select:focus-visible,.ann-g2 input:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
 .ann-lnk{display:inline-flex;align-items:center;min-height:36px;margin-top:6px;padding:4px 14px;border-radius:999px;background:var(--acc);color:var(--bg);font-weight:700;font-size:13px;text-decoration:none}
 `;
@@ -2429,17 +2429,31 @@ window.Q29T=(function(){
   try{window.Q29T&&window.Q29T.visit()}catch(e){}})();
 // announcements shown to visitors of the guide (and samples in the offline copy)
 const ANN_SAMPLE=Q29_DB?[]:[
-  {id:"s-ann-1",text:"مرحبًا بكم في دليل الدورة التاسعة والعشرين. جرّبوا «اختبر حفظي» وشاركوا نتيجتكم مع أصدقائكم.",level:"info",aud:"public",active:true,ends:"",starts:"",url:"",lbl:"",grp:"",at:"2026-10-01T08:00:00Z"},
-  {id:"s-ann-2",text:"التسجيل في المسابقة عن طريق إحدى الجهات المشاركة المعتمدة، تواصلوا مع أقرب جهة إليكم.",level:"warn",aud:"public",active:true,ends:"",starts:"",url:"",lbl:"",grp:"s-grp-1",at:"2026-09-30T08:00:00Z"},
-  {id:"s-ann-3",text:"تذكير: أكملوا بيانات المرشحين ومستنداتهم قبل نهاية فترة التسجيل.",level:"warn",aud:"ents",active:true,ends:"",starts:"",url:"",lbl:"",grp:"s-grp-1",at:"2026-09-30T08:00:00Z"}];
+  {id:"s-ann-1",text:"مرحبًا بكم في دليل الدورة التاسعة والعشرين. جرّبوا «اختبر حفظي» وشاركوا نتيجتكم مع أصدقائكم.",level:"info",aud:"public",active:true,ends:"",starts:"",url:"",lbl:"",grp:"",hm:"visits",hn:3,at:"2026-10-01T08:00:00Z"},
+  {id:"s-ann-2",text:"التسجيل في المسابقة عن طريق إحدى الجهات المشاركة المعتمدة، تواصلوا مع أقرب جهة إليكم.",level:"warn",aud:"public",active:true,ends:"",starts:"",url:"",lbl:"",grp:"s-grp-1",hm:"days",hn:2,at:"2026-09-30T08:00:00Z"},
+  {id:"s-ann-3",text:"تذكير: أكملوا بيانات المرشحين ومستنداتهم قبل نهاية فترة التسجيل.",level:"warn",aud:"ents",active:true,ends:"",starts:"",url:"",lbl:"",grp:"s-grp-1",hm:"days",hn:2,at:"2026-09-30T08:00:00Z"}];
 window.Q29ANN={
   live(L,d){return (L||[]).filter(a=>(a.aud==="public"||a.aud==="all")&&a.active!==false&&(!a.starts||d>=a.starts)&&(!a.ends||d<=a.ends))},
   pub(){
     if(Q29_DB)return fetch(Q29_DB.url+"/rest/v1/rpc/q29_public_ann",{method:"POST",headers:{apikey:Q29_DB.key,"Content-Type":"application/json"},body:"{}"})
-      .then(r=>r.ok?r.json():[]).then(a=>Array.isArray(a)?a.map(r=>({id:String(r.id),text:String(r.text||""),level:r.level==="warn"?"warn":"info",url:r.link_url||"",lbl:r.link_label||"",at:r.created_at||""})):[]).catch(()=>[]);
+      .then(r=>r.ok?r.json():[]).then(a=>Array.isArray(a)?a.map(r=>({id:String(r.id),text:String(r.text||""),level:r.level==="warn"?"warn":"info",url:r.link_url||"",lbl:r.link_label||"",at:r.created_at||"",hm:r.hide_mode||"never",hn:+r.hide_n||0})):[]).catch(()=>[]);
     let d="";try{d=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Kuwait",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date())}catch(e){}
     return Promise.resolve(this.live((window.__PTS&&window.__PTS.ANNS)||ANN_SAMPLE,d))},
   seen(id){try{window.Q29T&&window.Q29T.ann("annv",id)}catch(e){}},
+  _K:"q29ax",_m:[],
+  _kd(){try{return new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Kuwait",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date())}catch(e){return new Date().toISOString().slice(0,10)}},
+  _get(){let o={};try{o=JSON.parse(localStorage.getItem(this._K)||"{}")}catch(e){o={}}
+    if(Array.isArray(o)){const m={};o.forEach(i=>{m[i]={c:99,d:""}});o=m}return o&&typeof o==="object"?o:{}},
+  _set(o){try{const k=Object.keys(o);if(k.length>80)k.slice(0,k.length-80).forEach(x=>delete o[x]);localStorage.setItem(this._K,JSON.stringify(o))}catch(e){}},
+  _ses(){let a=[];try{a=JSON.parse(sessionStorage.getItem(this._K)||"[]")}catch(e){a=[]}return Array.isArray(a)?a.concat(this._m):this._m},
+  _plus(d,n){const t=new Date(d+"T12:00:00Z");t.setUTCDate(t.getUTCDate()+n);return t.toISOString().slice(0,10)},
+  isHidden(a){const m=a.hm||"never";if(m==="pin")return false;if(this._ses().includes(a.id))return true;
+    const r=this._get()[a.id];if(!r)return false;
+    if(m==="visits")return (+r.c||0)>=Math.max(1,+a.hn||1);
+    if(m==="days")return !!r.d&&this._kd()<this._plus(r.d,Math.max(1,+a.hn||1));
+    return true},
+  hide(a){if((a.hm||"never")==="pin")return;const o=this._get(),r=o[a.id]||{c:0,d:""};r.c=(+r.c||0)+1;r.d=this._kd();delete o[a.id];o[a.id]=r;this._set(o);
+    this._m.push(a.id);try{const s=this._ses();s.push(a.id);sessionStorage.setItem(this._K,JSON.stringify(s.slice(-80)))}catch(e){}},
   click(id){try{window.Q29T&&window.Q29T.ann("annc",id)}catch(e){}},
   changed(){try{window.dispatchEvent(new Event("q29ann"))}catch(e){}}
 };
@@ -3381,7 +3395,7 @@ function vAdmin(){
 }
 
 // ---------- announcements (admin -> entities / visitors / everyone) ----------
-const annFromRow=r=>({id:r.id,text:r.text,level:r.level||"info",active:r.active!==false,ends:r.ends_on||"",starts:r.starts_on||"",aud:r.audience||"ents",url:r.link_url||"",lbl:r.link_label||"",grp:r.grp||"",at:r.created_at||""});
+const annFromRow=r=>({id:r.id,text:r.text,level:r.level||"info",active:r.active!==false,ends:r.ends_on||"",starts:r.starts_on||"",aud:r.audience||"ents",url:r.link_url||"",lbl:r.link_label||"",grp:r.grp||"",hm:r.hide_mode||"never",hn:+r.hide_n||0,at:r.created_at||""});
 const annLive=a=>a.active!==false&&(!a.ends||today()<=a.ends)&&(!a.starts||today()>=a.starts);
 const annForEnts=a=>(a.aud||"ents")==="ents"||a.aud==="all";
 const annForPub=a=>a.aud==="public"||a.aud==="all";
@@ -3390,18 +3404,23 @@ const ANN_AUD={ents:"الجهات فقط",public:"الزوار فقط",all:"ال
 const ANN_HINT={ents:"يظهر شريطاً أعلى صفحة كل جهة (منسقاً ومراجعاً) في البوابة فقط.",public:"يظهر لزوار الدليل في الصفحة الرئيسية فقط، ولا يظهر للجهات.",all:"يظهر لزوار الدليل في الرئيسية وللجهات في البوابة بنفس النص.",split:"خبر واحد بنصين: نص يظهر لزوار الدليل، ونص آخر يظهر للجهات. الإيقاف والحذف يشملان النصين معاً."};
 function annLink(a,cls){return a.url&&annUrlOk(a.url)?`<a class="${cls}" href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">${esc(a.lbl||"التفاصيل")}</a>`:""}
 function annBanner(){
-  if(S.admin)return "";S.annX=S.annX||{};
-  const l=ANNS.filter(a=>annForEnts(a)&&annLive(a)&&!S.annX[a.id]).sort((a,b)=>(b.level==="warn")-(a.level==="warn")||String(b.at).localeCompare(String(a.at)));
-  return l.map(a=>`<div class="note${a.level==="warn"?" warn":""}" role="status" data-ann="${esc(a.id)}"><div class="ann-b"><span><b>${a.level==="warn"?"تنبيه هام من إدارة المسابقة":"إعلان من إدارة المسابقة"}:</b> <span class="ann-t">${esc(a.text)}</span>${a.url?`<br>${annLink(a,"ann-lnk")}`:""}</span><button class="ann-x" data-annx="${esc(a.id)}" aria-label="إخفاء الإعلان" title="إخفاء">×</button></div></div>`).join("")}
-function bindAnnBanner(){app.querySelectorAll("[data-annx]").forEach(b=>b.onclick=()=>{S.annX=S.annX||{};S.annX[b.dataset.annx]=1;render()})}
+  if(S.admin)return "";
+  const l=ANNS.filter(a=>annForEnts(a)&&annLive(a)&&!Q29ANN.isHidden(a)).sort((a,b)=>(b.level==="warn")-(a.level==="warn")||String(b.at).localeCompare(String(a.at)));
+  return l.map(a=>`<div class="note${a.level==="warn"?" warn":""}" role="status" data-ann="${esc(a.id)}"><div class="ann-b"><span><b>${a.level==="warn"?"تنبيه هام من إدارة المسابقة":"إعلان من إدارة المسابقة"}:</b> <span class="ann-t">${esc(a.text)}</span>${a.url?`<br>${annLink(a,"ann-lnk")}`:""}</span>${a.hm==="pin"?"":`<button class="ann-x" data-annx="${esc(a.id)}" aria-label="إخفاء الإعلان" title="إخفاء">×</button>`}</div></div>`).join("")}
+function bindAnnBanner(){app.querySelectorAll("[data-annx]").forEach(b=>b.onclick=()=>{const a=ANNS.find(x=>x.id===b.dataset.annx);if(a)Q29ANN.hide(a);render()})}
 async function annRefresh(){
   if(!DB||!SB||S.admin||S.view!=="list")return;
   try{const r=await SB.from("announcements").select("*").order("created_at",{ascending:false});if(r.error)return;
     const n=r.data.map(annFromRow);if(JSON.stringify(n)!==JSON.stringify(ANNS)){ANNS=n;if(S.view==="list")render()}}catch(e){}}
 setInterval(annRefresh,180000);document.addEventListener("visibilitychange",()=>{if(!document.hidden)annRefresh()});
 const annV5=()=>!DB||S.ann5===true;
+const annV6=()=>!DB||S.ann6===true;
+const ANN_HM={never:"لا يعود",visits:"يعود في الزيارات التالية",days:"يعود بعد أيام",pin:"مثبّت لا يُخفى"};
+const annHmTxt=a=>a.hm==="pin"?"مثبّت":a.hm==="visits"?`يعود ${a.hn} ${a.hn>2&&a.hn<11?"مرات":"مرة"} بعد الإخفاء`:a.hm==="days"?`يعود بعد ${a.hn} ${a.hn>2&&a.hn<11?"أيام":"يوم"} من الإخفاء`:"";
 async function annCheckV5(){if(!DB||!SB||S.ann5!==undefined)return;S.ann5=null;
-  try{const r=await SB.rpc("q29_public_ann");S.ann5=!r.error}catch(e){S.ann5=false}if(S.view==="admin"&&S.atab==="ann")render()}
+  try{const r=await SB.rpc("q29_public_ann");S.ann5=!r.error}catch(e){S.ann5=false}
+  try{const r=await SB.rpc("q29_ann_v");S.ann6=!r.error&&+r.data>=6}catch(e){S.ann6=false}
+  if(S.view==="admin"&&S.atab==="ann")render()}
 let ANN_ST=null,ANN_STL=false;
 function annStats(){
   if(ANN_ST)return ANN_ST;
@@ -3411,23 +3430,26 @@ function annStats(){
 function annRead(){
   const g=id=>{const e=$(id);return e?(e.value||"").trim():""};
   S.annDraft=$("#annT")?$("#annT").value:S.annDraft;if($("#annT2"))S.annDraft2=$("#annT2").value;
-  S.annLv=g("#annL")||S.annLv;S.annEn=g("#annE");S.annSt=$("#annS")?g("#annS"):S.annSt;S.annUrl=$("#annU")?g("#annU"):S.annUrl;S.annLbl=$("#annUL")?g("#annUL"):S.annLbl}
+  S.annLv=g("#annL")||S.annLv;S.annEn=g("#annE");S.annSt=$("#annS")?g("#annS"):S.annSt;S.annUrl=$("#annU")?g("#annU"):S.annUrl;S.annLbl=$("#annUL")?g("#annUL"):S.annLbl;
+  if($("#annH"))S.annHm=g("#annH");if($("#annHN"))S.annHn=g("#annHN")}
 async function annAdd(){
   annRead();
   const aud=annV5()?(S.annAud||"ents"):"ents",lv=S.annLv==="warn"?"warn":"info",en=S.annEn||"",st=annV5()?(S.annSt||""):"";
   const url=annV5()?(S.annUrl||""):"",lbl=url?((S.annLbl||"").slice(0,30)||"التفاصيل"):"";
+  const hm=annV6()&&ANN_HM[S.annHm]?S.annHm:"never",hn=hm==="visits"||hm==="days"?Math.round(+S.annHn||0):0;
   const t1=(S.annDraft||"").trim(),t2=(S.annDraft2||"").trim();
   if(t1.length<3){toast(aud==="split"?"اكتب نص الزوار":"اكتب نص الإعلان");return}
   if(aud==="split"&&t2.length<3){toast("اكتب نص الجهات");return}
   if(en&&en<today()){toast("تاريخ الانتهاء يجب أن يكون اليوم أو بعده");return}
   if(st&&en&&en<st){toast("تاريخ الانتهاء يجب أن يكون بعد تاريخ البدء");return}
   if(url&&!annUrlOk(url)){toast("الرابط يجب أن يبدأ بـ https:// وبدون مسافات");return}
+  if((hm==="visits"||hm==="days")&&!(hn>=1&&hn<=30)){toast(hm==="visits"?"عدد مرات العودة من 1 إلى 30":"عدد الأيام من 1 إلى 30");return}
   const grp=aud==="split"?uuid():"",now=new Date().toISOString();
-  const mk=(text,au)=>({id:uuid(),text:text.slice(0,400),level:lv,active:true,ends:en,starts:st,aud:au,url,lbl,grp,at:now});
+  const mk=(text,au)=>({id:uuid(),text:text.slice(0,400),level:lv,active:true,ends:en,starts:st,aud:au,url,lbl,grp,hm,hn,at:now});
   const L=aud==="split"?[mk(t1,"public"),mk(t2,"ents")]:[mk(t1,aud)];
-  if(DB&&SB){const rows=L.map(a=>annV5()?{id:a.id,text:a.text,level:a.level,active:true,ends_on:en||null,starts_on:st||null,audience:a.aud,link_url:url||null,link_label:lbl||null,grp:grp||null}:{id:a.id,text:a.text,level:a.level,active:true,ends_on:en||null});
+  if(DB&&SB){const rows=L.map(a=>annV5()?Object.assign({id:a.id,text:a.text,level:a.level,active:true,ends_on:en||null,starts_on:st||null,audience:a.aud,link_url:url||null,link_label:lbl||null,grp:grp||null},annV6()?{hide_mode:hm,hide_n:hn||null}:{}):{id:a.id,text:a.text,level:a.level,active:true,ends_on:en||null});
     const r=await SB.from("announcements").insert(rows).select("id");if(r.error){toast(dbErr(r.error));return}}
-  ANNS.unshift(...L);S.annDraft="";S.annDraft2="";S.annLv="info";S.annEn="";S.annSt="";S.annUrl="";S.annLbl="";render();Q29ANN.changed();
+  ANNS.unshift(...L);S.annDraft="";S.annDraft2="";S.annLv="info";S.annEn="";S.annSt="";S.annUrl="";S.annLbl="";S.annHm="never";S.annHn="";render();Q29ANN.changed();
   toast(aud==="split"?"نُشر الإعلان: نص للزوار ونص للجهات":aud==="public"?"نُشر الإعلان لزوار الدليل":aud==="all"?"نُشر الإعلان للجميع (الزوار والجهات)":"نُشر الإعلان لجميع الجهات")}
 const annGroup=id=>{const a=ANNS.find(x=>x.id===id);return a?(a.grp?ANNS.filter(x=>x.grp===a.grp):[a]):[]};
 async function annToggle(id){const G=annGroup(id);if(!G.length)return;const on=G[0].active===false;
@@ -3466,12 +3488,15 @@ function vAnn(){
     </div>
     ${v5?`<div class="ann-g2"><div><label class="lbl" for="annU">رابط زر (اختياري)</label><input id="annU" type="url" dir="ltr" inputmode="url" maxlength="300" placeholder="https://" value="${esc(S.annUrl||"")}"></div>
       <div><label class="lbl" for="annUL">نص الزر</label><input id="annUL" maxlength="30" placeholder="التفاصيل" value="${esc(S.annLbl||"")}"></div></div>`:""}
+    ${v5?(()=>{const hm=annV6()&&ANN_HM[S.annHm]?S.annHm:"never",num=hm==="visits"||hm==="days";return `<div class="ann-g2"><div><label class="lbl" for="annH">بعد إخفاء الإعلان (زائر أو جهة)</label><select id="annH"${annV6()?"":" disabled"}>${Object.entries(ANN_HM).map(([k,l])=>`<option value="${k}"${hm===k?" selected":""}>${l}</option>`).join("")}</select></div>
+      <div id="annHNw"${num?"":" hidden"}><label class="lbl" for="annHN" id="annHNl">${hm==="days"?"بعد كم يوم؟":"كم مرة يعود؟"}</label><input id="annHN" type="number" inputmode="numeric" min="1" max="30" placeholder="${hm==="days"?"2":"3"}" value="${esc(S.annHn||"")}"></div></div>
+      <p class="hint" id="annHh" style="margin:6px 0 0;color:var(--muted);font-size:12.5px">${annV6()?({never:"إذا أخفاه الزائر أو الجهة لا يظهر له مرة أخرى على نفس الجهاز.",visits:"يعود في الزيارة التالية بعد كل إخفاء، حتى يُخفى بالعدد المحدد فيختفي نهائياً.",days:"يعود بعد مرور عدد الأيام المحدد من كل إخفاء، ما دام الإعلان منشوراً.",pin:"يظهر دائماً بدون زر إخفاء حتى تنتهي مدته أو توقفه."})[hm]:"لتفعيل هذا الخيار شغّل ملف <code dir=\"ltr\">supabase_update_6.sql</code> ثم أعد تحميل الصفحة."}</p>`})():""}
     <div style="margin-top:10px"><button class="btn pri" id="annAdd">نشر الإعلان</button></div>
   </div>
   <div class="card"><h2 style="margin:0 0 8px;font-size:16px">الإعلانات (${groups.length})</h2>
     ${v5&&groups.length?`<div class="ann-f" role="group" aria-label="تصفية حسب الجمهور">${[["all","الكل"],["public","يظهر للزوار"],["ents","يظهر للجهات"]].map(([k,l])=>`<button type="button" data-annf="${k}" aria-pressed="${F===k}">${l}</button>`).join("")}</div>`:""}
     <div class="ann-list">${FL.length?FL.map(G=>{const a=G[0],s=status(a),live=G.some(annLive);return `<div class="ann-it${live?"":" off"}">${G.length>1?G.map(x=>`<div class="ann-tl">${tl(x)}</div><div class="ann-t">${esc(x.text)}</div>`).join(""):`<div class="ann-t">${esc(a.text)}</div>`}
-      <div class="ann-m">${v5?audPill(gAud(G)):""}<span class="pill ${a.level==="warn"?"warn":"acc"}">${a.level==="warn"?"تنبيه هام":"عادي"}</span><span class="pill ${s[0]}">${s[1]}</span>${a.starts?`<span class="pill">من ${esc(a.starts)}</span>`:""}${a.ends?`<span class="pill">حتى ${esc(a.ends)}</span>`:""}${a.url?`<span class="pill">زر: ${esc(a.lbl||"التفاصيل")}</span>`:""}<span style="color:var(--muted);font-size:12px">${esc(fmt(a))}</span>
+      <div class="ann-m">${v5?audPill(gAud(G)):""}<span class="pill ${a.level==="warn"?"warn":"acc"}">${a.level==="warn"?"تنبيه هام":"عادي"}</span><span class="pill ${s[0]}">${s[1]}</span>${a.starts?`<span class="pill">من ${esc(a.starts)}</span>`:""}${a.ends?`<span class="pill">حتى ${esc(a.ends)}</span>`:""}${a.url?`<span class="pill">زر: ${esc(a.lbl||"التفاصيل")}</span>`:""}${annHmTxt(a)?`<span class="pill">${annHmTxt(a)}</span>`:""}<span style="color:var(--muted);font-size:12px">${esc(fmt(a))}</span>
       ${statTxt(G)}<span style="flex:1"></span><button class="btn ghost" data-annt="${esc(a.id)}">${a.active===false?"إعادة نشر":"إيقاف"}</button><button class="btn ghost" data-annd="${esc(a.id)}">حذف</button></div></div>`}).join(""):`<div class="empty">${groups.length?"لا توجد إعلانات لهذا الجمهور.":"لا توجد إعلانات بعد."}</div>`}</div>
   </div>`;
   bindTabs();
@@ -3479,6 +3504,9 @@ function vAnn(){
   const T2=$("#annT2");if(T2)T2.oninput=()=>{S.annDraft2=T2.value;$("#annC2").textContent=T2.value.length+"/400"};
   $("#annL").onchange=e=>{S.annLv=e.target.value};$("#annE").onchange=e=>{S.annEn=e.target.value};
   if($("#annS"))$("#annS").onchange=e=>{S.annSt=e.target.value};
+  if($("#annH"))$("#annH").onchange=e=>{S.annHm=e.target.value;const m=S.annHm,w=$("#annHNw");if(w)w.hidden=!(m==="visits"||m==="days");if($("#annHNl"))$("#annHNl").textContent=m==="days"?"بعد كم يوم؟":"كم مرة يعود؟";if($("#annHN"))$("#annHN").placeholder=m==="days"?"2":"3";
+    const H={never:"إذا أخفاه الزائر أو الجهة لا يظهر له مرة أخرى على نفس الجهاز.",visits:"يعود في الزيارة التالية بعد كل إخفاء، حتى يُخفى بالعدد المحدد فيختفي نهائياً.",days:"يعود بعد مرور عدد الأيام المحدد من كل إخفاء، ما دام الإعلان منشوراً.",pin:"يظهر دائماً بدون زر إخفاء حتى تنتهي مدته أو توقفه."};if($("#annHh"))$("#annHh").textContent=H[m]};
+  if($("#annHN"))$("#annHN").oninput=e=>{S.annHn=e.target.value};
   if($("#annU"))$("#annU").oninput=e=>{S.annUrl=e.target.value};if($("#annUL"))$("#annUL").oninput=e=>{S.annLbl=e.target.value};
   app.querySelectorAll("[data-aud]").forEach(b=>b.onclick=()=>{annRead();S.annAud=b.dataset.aud;render();const n=$(`[data-aud="${b.dataset.aud}"]`);if(n)n.focus()});
   app.querySelectorAll("[data-annf]").forEach(b=>b.onclick=()=>{annRead();S.annF=b.dataset.annf;render();const n=$(`[data-annf="${b.dataset.annf}"]`);if(n)n.focus()});
