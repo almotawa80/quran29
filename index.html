@@ -26,7 +26,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#B8940F">
-<meta name="build" content="20261002163401">
+<meta name="build" content="20261002165703">
 <script>
 (function(){
   var B="20260926215315";
@@ -800,6 +800,42 @@ body{line-height:1.9}
 #moreNav .set-row{min-width:0}
 #moreNav .set-tx{flex:1 1 auto;min-width:0}
 #moreNav .set-tx b{white-space:normal;overflow-wrap:anywhere;word-break:normal}
+/* assistant as a chat */
+html.view-find .finder{background:transparent;border:0;padding:0 0 6px!important;gap:0;display:flex;flex-direction:column}
+html.view-find .finder-head{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%)!important;margin:-1px!important;padding:0!important;border:0!important}
+.fc-top{display:flex;align-items:center;gap:10px;padding:8px 2px 10px;border-bottom:1px solid var(--line);position:sticky;top:calc(env(safe-area-inset-top,0px) + 68px);z-index:6;background:var(--bg);order:0}
+.fc-av{width:36px;height:36px;border-radius:50%;background:var(--green);color:var(--bg);display:grid;place-items:center;flex:none}
+.fc-av svg{width:19px;height:19px}
+.fc-tt{display:flex;flex-direction:column;line-height:1.45;min-width:0}
+.fc-tt b{font-size:14.5px}.fc-tt small{font-size:11.5px;color:var(--muted)}
+.fc-new{margin-inline-start:auto;flex:none;min-height:40px;font:inherit;font-size:12.5px;font-weight:700;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:0 14px;cursor:pointer}
+.fc-new:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+html.view-find .chat-log{order:1;min-height:calc(100dvh - 300px)!important;border-top:0!important;padding:12px 0 calc(var(--cbh,110px) + 12px)!important;gap:12px!important;justify-content:flex-end}
+html.view-find .finder .chat-bar{order:2;position:fixed!important;left:0;right:0;bottom:calc(var(--tbh,71px) - 1px)!important;z-index:28;background:var(--bg)!important;border-top:1px solid var(--line)!important;box-shadow:0 -6px 14px rgba(0,0,0,.06)!important;margin:0!important;padding:8px max(16px,calc((100% - 880px)/2)) 8px!important}
+html.view-find .chat-lbl{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+html.view-find .ai-chips{order:-1;border-top:0!important;padding:0 0 8px!important}
+html.view-find .chat-bar{display:flex;flex-direction:column}
+html.view-find .ai-form{padding:0!important}
+.ai-turn{gap:8px}
+.ai-row.bot{flex-direction:column}
+.ai-msg.bot{position:relative;margin-inline-start:34px}
+.ai-msg.bot::before{content:"";position:absolute;inset-inline-start:-34px;bottom:0;width:26px;height:26px;border-radius:50%;background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 5.5A2.5 2.5 0 016.5 3h11A2.5 2.5 0 0120 5.5v8a2.5 2.5 0 01-2.5 2.5H10l-4.5 4v-4A1.5 1.5 0 014 14.5z'/%3E%3C/svg%3E") center/15px no-repeat}
+.ai-row.bot>.ai-cards,.ai-row.bot>.ai-opts,.ai-row.bot>.ai-acts{margin-inline-start:34px;max-width:calc(100% - 34px)}
+.ai-time{display:block;font-size:10.5px;opacity:.65;margin-top:2px;text-align:end;font-variant-numeric:tabular-nums}
+.ai-typing{display:inline-flex;gap:5px;align-items:center;padding:12px 14px!important}
+.ai-typing i{width:7px;height:7px;border-radius:50%;background:var(--muted);display:block;animation:aiDot 1s infinite ease-in-out}
+.ai-typing i:nth-child(2){animation-delay:.15s}.ai-typing i:nth-child(3){animation-delay:.3s}
+@keyframes aiDot{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:.9;transform:translateY(-3px)}}
+@media (prefers-reduced-motion:reduce){.ai-typing i{animation:none;opacity:.6}}
+.ai-wa{display:inline-flex;align-items:center;gap:6px;min-height:40px;margin-top:8px;padding:0 14px;border-radius:999px;background:#1A7F4B;color:#fff;font-weight:700;font-size:13px;text-decoration:none}
+.ai-wa:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.ai-note{font-size:12px;color:var(--muted)}
+html.view-find .ai-msg.me{background:var(--green);color:var(--bg);border:0;padding:8px 12px;font-size:14px;max-width:80%;border-radius:16px;border-start-end-radius:4px}
+html.view-find .ai-msg.me::before{content:none}
+html.view-find .ai-turn+.ai-turn{border-top:0;padding-top:4px;opacity:1}
+html.view-find .to-top{display:none!important}
+html.view-find .finder .ai-form{max-width:none!important;width:100%!important;margin:0!important}
+html.view-find .finder .ai-chips{margin-inline:0!important;max-width:100%}
 </style>
 </head>
 <body>
@@ -891,12 +927,13 @@ body{line-height:1.9}
       <h2 id="f-title">المساعد</h2>
       <p>أحدد لك الشريحة المناسبة وجوائزها خطوة بخطوة، وأجيب عن أسئلتك عن المسابقة من البيان التوضيحي.</p>
     </div>
+<div class="fc-top"><span class="fc-av" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 016.5 3h11A2.5 2.5 0 0120 5.5v8a2.5 2.5 0 01-2.5 2.5H10l-4.5 4v-4A1.5 1.5 0 014 14.5z"/><path d="M8.5 9.5h.01M12 9.5h.01M15.5 9.5h.01"/></svg></span><span class="fc-tt"><b>مساعد المسابقة</b><small>يجيب من البيان التوضيحي للمسابقة</small></span><button type="button" class="fc-new" id="aiNew">محادثة جديدة</button></div>
+    <div class="chat-log" id="aiLog" aria-live="polite"></div>
     <div class="chat-bar">
       <label class="chat-lbl" for="aiIn">اكتب سؤالك هنا، أو اختر من الأسئلة الجاهزة</label>
       <form class="ai-form" id="aiForm"><svg class="chat-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4l10.5-10.5a2.1 2.1 0 00-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg><input id="aiIn" type="text" autocomplete="off" placeholder="عمري 12 وأحفظ 7 أجزاء" aria-label="سؤالك"><button type="submit" aria-label="إرسال"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5M11 6l-6 6 6 6"/></svg></button></form>
       <div class="ai-chips" id="aiChips"></div>
     </div>
-    <div class="chat-log" id="aiLog" aria-live="polite"></div>
     <div class="legacy" hidden>
     <div class="nl-box">
       <div class="nl-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 016.5 3h11A2.5 2.5 0 0120 5.5v8a2.5 2.5 0 01-2.5 2.5H10l-4.5 4v-4A1.5 1.5 0 014 14.5z"/></svg><input id="nlQ" type="text" autocomplete="off" placeholder="مثل: ابني عمره 10 ويحفظ 6 أجزاء" aria-label="اكتب العمر ومقدار الحفظ"></div>
@@ -2190,20 +2227,28 @@ const yrs=n=>n>=3&&n<=10?n+' سنوات':n+' سنة';
 const log=document.getElementById("aiLog"),inp=document.getElementById("aiIn");
 const esc=t=>String(t).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 const findActive=()=>tbs[vIdx("find")].classList.contains("active");
-function scrollEnd(){if(!findActive())return;const cb=document.querySelector(".chat-bar");const r=cb.getBoundingClientRect();if(r.top<60||r.top>window.innerHeight*0.5)cb.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})}
-function newTurn(){log.innerHTML="";const t=document.createElement("div");t.className="ai-turn";log.appendChild(t);return t}
+function scrollEnd(smooth){if(!findActive())return;const go=()=>window.scrollTo({top:document.documentElement.scrollHeight,behavior:smooth&&!matchMedia("(prefers-reduced-motion: reduce)").matches?"smooth":"auto"});requestAnimationFrame(go)}
+function newTurn(){const t=document.createElement("div");t.className="ai-turn";log.appendChild(t);while(log.children.length>25)log.firstElementChild.remove();return t}
+const tNow=()=>{try{return new Date().toLocaleTimeString("ar-KW-u-nu-latn",{hour:"numeric",minute:"2-digit"})}catch(e){return ""}};
+const CHAT_K="q29chat";let mem={};
+function chatSave(){try{sessionStorage.setItem(CHAT_K,JSON.stringify({h:log.innerHTML,g:guide,m:mem}))}catch(e){}}
+function chatLoad(){try{const o=JSON.parse(sessionStorage.getItem(CHAT_K)||"null");if(!o||!o.h)return false;log.innerHTML=o.h;guide=o.g||{};mem=o.m||{};
+  log.querySelectorAll(".ai-opts button").forEach(b=>{b.disabled=true});log.querySelectorAll(".ai-typing").forEach(x=>{const r=x.closest(".ai-row");if(r)r.remove()});return true}catch(e){return false}}
 function add(role,html,opts={}){
-  const d=document.createElement("div");d.className="ai-msg "+role;d.innerHTML=html;
+  const d=document.createElement("div");d.className="ai-msg "+role;d.innerHTML=html+(opts.typing?"":`<span class="ai-time">${tNow()}</span>`);if(opts.typing){d.classList.add("ai-typing");d.setAttribute("aria-label","يكتب…")}
   const row=document.createElement("div");row.className="ai-row "+role;row.appendChild(d);
   if(opts.cards){const c=document.createElement("div");c.className="ai-cards";c.innerHTML=opts.cards;row.appendChild(c)}
   if(opts.choices){const r=document.createElement("div");r.className="ai-opts";opts.choices.forEach(([label,fn])=>{const b=document.createElement("button");b.type="button";b.className="ai-opt";b.textContent=label;b.addEventListener("click",()=>{r.querySelectorAll("button").forEach(x=>x.disabled=true);b.classList.add("picked");add("me",esc(label));setTimeout(fn,120)});r.appendChild(b)});row.appendChild(r)}
   if(opts.acts&&opts.acts.length){const r=document.createElement("div");r.className="ai-acts";opts.acts.forEach(k=>{const b=document.createElement("button");b.type="button";b.className="ai-act";
-      if(k==="share"){b.textContent="نسخ النتيجة لإرسالها";const txt=opts.shareTxt;b.addEventListener("click",()=>copyText(b,txt,"نسخ النتيجة لإرسالها"))}
-      else{b.textContent=A[k].t+" ←";b.addEventListener("click",A[k].f)}
+      b.dataset.act=k;if(k==="share"){b.textContent="نسخ النتيجة لإرسالها";b.dataset.share=opts.shareTxt||""}
+      else b.textContent=A[k].t+" ←";
       r.appendChild(b)});row.appendChild(r)}
-  const turn=(role==="me"||!log.firstElementChild)?newTurn():log.firstElementChild;turn.appendChild(row);return row;
+  const turn=(role==="me"||!log.lastElementChild)?newTurn():log.lastElementChild;turn.appendChild(row);
+  if(!opts.typing){scrollEnd(true);chatSave()}return row;
 }
-const bot=(h,o)=>setTimeout(()=>add("bot",h,o),180);
+log.addEventListener("click",e=>{const b=e.target.closest(".ai-act[data-act]");if(!b)return;const k=b.dataset.act;if(k==="share"){copyText(b,b.dataset.share||"","نسخ النتيجة لإرسالها");return}if(A[k]&&A[k].f)A[k].f()});
+let botQ=Promise.resolve();
+const bot=(h,o)=>{botQ=botQ.then(()=>new Promise(res=>{const ty=add("bot",'<i></i><i></i><i></i>',{typing:true});scrollEnd(true);setTimeout(()=>{ty.remove();add("bot",h,o);res()},matchMedia("(prefers-reduced-motion: reduce)").matches?150:520)}))};
 const setF=(id,v)=>{const el=document.getElementById(id);if(el.type==="checkbox")el.checked=!!v;else el.value=v};
 const juzTxt=j=>j===0?"أقل من جزء":j===1?"جزءاً واحداً":j===2?"جزأين":juzLabel(j);
 function result(intro,ctx){
@@ -2236,7 +2281,7 @@ function finishMain(j){
   doMain(false);
 }
 function doMain(q){
-  const g=guide;setF("cat","main");setF("age",g.age);setF("juz",String(g.juz));setF("qir",q);
+  const g=guide;setF("cat","main");setF("age",g.age);setF("juz",String(g.juz));setF("qir",q);mem={age:g.age,ageL:g.ageL||null,juz:g.juz,qir:!!q};
   const ageL=g.ageL||(g.age+(g.age>=3&&g.age<=10?" سنوات":" سنة"));
   result(`لمن عمره <b>${ageL}</b> ويحفظ <b>${juzTxt(g.juz)}</b>${q?" ويتقن قراءة أو رواية":""}:`,`العمر: ${ageL} · الحفظ: ${juzTxt(g.juz)}${q?" · يتقن إحدى القراءات":""}`);
 }
@@ -2272,6 +2317,10 @@ function handle(msg){
     if(r.juz===30&&!r.qir){finishMain(30);return}
     doMain(r.qir&&r.juz===30);return;
   }
+  const what=/^و|لو |اذا|إذا|طيب|وان |وإن /.test(String(msg).trim());
+  if(r.age!=null&&r.juz==null&&mem.juz!=null&&what){guide={age:r.age,juz:mem.juz};doMain(false);return}
+  if(r.juz!=null&&r.age==null&&mem.age!=null&&(what||/احفظ|يحفظ|تحفظ|حفظ/.test(t))&&!/عمر|سن/.test(t)){guide={age:mem.age,ageL:mem.ageL,juz:r.juz};doMain(false);return}
+  if(mem.age!=null&&mem.juz!=null&&r.age==null&&r.juz==null&&/جايز|جوايز|جائز|جوائز|كم ياخذ|كم يحصل|مكافا|شريحتي|شريحته|جائزتي|نصيبي|كم اخذ/.test(t)&&!/جهه|جهات|درع|دروع|منسق|اسره|قراءات|احتياجات|نزلاء/.test(t)){guide={age:mem.age,ageL:mem.ageL,juz:mem.juz};doMain(mem.qir&&mem.juz===30);return}
   if(r.age!=null){guide={step:"juz",cat:"main",age:r.age};bot(`العمر ${r.age} ${r.age>=3&&r.age<=10?"سنوات":"سنة"}. وكم جزءاً يحفظ؟`,{choices:JUZ.map(([l,j])=>[l,()=>finishMain(j)])});return}
   if(r.juz!=null&&/احفظ|يحفظ|تحفظ|حافظ|جز/.test(t)){guide={step:"age",cat:"main",juz:r.juz};bot(`الحفظ ${juzTxt(r.juz)}. وكم العمر؟`,{choices:AGES.map(([l,a])=>[l,()=>{guide.age=a;guide.ageL=l;finishMain(r.juz)}])});return}
   const x=answer(msg);bot(x.h,{acts:x.act,choices:x.id?followCh(x.id):null});
@@ -2308,7 +2357,7 @@ function answer(msg){
   const units=[...document.querySelectorAll(".about-view .ap-sec li, .about-view details.faq, .about-view .ap-sec p")].map(el=>({tx:el.textContent.replace(/\s+/g," ").trim()})).filter(u=>u.tx.length>8);
   const hits=units.map(u=>({u,s:q.filter(w=>N(u.tx).includes(w)).length})).filter(h=>h.s>0).sort((a,b)=>b.s-a.s).slice(0,2);
   if(hits.length)return {h:"هذا أقرب ما وجدته في البيان:<ul class='ai-ul'>"+hits.map(h=>`<li>${h.u.tx.length>220?h.u.tx.slice(0,220)+"…":h.u.tx}</li>`).join("")+"</ul>",act:["faq"],id:"_def"};
-  return {h:"لم أجد إجابة لهذا السؤال في البيان. جرّب صياغة أخرى، أو اختر من الأسئلة المقترحة، أو تواصل عبر الواتساب.",act:["contact","faq"]};
+  return {h:"لم أفهم سؤالك تماماً، ولم أجد إجابته في البيان. جرّب صياغة أخرى أو اختر سؤالاً جاهزاً، أو اسأل إدارة المسابقة مباشرة:<br><a class='ai-wa' href='https://wa.me/96522065127' target='_blank' rel='noopener'>اسأل إدارة المسابقة عبر واتساب</a><br><span class='ai-note'>خلال فترة الدوام الرسمي.</span>",act:["faq"],id:"_def"};
 }
 // ---------- chips & input ----------
 // follow-up suggestions after each answer
@@ -2320,15 +2369,21 @@ const chipsEl=document.getElementById("aiChips");
 chipsEl.innerHTML=CH.map((x,i)=>`<button type="button" class="ai-chip" data-i="${i}">${x.chip}</button>`).join("");
 chipsEl.addEventListener("click",e=>{const c=e.target.closest(".ai-chip");if(!c)return;const x=CH[+c.dataset.i];add("me",esc(c.textContent));if(x.go){x.go();return}bot(x.a(),{acts:(x.act||[]).filter(k=>k!=="finder"),choices:followCh(x.id)})});
 document.getElementById("aiForm").addEventListener("submit",e=>{e.preventDefault();const v=inp.value.trim();if(!v)return;add("me",esc(v));inp.value="";handle(v)});
-// greeting + first guided question (page opens in a working state)
-add("bot","مرحباً! أنا مساعد مسابقة الكويت الكبرى (29). أحدد لك الشريحة المناسبة وجوائزها، وأجيب عن أسئلتك عن الشروط والمواعيد. اكتب مثلاً: <b>عمري 12 وأحفظ 7 أجزاء</b>، أو اختر:");
-guide={step:"cat"};
-add("bot","لمن المشاركة؟",{choices:[
+// greeting + first guided question (page opens in a working state); the chat of this visit is kept while the page is open
+function greet(){
+  add("bot","مرحباً! أنا مساعد مسابقة الكويت الكبرى (29). أحدد لك الشريحة المناسبة وجوائزها، وأجيب عن أسئلتك عن الشروط والمواعيد. اكتب مثلاً: <b>عمري 12 وأحفظ 7 أجزاء</b>، أو اختر:");
+  guide={step:"cat"};
+  add("bot","لمن المشاركة؟",{choices:[
     ["عامة (حسب العمر والحفظ)",askAge],
     ["ذوو الاحتياجات الخاصة",askDisab],
     ["نزلاء المؤسسات الإصلاحية",()=>{guide={step:"juz",cat:"prison"};askJuz("prison")}],
-    ["نزلاء دور الرعاية والأحداث",()=>{setF("cat","care");result("مسابقة <b>دور الرعاية والأحداث</b> في شريحتين:","نزلاء دور الرعاية والأحداث")}]]});
-window.scrollTo(0,0);
+    ["نزلاء دور الرعاية والأحداث",()=>{setF("cat","care");result("مسابقة <b>دور الرعاية والأحداث</b> في شريحتين:","نزلاء دور الرعاية والأحداث")}]]})}
+const setBars=()=>{try{const t=document.querySelector(".tabbar"),c=document.querySelector(".chat-bar"),r=document.documentElement.style;if(t)r.setProperty("--tbh",t.offsetHeight+"px");if(c&&c.offsetHeight)r.setProperty("--cbh",c.offsetHeight+"px")}catch(e){}};
+addEventListener("resize",setBars);if(window.ResizeObserver){const ro=new ResizeObserver(setBars);[".tabbar",".chat-bar"].forEach(q=>{const e=document.querySelector(q);if(e)ro.observe(e)})}setBars();
+if(!chatLoad())greet();
+document.getElementById("aiNew").addEventListener("click",()=>{try{sessionStorage.removeItem(CHAT_K)}catch(e){}log.innerHTML="";guide={};mem={};botQ=Promise.resolve();greet();inp.focus({preventScroll:true})});
+let wasFind=findActive();new MutationObserver(()=>{const f=document.documentElement.classList.contains("view-find");if(f&&!wasFind)setTimeout(()=>scrollEnd(false),30);wasFind=f}).observe(document.documentElement,{attributes:true,attributeFilter:["class"]});
+if(!findActive())window.scrollTo(0,0);else setTimeout(()=>scrollEnd(false),60);
 })();
 
 // appearance
