@@ -861,6 +861,29 @@ html.view-find .finder .ai-chips{margin-inline:0!important;max-width:100%}
 .aw-card small{font-size:11px!important;line-height:1.5!important}
 
 html.view-find .finder .chat-bar{padding-bottom:calc(10px + var(--fabx,0px))!important}
+/* tablets and computers: the page menu becomes a side bar on the right; phones keep the bottom bar */
+@media (min-width:768px) and (min-height:500px){
+:root{--sbw:220px}
+body{padding-inline-start:calc(var(--sbw) + 24px);padding-bottom:48px}
+.appbar{margin-inline-start:calc(-1 * (var(--sbw) + 24px))}
+.tabbar{top:var(--abh,69px);bottom:0;right:0;left:auto;width:var(--sbw);display:block;padding:16px 12px calc(env(safe-area-inset-bottom,0px) + 16px);border-top:0;border-inline-end:1px solid var(--line);box-shadow:none;overflow-y:auto}
+.tabbar-in{display:flex;flex-direction:column;gap:4px;max-width:none}
+.tb{flex-direction:row;justify-content:flex-start;gap:12px;font-size:15px;padding:11px 14px;border-radius:12px;text-align:start}
+.tb:hover{background:var(--green-soft);color:var(--green)}
+.tb svg{flex:none}
+.tb.fab{color:var(--muted)}
+.tb.fab .fab-c{width:22px;height:22px;margin:0;border:0;box-shadow:none;background:none;color:inherit;display:block}
+.tb.fab .fab-c svg{width:22px;height:22px}
+.tb.fab.active{background:var(--green-soft);color:var(--green)}
+.tb.fab.active .fab-c{outline:0}
+.tb:focus-visible{outline:2px solid var(--green);outline-offset:1px}
+.about-page{right:var(--sbw);top:var(--abh,69px)}
+html.view-find .finder .chat-bar{right:var(--sbw)!important;bottom:0!important;padding-inline:24px!important;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 12px)!important}
+html.view-find .ai-turn:last-child{min-height:calc(100dvh - var(--cbh,110px) - 76px)}
+.to-top{bottom:calc(env(safe-area-inset-bottom,0px) + 24px)}
+.ai-fab{right:calc(var(--sbw) + 14px);bottom:calc(env(safe-area-inset-bottom,0px) + 24px)}
+.pt-bye{bottom:calc(env(safe-area-inset-bottom,0px) + 24px)}
+}
 </style>
 
 <div class="wrap">
@@ -2471,7 +2494,7 @@ const sendB=document.getElementById("aiSend");const syncSend=()=>{if(sendB)sendB
 document.getElementById("aiForm").addEventListener("submit",e=>{e.preventDefault();const v=inp.value.trim();if(!v)return;add("me",esc(v));inp.value="";syncSend();handle(v)});
 // greeting + first guided question (page opens in a working state); the chat of this visit is kept while the page is open
 function greet(){guide={};syncWel()}
-const setBars=()=>{try{const t=document.querySelector(".tabbar"),c=document.querySelector(".chat-bar"),r=document.documentElement.style;if(t)r.setProperty("--tbh",t.offsetHeight+"px");const fb=t&&t.querySelector(".fab-c");if(fb){const fx=Math.max(0,Math.ceil(t.getBoundingClientRect().top-fb.getBoundingClientRect().top));r.setProperty("--fabx",fx+"px")}if(c&&c.offsetHeight)r.setProperty("--cbh",c.offsetHeight+"px")}catch(e){}};
+const setBars=()=>{try{const t=document.querySelector(".tabbar"),c=document.querySelector(".chat-bar"),r=document.documentElement.style;const side=matchMedia("(min-width:768px) and (min-height:500px)").matches;if(t)r.setProperty("--tbh",side?"0px":t.offsetHeight+"px");const fb=!side&&t&&t.querySelector(".fab-c");if(side)r.setProperty("--fabx","0px");if(fb){const fx=Math.max(0,Math.ceil(t.getBoundingClientRect().top-fb.getBoundingClientRect().top));r.setProperty("--fabx",fx+"px")}if(c&&c.offsetHeight)r.setProperty("--cbh",c.offsetHeight+"px")}catch(e){}};
 addEventListener("resize",setBars);if(window.ResizeObserver){const ro=new ResizeObserver(setBars);[".tabbar",".chat-bar"].forEach(q=>{const e=document.querySelector(q);if(e)ro.observe(e)})}setBars();
 if(!chatLoad())greet();else syncWel();
 let wasFind=findActive();new MutationObserver(()=>{const f=document.documentElement.classList.contains("view-find");if(f&&!wasFind)setTimeout(()=>scrollEnd(false),30);wasFind=f}).observe(document.documentElement,{attributes:true,attributeFilter:["class"]});
@@ -2519,6 +2542,7 @@ const appbar=document.createElement("div");appbar.className="appbar";
 appbar.innerHTML=`<div class="ab-brand"><span class="ab-logo"></span><span class="ab-t"><b>مسابقة الكويت الكبرى</b><small>لحفظ القرآن الكريم وتجويده (29)</small></span></div>
 <button class="coord-btn" id="coordBtn" type="button" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.6-3.6 3.4-6 7-6s6.4 2.4 7 6"/></svg><span>بوابة الجهات</span></button><button class="theme-tg" id="themeTg" type="button" aria-label="تبديل الوضع الداكن والفاتح"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><mask id="tgMask"><rect width="24" height="24" fill="#fff"/><circle class="tg-bite" cx="24" cy="2" r="7" fill="#000"/></mask></defs><circle class="tg-core" cx="12" cy="12" r="5" fill="currentColor" mask="url(#tgMask)"/><g class="tg-rays" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1.8v2.4M12 19.8v2.4M4.8 4.8l1.7 1.7M17.5 17.5l1.7 1.7M1.8 12h2.4M19.8 12h2.4M4.8 19.2l1.7-1.7M17.5 6.5l1.7-1.7"/></g></svg></button>`;
 document.body.prepend(appbar);
+{const abh=()=>{if(appbar.offsetHeight)document.documentElement.style.setProperty("--abh",appbar.offsetHeight+"px")};abh();addEventListener("resize",abh);if(window.ResizeObserver)new ResizeObserver(abh).observe(appbar)}
 {const lw=document.querySelector("header .org-logo-w");if(lw){const c=lw.cloneNode(true);c.classList.add("sm");appbar.querySelector(".ab-logo").appendChild(c)}else appbar.querySelector(".ab-logo").remove()}
 appbar.querySelector(".ab-brand").addEventListener("click",()=>{showView(0)});
 applyLook();
