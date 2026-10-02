@@ -26,7 +26,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#B8940F">
-<meta name="build" content="20261002161702">
+<meta name="build" content="20261002163006">
 <script>
 (function(){
   var B="20260926215315";
@@ -788,6 +788,13 @@ body{line-height:1.9}
 .cd-btn{min-height:30px;font-size:11.5px}
 .hb-row{border-top:0}
 .gann-wrap{margin-top:0}
+/* compact "more" buttons: icon beside the title, no subtitle */
+#moreNav.set-list{gap:8px}
+#moreNav .set-row{flex-direction:row;text-align:start;gap:8px;padding:8px 10px;min-height:52px;border-radius:12px}
+#moreNav .set-ic{width:30px;height:30px;border-radius:9px}
+#moreNav .set-ic svg{width:17px;height:17px}
+#moreNav .set-tx b{font-size:13.5px;line-height:1.35}
+#moreNav .set-tx small{display:none}
 </style>
 </head>
 <body>
@@ -1867,7 +1874,7 @@ const AB_IC={
 const AB_SHORT={"عن المسابقة":"عن المسابقة","نبذة عن المسابقة":"نبذة","أهداف المسابقة":"الأهداف","سياسات المسابقة":"السياسات","مصطلحات عامة":"المصطلحات","شروط المسابقة بجميع فروعها":"الشروط","مسار المشاركة":"مسار المشاركة","الجهات المشاركة المعتمدة":"الجهات المشاركة","الجدول الزمني":"الجدول الزمني","أسئلة شائعة":"أسئلة شائعة"};
 const aboutView=document.createElement("div");
 aboutView.className="about-view";
-aboutView.innerHTML=`<div class="qz-promo"><button type="button" class="qz-gcard" data-qz-open aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.4 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg><span><b>اختبر حفظي<span class="qz-new">جديد</span></b><small>لعبة أسئلة بنقاط تشجيعية: اختر المستوى والأجزاء وعدد الأسئلة</small></span></button><button type="button" class="qz-pclose" aria-label="إخفاء هذا الإعلان">×</button></div>${countdownHTML()}<nav class="ap-grid" aria-label="أقسام عن المسابقة">${ABOUT.map(a=>`<button class="ap-tile" data-ab="${a.id}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${AB_IC[a.t]||AB_IC._}</svg><span>${AB_SHORT[a.t]||a.t}</span></button>`).join("")}</nav>
+aboutView.innerHTML=`<div class="qz-promo"><button type="button" class="qz-gcard" data-qz-open aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.4 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg><span><b>اختبر حفظي<span class="qz-new">جديد</span></b><small>لعبة أسئلة بنقاط تشجيعية: اختر المستوى والأجزاء وعدد الأسئلة</small></span></button><button type="button" class="qz-pclose" aria-label="إخفاء هذا الإعلان">×</button></div><nav class="ap-grid" aria-label="أقسام عن المسابقة">${ABOUT.map(a=>`<button class="ap-tile" data-ab="${a.id}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${AB_IC[a.t]||AB_IC._}</svg><span>${AB_SHORT[a.t]||a.t}</span></button>`).join("")}</nav>
 ${ABOUT.map(a=>`<section class="ap-sec" id="${a.id}"><h2>${a.t}</h2>${a.h}<button class="to-sections" type="button" data-to-grid>↑ العودة إلى الأقسام</button></section>`).join("")}`;
 (function(){const K="q29pr";let o={n:0,off:false};try{o=Object.assign(o,JSON.parse(localStorage.getItem(K)||"{}"))}catch(e){}
   const w=aboutView.querySelector(".qz-promo");if(!w)return;
