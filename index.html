@@ -26,7 +26,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#B8940F">
-<meta name="build" content="20261002163006">
+<meta name="build" content="20261002163401">
 <script>
 (function(){
   var B="20260926215315";
@@ -795,6 +795,11 @@ body{line-height:1.9}
 #moreNav .set-ic svg{width:17px;height:17px}
 #moreNav .set-tx b{font-size:13.5px;line-height:1.35}
 #moreNav .set-tx small{display:none}
+#moreNav.set-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:720px){#moreNav.set-list{grid-template-columns:repeat(4,minmax(0,1fr))}}
+#moreNav .set-row{min-width:0}
+#moreNav .set-tx{flex:1 1 auto;min-width:0}
+#moreNav .set-tx b{white-space:normal;overflow-wrap:anywhere;word-break:normal}
 </style>
 </head>
 <body>
