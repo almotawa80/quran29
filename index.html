@@ -26,7 +26,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#B8940F">
-<meta name="build" content="20261002174636">
+<meta name="build" content="20261002182509">
 <script>
 (function(){
   var B="20260926215315";
@@ -895,6 +895,20 @@ html.view-find .finder .ai-chips{margin-inline:0!important;max-width:100%}
 .ai-act.ic{display:inline-flex;align-items:center;gap:5px;text-decoration:none}
 .ai-act.ic svg{width:15px;height:15px;flex:none}
 .ai-act.wa{color:#1A8F55;background:color-mix(in srgb,#25D366 13%,transparent);border-color:color-mix(in srgb,#25D366 35%,transparent)}
+
+.ai-welcome{padding:8px 0 4px!important}
+.aw-logo{width:64px!important;height:64px!important}
+.ai-welcome h3{margin:8px 0 2px!important;font-size:18px!important}
+.ai-welcome p{font-size:12.5px!important;line-height:1.7!important}
+.aw-grid{gap:8px!important;margin-top:12px!important}
+.aw-card{flex-direction:row!important;align-items:center;gap:8px!important;padding:9px 10px!important;border-radius:14px!important}
+.aw-card>span:not(.aw-ic){display:flex;flex-direction:column;min-width:0}
+.aw-ic{width:30px!important;height:30px!important;margin:0!important;flex:none;border-radius:9px!important}
+.aw-ic svg{width:17px!important;height:17px!important}
+.aw-card b{font-size:13.5px!important;line-height:1.4}
+.aw-card small{font-size:11px!important;line-height:1.5!important}
+
+html.view-find .finder .chat-bar{padding-bottom:calc(10px + var(--fabx,0px))!important}
 </style>
 </head>
 <body>
@@ -986,7 +1000,7 @@ html.view-find .finder .ai-chips{margin-inline:0!important;max-width:100%}
       <h2 id="f-title">المساعد</h2>
       <p>أحدد لك الشريحة المناسبة وجوائزها خطوة بخطوة، وأجيب عن أسئلتك عن المسابقة من البيان التوضيحي.</p>
     </div>
-<div class="ai-welcome" id="aiWelcome"><div class="aw-logo" role="img" aria-label="شعار المساعد"></div><h3>كيف أساعدك؟</h3><p>أنا مساعد مسابقة الكويت الكبرى. أحدد شريحتك وجائزتها، وأجيب عن أسئلتك من البيان التوضيحي.</p><div class="aw-grid"><button type="button" class="aw-card pri" data-q="حدّد شريحتي"><span class="aw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 4a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg></span><b>حدّد شريحتي</b><small>بالعمر ومقدار الحفظ في خطوتين</small></button><button type="button" class="aw-card" data-q="أعلى الجوائز"><span class="aw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v3a5 5 0 0 1-10 0zM5 5H3v1a3 3 0 0 0 3 3M19 5h2v1a3 3 0 0 1-3 3M12 12v4M8 20h8M9 16h6v4H9z"/></svg></span><b>الجوائز</b><small>أعلى الجوائز في المسابقة</small></button><button type="button" class="aw-card" data-q="متى التسجيل؟"><span class="aw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><b>متى التسجيل؟</b><small>المواعيد المهمة</small></button><button type="button" class="aw-card" data-q="كيف أسجّل؟"><span class="aw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9zM7 6H5v15h14V6h-2M9 12l2 2 4-4"/></svg></span><b>كيف أسجّل؟</b><small>عن طريق الجهات المشاركة</small></button></div></div><div class="chat-log" id="aiLog" aria-live="polite"></div>
+<div class="ai-welcome" id="aiWelcome"><div class="aw-logo" role="img" aria-label="شعار المساعد"></div><h3>كيف أساعدك؟</h3><p>أنا مساعد مسابقة الكويت الكبرى. أحدد شريحتك وجائزتها، وأجيب عن أسئلتك من البيان التوضيحي.</p><div class="aw-grid"><button type="button" class="aw-card pri" data-q="حدّد شريحتي"><span class="aw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 4a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg></span><span><b>حدّد شريحتي</b><small>بالعمر والحفظ</small></span></button><button type="button" class="aw-card" data-q="أعلى الجوائز"><span class="aw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v3a5 5 0 0 1-10 0zM5 5H3v1a3 3 0 0 0 3 3M19 5h2v1a3 3 0 0 1-3 3M12 12v4M8 20h8M9 16h6v4H9z"/></svg></span><span><b>الجوائز</b><small>أعلى الجوائز</small></span></button><button type="button" class="aw-card" data-q="متى التسجيل؟"><span class="aw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><span><b>متى التسجيل؟</b><small>المواعيد</small></span></button><button type="button" class="aw-card" data-q="كيف أسجّل؟"><span class="aw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9zM7 6H5v15h14V6h-2M9 12l2 2 4-4"/></svg></span><span><b>كيف أسجّل؟</b><small>عبر الجهات</small></span></button></div></div><div class="chat-log" id="aiLog" aria-live="polite"></div>
     <div class="chat-bar">
       <label class="chat-lbl" for="aiIn">اكتب سؤالك هنا، أو اختر من الأسئلة الجاهزة</label>
       <form class="ai-form" id="aiForm"><svg class="chat-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4l10.5-10.5a2.1 2.1 0 00-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg><input id="aiIn" type="text" autocomplete="off" enterkeyhint="send" placeholder="اكتب سؤالك هنا…" aria-label="اكتب سؤالك"><button type="submit" id="aiSend" aria-label="إرسال" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3L10 14"/><path d="M21 3l-6.5 18-4-7.5L3 9.5z"/></svg></button></form>
@@ -2469,7 +2483,7 @@ const sendB=document.getElementById("aiSend");const syncSend=()=>{if(sendB)sendB
 document.getElementById("aiForm").addEventListener("submit",e=>{e.preventDefault();const v=inp.value.trim();if(!v)return;add("me",esc(v));inp.value="";syncSend();handle(v)});
 // greeting + first guided question (page opens in a working state); the chat of this visit is kept while the page is open
 function greet(){guide={};syncWel()}
-const setBars=()=>{try{const t=document.querySelector(".tabbar"),c=document.querySelector(".chat-bar"),r=document.documentElement.style;if(t)r.setProperty("--tbh",t.offsetHeight+"px");if(c&&c.offsetHeight)r.setProperty("--cbh",c.offsetHeight+"px")}catch(e){}};
+const setBars=()=>{try{const t=document.querySelector(".tabbar"),c=document.querySelector(".chat-bar"),r=document.documentElement.style;if(t)r.setProperty("--tbh",t.offsetHeight+"px");const fb=t&&t.querySelector(".fab-c");if(fb){const fx=Math.max(0,Math.ceil(t.getBoundingClientRect().top-fb.getBoundingClientRect().top));r.setProperty("--fabx",fx+"px")}if(c&&c.offsetHeight)r.setProperty("--cbh",c.offsetHeight+"px")}catch(e){}};
 addEventListener("resize",setBars);if(window.ResizeObserver){const ro=new ResizeObserver(setBars);[".tabbar",".chat-bar"].forEach(q=>{const e=document.querySelector(q);if(e)ro.observe(e)})}setBars();
 if(!chatLoad())greet();else syncWel();
 let wasFind=findActive();new MutationObserver(()=>{const f=document.documentElement.classList.contains("view-find");if(f&&!wasFind)setTimeout(()=>scrollEnd(false),30);wasFind=f}).observe(document.documentElement,{attributes:true,attributeFilter:["class"]});
