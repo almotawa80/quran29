@@ -1,0 +1,47 @@
+import sys, os
+from playwright.sync_api import sync_playwright
+PATH = "file://" + os.path.abspath(sys.argv[1] if len(sys.argv)>1 else "index.html")
+SR = "document.querySelector('.pt-host').shadowRoot"
+errors = []
+def ok(cond, msg):
+    if not cond: print("FAIL:", msg); sys.exit(1)
+    print("OK  ", msg)
+with sync_playwright() as p:
+    b = p.chromium.launch(); page = b.new_page(viewport={"width": 390, "height": 900})
+    page.on("pageerror", lambda e: errors.append(str(e)))
+    page.goto(PATH); page.wait_for_timeout(300)
+    def ev(js): return page.evaluate(js)
+    def login(u, pw):
+        page.click("#coordBtn"); page.wait_for_timeout(200); page.fill("#lgU", u); page.fill("#lgP", pw); page.click("#lgGo"); page.wait_for_timeout(400)
+    def out(): ev(f"{SR}.querySelector('#abOut').click()"); page.wait_for_timeout(300)
+    def app(): return ev(f"{SR}.querySelector('#app').innerText")
+    def row_click(text, sel):
+        ev(f"()=>{{const r=[...{SR}.querySelectorAll('#app .row')].find(x=>x.innerText.includes('{text}'));r.querySelector('{sel}').click()}}"); page.wait_for_timeout(300)
+    def click(sel): ev(f"{SR}.querySelector('{sel}').click()"); page.wait_for_timeout(250)
+    def has(sel): return ev(f"!!{SR}.querySelector('{sel}')")
+    def tile(label): return ev(f"()=>{{const t=[...{SR}.querySelectorAll('.ikpi')].find(x=>x.innerText.includes('{label}'));return t?+t.querySelector('b').innerText:null}}")
+    login("huda", "huda123")
+    n0 = tile("مرشحاً مسجلاً"); a0 = tile("معتمد")
+    row_click("محمد سالم الرشيدي", "[data-edit]")
+    ok(has("#cxl") and not has("#del"), "approved candidate: cancel button shown, delete hidden")
+    click("#cxl"); ok("للتأكيد" in ev(f"{SR}.querySelector('#cxl').innerText"), "cancel asks for a second tap")
+    click("#cxl")
+    ok("أُلغي الترشيح" in ev(f"{SR}.querySelector('.toast')?.innerText||''"), "toast confirms cancellation")
+    c = ev("window.__PTS.CANDS.find(c=>c.name==='محمد سالم الرشيدي')")
+    ok(c["status"] == "cancelled" and c["log"][-1]["a"] == "إلغاء الترشيح", "status is cancelled and the action is logged")
+    ok(tile("مرشحاً مسجلاً") == n0 - 1 and tile("معتمد") == a0 - 1, "cancelled candidate leaves the counts")
+    ok(ev(f"()=>{{const r=[...{SR}.querySelectorAll('#app .row')].pop();return r.classList.contains('cx')&&r.innerText.includes('محمد سالم الرشيدي')&&r.innerText.includes('ملغى')}}"), "cancelled row is shown last, dimmed, with «ملغى»")
+    row_click("محمد سالم الرشيدي", "[data-edit]")
+    ok(has("#restore") and has("#del") and ev(f"{SR}.querySelector('#fn').disabled"), "cancelled form: read-only, with restore and permanent delete")
+    click("#restore")
+    c = ev("window.__PTS.CANDS.find(c=>c.name==='محمد سالم الرشيدي')")
+    ok(c["status"] == "draft" and "إرجاع" in c["log"][-1]["a"], "restore brings it back as a draft")
+    row_click("مريم عبدالعزيز الفيلكاوي", "[data-edit]")
+    ok(has("#del") and has("#cxl"), "draft: both cancel and delete available")
+    click("#cancel")
+    out()
+    login("noor", "noor123")
+    t = app()
+    ok("منصور خالد العنزي" in t and "ملغى" in t, "demo cancelled candidate appears for its entity")
+    print("ERRORS:", errors); ok(not errors, "no page errors")
+    print("ALL CANCEL TESTS PASSED")
