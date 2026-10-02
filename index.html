@@ -26,7 +26,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#B8940F">
-<meta name="build" content="20261002172143">
+<meta name="build" content="20261002174636">
 <script>
 (function(){
   var B="20260926215315";
@@ -849,6 +849,52 @@ html.view-find .ai-turn:last-child{min-height:calc(100dvh - var(--tbh,71px) - va
 html.view-find .to-top{display:none!important}
 html.view-find .finder .ai-form{max-width:none!important;width:100%!important;margin:0!important}
 html.view-find .finder .ai-chips{margin-inline:0!important;max-width:100%}
+
+:root{--ai-logo:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-50 -50 100 100'%3E%3Cdefs%3E%3CradialGradient id='g' cx='.45' cy='.4'%3E%3Cstop offset='0' stop-color='%239C7F1A'/%3E%3Cstop offset='1' stop-color='%235E4A06'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle r='49' fill='url%28%23g%29'/%3E%3Ccircle r='46.3' fill='none' stroke='%23F1DE9E' stroke-width='1.4'/%3E%3Cpath d='M14.4 -34.6L14.4 34.6L-34.6 -14.4L34.6 -14.4L-14.4 34.6L-14.4 -34.6L34.6 14.4L-34.6 14.4Z' fill='none' stroke='%233A2E03' stroke-width='6.4' transform='translate%28.9 1.2%29'/%3E%3Cpath d='M14.4 -34.6L14.4 34.6L-34.6 -14.4L34.6 -14.4L-14.4 34.6L-14.4 -34.6L34.6 14.4L-34.6 14.4Z' fill='none' stroke='%234A3A04' stroke-width='6.0'/%3E%3Cpath d='M14.4 -34.6L14.4 34.6L-34.6 -14.4L34.6 -14.4L-14.4 34.6L-14.4 -34.6L34.6 14.4L-34.6 14.4Z' fill='none' stroke='%23FBF3DC' stroke-width='4.4'/%3E%3Cpath d='M8.0 -19.4L19.4 8.0L-8.0 19.4L-19.4 -8.0ZM19.4 -8.0L8.0 19.4L-19.4 8.0L-8.0 -19.4Z' fill='none' stroke='%233A2E03' stroke-width='5.8' transform='translate%28.9 1.2%29'/%3E%3Cpath d='M8.0 -19.4L19.4 8.0L-8.0 19.4L-19.4 -8.0ZM19.4 -8.0L8.0 19.4L-19.4 8.0L-8.0 -19.4Z' fill='none' stroke='%234A3A04' stroke-width='5.4'/%3E%3Cpath d='M8.0 -19.4L19.4 8.0L-8.0 19.4L-19.4 -8.0ZM19.4 -8.0L8.0 19.4L-19.4 8.0L-8.0 -19.4Z' fill='none' stroke='%23FBF3DC' stroke-width='3.8'/%3E%3Cpath d='M7.8 -7.8L0.0 11.0L-7.8 -7.8L11.0 0.0L-7.8 7.8L-0.0 -11.0L7.8 7.8L-11.0 0.0Z' fill='none' stroke='%233A2E03' stroke-width='5' transform='translate%28.9 1.2%29'/%3E%3Cpath d='M7.8 -7.8L0.0 11.0L-7.8 -7.8L11.0 0.0L-7.8 7.8L-0.0 -11.0L7.8 7.8L-11.0 0.0Z' fill='none' stroke='%234A3A04' stroke-width='4.6'/%3E%3Cpath d='M7.8 -7.8L0.0 11.0L-7.8 -7.8L11.0 0.0L-7.8 7.8L-0.0 -11.0L7.8 7.8L-11.0 0.0Z' fill='none' stroke='%23FBF3DC' stroke-width='3'/%3E%3Ccircle r='3.4' fill='%231E7A4F'/%3E%3C/svg%3E")}
+.ai-msg.bot::before{background:var(--ai-logo) center/cover no-repeat!important;width:28px!important;height:28px!important;inset-inline-start:-35px!important;box-shadow:0 1px 3px rgba(0,0,0,.18)}
+@keyframes aiIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.ai-row.anim{animation:aiIn .32s ease-out both}
+@media (prefers-reduced-motion:reduce){.ai-row.anim{animation:none}}
+.ai-hl{color:var(--green);font-weight:700;background:var(--green-soft);border-radius:6px;padding:0 4px;white-space:nowrap}
+.ai-opts{gap:6px!important}
+.ai-opt{border-radius:999px!important;padding:6px 14px!important;font-size:13.5px!important;line-height:1.5}
+.ai-welcome{display:flex;flex-direction:column;align-items:center;text-align:center;padding:14px 0 6px}
+.ai-welcome[hidden]{display:none}
+.aw-logo{width:92px;height:92px;border-radius:50%;background:var(--ai-logo) center/cover no-repeat;box-shadow:0 6px 18px rgba(125,100,10,.28)}
+.ai-welcome h3{margin:12px 0 4px;font-size:22px;color:var(--ink)}
+.ai-welcome p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.8;max-width:34ch}
+.aw-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:100%;margin-top:16px}
+.aw-card{font:inherit;text-align:start;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:12px;cursor:pointer;display:flex;flex-direction:column;gap:3px;min-width:0;overflow-wrap:anywhere;transition:transform .12s}
+.aw-card:active{transform:scale(.97)}
+.aw-card:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.aw-card b{font-size:15px}.aw-card small{color:var(--muted);font-size:12px;line-height:1.6}
+.aw-ic{width:34px;height:34px;border-radius:10px;background:var(--green-soft);color:var(--green);display:grid;place-items:center;margin-bottom:4px}
+.aw-ic svg{width:19px;height:19px}
+.aw-card.pri{background:var(--green);border-color:var(--green);color:var(--bg)}
+.aw-card.pri small{color:inherit;opacity:.85}.aw-card.pri .aw-ic{background:rgba(255,255,255,.2);color:var(--bg)}
+.res.pz{display:block!important;padding:0!important;gap:0}
+.pz{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(180deg,var(--green-soft),var(--surface) 70%);box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.pz-h{display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--green);color:var(--bg);padding:8px 14px;font-size:13px;font-weight:700}
+.pz-h span:first-child{display:inline-flex;align-items:center;gap:6px}.pz-h svg{width:16px;height:16px}
+.pz-b{padding:12px 14px 14px}
+.pz-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.pz-tags .tag{margin:0}
+.pz-t{font-size:19px;font-weight:800;color:var(--ink)}
+.pz-s{font-size:12.5px;color:var(--muted);margin-top:2px}
+.pz-amt{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px;margin:8px 0 4px}
+.pz-amt strong{font-size:40px;line-height:1;color:var(--green);font-variant-numeric:tabular-nums}
+.pz-amt small{color:var(--muted);font-size:13px}
+.pz-med{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:8px;margin:10px 0 2px}
+.pz-med div{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:8px 6px;text-align:center}
+.pz-med b{display:block;font-size:18px;color:var(--ink);font-variant-numeric:tabular-nums}
+.pz-med small{font-size:12px;color:var(--muted)}
+.pz-med i{display:inline-block;width:12px;height:12px;border-radius:50%;background:#A9A9A9;margin-bottom:3px;box-shadow:inset 0 -2px 0 rgba(0,0,0,.15)}
+.pz-med div:nth-child(2) i{background:#C98A4B}
+.pz .rn{margin-top:10px;border-radius:10px}
+.pz-med b small{font-size:11px;font-weight:600}
+.ai-act.ic{display:inline-flex;align-items:center;gap:5px;text-decoration:none}
+.ai-act.ic svg{width:15px;height:15px;flex:none}
+.ai-act.wa{color:#1A8F55;background:color-mix(in srgb,#25D366 13%,transparent);border-color:color-mix(in srgb,#25D366 35%,transparent)}
 </style>
 </head>
 <body>
@@ -940,7 +986,7 @@ html.view-find .finder .ai-chips{margin-inline:0!important;max-width:100%}
       <h2 id="f-title">المساعد</h2>
       <p>أحدد لك الشريحة المناسبة وجوائزها خطوة بخطوة، وأجيب عن أسئلتك عن المسابقة من البيان التوضيحي.</p>
     </div>
-<div class="chat-log" id="aiLog" aria-live="polite"></div>
+<div class="ai-welcome" id="aiWelcome"><div class="aw-logo" role="img" aria-label="شعار المساعد"></div><h3>كيف أساعدك؟</h3><p>أنا مساعد مسابقة الكويت الكبرى. أحدد شريحتك وجائزتها، وأجيب عن أسئلتك من البيان التوضيحي.</p><div class="aw-grid"><button type="button" class="aw-card pri" data-q="حدّد شريحتي"><span class="aw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 4a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg></span><b>حدّد شريحتي</b><small>بالعمر ومقدار الحفظ في خطوتين</small></button><button type="button" class="aw-card" data-q="أعلى الجوائز"><span class="aw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v3a5 5 0 0 1-10 0zM5 5H3v1a3 3 0 0 0 3 3M19 5h2v1a3 3 0 0 1-3 3M12 12v4M8 20h8M9 16h6v4H9z"/></svg></span><b>الجوائز</b><small>أعلى الجوائز في المسابقة</small></button><button type="button" class="aw-card" data-q="متى التسجيل؟"><span class="aw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><b>متى التسجيل؟</b><small>المواعيد المهمة</small></button><button type="button" class="aw-card" data-q="كيف أسجّل؟"><span class="aw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9zM7 6H5v15h14V6h-2M9 12l2 2 4-4"/></svg></span><b>كيف أسجّل؟</b><small>عن طريق الجهات المشاركة</small></button></div></div><div class="chat-log" id="aiLog" aria-live="polite"></div>
     <div class="chat-bar">
       <label class="chat-lbl" for="aiIn">اكتب سؤالك هنا، أو اختر من الأسئلة الجاهزة</label>
       <form class="ai-form" id="aiForm"><svg class="chat-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4l10.5-10.5a2.1 2.1 0 00-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg><input id="aiIn" type="text" autocomplete="off" enterkeyhint="send" placeholder="اكتب سؤالك هنا…" aria-label="اكتب سؤالك"><button type="submit" id="aiSend" aria-label="إرسال" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3L10 14"/><path d="M21 3l-6.5 18-4-7.5L3 9.5z"/></svg></button></form>
@@ -2261,19 +2307,43 @@ function revive(){const t=log.lastElementChild;if(!t)return;const o=[...t.queryS
   const fns=choicesFor(guide.step);
   o.querySelectorAll("button").forEach(b=>{const lbl=b.textContent;b.disabled=false;b.addEventListener("click",()=>{o.querySelectorAll("button").forEach(x=>x.disabled=true);b.classList.add("picked");add("me",esc(lbl));
     setTimeout(()=>{const fn=fns[lbl];if(fn)fn();else if(CH.some(c=>c.chip===lbl))runChip(lbl);else handle(lbl)},120)})})}
+const SVG_COPY='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
+const SVG_WA='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg>';
+const SVG_CUP='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v3a5 5 0 0 1-10 0zM5 5H3v1a3 3 0 0 0 3 3M19 5h2v1a3 3 0 0 1-3 3M12 12v4M8 20h8"/></svg>';
+// amounts and dates stand out in answers
+const HL_RE=/(\d[\d,٬]*(?:\.\d+)?\s?(?:د\.ك|دينار(?:اً|ا)?|ديناراً))|(\d{1,2}\s(?:يناير|فبراير|مارس|أبريل|ابريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|اكتوبر|نوفمبر|ديسمبر)(?:\s\d{4})?)/g;
+function hlNums(el){try{const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement.closest("a,.ai-time,.ai-hl,.pz,.res,button")?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});const ns=[];while(w.nextNode())ns.push(w.currentNode);
+  ns.forEach(n=>{const t=n.nodeValue;HL_RE.lastIndex=0;if(!HL_RE.test(t))return;HL_RE.lastIndex=0;const fr=document.createDocumentFragment();let i=0,m;while((m=HL_RE.exec(t))){fr.append(t.slice(i,m.index));const sp=document.createElement("span");sp.className="ai-hl";sp.textContent=m[0];fr.append(sp);i=m.index+m[0].length}fr.append(t.slice(i));n.replaceWith(fr)})}catch(e){}}
+// the slice result becomes a prize card
+function prizeCards(html){try{const box=document.createElement("div");box.innerHTML=html;
+  const all=box.querySelectorAll(".res:not(.soon)"),many=all.length>1;let no=0;
+  all.forEach(r=>{const rb=r.querySelector(".rb"),rs=r.querySelector(".rs"),rp=r.querySelector(".rp"),rn=r.querySelector(".rn");if(!rp||!rs)return;
+    const parts=rs.textContent.split("·").map(x=>x.trim()).filter(Boolean);const med=[],rest=[];
+    parts.forEach(p=>{const m=p.match(/^(الثاني|الثالث|الرابع|الخامس)\s+(.+?)\s*(د\.ك)?$/);if(m&&/\d/.test(m[2]))med.push([m[1],m[2]]);else rest.push(p)});
+    const title=rest.shift()||"";const amt=rp.querySelector("strong"),sm=rp.querySelector("small");const tags=rb?[...rb.querySelectorAll(".tag")].map(t=>{t.remove();return t.outerHTML}).join(""):"";no++;
+    const c=document.createElement("div");c.className="res pz";
+    c.innerHTML=`<div class="pz-h"><span>${SVG_CUP}${many?"خيار "+no:"شريحتك"}</span><span>${rb?rb.innerHTML:""}</span></div><div class="pz-b">${tags?`<div class="pz-tags">${tags}</div>`:""}<div class="pz-t">${title}</div>${rest.length?`<div class="pz-s">${rest.join(" · ")}</div>`:""}
+      <div class="pz-amt"><strong>${amt?amt.textContent:""}</strong><small>${sm?sm.textContent:""}</small></div>
+      ${med.length?`<div class="pz-med">${med.map(([n,v])=>`<div><i aria-hidden="true"></i><b>${v.replace(/\s*د\.ك/,"")} <small>د.ك</small></b><small>المركز ${n}</small></div>`).join("")}</div>`:""}${rn?rn.outerHTML:""}</div>`;
+    r.replaceWith(c)});return box.innerHTML}catch(e){return html}}
+const wel=document.getElementById("aiWelcome");
+function syncWel(){if(wel)wel.hidden=!!log.querySelector(".ai-msg")}
+if(wel)wel.addEventListener("click",e=>{const c=e.target.closest(".aw-card");if(!c)return;const q=c.dataset.q;add("me",esc(q));if(q==="حدّد شريحتي"){startGuide();return}const x=CH.find(y=>y.chip===q);if(x)bot(x.a(),{acts:(x.act||[]).filter(k=>k!=="finder"),choices:followCh(x.id)});else handle(q)});
 function add(role,html,opts={}){
   const d=document.createElement("div");d.className="ai-msg "+role;d.innerHTML=html+(opts.typing?"":`<span class="ai-time">${tNow()}</span>`);if(opts.typing){d.classList.add("ai-typing");d.setAttribute("aria-label","يكتب…")}
   const row=document.createElement("div");row.className="ai-row "+role;row.appendChild(d);
   if(opts.cards){const c=document.createElement("div");c.className="ai-cards";c.innerHTML=opts.cards;row.appendChild(c)}
   if(opts.choices){const r=document.createElement("div");r.className="ai-opts";opts.choices.forEach(([label,fn])=>{const b=document.createElement("button");b.type="button";b.className="ai-opt";b.textContent=label;b.addEventListener("click",()=>{r.querySelectorAll("button").forEach(x=>x.disabled=true);b.classList.add("picked");add("me",esc(label));setTimeout(fn,120)});r.appendChild(b)});row.appendChild(r)}
   if(opts.acts&&opts.acts.length){const r=document.createElement("div");r.className="ai-acts";opts.acts.forEach(k=>{const b=document.createElement("button");b.type="button";b.className="ai-act";
-      b.dataset.act=k;if(k==="share"){b.textContent="نسخ النتيجة لإرسالها";b.dataset.share=opts.shareTxt||""}
+      b.dataset.act=k;if(k==="share"){b.className="ai-act ic";b.innerHTML=SVG_COPY+"نسخ";b.setAttribute("aria-label","نسخ النتيجة");b.dataset.share=opts.shareTxt||"";r.appendChild(b);
+        const w=document.createElement("a");w.className="ai-act ic wa";w.href="https://wa.me/?text="+encodeURIComponent(opts.shareTxt||"");w.target="_blank";w.rel="noopener";w.innerHTML=SVG_WA+"مشاركة واتساب";r.appendChild(w);return}
       else b.textContent=A[k].t+" ←";
       r.appendChild(b)});row.appendChild(r)}
-  const turn=(role==="me"||!log.lastElementChild)?newTurn():log.lastElementChild;turn.appendChild(row);
+  if(!opts.typing){row.classList.add("anim");setTimeout(()=>row.classList.remove("anim"),400);if(role==="bot")hlNums(d)}
+  const turn=(role==="me"||!log.lastElementChild)?newTurn():log.lastElementChild;turn.appendChild(row);syncWel();
   if(!opts.typing){if(role==="me")scrollToTurn(turn,true);chatSave()}return row;
 }
-log.addEventListener("click",e=>{const b=e.target.closest(".ai-act[data-act]");if(!b)return;const k=b.dataset.act;if(k==="share"){copyText(b,b.dataset.share||"","نسخ النتيجة لإرسالها");return}if(A[k]&&A[k].f)A[k].f()});
+log.addEventListener("click",e=>{const b=e.target.closest(".ai-act[data-act]");if(!b)return;const k=b.dataset.act;if(k==="share"){copyText(b,b.dataset.share||"","نسخ");setTimeout(()=>{if(!b.querySelector("svg"))b.innerHTML=SVG_COPY+b.textContent},1600);return}if(A[k]&&A[k].f)A[k].f()});
 let botQ=Promise.resolve();
 const bot=(h,o)=>{botQ=botQ.then(()=>new Promise(res=>{const ty=add("bot",'<i></i><i></i><i></i>',{typing:true});setTimeout(()=>{ty.remove();add("bot",h,o);res()},matchMedia("(prefers-reduced-motion: reduce)").matches?150:520)}))};
 const setF=(id,v)=>{const el=document.getElementById(id);if(el.type==="checkbox")el.checked=!!v;else el.value=v};
@@ -2284,7 +2354,7 @@ function result(intro,ctx){
   let h=intro;
   if(!out.length&&lastRes.msg)h+=`<br>${lastRes.msg}`;
   else if(out.length>1)h+="<br><span class='ai-muted'>يشارك في <b>شريحة واحدة فقط</b> يختارها من هذه الخيارات.</span>";
-  const cards=out.length||(lastRes.out||[]).length?document.getElementById("results").innerHTML:"";
+  const cards=out.length||(lastRes.out||[]).length?prizeCards(document.getElementById("results").innerHTML):"";
   bot(h,{cards,acts:out.length?["share","path"]:["contact"],shareTxt:shareText(ctx)});
   guide={};
 }
@@ -2398,17 +2468,10 @@ chipsEl.addEventListener("click",e=>{const c=e.target.closest(".ai-chip");if(!c|
 const sendB=document.getElementById("aiSend");const syncSend=()=>{if(sendB)sendB.disabled=!inp.value.trim()};inp.addEventListener("input",syncSend);
 document.getElementById("aiForm").addEventListener("submit",e=>{e.preventDefault();const v=inp.value.trim();if(!v)return;add("me",esc(v));inp.value="";syncSend();handle(v)});
 // greeting + first guided question (page opens in a working state); the chat of this visit is kept while the page is open
-function greet(){
-  add("bot","مرحباً! أنا مساعد مسابقة الكويت الكبرى (29). أحدد لك الشريحة المناسبة وجوائزها، وأجيب عن أسئلتك عن الشروط والمواعيد. اكتب مثلاً: <b>عمري 12 وأحفظ 7 أجزاء</b>، أو اختر:");
-  guide={step:"cat"};
-  add("bot","لمن المشاركة؟",{choices:[
-    ["عامة (حسب العمر والحفظ)",askAge],
-    ["ذوو الاحتياجات الخاصة",askDisab],
-    ["نزلاء المؤسسات الإصلاحية",()=>{guide={step:"juz",cat:"prison"};askJuz("prison")}],
-    ["نزلاء دور الرعاية والأحداث",()=>{setF("cat","care");result("مسابقة <b>دور الرعاية والأحداث</b> في شريحتين:","نزلاء دور الرعاية والأحداث")}]]})}
+function greet(){guide={};syncWel()}
 const setBars=()=>{try{const t=document.querySelector(".tabbar"),c=document.querySelector(".chat-bar"),r=document.documentElement.style;if(t)r.setProperty("--tbh",t.offsetHeight+"px");if(c&&c.offsetHeight)r.setProperty("--cbh",c.offsetHeight+"px")}catch(e){}};
 addEventListener("resize",setBars);if(window.ResizeObserver){const ro=new ResizeObserver(setBars);[".tabbar",".chat-bar"].forEach(q=>{const e=document.querySelector(q);if(e)ro.observe(e)})}setBars();
-if(!chatLoad())greet();
+if(!chatLoad())greet();else syncWel();
 let wasFind=findActive();new MutationObserver(()=>{const f=document.documentElement.classList.contains("view-find");if(f&&!wasFind)setTimeout(()=>scrollEnd(false),30);wasFind=f}).observe(document.documentElement,{attributes:true,attributeFilter:["class"]});
 if(!findActive())window.scrollTo(0,0);else setTimeout(()=>scrollEnd(false),60);
 })();
