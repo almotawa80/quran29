@@ -9,7 +9,7 @@ C=[("ما هي لعبة اختبر حفظي؟","لعبة تدريبية"),("كي
  ("شارك دعوتك","بطاقة جاهزة"),("كيف أشارك الدليل مع أصدقائي","بطاقة جاهزة"),("أبي أرسل رابط الدليل","بطاقة جاهزة"),
  ("بوابة الجهات","بوابة الجهات خاصة"),("كيف يدخل المنسق للبوابة","بوابة الجهات خاصة"),("نسيت كلمة المرور","بوابة الجهات خاصة"),
  ("حاسبة نقاط الجهات","حاسبة نقاط الجهة"),("كيف أحسب النقاط","حاسبة نقاط الجهة"),
- ("كيف أكبر الخط","حجم الخط"),("الوضع الداكن","الخلفية"),("أبي أغير الألوان","الخلفية"),
+ ("كيف أكبر الخط","حجم الخط"),("الوضع الداكن","زر «القائمة»"),("أبي أغير الألوان","زر «القائمة»"),
  ("أين الإعلانات","إعلانات المسابقة"),
  ("ما هي الفروع؟","6 فروع"),("كم عدد الفروع","6 فروع"),
  ("جائزة أفضل منسق","500 د.ك"),
@@ -35,7 +35,7 @@ with sync_playwright() as p:
         ok(ev(check),label)
     act("اختبر حفظي","game","(()=>{const d=document.querySelector('.qz-dlg');return !!d&&!d.hidden&&getComputedStyle(d).display!=='none'})()","game button opens the game")
     act("شارك دعوتك","invite","(()=>{const d=document.querySelector('.sh-dlg');return !!d&&!d.hidden&&getComputedStyle(d).display!=='none'&&/شارك دعوتك/.test(d.textContent)})()","invite button opens the invitation card")
-    act("الوضع الداكن","settings","(()=>{const e=document.getElementById('settings');return !!e&&!!e.offsetParent})()","settings button opens display settings")
+    act("الوضع الداكن","settings","(()=>{const e=document.getElementById('mnPop');return !!e&&!e.hidden&&getComputedStyle(e).display!=='none'})()","settings button opens the top menu")
     act("أهداف المسابقة","goals","(()=>{const p=[...document.querySelectorAll('.about-view .sub-pane')].find(x=>x.dataset.st==='الأهداف');return !!p&&!p.hidden&&!!p.offsetParent})()","goals button opens the goals tab")
     # follow-up suggestion that is not a chip still answers
     pg.goto(U);pg.wait_for_timeout(600);ev("document.querySelector('.tb[data-v=\"2\"]').click()")
