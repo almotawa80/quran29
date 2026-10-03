@@ -11,7 +11,7 @@
 | `build_gh.py` | يقسّم المصدر إلى `index.html` + `qz-data.txt` + `hafs.woff2` (تحميل بيانات اللعبة عند الحاجة). |
 | `run_tests.sh` | يشغّل الاختبارات الرئيسية على النسختين. |
 | `tests/` | اختبارات Playwright (test2–test32, a11y) و `mock_sb.py` (بديل محلي لـ Supabase مع PostgreSQL). |
-| `sql/` | ملفات Supabase: `supabase_setup.sql` ثم `update_2` … `update_8` (حتى `update_7` مطبّقة على القاعدة الحية؛ `update_8` لتقييم إجابات المساعد). |
+| `sql/` | ملفات Supabase: `supabase_setup.sql` ثم `update_2` … `update_8` (كلها مطبّقة على القاعدة الحية؛ `update_8` لتقييم إجابات المساعد، طُبّق 3 أكتوبر 2026). |
 | `team/` | صور اللجنة الدائمة بالخلفية الموحدة + رمز الحجاب. |
 | `game/` | مصدر لعبة «اختبر حفظي». |
 
