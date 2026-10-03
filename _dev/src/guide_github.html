@@ -504,6 +504,11 @@ html.ai-open .ai-fab,html.ai-open .to-top{display:none}
 .ai-ul{margin:6px 0;padding-inline-start:18px;display:flex;flex-direction:column;gap:6px}
 .ai-muted{color:var(--muted);font-size:13px}
 .ai-ok{display:inline-block;font-size:11.5px;font-weight:600;background:var(--green);color:var(--bg);border-radius:999px;padding:0 8px}
+.ai-fb{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:12px;color:var(--muted)}
+.ai-fb button{display:grid;place-items:center;width:30px;height:30px;padding:0;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--muted);cursor:pointer}
+.ai-fb button:hover,.ai-fb button:focus-visible{color:var(--green);border-color:var(--green)}
+.ai-fb svg{width:15px;height:15px}
+.ai-fb.done{color:var(--green);font-weight:600}
 .ai-acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .ai-act{font:inherit;font-size:12.5px;font-weight:600;color:var(--green);background:var(--green-soft);border:1px solid var(--line);border-radius:999px;padding:4px 10px;cursor:pointer}
 .ai-msg .doc-link{margin-top:6px;padding:5px 10px;font-size:13px}
@@ -2460,6 +2465,9 @@ function scrollEnd(smooth){scrollToTurn(log.lastElementChild,smooth)}
 function newTurn(){const t=document.createElement("div");t.className="ai-turn";log.appendChild(t);while(log.children.length>25)log.firstElementChild.remove();return t}
 const tNow=()=>{try{return new Date().toLocaleTimeString("ar-KW-u-nu-latn",{hour:"numeric",minute:"2-digit"})}catch(e){return ""}};
 const CHAT_K="q29chat";let mem={};
+// «هل أفادتك الإجابة؟»: topic of the question being answered (null while a guided question is asked)
+let fbT=null;const fbSet=q=>{try{fbT=window.Q29T?window.Q29T._t(q):"other"}catch(e){fbT="other"}};
+const THUMB='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v11H4V10zM7 10l4-7a2.5 2.5 0 0 1 2.5 3L13 10h6a2 2 0 0 1 2 2.3l-1.3 7A2 2 0 0 1 17.7 21H7"/></svg>';
 function chatSave(){try{sessionStorage.setItem(CHAT_K,JSON.stringify({h:log.innerHTML,g:guide,m:mem}))}catch(e){}}
 function chatLoad(){try{const o=JSON.parse(sessionStorage.getItem(CHAT_K)||"null");if(!o||!o.h)return false;log.innerHTML=o.h;guide=o.g||{};mem=o.m||{};
   log.querySelectorAll(".ai-opts button").forEach(b=>{b.disabled=true});log.querySelectorAll(".ai-typing").forEach(x=>{const r=x.closest(".ai-row");if(r)r.remove()});revive();return true}catch(e){return false}}
@@ -2497,7 +2505,7 @@ function prizeCards(html){try{const box=document.createElement("div");box.innerH
     r.replaceWith(c)});return box.innerHTML}catch(e){return html}}
 const wel=document.getElementById("aiWelcome");
 function syncWel(){if(wel)wel.hidden=!!log.querySelector(".ai-msg")}
-if(wel)wel.addEventListener("click",e=>{const c=e.target.closest(".aw-card");if(!c)return;const q=c.dataset.q;add("me",esc(q));if(q==="حدّد شريحتي"){startGuide();return}const x=CH.find(y=>y.chip===q);if(x)bot(x.a(),{acts:(x.act||[]).filter(k=>k!=="finder"),choices:followCh(x.id)});else handle(q)});
+if(wel)wel.addEventListener("click",e=>{const c=e.target.closest(".aw-card");if(!c)return;const q=c.dataset.q;add("me",esc(q));fbSet(q);if(q==="حدّد شريحتي"){startGuide();return}const x=CH.find(y=>y.chip===q);if(x)bot(x.a(),{acts:(x.act||[]).filter(k=>k!=="finder"),choices:followCh(x.id)});else handle(q)});
 window.q29StartGuide=()=>{add("me",esc("حدّد شريحتي"));startGuide()};
 function add(role,html,opts={}){
   const d=document.createElement("div");d.className="ai-msg "+role;d.innerHTML=html+(opts.typing?"":`<span class="ai-time">${tNow()}</span>`);if(opts.typing){d.classList.add("ai-typing");d.setAttribute("aria-label","يكتب…")}
@@ -2509,13 +2517,18 @@ function add(role,html,opts={}){
         const w=document.createElement("a");w.className="ai-act ic wa";w.href="https://wa.me/?text="+encodeURIComponent(opts.shareTxt||"");w.target="_blank";w.rel="noopener";w.innerHTML=SVG_WA+"مشاركة واتساب";r.appendChild(w);return}
       else b.textContent=A[k].t+" ←";
       r.appendChild(b)});row.appendChild(r)}
+  if(role==="bot"&&!opts.typing&&opts.fb){const f=document.createElement("div");f.className="ai-fb";f.dataset.t=opts.fb;
+    f.innerHTML=`<span>هل أفادتك الإجابة؟</span><button type="button" data-fb="1" aria-label="نعم، مفيدة">${THUMB}</button><button type="button" data-fb="0" aria-label="لا، غير مفيدة"><span style="display:grid;transform:scaleY(-1)">${THUMB}</span></button>`;row.appendChild(f)}
   if(!opts.typing){row.classList.add("anim");setTimeout(()=>row.classList.remove("anim"),400);if(role==="bot")hlNums(d)}
   const turn=(role==="me"||!log.lastElementChild)?newTurn():log.lastElementChild;turn.appendChild(row);syncWel();
   if(!opts.typing){if(role==="me")scrollToTurn(turn,true);chatSave()}return row;
 }
+log.addEventListener("click",e=>{const b=e.target.closest(".ai-fb button[data-fb]");if(!b)return;const f=b.parentElement,up=b.dataset.fb==="1";
+  try{window.Q29T&&window.Q29T.fb(f.dataset.t,up)}catch(x){}
+  f.classList.add("done");f.textContent=up?"شكرًا لك ✓":"شكرًا لك، سنعمل على تحسين هذه الإجابة. جرّب صياغة أخرى أو اسأل عن جزء محدد.";chatSave()});
 log.addEventListener("click",e=>{const b=e.target.closest(".ai-act[data-act]");if(!b)return;const k=b.dataset.act;if(k==="share"){copyText(b,b.dataset.share||"","نسخ");setTimeout(()=>{if(!b.querySelector("svg"))b.innerHTML=SVG_COPY+b.textContent},1600);return}if(A[k]&&A[k].f)A[k].f()});
 let botQ=Promise.resolve();
-const bot=(h,o)=>{botQ=botQ.then(()=>new Promise(res=>{const ty=add("bot",'<i></i><i></i><i></i>',{typing:true});setTimeout(()=>{ty.remove();add("bot",h,o);res()},matchMedia("(prefers-reduced-motion: reduce)").matches?150:520)}))};
+const bot=(h,o)=>{o=o||{};if(o.fb===undefined){o.fb=guide.step?null:fbT;fbT=null}botQ=botQ.then(()=>new Promise(res=>{const ty=add("bot",'<i></i><i></i><i></i>',{typing:true});setTimeout(()=>{ty.remove();add("bot",h,o);res()},matchMedia("(prefers-reduced-motion: reduce)").matches?150:520)}))};
 const setF=(id,v)=>{const el=document.getElementById(id);if(el.type==="checkbox")el.checked=!!v;else el.value=v};
 const juzTxt=j=>j===0?"أقل من جزء":j===1?"جزءاً واحداً":j===2?"جزأين":juzLabel(j);
 function result(intro,ctx){
@@ -2525,7 +2538,7 @@ function result(intro,ctx){
   if(!out.length&&lastRes.msg)h+=`<br>${lastRes.msg}`;
   else if(out.length>1)h+="<br><span class='ai-muted'>يشارك في <b>شريحة واحدة فقط</b> يختارها من هذه الخيارات.</span>";
   const cards=out.length||(lastRes.out||[]).length?prizeCards(document.getElementById("results").innerHTML):"";
-  bot(h,{cards,acts:out.length?["share","path"]:["contact"],shareTxt:shareText(ctx)});
+  bot(h,{cards,acts:out.length?["share","path"]:["contact"],shareTxt:shareText(ctx),fb:"branches"});
   guide={};
 }
 // ---------- guided flow ----------
@@ -2564,6 +2577,7 @@ function doDisab(v,stage,l){
 }
 // ---------- free text ----------
 function handle(msg){
+  fbSet(msg);
   try{window.Q29T&&window.Q29T.ask(msg)}catch(e){}
   const t=N(msg),num=(t.match(/\d{1,3}/)||[])[0];
   const r=parseF(msg);
@@ -2630,7 +2644,7 @@ function answer(msg){
 // follow-up suggestions after each answer
 const FOLLOW={game:["شارك دعوتك","حدّد شريحتي"],invite:["اختبر حفظي","حدّد شريحتي"],portal:["الجهات المشاركة","كيف أسجّل؟"],calc:["ما هي الدروع؟","جائزة أفضل منسق"],settings:["اختبر حفظي","حدّد شريحتي"],ann:["متى التسجيل؟","متى النتائج؟"],branches_all:["حدّد شريحتي","أعلى الجوائز"],brief:["أهداف المسابقة","اللجنة الدائمة"],goals:["سياسات المسابقة","اللجنة الدائمة"],policy:["أهداف المسابقة","كيف أسجّل؟"],guide:["حدّد شريحتي","اختبر حفظي","شارك دعوتك"],committee:["كيف أعترض؟","متى التسجيل؟","حدّد شريحتي"],reg:["كيف أسجّل؟","الجهات المشاركة","متى التصفيات النهائية؟"],how:["الجهات المشاركة","متى التسجيل؟","حدّد شريحتي"],ents:["متى التسجيل؟","كيف أسجّل؟"],morning:["متى التصفيات النهائية؟","متى النتائج؟"],finals:["اللجان الصباحية","متى النتائج؟","حدّد شريحتي"],results:["أعلى الجوائز","نسب الفوز"],winner:["حدّد شريحتي","شروط القراءات"],thresh:["أعلى الجوائز","متى النتائج؟"],qiraat:["أعلى الجوائز","حدّد شريحتي"],prize:["حدّد شريحتي","نسب الفوز"],contact:["كيف أسجّل؟","الجهات المشاركة"],_ent:["كيف أسجّل؟","متى التسجيل؟"],_def:["حدّد شريحتي","متى التسجيل؟","الجهات المشاركة"]};
 function followCh(id){const l=FOLLOW[id]||FOLLOW._def;return l.map(q=>[q,()=>runChip(q)])}
-function runChip(q){const x=CH.find(c=>c.chip===q);if(!x){handle(q);return}if(x.go){x.go();return}bot(x.a(),{acts:(x.act||[]).filter(k=>k!=="finder"),choices:followCh(x.id)})}
+function runChip(q){fbSet(q);const x=CH.find(c=>c.chip===q);if(!x){handle(q);return}if(x.go){x.go();return}bot(x.a(),{acts:(x.act||[]).filter(k=>k!=="finder"),choices:followCh(x.id)})}
 const CH=[{chip:"حدّد شريحتي",go:startGuide},...I.filter(x=>x.chip&&x.id!=="where")];
 const chipsEl=document.getElementById("aiChips");
 chipsEl.innerHTML=CH.map((x,i)=>`<button type="button" class="ai-chip" data-i="${i}">${x.chip}</button>`).join("");
@@ -2930,6 +2944,7 @@ window.Q29T=(function(){
     sec(k){k=SEC[k]||k;if(seen[k])return;seen[k]=1;push("sec",k)},
     ann(k,id){if(!/^[0-9a-f-]{36}$/.test(String(id))||seen[k+id])return;seen[k+id]=1;push(k,id)},
     ev(k){push("sec",k)},
+    fb(t,up){if(!/^(prizes|register|rules|branches|dates|entities|shields|results|contact|other)$/.test(t))t="other";push(up?"fbup":"fbdn",t)},
     ask(t){t=String(t||"").trim();if(t.length<2||/^[\d\s.,٠-٩]+$/.test(t))return;push("ask",topic(t))},
     _t:topic};
 })();
@@ -3857,7 +3872,9 @@ function visSample(){
     add("ret",{new:.62,ret:.38});
     const hs={};HW.forEach((x,h)=>{hs[h]=x*(w===4&&h>=19&&h<=22?1.5:1)});add("hour",hs);
     add("sec",{home:1,branches:.6,ai:.5,shields:.25,more:.2,game_start:.16,game_done:.1,share_open:.08,share_img:.05});
-    add("ask",{register:.2,prizes:.18,dates:.14,rules:.12,branches:.1,entities:.08,results:.05,contact:.04,other:.09},.4)}
+    add("ask",{register:.2,prizes:.18,dates:.14,rules:.12,branches:.1,entities:.08,results:.05,contact:.04,other:.09},.4);
+    add("fbup",{register:.17,prizes:.19,dates:.13,rules:.09,branches:.12,entities:.07,results:.04,contact:.04,other:.03},.1);
+    add("fbdn",{register:.04,prizes:.02,dates:.02,rules:.05,branches:.02,entities:.03,results:.02,contact:.01,other:.06},.025)}
   return {views,stats}}
 function ensureSample(){if(!VIEWS_D||!STATS_D){const s=visSample();if(!VIEWS_D)VIEWS_D=s.views;if(!STATS_D)STATS_D=s.stats}}
 function loadVis(){
@@ -3900,10 +3917,15 @@ function vVis(){
   const srcC=sumBy("src",cur),srcT=Object.values(srcC).reduce((a,b)=>a+b,0),srcTop=Object.entries(srcC).sort((a,b)=>b[1]-a[1])[0];
   const askC=sumBy("ask",cur),askTop=Object.entries(askC).sort((a,b)=>b[1]-a[1])[0],secC=sumBy("sec",cur);
   const dp=Vp?Math.round((V-Vp)/Vp*100):null;
+  const fbU=sumBy("fbup",cur),fbD=sumBy("fbdn",cur),fbK=Object.keys(ST_L.ask).map(k=>[k,fbU[k]||0,fbD[k]||0]).filter(x=>x[1]+x[2]>0),fbTU=fbK.reduce((a,x)=>a+x[1],0),fbTD=fbK.reduce((a,x)=>a+x[2],0);
+  const fbWorst=fbK.filter(x=>x[1]+x[2]>=5).sort((a,b)=>a[1]/(a[1]+a[2])-b[1]/(b[1]+b[2]))[0];
+  const fbCard=`<div class="card vc"><h2>تقييم إجابات المساعد</h2><p class="vsub">${fbTU+fbTD?`<b>${Math.round(fbTU/(fbTU+fbTD)*100)}%</b> من التقييمات «أفادتني» (${vNf(fbTU+fbTD)} تقييمًا). الأقل رضا في الأعلى`:"لا توجد تقييمات في هذه الفترة"}</p>
+    <div class="list" style="gap:10px">${fbK.sort((a,b)=>a[1]/(a[1]+a[2])-b[1]/(b[1]+b[2])).map(([k,u,d])=>{const pc=Math.round(u/(u+d)*100);return `<div class="bl-row"><span class="bl-n" title="أفادتني ${u} · لم تُفدني ${d}">${pc}%</span><div class="bl-bar"><i style="width:${Math.max(3,pc)}%;background:var(--${pc>=80?"ok":pc>=60?"warn":"bad"})"></i></div><span class="bl-l">${esc(ST_L.ask[k])} <small class="muted">👍${u} · 👎${d}</small></span></div>`}).join("")}</div></div>`;
   const story=[`سجّل الدليل <b>${vNf(V)}</b> زيارة في آخر ${rl}${dp==null?"":Math.abs(dp)<1?"، وهو مستوى قريب من الفترة التي قبلها":dp>0?`، بارتفاع <b>${dp}%</b> عن الفترة التي قبلها`:`، بانخفاض <b>${-dp}%</b> عن الفترة التي قبلها`}.`,
     mobN!=null?`<b>${Math.round(mobN)}%</b> من الزوار يتصفحون من الجوال أو اللوحي${srcTop&&srcT?`، وأكبر مصدر للزيارات <b>${ST_L.src[srcTop[0]]||srcTop[0]}</b> (${Math.round(srcTop[1]/srcT*100)}%)`:""}.`:"",
     pk[2]?`ذروة الاستخدام يوم <b>${VD[pk[0]]}</b> من <b>${vHr(pk[1])}</b> إلى <b>${vHr((pk[1]+1)%24)}</b>.`:"",
     askTop?`أكثر ما يسأل عنه المساعد: <b>${ST_L.ask[askTop[0]]||askTop[0]}</b>.`:"",
+    fbTU+fbTD?`قيّم الزوار إجابات المساعد بنسبة رضا <b>${Math.round(fbTU/(fbTU+fbTD)*100)}%</b>${fbWorst?`، وأكثر موضوع يحتاج تحسينًا: <b>${ST_L.ask[fbWorst[0]]}</b>`:""}.`:"",
     secC.game_start?`بدأ <b>${vNf(secC.game_start)}</b> اختبارًا في «اختبر حفظي» وأكمل منها <b>${Math.round((secC.game_done||0)/secC.game_start*100)}%</b>.`:"",
     retN!=null?`<b>${Math.round(retN)}%</b> من الزوار عائدون للدليل.`:""].filter(Boolean);
   const tile=(l,n,d,sp,c)=>`<div class="vk" style="--c:var(--${c})"><span class="vk-l">${l}</span><b class="vk-n">${n}</b>${d}${vSpark(sp)}</div>`;
@@ -3945,6 +3967,7 @@ function vVis(){
    ${barListCard("أكثر الأقسام استخدامًا","var(--pink)",svg("list"),lst("sec",cur),"var(--pink)")}
    ${barListCard("موضوعات أسئلة المساعد","var(--warn)",svg("tag"),lst("ask",cur),"var(--warn)")}
   </div>
+  ${fbCard}
   <p class="muted" style="margin:0">أرقام مجمّعة فقط: نوع الجهاز والمتصفح ومصدر الرابط والقسم وموضوع السؤال. لا يُحفظ عنوان الشبكة ولا الموقع ولا اسم ولا نص أي سؤال.${DB?"":" (أرقام تجريبية)"}</p>`);
 }
 function iTile(n,label,c,icon){return `<div class="ikpi c-${c}"><div class="ikpi-n"><b>${n}</b><span>${label}</span></div><div class="ikpi-ic">${svg(icon)}</div></div>`}
