@@ -26,7 +26,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#B8940F">
-<meta name="build" content="20261002210150">
+<meta name="build" content="20261003135803">
 <script>
 (function(){
   var B="20260926215315";
@@ -909,6 +909,30 @@ html.view-find .finder .ai-chips{margin-inline:0!important;max-width:100%}
 .aw-card small{font-size:11px!important;line-height:1.5!important}
 
 html.view-find .finder .chat-bar{padding-bottom:calc(10px + var(--fabx,0px))!important}
+/* top "القائمة" button: theme, font size and page sharing */
+.mn-btn{flex:none;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--green);display:grid;place-items:center;cursor:pointer;padding:0}
+.mn-btn svg{width:22px;height:22px}
+.mn-btn[aria-expanded="true"]{background:var(--green);border-color:var(--green);color:var(--bg)}
+.mn-btn:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.mn-pop{position:fixed;z-index:50;top:calc(env(safe-area-inset-top,0px) + var(--abh,69px) - 2px);left:12px;width:min(300px,calc(100vw - 24px));background:var(--bg);border:1px solid var(--line);border-radius:16px;box-shadow:0 12px 34px rgba(0,0,0,.2);padding:6px 14px;display:flex;flex-direction:column}
+.mn-pop[hidden]{display:none}
+@media (prefers-reduced-motion:no-preference){.mn-pop:not([hidden]){animation:mnIn .16s ease-out}@keyframes mnIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}}
+.mn-row{display:flex;flex-direction:column;gap:6px;padding:10px 0}
+.mn-row+.mn-row{border-top:1px solid var(--line)}
+.mn-l{font-size:12.5px;font-weight:700;color:var(--muted)}
+.mn-seg{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.mn-seg>*{font:inherit;font-size:12.5px;font-weight:600;line-height:1.3;min-height:36px;display:flex;align-items:center;justify-content:center;gap:4px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);cursor:pointer;text-decoration:none;padding:0 8px}
+.mn-seg>*:hover{border-color:var(--green)}
+.mn-seg>[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:var(--bg)}
+.mn-seg>*:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.mn-seg svg{width:22px;height:22px;flex:none}
+.mn-seg>*{min-height:42px}
+.mn-a{font-family:var(--display);font-size:16px;font-weight:700;line-height:1}
+.mn-seg .mn-wa{color:#187A47}
+.mn-seg .mn-ig{color:#C13584}
+html.is-dark .mn-seg .mn-ig{color:#F07AB8}
+html.is-dark .mn-seg .mn-wa{color:#5FD69A}
+.mn-seg>.done{border-color:var(--ok);color:var(--ok)}
 /* tablets and computers: the page menu becomes a side bar on the right; phones keep the bottom bar */
 @media (min-width:768px) and (min-height:500px){
 :root{--sbw:220px}
@@ -1152,7 +1176,7 @@ html.view-find .ai-turn:last-child{min-height:calc(100dvh - var(--cbh,110px) - 7
     </details>
   </section>
 
-  <nav class="set-list" id="moreNav" aria-label="المزيد"><button class="set-row" type="button" data-qz-open aria-haspopup="dialog"><span class="set-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.4 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg></span><span class="set-tx"><b>اختبر حفظي</b><small>لعبة أسئلة بنقاط تشجيعية</small></span><svg class="set-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg></button><button class="set-row" data-more="c-sec"><span class="set-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/></svg></span><span class="set-tx"><b>للتواصل</b><small>واتساب · إنستغرام</small></span><svg class="set-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg></button><button class="set-row" data-more="calcSec"><span class="set-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M11 11h2M14 11h2M8 14h2M11 14h2M14 14h2M8 17h2M11 17h5"/></svg></span><span class="set-tx"><b>حاسبة نقاط الجهة</b><small>للمنسقين: مجموع نقاط الدروع</small></span><svg class="set-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg></button><button class="set-row" data-more="shareSec"><span class="set-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg></span><span class="set-tx"><b>مشاركة الصفحة</b><small>واتساب · نسخ الرابط</small></span><svg class="set-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg></button><button class="set-row" data-more="settings"><span class="set-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></span><span class="set-tx"><b>إعدادات العرض</b><small>الخلفية · حجم الخط</small></span><svg class="set-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg></button></nav>
+  <nav class="set-list" id="moreNav" aria-label="المزيد"><button class="set-row" type="button" data-qz-open aria-haspopup="dialog"><span class="set-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.4 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg></span><span class="set-tx"><b>اختبر حفظي</b><small>لعبة أسئلة بنقاط تشجيعية</small></span><svg class="set-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg></button><button class="set-row" data-more="c-sec"><span class="set-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/></svg></span><span class="set-tx"><b>للتواصل</b><small>واتساب · إنستغرام</small></span><svg class="set-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg></button><button class="set-row" data-more="calcSec"><span class="set-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M11 11h2M14 11h2M8 14h2M11 14h2M14 14h2M8 17h2M11 17h5"/></svg></span><span class="set-tx"><b>حاسبة نقاط الجهة</b><small>للمنسقين: مجموع نقاط الدروع</small></span><svg class="set-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg></button></nav>
   <div class="more-back" id="moreBack" hidden><button type="button" id="moreBackBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 6l6 6-6 6"/></svg>المزيد</button></div>
 
   <!-- CONTACT -->
@@ -1202,7 +1226,7 @@ html.view-find .ai-turn:last-child{min-height:calc(100dvh - var(--cbh,110px) - 7
   </section>
 
   <!-- SHARE -->
-  <section class="card sh-card" id="shareSec" aria-labelledby="share-title">
+  <section class="card sh-card" id="shareSec" hidden aria-labelledby="share-title">
     <h2 id="share-title" class="sh-h" style="font-size:22px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg>مشاركة الصفحة</h2>
     <p style="color:var(--muted);font-size:14px">أرسل الدليل إلى المتسابقين وأولياء الأمور ومجموعات المنسقين. هذه الرسالة جاهزة للإرسال:</p>
     <div class="share-msg" id="shareMsg"></div>
@@ -1215,7 +1239,7 @@ html.view-find .ai-turn:last-child{min-height:calc(100dvh - var(--cbh,110px) - 7
   </section>
 
   <!-- SETTINGS -->
-  <section class="card sh-card" id="settings" aria-labelledby="set-title">
+  <section class="card sh-card" id="settings" hidden aria-labelledby="set-title">
     <h2 id="set-title" style="font-size:22px">إعدادات العرض</h2>
   <div class="look">
     <div id="swatches" hidden></div>
@@ -2122,7 +2146,7 @@ const VIEWS=[
  {k:"branches",t:"الفروع",els:[sec("b-title")]},
  {k:"find",t:"المساعد",els:[sec("f-title")]},
  {k:"shield",t:"الدروع",els:[sec("s-title")]},
- {k:"more",t:"المزيد",els:[document.getElementById("moreNav"),document.getElementById("moreBack"),sec("c-title"),document.getElementById("calcSec"),document.getElementById("shareSec"),document.getElementById("settings")]}
+ {k:"more",t:"المزيد",els:[document.getElementById("moreNav"),document.getElementById("moreBack"),sec("c-title"),document.getElementById("calcSec")]}
 ];
 const IC={
  about:'<path d="M4 10.5L12 4l8 6.5V19a1.5 1.5 0 01-1.5 1.5H15v-5.5H9v5.5H5.5A1.5 1.5 0 014 19z"/>',
@@ -2174,7 +2198,7 @@ document.querySelectorAll("#panels .panel").forEach(p=>addBack(p,"#tabs","الع
 ["sh-org","sh-coord","sh-family","sh-points"].forEach(id=>addBack(document.getElementById(id),"#shNav","العودة إلى أقسام الدروع"));
 
 // More page: WhatsApp-settings style list with sub-pages
-const MORE_SECS=["c-sec","calcSec","shareSec","settings"];
+const MORE_SECS=["c-sec","calcSec"];
 let moreCur=null;
 // same as the other pages: tiles stay on top, the chosen section shows below them
 function moreOpen(id){
@@ -2266,9 +2290,9 @@ const A={
  contact:{t:"للتواصل",f:()=>go("more","c-sec")},
  game:{t:"افتح «اختبر حفظي»",f:()=>{const b=document.querySelector("[data-qz-open]");if(b)b.click()}},
  invite:{t:"صمّم دعوتك الآن",f:()=>{const b=document.getElementById("shareOpen");if(b)b.click()}},
- sharepage:{t:"مشاركة رابط الدليل",f:()=>go("more","shareSec")},
+ sharepage:{t:"افتح القائمة",f:()=>window.q29Menu&&window.q29Menu()},
  portal:{t:"افتح بوابة الجهات",f:()=>{const b=document.getElementById("coordBtn");if(b)b.click()}},
- settings:{t:"إعدادات العرض",f:()=>go("more","settings")},
+ settings:{t:"افتح القائمة",f:()=>window.q29Menu&&window.q29Menu()},
  home:{t:"الرئيسية",f:()=>go("about")},
  brief:{t:"النبذة كاملة",f:()=>openSub("نبذة")},
  goals:{t:"الأهداف كاملة",f:()=>openSub("الأهداف")},
@@ -2286,7 +2310,7 @@ const I=[
  {id:"calc",w:3,k:["حاسبة","الحاسبة","حاسبه","حاسبة النقاط","احسب النقاط","أحسب النقاط","نقاط الجهة","نقاط الجهه","نقاط الجهات","مجموع النقاط","كم نقطة"],
   a:()=>"<b>حاسبة نقاط الجهة</b> في «المزيد»، وهي للمنسقين: تُدخل عدد الفائزين في كل مركز، فتحسب مجموع نقاط الجهة لدروع التفوق، مع نقاط المنسق ودرع الأسرة القرآنية.",act:["calc","shields"]},
  {id:"settings",w:3,k:["حجم الخط","تكبير الخط","كبر الخط","أكبر الخط","اكبر الخط","تصغير الخط","صغر الخط","الخط كبير","الخط صغير","الخط صغير","الوضع الداكن","الوضع الليلي","داكن","الوضع الفاتح","اعدادات العرض","إعدادات العرض","الألوان","الالوان","الخلفية السوداء"],
-  a:()=>"من «<b>المزيد</b>» ← <b>إعدادات العرض</b>:<ul class='ai-ul'><li>الخلفية: فاتحة، أو داكنة، أو تلقائي حسب جهازك.</li><li>حجم الخط: أ، أ+، أ++.</li></ul><span class='ai-muted'>ويمكنك التبديل بين الفاتح والداكن مباشرة من زر الشمس/القمر في أعلى الصفحة.</span>",act:["settings"]},
+  a:()=>"من زر «<b>القائمة</b>» في أعلى الصفحة:<ul class='ai-ul'><li>الوضع: فاتح، أو داكن، أو تلقائي حسب جهازك.</li><li>حجم الخط: عادي، أو كبير، أو كبير جدًا.</li><li>مشاركة الصفحة: واتساب، أو إنستغرام (بطاقة قصة جاهزة)، أو تطبيق آخر.</li></ul>",act:["settings"]},
  {id:"ann",w:2.5,k:["الإعلانات","الاعلانات","إعلانات","اعلانات","الإعلان","الاعلان","التنبيهات","أخبار المسابقة","اخبار المسابقه","المستجدات","آخر الأخبار"],
   a:()=>"تظهر <b>إعلانات المسابقة</b> في أعلى الصفحة الرئيسية، وفيها التنبيهات والمواعيد المهمة. يمكنك إخفاء الإعلان بزر ×، وقد يعود الإعلان المهم للظهور حسب ما تحدده إدارة المسابقة.",act:["home","timeline"]},
  {id:"branches_all",w:2.5,k:["الفروع","فروع المسابقة","فروع المسابقه","عدد الفروع","كم فرع","ما هي الفروع","أفرع المسابقة","افرع المسابقه","الأفرع","الافرع"],
@@ -2298,7 +2322,7 @@ const I=[
  {id:"policy",w:2.5,k:["سياسات","السياسات","سياسة المسابقة","سياسه المسابقه"],
   a:()=>{const a=subItems("السياسات");return a.length?"من <b>سياسات المسابقة</b>:"+ulOf(a,5):"تجد السياسات في «عن المسابقة»."},act:["policy"]},
  {id:"guide",w:2,k:["ماذا يوجد في الدليل","محتويات الدليل","ما هذا الدليل","عن الدليل","أقسام الدليل","اقسام الدليل","كيف أستخدم الدليل","كيف استخدم الدليل","ماذا تعرف","ماذا تستطيع","ماذا يمكنك","وش تعرف","من أنت","من انت"],
-  a:()=>"في هذا الدليل:<ul class='ai-ul'><li><b>الرئيسية</b>: الإعلانات، وعن المسابقة، والشروط، والجدول الزمني، والجهات المشاركة، والأسئلة الشائعة.</li><li><b>الفروع</b>: الشرائح والجوائز لكل فرع.</li><li><b>المساعد</b>: أنا، أحدد شريحتك وأجيب عن أسئلتك.</li><li><b>الدروع</b>: دروع الجهات ونقاطها.</li><li><b>المزيد</b>: التواصل، وحاسبة نقاط الجهة، ومشاركة الصفحة، وإعدادات العرض.</li></ul>وفي أعلى الرئيسية: «اختبر حفظي» و«شارك دعوتك»، وللمنسقين «بوابة الجهات».",act:["finder","faq"]},
+  a:()=>"في هذا الدليل:<ul class='ai-ul'><li><b>الرئيسية</b>: الإعلانات، وعن المسابقة، والشروط، والجدول الزمني، والجهات المشاركة، والأسئلة الشائعة.</li><li><b>الفروع</b>: الشرائح والجوائز لكل فرع.</li><li><b>المساعد</b>: أنا، أحدد شريحتك وأجيب عن أسئلتك.</li><li><b>الدروع</b>: دروع الجهات ونقاطها.</li><li><b>المزيد</b>: اختبر حفظي، والتواصل، وحاسبة نقاط الجهة.</li></ul>وفي أعلى الصفحة زر «القائمة» للوضع الفاتح والداكن وحجم الخط ومشاركة الصفحة. وفي أعلى الرئيسية: «اختبر حفظي» و«شارك دعوتك»، وللمنسقين «بوابة الجهات».",act:["finder","faq"]},
  {id:"committee",k:["اللجنة الدائمة","اللجنه الدائمه","أعضاء اللجنة","اعضاء اللجنه","رئيس اللجنة","رئيس المسابقة","نائب رئيس اللجنة","من يشرف على المسابقة","المشرفين على المسابقة","القائمين على المسابقة","القائمون على المسابقة","من يدير المسابقة","أعضاء المسابقة"],w:2,
   a:()=>{const cs=[...document.querySelectorAll(".team .tm-card")];const seen=new Set();const L=cs.map(c=>{const t=(c.querySelector(".tm-t")||{}).textContent||"",n=(c.querySelector("b")||{}).textContent||"",r=(c.querySelector(".tm-r")||{}).textContent||"";return [t,n,r]}).filter(x=>x[1]&&!seen.has(x[1])&&seen.add(x[1]));
     if(!L.length)return "تجد أسماء رئيس وأعضاء اللجنة الدائمة في «عن المسابقة».";
@@ -2564,7 +2588,7 @@ const PAL={
  sand:{n:"رملي",l:["#F7F3EC","#FFFDF9","#2B2218","#6D6152","#E6DCCB","#6B4E16","#F0E6D2","#2F6B55","#E1EEE8"],d:["#15110B","#201A12","#EFE6D8","#AA9C87","#3A3022","#D9B36A","#33291A","#7CC4A4","#16302A"]}
 };
 const store2={get:(k,d)=>{try{return localStorage.getItem(k)||d}catch(e){return d}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
-let look={p:"awqaf",m:store.get("q29m","auto"),s:store.get("q29s","15")};
+let look={p:"awqaf",m:store.get("q29m","auto"),s:store.get("q29s","15")};if(!["15","17","19"].includes(look.s))look.s="15";
 const mq=matchMedia("(prefers-color-scheme: dark)");
 const sw=document.getElementById("swatches");
 Object.entries(PAL).forEach(([k,v])=>{const b=document.createElement("button");b.className="sw";b.dataset.p=k;b.title=v.n;b.setAttribute("aria-label",v.n);b.style.background=(v.sw||v.l)[0];b.innerHTML=`<i style="background:${v.sw?v.sw[1]:v.l[5]};${v.sw?"box-shadow:inset 0 0 0 1px #C9CDD2":""}"></i>`;sw.appendChild(b)});
@@ -2576,10 +2600,12 @@ function applyLook(){
   st.colorScheme=dark?"dark":"light";
   document.documentElement.classList.toggle("is-dark",dark);
   const tg=document.getElementById("themeTg");if(tg){tg.setAttribute("aria-pressed",dark);tg.title=dark?"الوضع الفاتح":"الوضع الداكن"}
-  document.querySelector(".wrap").style.zoom=({14:.93,15:1,17:1.13})[look.s]||1;
+  document.querySelector(".wrap").style.zoom=({15:1,17:1.13,19:1.26})[look.s]||1;
   sw.querySelectorAll(".sw").forEach(b=>b.setAttribute("aria-pressed",b.dataset.p===look.p));
   document.querySelectorAll("#modes button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.m===look.m));
   document.querySelectorAll("#sizes button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.s===look.s));
+  document.querySelectorAll("#mnMode button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.m===look.m));
+  document.querySelectorAll("#mnSize button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.s===look.s));
 }
 sw.addEventListener("click",e=>{const b=e.target.closest(".sw");if(b){look.p=b.dataset.p;store.set("q29p",look.p);applyLook()}});
 document.getElementById("modes").addEventListener("click",e=>{const b=e.target.closest("button");if(b){look.m=b.dataset.m;store.set("q29m",look.m);applyLook()}});
@@ -2592,7 +2618,7 @@ applyLook();
 // top app bar with theme toggle
 const appbar=document.createElement("div");appbar.className="appbar";
 appbar.innerHTML=`<div class="ab-brand"><span class="ab-logo"></span><span class="ab-t"><b>مسابقة الكويت الكبرى</b><small>لحفظ القرآن الكريم وتجويده (29)</small></span></div>
-<button class="coord-btn" id="coordBtn" type="button" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.6-3.6 3.4-6 7-6s6.4 2.4 7 6"/></svg><span>بوابة الجهات</span></button><button class="theme-tg" id="themeTg" type="button" aria-label="تبديل الوضع الداكن والفاتح"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><mask id="tgMask"><rect width="24" height="24" fill="#fff"/><circle class="tg-bite" cx="24" cy="2" r="7" fill="#000"/></mask></defs><circle class="tg-core" cx="12" cy="12" r="5" fill="currentColor" mask="url(#tgMask)"/><g class="tg-rays" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1.8v2.4M12 19.8v2.4M4.8 4.8l1.7 1.7M17.5 17.5l1.7 1.7M1.8 12h2.4M19.8 12h2.4M4.8 19.2l1.7-1.7M17.5 6.5l1.7-1.7"/></g></svg></button>`;
+<button class="coord-btn" id="coordBtn" type="button" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.6-3.6 3.4-6 7-6s6.4 2.4 7 6"/></svg><span>بوابة الجهات</span></button><button class="mn-btn" id="menuBtn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="mnPop" aria-label="القائمة" title="القائمة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><button class="theme-tg" id="themeTg" hidden type="button" aria-label="تبديل الوضع الداكن والفاتح"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><mask id="tgMask"><rect width="24" height="24" fill="#fff"/><circle class="tg-bite" cx="24" cy="2" r="7" fill="#000"/></mask></defs><circle class="tg-core" cx="12" cy="12" r="5" fill="currentColor" mask="url(#tgMask)"/><g class="tg-rays" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1.8v2.4M12 19.8v2.4M4.8 4.8l1.7 1.7M17.5 17.5l1.7 1.7M1.8 12h2.4M19.8 12h2.4M4.8 19.2l1.7-1.7M17.5 6.5l1.7-1.7"/></g></svg></button>`;
 document.body.prepend(appbar);
 {const abh=()=>{if(appbar.offsetHeight)document.documentElement.style.setProperty("--abh",appbar.offsetHeight+"px")};abh();addEventListener("resize",abh);if(window.ResizeObserver)new ResizeObserver(abh).observe(appbar)}
 {const lw=document.querySelector("header .org-logo-w");if(lw){const c=lw.cloneNode(true);c.classList.add("sm");appbar.querySelector(".ab-logo").appendChild(c)}else appbar.querySelector(".ab-logo").remove()}
@@ -2602,6 +2628,25 @@ document.getElementById("themeTg").addEventListener("click",()=>{
   const dark=document.documentElement.classList.contains("is-dark");
   look.m=dark?"light":"dark";store.set("q29m",look.m);applyLook();
 });
+// "القائمة" button in the top bar: theme, font size and page sharing
+const mnBtn=document.getElementById("menuBtn");
+const mnPop=document.createElement("div");mnPop.id="mnPop";mnPop.className="mn-pop";mnPop.hidden=true;mnPop.setAttribute("role","dialog");mnPop.setAttribute("aria-label","القائمة");
+mnPop.innerHTML=`<div class="mn-row"><span class="mn-l" id="mnModeL">الوضع</span><div class="mn-seg" id="mnMode" role="group" aria-labelledby="mnModeL"><button type="button" data-m="light" aria-label="فاتح" title="فاتح"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><button type="button" data-m="dark" aria-label="داكن" title="داكن"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z"/></svg></button><button type="button" data-m="auto" aria-label="تلقائي حسب الجهاز" title="تلقائي حسب الجهاز"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 010 16z" fill="currentColor"/></svg></button></div></div>
+<div class="mn-row"><span class="mn-l" id="mnSizeL">حجم الخط</span><div class="mn-seg" id="mnSize" role="group" aria-labelledby="mnSizeL"><button type="button" data-s="15" aria-label="خط عادي" title="عادي"><span class="mn-a">أ</span></button><button type="button" data-s="17" aria-label="خط كبير" title="كبير"><span class="mn-a">أ+</span></button><button type="button" data-s="19" aria-label="خط كبير جدًا" title="كبير جدًا"><span class="mn-a">أ++</span></button></div></div>
+<div class="mn-row"><span class="mn-l" id="mnShareL">مشاركة الصفحة</span><div class="mn-seg" role="group" aria-labelledby="mnShareL"><a class="mn-wa" id="mnWa" href="https://wa.me/?text=${encodeURIComponent(SHARE_TXT)}" target="_blank" rel="noopener" aria-label="واتساب" title="واتساب"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c.3 2 2 3.7 4 4l1.2-1.1 1.8.9c-.2 1-1 1.7-2 1.7-3.1-.2-5.7-2.8-5.9-5.9 0-1 .7-1.8 1.7-2l.9 1.8z"/></svg></a><button type="button" class="mn-ig" id="mnIg" aria-label="إنستغرام (بطاقة قصة)" title="إنستغرام"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></button><button type="button" id="mnShare" aria-label="مشاركة بتطبيق آخر" title="أخرى"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg></button></div></div>`;
+document.body.appendChild(mnPop);
+function mnClose(focus){if(mnPop.hidden)return;mnPop.hidden=true;mnBtn.setAttribute("aria-expanded","false");if(focus)mnBtn.focus()}
+function mnOpen(){applyLook();mnPop.hidden=false;mnBtn.setAttribute("aria-expanded","true");const f=mnPop.querySelector('[aria-pressed="true"]')||mnPop.querySelector("button");if(f)f.focus({preventScroll:true})}
+window.q29Menu=()=>setTimeout(mnOpen,0);
+mnBtn.addEventListener("click",()=>{mnPop.hidden?mnOpen():mnClose()});
+document.addEventListener("click",e=>{if(!mnPop.hidden&&!e.target.closest("#mnPop,#menuBtn"))mnClose()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")mnClose(true)});
+document.getElementById("mnMode").addEventListener("click",e=>{const b=e.target.closest("button");if(b){look.m=b.dataset.m;store.set("q29m",look.m);applyLook()}});
+document.getElementById("mnSize").addEventListener("click",e=>{const b=e.target.closest("button");if(b){look.s=b.dataset.s;store.set("q29s",look.s);applyLook()}});
+// Instagram has no share link: open the invitation card designer on the story size, ready to save and post
+document.getElementById("mnIg").addEventListener("click",()=>{mnClose();const o=document.getElementById("shareOpen");if(o)o.click();setTimeout(()=>{const f=document.querySelector('.sh-dlg [data-f="story"]');if(f)f.click()},0)});
+document.getElementById("mnShare").addEventListener("click",e=>{const b=e.currentTarget;if(!IS_ART&&navigator.share){navigator.share({title:"مسابقة الكويت الكبرى 29",text:SHARE_TXT.replace(PAGE_URL+"\n",""),url:PAGE_URL}).catch(()=>{})}else{const lb=b.innerHTML;copyText(b,SHARE_TXT,"");setTimeout(()=>{b.innerHTML=lb},1600)}});
+applyLook();
 // PORTAL-EMBED-START
 const VIS_CSS=`
 .vr{display:flex;gap:8px;margin:14px 0 10px}
