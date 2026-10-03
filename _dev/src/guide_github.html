@@ -26,7 +26,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#B8940F">
-<meta name="build" content="20261003135803">
+<meta name="build" content="20261003142158">
 <script>
 (function(){
   var B="20260926215315";
@@ -909,6 +909,17 @@ html.view-find .finder .ai-chips{margin-inline:0!important;max-width:100%}
 .aw-card small{font-size:11px!important;line-height:1.5!important}
 
 html.view-find .finder .chat-bar{padding-bottom:calc(10px + var(--fabx,0px))!important}
+/* "المزيد": the game is a wide button on top, the other two sit under it */
+#moreNav .set-row.more-game{grid-column:1 / -1;min-height:76px;padding:12px 16px;gap:14px;background:linear-gradient(135deg,#0A5440 0%,#0D654C 55%,#0F6E54 100%);border:2px solid #E3B955;color:#fff;box-shadow:0 6px 16px rgba(11,90,67,.25)}
+#moreNav .set-row.more-game:hover{background:linear-gradient(135deg,#0B5C46 0%,#0F6E54 100%);border-color:#E3B955}
+#moreNav .set-row.more-game .set-ic{width:46px;height:46px;border-radius:50%;background:#E3B955;color:#0A5440}
+#moreNav .set-row.more-game .set-ic svg{width:24px;height:24px}
+#moreNav .set-row.more-game .set-tx{align-items:flex-start;text-align:start}
+#moreNav .set-row.more-game .set-tx b{font-size:17px}
+#moreNav .set-row.more-game .set-tx small{display:block;font-size:12.5px;color:#fff;opacity:.85}
+#moreNav .set-row.more-game .set-chev{display:block;color:#fff;opacity:.8}
+#moreNav .set-row.more-game:focus-visible{outline:3px solid #E3B955;outline-offset:2px}
+@media (min-width:720px){#moreNav.set-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* top "القائمة" button: theme, font size and page sharing */
 .mn-btn{flex:none;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--green);display:grid;place-items:center;cursor:pointer;padding:0}
 .mn-btn svg{width:22px;height:22px}
@@ -1176,7 +1187,7 @@ html.view-find .ai-turn:last-child{min-height:calc(100dvh - var(--cbh,110px) - 7
     </details>
   </section>
 
-  <nav class="set-list" id="moreNav" aria-label="المزيد"><button class="set-row" type="button" data-qz-open aria-haspopup="dialog"><span class="set-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.4 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg></span><span class="set-tx"><b>اختبر حفظي</b><small>لعبة أسئلة بنقاط تشجيعية</small></span><svg class="set-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg></button><button class="set-row" data-more="c-sec"><span class="set-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/></svg></span><span class="set-tx"><b>للتواصل</b><small>واتساب · إنستغرام</small></span><svg class="set-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg></button><button class="set-row" data-more="calcSec"><span class="set-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M11 11h2M14 11h2M8 14h2M11 14h2M14 14h2M8 17h2M11 17h5"/></svg></span><span class="set-tx"><b>حاسبة نقاط الجهة</b><small>للمنسقين: مجموع نقاط الدروع</small></span><svg class="set-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg></button></nav>
+  <nav class="set-list" id="moreNav" aria-label="المزيد"><button class="set-row more-game" type="button" data-qz-open aria-haspopup="dialog"><span class="set-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.4 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg></span><span class="set-tx"><b>اختبر حفظي</b><small>لعبة أسئلة بنقاط تشجيعية</small></span><svg class="set-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg></button><button class="set-row" data-more="c-sec"><span class="set-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/></svg></span><span class="set-tx"><b>للتواصل</b><small>واتساب · إنستغرام</small></span><svg class="set-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg></button><button class="set-row" data-more="calcSec"><span class="set-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M11 11h2M14 11h2M8 14h2M11 14h2M14 14h2M8 17h2M11 17h5"/></svg></span><span class="set-tx"><b>حاسبة نقاط الجهة</b><small>للمنسقين: مجموع نقاط الدروع</small></span><svg class="set-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg></button></nav>
   <div class="more-back" id="moreBack" hidden><button type="button" id="moreBackBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 6l6 6-6 6"/></svg>المزيد</button></div>
 
   <!-- CONTACT -->
