@@ -7,6 +7,7 @@
 |---|---|
 | `src/guide_github.html` | **المصدر الكامل لنسخة GitHub** (بيانات حقيقية + شعار الأمانة + صور اللجنة). كل التعديلات تبدأ منه. |
 | `src/guide_claude.html` | نسخة Claude (بيانات تجريبية، بلا شعار الأمانة) المنشورة على رابط Artifact. |
+| `src/sw.js` | دعم العمل دون إنترنت لنسخة GitHub (يُنسخ إلى جذر المستودع باسم `sw.js`). عند تغيير ملفات البيانات أو الخط غيّر رقم `CACHE` فيه. |
 | `build_gh.py` | يقسّم المصدر إلى `index.html` + `qz-data.txt` + `hafs.woff2` (تحميل بيانات اللعبة عند الحاجة). |
 | `run_tests.sh` | يشغّل الاختبارات الرئيسية على النسختين. |
 | `tests/` | اختبارات Playwright (test2–test32, a11y) و `mock_sb.py` (بديل محلي لـ Supabase مع PostgreSQL). |
@@ -26,6 +27,7 @@
    python3 _dev/build_gh.py _dev/src/guide_github.html /tmp/ghsplit
    bash _dev/run_tests.sh            # يجب ALL GREEN
    cp /tmp/ghsplit/index.html /tmp/ghsplit/qz-data.txt /tmp/ghsplit/hafs.woff2 .
+   cp _dev/src/sw.js sw.js
    git add -A && git commit -m "..." && git push
    ```
 
