@@ -938,6 +938,18 @@ html.view-find .finder .chat-bar{padding-bottom:calc(10px + var(--fabx,0px))!imp
 .inst-b button{flex:1;min-height:44px;font:inherit;font-size:14px;font-weight:700;border-radius:12px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
 .inst-b button.pri{background:var(--green);border-color:var(--green);color:var(--bg)}
 @media (min-width:768px) and (min-height:500px){.inst{right:calc(var(--sbw) + 12px)}}
+/* home: days left to register (shown only while registration is open) */
+.reg-cd{display:flex;align-items:center;gap:12px;width:100%;margin-top:10px;padding:8px 12px;background:var(--gold-soft);border:1px solid var(--line);border-inline-start:4px solid var(--gold);border-radius:12px;font:inherit;color:var(--ink);text-align:start;cursor:pointer}
+.reg-cd:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.reg-n{display:flex;flex-direction:column;align-items:center;min-width:46px;line-height:1.1}
+.reg-n strong{font-size:24px;color:var(--green);font-variant-numeric:tabular-nums}
+.reg-n small{font-size:11px;color:var(--muted)}
+.reg-t{display:flex;flex-direction:column;line-height:1.5;min-width:0}
+.reg-t b{font-size:14px}
+.reg-t small{font-size:12px;color:var(--muted)}
+.reg-cd>svg{width:18px;height:18px;margin-inline-start:auto;color:var(--muted);flex:none}
+/* "المزيد": the visitor's best game score under «اختبر حفظي» */
+#moreNav .set-row.more-game .set-tx small.best{color:#E3B955;opacity:1;font-weight:700}
 /* top "القائمة" button: theme, font size and page sharing */
 .mn-btn{flex:none;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--green);display:grid;place-items:center;cursor:pointer;padding:0}
 .mn-btn svg{width:22px;height:22px}
@@ -2064,7 +2076,7 @@ const AB_IC={
 const AB_SHORT={"عن المسابقة":"عن المسابقة","نبذة عن المسابقة":"نبذة","أهداف المسابقة":"الأهداف","سياسات المسابقة":"السياسات","مصطلحات عامة":"المصطلحات","شروط المسابقة بجميع فروعها":"الشروط","مسار المشاركة":"مسار المشاركة","الجهات المشاركة المعتمدة":"الجهات المشاركة","الجدول الزمني":"الجدول الزمني","أسئلة شائعة":"أسئلة شائعة"};
 const aboutView=document.createElement("div");
 aboutView.className="about-view";
-aboutView.innerHTML=`<div class="qz-promo"><button type="button" class="qz-gcard" data-qz-open aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.4 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg><span><b>اختبر حفظي<span class="qz-new">جديد</span></b><small>لعبة أسئلة بنقاط تشجيعية: اختر المستوى والأجزاء وعدد الأسئلة</small></span></button><button type="button" class="qz-pclose" aria-label="إخفاء هذا الإعلان">×</button></div><nav class="ap-grid" aria-label="أقسام عن المسابقة">${ABOUT.map(a=>`<button class="ap-tile" data-ab="${a.id}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${AB_IC[a.t]||AB_IC._}</svg><span>${AB_SHORT[a.t]||a.t}</span></button>`).join("")}</nav>
+aboutView.innerHTML=`<nav class="ap-grid" aria-label="أقسام عن المسابقة">${ABOUT.map(a=>`<button class="ap-tile" data-ab="${a.id}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${AB_IC[a.t]||AB_IC._}</svg><span>${AB_SHORT[a.t]||a.t}</span></button>`).join("")}</nav>
 ${ABOUT.map(a=>`<section class="ap-sec" id="${a.id}"><h2>${a.t}</h2>${a.h}<button class="to-sections" type="button" data-to-grid>↑ العودة إلى الأقسام</button></section>`).join("")}`;
 (function(){const K="q29pr";let o={n:0,off:false};try{o=Object.assign(o,JSON.parse(localStorage.getItem(K)||"{}"))}catch(e){}
   const w=aboutView.querySelector(".qz-promo");if(!w)return;
@@ -2676,6 +2688,24 @@ document.getElementById("mnSize").addEventListener("click",e=>{const b=e.target.
 document.getElementById("mnIg").addEventListener("click",()=>{mnClose();const o=document.getElementById("shareOpen");if(o)o.click();setTimeout(()=>{const f=document.querySelector('.sh-dlg [data-f="story"]');if(f)f.click()},0)});
 document.getElementById("mnShare").addEventListener("click",e=>{const b=e.currentTarget;if(!IS_ART&&navigator.share){navigator.share({title:"مسابقة الكويت الكبرى 29",text:SHARE_TXT.replace(PAGE_URL+"\n",""),url:PAGE_URL}).catch(()=>{})}else{const lb=b.innerHTML;copyText(b,SHARE_TXT,"");setTimeout(()=>{b.innerHTML=lb},1600)}});
 applyLook();
+// home: days left to register, while registration is open
+(()=>{
+  const hr=document.querySelector("header .hb-row");if(!hr)return;
+  if(!(dayDiff("2026-09-27")<=0&&dayDiff("2026-10-29")>=0))return;
+  const n=dayDiff("2026-10-29"),tl=(ABOUT.find(a=>a.t==="الجدول الزمني")||{}).id;
+  const b=document.createElement("button");b.type="button";b.className="reg-cd";if(tl)b.dataset.ab=tl;
+  const num=n===0?`<strong>اليوم</strong><small>&nbsp;</small>`:`<strong>${n}</strong><small>${n===1?"يوم":n===2?"يومان":n<=10?"أيام":"يومًا"}</small>`;
+  b.innerHTML=`<span class="reg-n">${num}</span><span class="reg-t"><b>${n===0?"اليوم آخر يوم للتسجيل":"باقٍ على آخر يوم للتسجيل"}</b><small>${dTxt("2026-10-29")} · عن طريق الجهات المشاركة</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>`;
+  hr.after(b);
+})();
+// "المزيد": show the visitor's best game score under «اختبر حفظي»
+(()=>{
+  const sm=document.querySelector("#moreNav .more-game .set-tx small");if(!sm)return;
+  const base=sm.textContent;
+  const upd=()=>{let best=0;try{const b=(JSON.parse(localStorage.getItem("q29g")||"{}").best)||{};best=Math.max(0,...Object.values(b).map(Number).filter(x=>x>0))}catch(e){}
+    sm.classList.toggle("best",best>0);sm.textContent=best>0?`أفضل نتيجة لك: ${best} نقطة · هل تتجاوزها؟`:base};
+  upd();document.addEventListener("click",()=>setTimeout(upd,0));addEventListener("focus",upd);
+})();
 // offline support and a one-time "install the guide" invitation (GitHub copy only)
 if(!IS_ART&&"serviceWorker" in navigator&&(location.protocol==="https:"||location.hostname==="localhost"))addEventListener("load",()=>setTimeout(()=>{navigator.serviceWorker.register("sw.js").catch(()=>{})},4000));
 (()=>{
