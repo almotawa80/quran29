@@ -983,6 +983,10 @@ html.view-find .finder .chat-bar{padding-bottom:calc(10px + var(--fabx,0px))!imp
 .wl-go:focus-visible,.wl-sk:focus-visible{outline:2px solid var(--green);outline-offset:3px}
 .wl-sk{border:0;background:none;color:var(--muted);font:inherit;font-size:13px;text-decoration:underline;cursor:pointer;padding:6px 12px}
 @media (max-height:640px){.wl{gap:8px;justify-content:flex-start}.wl .org-logo{width:70px}.wl-star{width:80px;height:80px}.wl-star b{width:66px;height:66px;font-size:28px}.wl h2{font-size:28px}.wl h3{font-size:20px}}
+.h29-cd{align-self:flex-start;display:inline-flex;align-items:center;gap:5px;margin-top:6px;padding:5px 12px;border:0;border-radius:999px;background:var(--green);color:var(--bg);font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.h29-cd b{font-size:15px;font-variant-numeric:tabular-nums}
+.h29-cd svg{flex:none;width:14px;height:14px}
+.h29-cd:focus-visible{outline:2px solid var(--green);outline-offset:2px}
 /* top "القائمة" button: theme, font size and page sharing */
 .mn-btn{flex:none;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--green);display:grid;place-items:center;cursor:pointer;padding:0}
 .mn-btn svg{width:22px;height:22px}
@@ -2728,15 +2732,16 @@ document.getElementById("mnSize").addEventListener("click",e=>{const b=e.target.
 document.getElementById("mnIg").addEventListener("click",()=>{mnClose();const o=document.getElementById("shareOpen");if(o)o.click();setTimeout(()=>{const f=document.querySelector('.sh-dlg [data-f="story"]');if(f)f.click()},0)});
 document.getElementById("mnShare").addEventListener("click",e=>{const b=e.currentTarget;if(!IS_ART&&navigator.share){navigator.share({title:"مسابقة الكويت الكبرى 29",text:SHARE_TXT.replace(PAGE_URL+"\n",""),url:PAGE_URL}).catch(()=>{})}else{const lb=b.innerHTML;copyText(b,SHARE_TXT,"");setTimeout(()=>{b.innerHTML=lb},1600)}});
 applyLook();
-// home: days left to register, while registration is open
+// home: days left to register, shown inside the welcome strip while registration is open
 (()=>{
-  const hr=document.querySelector("header .hb-row");if(!hr)return;
+  const t=document.querySelector("header .hero29 .h29-t");if(!t)return;
   if(!(dayDiff("2026-09-27")<=0&&dayDiff("2026-10-29")>=0))return;
   const n=dayDiff("2026-10-29"),tl=(ABOUT.find(a=>a.t==="الجدول الزمني")||{}).id;
-  const b=document.createElement("button");b.type="button";b.className="reg-cd";if(tl)b.dataset.ab=tl;
-  const num=n===0?`<strong>اليوم</strong><small>&nbsp;</small>`:`<strong>${n}</strong><small>${n===1?"يوم":n===2?"يومان":n<=10?"أيام":"يومًا"}</small>`;
-  b.innerHTML=`<span class="reg-n">${num}</span><span class="reg-t"><b>${n===0?"اليوم آخر يوم للتسجيل":"باقٍ على آخر يوم للتسجيل"}</b><small>${dTxt("2026-10-29")} · عن طريق الجهات المشاركة</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>`;
-  hr.after(b);
+  const b=document.createElement("button");b.type="button";b.className="h29-cd";if(tl)b.dataset.ab=tl;
+  const days=n===1?"يوم واحد":n===2?"يومان":n<=10?`<b>${n}</b> أيام`:`<b>${n}</b> يومًا`;
+  b.innerHTML=(n===0?"<b>اليوم</b> آخر يوم للتسجيل":`باقٍ ${days} على آخر يوم للتسجيل`)+'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>';
+  t.querySelector("span").textContent=`آخر يوم ${dTxt("2026-10-29")} · عن طريق الجهات المشاركة`;
+  t.appendChild(b);
 })();
 // "المزيد": show the visitor's best game score under «اختبر حفظي»
 (()=>{
